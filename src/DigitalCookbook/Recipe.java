@@ -8,8 +8,9 @@ public class Recipe {
 	private int number;
 	private double preparationtime ; 
 	private double cooktime ; 
+	private String recipeid ; 
 	
-	Recipe(String recipename , String category,int number ){
+	public Recipe(String recipename , String category,int number ){
 		this.number= number ;
 		this.recipename = recipename ; 
 		this.category = category; 
@@ -17,7 +18,7 @@ public class Recipe {
 		this.ingredientlist= new LinkedList<Ingredient>();
 	}
 	
-	Recipe(String recipename){
+	public Recipe(String recipename){
 		this.recipename = recipename; 
 	}
 	
@@ -154,6 +155,15 @@ public class Recipe {
 	    }
 	    toString = toString+ "\n"; 
 		return toString;
+	}
+	
+	public String getrecipeid() {
+		return this.recipeid;
+	}
+	
+	public void setrecipeid(String recipeid) {
+		this.recipeid = recipeid; 
+		
 	}
 	
 	

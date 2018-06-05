@@ -31,12 +31,12 @@ public class Ingredient {
 
 	private String description; 
 	
-	Ingredient(String ingredientname, double amount, String unit){
+	public Ingredient(String ingredientname, double amount, String unit){
 		this.ingredientname=ingredientname; 
 		this.amount = amount ; 
 		this.unit = unit; 	
 	}
-	Ingredient(String ingredientname, double amount , String unit, String description){
+	public Ingredient(String ingredientname, double amount , String unit, String description){
 		this.ingredientname = ingredientname; 
 		this.amount = amount ; 
 		this.unit = unit; 
