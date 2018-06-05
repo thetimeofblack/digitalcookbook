@@ -61,7 +61,9 @@ public class DataBaseController  {
 			return recipe;
 		}
 		
-		
+		public LinkedList<Recipe> getRecipeList() {
+			return this.recipelist;
+		}
 		public void close(){
 			
 		}
