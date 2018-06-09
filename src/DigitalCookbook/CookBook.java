@@ -1,5 +1,8 @@
 package DigitalCookbook;
 import java.util.LinkedList;
+
+import CookBookEntity.Recipe;
+
 import java.util.*;
 public class CookBook {
 	private String cookbookname;

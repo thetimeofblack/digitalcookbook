@@ -1,10 +1,9 @@
 package CookBookController;
-import DigitalCookbook.Recipe;
 import java.io.IOException;
 import java.util.*;
 
-import DigitalCookbook.Ingredient;
-import DigitalCookbook.Recipe;
+import CookBookEntity.Ingredient;
+import CookBookEntity.Recipe;
 
 import java.sql.Connection; 
 import java.sql.DriverManager ; 
@@ -20,7 +19,7 @@ public class DataBaseController  {
 	final private String databaseDriver = "com.mysql.cj.jdbc.Driver";
 	private LinkedList<Recipe> recipelist = new LinkedList<Recipe>(); 
 	private Statement statement;
-		
+
 		DataBaseController(){
 			try { 
 					Class.forName(this.databaseDriver);
@@ -42,7 +41,7 @@ public class DataBaseController  {
 				LinkedList<String> recipesteps = recipe.getSteps();
 				LinkedList<Ingredient> recipeingredients = recipe.getIngredientlist();
 				double preparationtime = recipe.getPreparationtime();
-				
+		
 		}
 		
 		
@@ -90,6 +89,7 @@ public class DataBaseController  {
 				Ingredient ingredient = new Ingredient(name,amount,unit);
 				
 				recipe.addIngredient(ingredient);
+				rs.close();
 			}
 			}catch(Exception e) {
 				e.printStackTrace();
@@ -114,8 +114,14 @@ public class DataBaseController  {
 		public LinkedList<Recipe> getRecipeList() {
 			return this.recipelist;
 		}
+		
+		
 		public void close(){
-			
+			try {
+			this.statement.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 			
 }

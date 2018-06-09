@@ -1,5 +1,8 @@
 package DigitalCookbook;
 
+import CookBookEntity.Ingredient;
+import CookBookEntity.Recipe;
+
 /**
  * A class for the program entry point and some test recipes.
  * 

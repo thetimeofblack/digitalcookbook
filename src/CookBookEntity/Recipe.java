@@ -1,4 +1,4 @@
-package DigitalCookbook;
+package CookBookEntity;
 import java.util.*;
 public class Recipe {
 	private LinkedList<Ingredient> ingredientlist ;

@@ -1,4 +1,4 @@
-package DigitalCookbook;
+package CookBookEntity;
 
 public class Ingredient {
 	private String ingredientname;
