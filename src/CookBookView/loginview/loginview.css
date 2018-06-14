@@ -1,0 +1,13 @@
+.button#clearun
+{
+	-fx-border-radius: 25; 
+	-fx-background-radius:25;
+	
+}
+
+.button#clearpw
+{
+	-fx-border-radius: 25; 
+	-fx-background-radius:25;
+	
+}

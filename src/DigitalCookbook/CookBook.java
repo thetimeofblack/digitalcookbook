@@ -17,7 +17,7 @@ public class CookBook {
 		while(it.hasNext()) {
 			
 			Recipe recipeitr = it.next();
-			recipeitr.showrecipe();
+			
 		}
 	}
 	

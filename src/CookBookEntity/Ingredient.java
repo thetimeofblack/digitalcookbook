@@ -1,54 +1,73 @@
 package CookBookEntity;
 
 public class Ingredient {
-	private String ingredientname;
-	private double amount ;
-	private String unit ; 
-	public String getIngredientname() {
-		return ingredientname;
-	}
-	public void setIngredientname(String ingredientname) {
-		this.ingredientname = ingredientname;
-	}
-	public double getAmount() {
-		return amount;
-	}
-	public void setAmount(double amount) {
-		this.amount = amount;
-	}
-	public String getUnit() {
-		return unit;
-	}
-	public void setUnit(String unit) {
-		this.unit = unit;
-	}
+	private double IngredientsID;
+	private String Name;
+	private double Amount;
+	private String Unit;
+	private String Description;
+	
 	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
+		return Description;
 	}
 
-	private String description; 
-	
-	public Ingredient(String ingredientname, double amount, String unit){
-		this.ingredientname=ingredientname; 
-		this.amount = amount ; 
-		this.unit = unit; 	
+	public void setDescription(String description) {
+		Description = description;
 	}
-	public Ingredient(String ingredientname, double amount , String unit, String description){
-		this.ingredientname = ingredientname; 
-		this.amount = amount ; 
-		this.unit = unit; 
-		this.description = description ; 
+
+	public Ingredient(){
 		
+	}
+	
+	public Ingredient(String name, double amount, String unit, String description ){
+		this.Name = name;
+		this.Amount = amount;
+		this.Unit = unit;
+		this.Description = description;
+	}
+	
+	public Ingredient(String name, double amount, String unit) {
+		this.Name = name; 
+		this.Amount = amount ; 
+		this.Unit = unit ; 
+		
+	}
+		
+	public double getIngredientsID() {
+		return IngredientsID;
+	}
+	
+	public void setIngredientsID(double ingredientsID) {
+		IngredientsID = ingredientsID;
+	}
+	
+	public String getName() {
+		return Name;
+	}
+	
+	public void setName(String name) {
+		Name = name;
+	}
+	
+	public double getAmount() {
+		return Amount;
+	}
+	
+	public void setAmount(double amount) {
+		Amount = amount;
+	}
+	
+	public String getUnit() {
+		return Unit;
+	}
+	
+	public void setUnit(String unit) {
+		Unit = unit;
 	}
 	
 	public String toString() {
 		String Tostring  =  new String();
-		Tostring = this.ingredientname +" "+ String.valueOf(this.amount)+" "+ this.unit+ " " + this.description+"\n";
-		
-		
+		Tostring = this.Name +" "+ String.valueOf(this.Amount)+" "+ this.Unit +" ("+this.Description+") \n";		
 		return Tostring;
-	}
+	}		
 }

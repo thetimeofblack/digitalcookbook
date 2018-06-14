@@ -1,33 +1,42 @@
 package CookBookEntity;
 
 public class User {
-	private String password ; 
-	private String username; 
-	User(String password , String username){
-		this.password = password; 
-		this.username = username; 
+	private double UserID;
+	private String UserName;
+	private String UserPassword;
+				
+	public User() {
 		
 	}
-	
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	
-	
-	
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
+
+	public User(double userID, String userName, String userPassword) {
+		this.UserID = userID;
+		this.UserName = userName;
+		this.UserPassword = userPassword;
 	}
 	
-	public boolean verifyuser(User other) {
-		
-		return false; 
+	public double getUserID() {
+		return UserID;
+	}
+	
+	public void setUserID(double userID) {
+		UserID = userID;
+	}
+	
+	public String getUserName() {
+		return UserName;
+	}
+	
+	public void setUserName(String userName) {
+		UserName = userName;
+	}
+	
+	public String getUserPassword() {
+		return UserPassword;
+	}
+	
+	public void setUserPassword(String userPassword) {
+		UserPassword = userPassword;
 	}
 	
 }

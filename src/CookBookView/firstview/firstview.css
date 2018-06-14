@@ -1,0 +1,9 @@
+.button {  
+    -fx-text-fill: white;  
+    -fx-font-family: "Arial Narrow";  
+    -fx-font-weight: bold;  
+    -fx-background-color: linear-gradient(#f7b77f,#f1a201);  
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );  
+}  
+
+
