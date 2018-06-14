@@ -16,7 +16,7 @@ public class CookBookApp {
 	 * 
 	 * @return  the new recipe
 	 */
-	private static Recipe createGongBaoJiding() {
+	public static Recipe createGongBaoJiding() {
 		Recipe recipe = new Recipe("Gong Bao Jiding", "Sichuan Dish", 4);		
 		
 		recipe.addIngredient(new Ingredient("cornstarch", 1.0, "tablespoon"));
@@ -56,7 +56,7 @@ public class CookBookApp {
 	 * 
 	 * @return  the recipe
 	 */
-	private static Recipe createHongShaoRou() {
+	public static Recipe createHongShaoRou() {
 		Recipe recipe = new Recipe("Hong Shao Rou", "Hunan Dish", 4);		
 		
 		recipe.addIngredient(new Ingredient("pork belly", 0.5, "kg", "cut into 2cm pieces"));
@@ -88,7 +88,7 @@ public class CookBookApp {
 	 * 
 	 * @return  the recipe
 	 */
-	private static Recipe createSuanLaFen() {
+	public static Recipe createSuanLaFen() {
 		Recipe recipe = new Recipe("Suan La Fen", "Sichuan Dish", 2);		
 		
 		recipe.addIngredient(new Ingredient("potato noodles", 1.0, "bunch"));

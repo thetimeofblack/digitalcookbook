@@ -28,9 +28,10 @@ public class CookBook {
 	}
 	
 	Recipe getRecipe(String recipename) {
-		int index ; 
-		index = recipelist.indexOf(new Recipe(recipename));
-		return recipelist.get(index);
+		int index ;
+		Recipe recipe = new Recipe();
+		recipe.setName(recipename);
+		return recipe;
 	}
 	
 	

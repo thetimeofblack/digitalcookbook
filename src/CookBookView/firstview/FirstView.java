@@ -23,7 +23,7 @@ public class FirstView extends javafx.application.Application{
     public void start(Stage primaryStage) throws Exception {
         try {
             BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("fv.fxml"));
-            Scene scene = new Scene(root, 600, 870);
+            Scene scene = new Scene(root, 290, 470);
      
             
 
@@ -36,7 +36,7 @@ public class FirstView extends javafx.application.Application{
             //primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("images/earth.png")));
             primaryStage.show();
         } catch (Exception e) {
-            e.printStackTrace();
+            e.printStackTrace(); 
         }
 
     }

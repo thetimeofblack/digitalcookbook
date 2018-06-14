@@ -21,6 +21,8 @@ public class Recipe {
 		this.Name  = Name ; 
 		this.Category = Category; 
 		this.ServeNumber = ServeNumber; 
+		ingredientlist = new LinkedList<Ingredient>();
+		PreparationSteps = new LinkedList<PreparationSteps>();
 		
 	}
 	
@@ -129,7 +131,15 @@ public class Recipe {
 		this.PreparationSteps.add(preparationSteps);
 	}
 	public void addIngredient(Ingredient ingredient) {
+		
 		this.ingredientlist.add(ingredient);
+	}
+	
+	public void setPreparationTime (int PreparationTime) {
+		this.PrepareTime = PreparationTime;
+	}
+	public void setCookingTime(int cookTime) {
+		this.CookTime = cookTime ; 
 	}
 	
 }

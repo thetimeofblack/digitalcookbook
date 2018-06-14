@@ -27,7 +27,7 @@ public class DatabaseAccessObject {
 			Class.forName("com.mysql.jdbc.Driver");// 使用forName方法加载jdbc驱动程序
 			System.out.println("数据库驱动加载成功");
 			// 使用Drivemanager中getConnection的方法得到数据库连接，三个参数依次指定路径，用户名和密码
-			con = DriverManager.getConnection("jdbc:mysql:" + "//127.0.0.1:3306/", "root", "heyining");
+			con = DriverManager.getConnection("jdbc:mysql:" + "//127.0.0.1:3306/?characterEncoding=utf8&useSSL=true&serverTimezone=GMT", "root", "heyining");
 			System.out.println("database access sucessful!");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -212,7 +212,7 @@ public class DatabaseAccessObject {
 		return ls;
 	}
 
-	// create recipe 方法
+	// create recipe method
 	public boolean createrecipe(int userid, Recipe recipe) {
 		con = this.getConnection();
 		boolean j = false;
@@ -245,8 +245,12 @@ public class DatabaseAccessObject {
 			for (int x = 0; x < ls1.size(); x++) {
 				ls1.get(x);
 				String ss2 = "INSERT INTO `cookbook`.`ingredients` (`Name`, `RecipeID`, `Amount`, `Unit`, `Description`) "
-						+ "values('" + ls1.get(x).getName() + "','" + recipeid + "','" + ls1.get(x).getAmount() + "','"
-						+ ls1.get(x).getUnit() + "','" + ls1.get(x).getDescription() + "')";
+						+ "values('" 
+						+ ls1.get(x).getName() + "','" 
+						+ recipeid + "','" 
+						+ ls1.get(x).getAmount() + "','"
+						+ ls1.get(x).getUnit() + "','" 
+						+ ls1.get(x).getDescription() + "')";
 				res1 = sql.executeUpdate(ss2);
 			}
 			if (res1 >= 1) {
@@ -258,8 +262,10 @@ public class DatabaseAccessObject {
 			for (int y = 0; y < ls1.size(); y++) {
 				ls2.get(y);
 				String ss3 = "INSERT INTO `cookbook`.`preparationsteps` (`Description`,`preparationstepsorder`,`RecipeID`)"
-						+ "values('" + ls2.get(y).getDescription() + "','" + ls2.get(y).getOrder() + "','" + recipeid
-						+ "')";
+						+ "values('" 
+						+ ls2.get(y).getDescription() + "','" 
+						+ ls2.get(y).getOrder() + "','" 
+						+ recipeid+ "')";
 				res1 = sql.executeUpdate(ss3);
 			}
 			if (res1 >= 1) {
@@ -267,8 +273,9 @@ public class DatabaseAccessObject {
 			}
 
 			// 插入到recipe-user表中
-			String ss4 = "INSERT INTO `cookbook`.`user-recipe` (`userid`,`recipeid`) values('" + userid + "," + recipeid
-					+ ")";
+			String ss4 = "INSERT INTO `cookbook`.`user-recipe` (`userid`,`recipeid`) values('" 
+			+ userid + "," 
+			+ recipeid+ ")";
 			res1 = sql.executeUpdate(ss4);
 			if (res1 >= 1) {
 				i = i++;
@@ -358,8 +365,11 @@ public class DatabaseAccessObject {
 		int res1 = 0;
 		boolean i = false;
 		try {
-			String ss = "insert into `cookbook`.`rate (`recipeid`,`userid`,`rate`,`comments`) values('" + recipeid
-					+ "','" + userid + "','" + rate + "','" + comments + "')";
+			String ss = "insert into `cookbook`.`rate (`recipeid`,`userid`,`rate`,`comments`) values('" 
+					+ recipeid+ "','" 
+					+ userid + "','" 
+					+ rate + "','" 
+					+ comments + "')";
 			res1 = sql.executeUpdate(ss);
 			if (res1 >= 1) {
 				i = true;
@@ -371,7 +381,7 @@ public class DatabaseAccessObject {
 		return i;
 	}
 	
-	private void setRecipe(Recipe recipe , ResultSet res) throws Exception{
+	private void savebasicRecipe(Recipe recipe , ResultSet res) throws Exception{
 		
 		recipe.setRecipeID(res.getInt("ID"));
 		recipe.setName(res.getString("Name"));
@@ -383,12 +393,31 @@ public class DatabaseAccessObject {
 		
 	}
 	
-	private void setIngredients(Ingredient ingredients , ResultSet res) throws Exception{
+	private void saveIngredients(Ingredient ingredients , ResultSet res) throws Exception{
 		
 	}
 	
-	private void setPreparationSteps(PreparationSteps preparationSteps, ResultSet res) throws Exception{
+	private void savePreparationSteps(PreparationSteps preparationSteps, ResultSet res) throws Exception{
 		
 	}
+	
+	public String recipedescription(int recipeid)throws Exception {
+        con = this.getConnection();
+        //int recipeid = recipe.getRecipeID();
+        
+        String ss = "select description from cookbook.recipe where recipeid = " + recipeid;
+        res = sql.executeQuery(ss);
+        return res.getString("description");
+        
+        
+    }
+    
+    public String reciperate(int recipeid,int userid)throws Exception{
+        con = this.getConnection();
+        String ss = "insert into values()";
+        res = sql.executeQuery(ss);
+        return res.getString("rate");
+    }
+
 
 }

@@ -70,4 +70,6 @@ public class Ingredient {
 		Tostring = this.Name +" "+ String.valueOf(this.Amount)+" "+ this.Unit +" ("+this.Description+") \n";		
 		return Tostring;
 	}		
+	
+
 }
