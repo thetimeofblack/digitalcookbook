@@ -14,35 +14,57 @@ import CookBookEntity.Ingredient;
 import CookBookEntity.PreparationSteps;
 import CookBookEntity.Recipe;
 
-
+import CookBookEntity.User;
 public class DatabaseAccessObject {
 
-	static Connection con;
-	static Statement sql;
+	private Connection con;
+	private Statement sql;
 	static ResultSet res, res2;
-
+	final private String driver = "com.mysql.jdbc.Driver";
+	final private String Databaseuser = "root";
+	final private String Databasepassword = "heyining";
+	final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306/?characterEncoding=utf8&useSSL=true&serverTimezone=GMT";
+	private User user; 
+	public DatabaseAccessObject(){
+		try {
+		Class.forName(driver);
+		System.out.println("the driver for database has been initialized");
+		this.con = DriverManager.getConnection(this.Databaseurl, this.Databaseuser, this.Databasepassword);
+		System.out.println("database access sucessful!");
+		this.sql = con.createStatement();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void UserLogin(User user) throws Exception{
+		login(user.getUserName(),user.getUserPassword());
+		this.user = user; 
+	}
+	
 	public Connection getConnection() {
 	
 		try {
 			Class.forName("com.mysql.jdbc.Driver");// 使用forName方法加载jdbc驱动程序
-			System.out.println("数据库驱动加载成功");
+			System.out.println("the driver for database has been initialized");
 			// 使用Drivemanager中getConnection的方法得到数据库连接，三个参数依次指定路径，用户名和密码
-			con = DriverManager.getConnection("jdbc:mysql:" + "//127.0.0.1:3306/?characterEncoding=utf8&useSSL=true&serverTimezone=GMT", "root", "heyining");
+			this.con = DriverManager.getConnection("jdbc:mysql:" + "//127.0.0.1:3306/?characterEncoding=utf8&useSSL=true&serverTimezone=GMT", "root", "heyining");
 			System.out.println("database access sucessful!");
+			this.sql = this.con.createStatement();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return con;
+		return this.con;
 	}
-
+	
 	// login方法,返回0为密码不一样，不为0则为userid，-1则为未找到用户名
 	public int login(String username, String userpassword) throws SQLException {
 		int i = 1;
-		con = this.getConnection();
+	
 		String s1 = "select * from cookbook.user where UserName = '"+ username +"'";
-		res = sql.executeQuery(s1);
+		res = this.sql.executeQuery(s1);
 		if(res.first()){
-			String s2 = "select * from cookbook.user where UserName = '" + username + "' and UserPassword = " + userpassword;
+			String s2 = "select * from cookbook.user where UserName = '" + username + "' and UserPassword = '" + userpassword+"'";
 			sql = con.createStatement();
 			res = sql.executeQuery(s2);
 			if (res.first()) {
@@ -51,33 +73,52 @@ public class DatabaseAccessObject {
 				i = 0;
 			}
 		}else{
-			i = -1;
+				i = -1;
 		}
 		//String s = "select * from cookbook.user where UserName = ? and UserPassword = ?";
 		//PreparedStatement ps = (PreparedStatement) con.prepareStatement(s);
 		//ps.setString(arg0, arg1);
-		
 		return i;
 	}
 
 	// INSERT INTO `cookbook`.`user` (`UserName`, `UserPassword`) VALUES
 	// ('Xiyuan', '12345'); 傻逼符号操你妈
 	// create account 方法,已成功添加
-	public boolean create(String username, String userpassword1, String userpassword2) throws SQLException {
-		con = this.getConnection();
-		String s = "insert into `cookbook`.`user` (`UserName`,`UserPassword`) values('" + username + "',"
-				+ userpassword1 + ")";
-		sql = con.createStatement();
-		int res1 = sql.executeUpdate(s);
+	public boolean UserRegister(User user) throws SQLException {
+		
+		String sqlstr = "insert into `cookbook`.`user` (`UserName`,`UserPassword`) values('" 
+				+ user.getUserName() + "','"
+				+ user.getUserPassword() + "')";
+		System.out.println(sqlstr);
+		int res1 = this.sql.executeUpdate(sqlstr);
 		System.out.println(res1);
-		boolean i;
-		if (res1 >= 1) {
-			i = true;
+		
+		if (res1 > 0) {
+			return true; 
 		} else {
-			i = false;
+			return false; 
 		}
-		return i;
+		
 	}
+	
+	
+	public boolean UserRegister() throws SQLException {
+		
+		String sqlstr = "insert into `cookbook`.`user` (`UserName`,`UserPassword`) values('" 
+				+ this.user.getUserName() + "',"
+				+ this.user.getUserPassword() + ")";
+		
+		int res1 = this.sql.executeUpdate(sqlstr);
+		System.out.println(res1);
+		
+		if (res1 > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	
+	}
+	
 
 	/**
 	 * get a complete recipe
@@ -85,17 +126,16 @@ public class DatabaseAccessObject {
 	 * @param name
 	 * 
 	 */
-	public Recipe saveRecipe(int userid, String name) {
-		con = this.getConnection();
+	public Recipe getUserRecipe(int userid, String name) {
+	
 		Recipe recipe = new Recipe();
 		LinkedList<Ingredient> ls1 = new LinkedList<Ingredient>();
 		LinkedList<PreparationSteps> ls2 = new LinkedList<PreparationSteps>();
 		try {
-			sql = con.createStatement();
-
+			
 			// 提取recipe一般信息部分
 			String ss1 = "select * from cookbook.recipe where name = '" + name + "'";
-			res = sql.executeQuery(ss1);
+			res = this.sql.executeQuery(ss1);
 			if (res.next()) {
 				recipe.setRecipeID(res.getInt("ID"));
 				recipe.setName(res.getString("Name"));
@@ -138,13 +178,24 @@ public class DatabaseAccessObject {
 		}
 		return recipe;
 	}
+	
+	
+	public Recipe getRecipe(ResultSet res) throws Exception{
+		Recipe recipe = new Recipe();
+		if(res.next()) {
+		recipe.setRecipeID(res.getInt("ID"));
+		
+			
+		}
+		return recipe;
+	}
 
 	// show all recipe list method
 	/*
 	 * @description
 	 * 
 	 */
-	public LinkedList<Recipe> showallrecipelist(int userid, String name) {
+	public LinkedList<Recipe> getPublicRecipe(int userid, String name) {
 		con = this.getConnection();
 		LinkedList<Recipe> ls = new LinkedList<Recipe>();
 		try {
@@ -213,85 +264,97 @@ public class DatabaseAccessObject {
 	}
 
 	// create recipe method
-	public boolean createrecipe(int userid, Recipe recipe) {
-		con = this.getConnection();
+	
+	public boolean insertRecipe(int userid, Recipe recipe) {
+		
+		
 		boolean j = false;
-		int i = 0, res1 = 0;
-		int recipeid;
+		int successflag = 0, res1 = 0;
+	
 		try {
 
 			// 插入到recipe表中
-			String ss1 = "INSERT INTO `cookbook`.`recipe` (`Name`, `ServeNumber`, `Privacy`, `PrepareTime`, `Category`, `Description`, `CookTime`) values('"
-					+ recipe.getName() + "'," 
+			String ss1 = "INSERT INTO cookbook.recipe (Name, ServeNumber, Privacy, PrepareTime, Category, Description, CookTime) values(\'"
+					+ recipe.getName() + "\'," 
 					+ recipe.getServeNumber() + "," 
 					+ recipe.getPrivacy() + ","
-					+ recipe.getPrepareTime() + ",'" 
-					+ recipe.getCategory() + "','" 
-					+ recipe.getDescription() + "',"
-					+ recipe.getCookTime();
-			res1 = sql.executeUpdate(ss1);
+					+ recipe.getPrepareTime() + ",\'" 
+					+ recipe.getCategory() + "\',\'" 
+					+ recipe.getDescription() + "\',"
+					+ recipe.getCookTime()+")";
+			System.out.println(ss1);
+			res1 = this.sql.executeUpdate(ss1);
 			if (res1 >= 1) {
-				i = i++;
+				successflag = successflag++;
 			}
 
 			// 返回recipeid
 			String ss = "select * from `cookbook`.`recipe` where Name = '" + recipe.getName() + "'";
+			System.out.println(ss);
+		
 			res = sql.executeQuery(ss);
-			recipeid = res.getInt("ID");
-
+			
+			res.next();
+			
+			int recipeid = res.getInt("ID");
+			System.out.println("insert recipe successfully");
+			
 			// 插入到Ingredients表中
 			LinkedList<Ingredient> ls1 = recipe.getIngredientlist();
 			// Iterator iter1 = ls1.iterator();
 			for (int x = 0; x < ls1.size(); x++) {
 				ls1.get(x);
-				String ss2 = "INSERT INTO `cookbook`.`ingredients` (`Name`, `RecipeID`, `Amount`, `Unit`, `Description`) "
+				String sqlstr2 = "INSERT INTO `cookbook`.`ingredient` (`Name`, `RecipeID`, `Amount`, `Unit`, `Description`) "
 						+ "values('" 
 						+ ls1.get(x).getName() + "','" 
 						+ recipeid + "','" 
 						+ ls1.get(x).getAmount() + "','"
 						+ ls1.get(x).getUnit() + "','" 
 						+ ls1.get(x).getDescription() + "')";
-				res1 = sql.executeUpdate(ss2);
+				System.out.println(sqlstr2);
+				res1 = sql.executeUpdate(sqlstr2);
 			}
+			
 			if (res1 >= 1) {
-				i = i++;
+				successflag = successflag++;
 			}
 
 			// 插入到preparationsteps表中
-			LinkedList<PreparationSteps> ls2 = new LinkedList<PreparationSteps>();
-			for (int y = 0; y < ls1.size(); y++) {
+			LinkedList<PreparationSteps> ls2 = recipe.getPreparationSteps();
+			for (int y = 0; y < ls2.size(); y++) {
 				ls2.get(y);
-				String ss3 = "INSERT INTO `cookbook`.`preparationsteps` (`Description`,`preparationstepsorder`,`RecipeID`)"
+				String sqlstr3 = "INSERT INTO `cookbook`.`preparationstep` (`Description`,`RecipeID`)"
 						+ "values('" 
-						+ ls2.get(y).getDescription() + "','" 
-						+ ls2.get(y).getOrder() + "','" 
-						+ recipeid+ "')";
-				res1 = sql.executeUpdate(ss3);
+						+ ls2.get(y).getDescription() + "'," 
+					
+						+ recipeid+ ")";
+				System.out.println(sqlstr3);
+				res1 = sql.executeUpdate(sqlstr3);
 			}
 			if (res1 >= 1) {
-				i = i++;
+				successflag = successflag++;
 			}
 
 			// 插入到recipe-user表中
-			String ss4 = "INSERT INTO `cookbook`.`user-recipe` (`userid`,`recipeid`) values('" 
+			String ss4 = "INSERT INTO `cookbook`.`UserRecipe` (`userid`,`recipeid`) values(" 
 			+ userid + "," 
 			+ recipeid+ ")";
 			res1 = sql.executeUpdate(ss4);
 			if (res1 >= 1) {
-				i = i++;
+				successflag = successflag++;
 			}
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if (res1 >= 4) {
-			j = true;
+		if (successflag >= 3) {
+			return true;
 		}
-		return j;
+		return false;
 	}
 
 	// 删除recipe方法，返回true为成功，返回false为失败
-	public boolean deleterecipe(Recipe recipe) {
+	public boolean deleteRecipe(Recipe recipe) {
 		con = this.getConnection();
 		boolean i = false;
 		int recipeid = recipe.getRecipeID();
@@ -315,7 +378,7 @@ public class DatabaseAccessObject {
 	// UPDATE `cookbook`.`recipe` SET `Name` = 'qiezi', `ServeNumber` = '2',
 	// `Category` = 'meat' WHERE (`ID` = '4');
 	// 修改recipe方法，recipe1为想要修改的recipe，recipe2为修改之后的recipe
-	public boolean editrecipe(int userid, Recipe recipe1, Recipe recipe2) {
+	public boolean editRecipe(int userid, Recipe recipe1, Recipe recipe2) {
 		con = this.getConnection();
 		boolean i = false;
 		int recipe1id = recipe1.getRecipeID();
@@ -338,7 +401,7 @@ public class DatabaseAccessObject {
 	}
 
 	// 设为favourite recipe方法,true为成功
-	public boolean favouriterecipe(int userid, Recipe recipe) {
+	public boolean favouriteRecipe(int userid, Recipe recipe) {
 		con = this.getConnection();
 		int recipeid = recipe.getRecipeID();
 		int res1 = 0;
@@ -359,7 +422,7 @@ public class DatabaseAccessObject {
 	}
 
 	// rate和comments功能,true为成功
-	public boolean rateandcomments(int userid, Recipe recipe, int rate, String comments) {
+	public boolean addRateandComments(int userid, Recipe recipe, int rate, String comments) {
 		con = this.getConnection();
 		int recipeid = recipe.getRecipeID();
 		int res1 = 0;
@@ -381,7 +444,7 @@ public class DatabaseAccessObject {
 		return i;
 	}
 	
-	private void savebasicRecipe(Recipe recipe , ResultSet res) throws Exception{
+	private void getbasicRecipe(Recipe recipe , ResultSet res) throws Exception{
 		
 		recipe.setRecipeID(res.getInt("ID"));
 		recipe.setName(res.getString("Name"));
@@ -401,22 +464,29 @@ public class DatabaseAccessObject {
 		
 	}
 	
-	public String recipedescription(int recipeid)throws Exception {
+	public String saveRecipeDescription(int recipeid)throws Exception {
         con = this.getConnection();
         //int recipeid = recipe.getRecipeID();
         
         String ss = "select description from cookbook.recipe where recipeid = " + recipeid;
         res = sql.executeQuery(ss);
         return res.getString("description");
-        
-        
+       
     }
     
-    public String reciperate(int recipeid,int userid)throws Exception{
-        con = this.getConnection();
+    public String saveRecipeRate(int recipeid,int userid)throws Exception{
+        this.con = this.getConnection();
         String ss = "insert into values()";
         res = sql.executeQuery(ss);
         return res.getString("rate");
+    }
+    
+    
+    
+    public void close() throws Exception{
+    	this.sql.close();
+    	this.con.close();
+    	
     }
 
 

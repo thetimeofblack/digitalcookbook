@@ -9,8 +9,8 @@ public class User {
 		
 	}
 
-	public User(double userID, String userName, String userPassword) {
-		this.UserID = userID;
+	public User( String userName, String userPassword) {
+		
 		this.UserName = userName;
 		this.UserPassword = userPassword;
 	}
