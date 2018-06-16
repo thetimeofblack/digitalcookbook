@@ -19,31 +19,28 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class FirstView extends javafx.application.Application{
-    public void start(Stage primaryStage) throws Exception {
-        try {
-            BorderPane root = (BorderPane) FXMLLoader.load(getClass().getResource("fv.fxml"));
-            Scene scene = new Scene(root, 290, 470);
-     
-            
+public class FirstView extends javafx.application.Application {
+	public void start(Stage primaryStage) throws Exception {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("fv.fxml"));
+			BorderPane root = (BorderPane) loader.load();
+			fvController fvc = loader.getController();
+			Scene scene = new Scene(root, 290, 470);
+			fvc.setStageAndScene(primaryStage, scene);
+			primaryStage.setScene(scene);
+			primaryStage.setTitle("Nice to meet you");
+			primaryStage.setResizable(false);
+			scene.getStylesheets().add(FirstView.class.getResource("firstview.css").toExternalForm());
+			primaryStage.show();
+			// primaryStage.getIcons().add(newImage(getClass().getResourceAsStream("images/earth.png")));
+			primaryStage.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
-            primaryStage.setScene(scene);
-            primaryStage.setTitle("Nice to meet you");
-            primaryStage.setResizable(false);
-            
-            scene.getStylesheets().add(FirstView.class.getResource("firstview.css").toExternalForm());  
-            primaryStage.show(); 
-            //primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("images/earth.png")));
-            primaryStage.show();
-        } catch (Exception e) {
-            e.printStackTrace(); 
-        }
-
-    }
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-
+	public static void main(String[] args) {
+		launch(args);
+	}
 
 }
