@@ -22,8 +22,9 @@ public class DatabaseAccessObject {
 	static ResultSet res, res2;
 	final private String driver = "com.mysql.jdbc.Driver";
 	final private String Databaseuser = "root";
-	final private String Databasepassword = "heyining";
-	final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306/?characterEncoding=utf8&useSSL=true&serverTimezone=GMT";
+	final private String Databasepassword = "258000";
+	//final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306/?characterEncoding=utf8&useSSL=true&serverTimezone=GMT";
+	final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306";
 	private User user; 
 	public DatabaseAccessObject(){
 		try {
@@ -48,7 +49,7 @@ public class DatabaseAccessObject {
 			Class.forName("com.mysql.jdbc.Driver");// 使用forName方法加载jdbc驱动程序
 			System.out.println("the driver for database has been initialized");
 			// 使用Drivemanager中getConnection的方法得到数据库连接，三个参数依次指定路径，用户名和密码
-			this.con = DriverManager.getConnection("jdbc:mysql:" + "//127.0.0.1:3306/?characterEncoding=utf8&useSSL=true&serverTimezone=GMT", "root", "heyining");
+			this.con = DriverManager.getConnection("jdbc:mysql:" + "//127.0.0.1:3306/?characterEncoding=utf8&useSSL=true&serverTimezone=GMT", "root", "258000");
 			System.out.println("database access sucessful!");
 			this.sql = this.con.createStatement();
 		} catch (Exception e) {
