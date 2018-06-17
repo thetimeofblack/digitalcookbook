@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="290.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="132.0" prefWidth="44.0">
+         <children>
+            <Label maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="44.0" prefWidth="44.0">
+               <graphic>
+                  <ImageView fx:id="vegen" fitHeight="44.0" fitWidth="40.0" onDragDetected="#showVegen">
+                     <image>
+                        <Image url="@素菜.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+            <Label prefHeight="44.0" prefWidth="44.0">
+               <graphic>
+                  <ImageView fx:id="egg_milk" fitHeight="36.0" fitWidth="44.0" onDragDetected="#showEgg_Mlik">
+                     <image>
+                        <Image url="@煎鸡蛋-2.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+            <Label prefHeight="44.0" prefWidth="44.0">
+               <graphic>
+                  <ImageView fx:id="meat" fitHeight="44.0" fitWidth="47.0" onDragDetected="#showMeat">
+                     <image>
+                        <Image url="@五花肉.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+         </children>
+      </VBox>
+      <Pane layoutX="41.0" prefHeight="459.0" prefWidth="243.0">
+         <children>
+            <ScrollBar layoutX="229.0" orientation="VERTICAL" prefHeight="457.0" prefWidth="21.0" />
+            <Pane prefHeight="62.0" prefWidth="221.0">
+               <children>
+                  <Text fx:id="Recipename" layoutY="19.0" onDragDetected="#showRecipename" strokeType="OUTSIDE" strokeWidth="0.0" text="Recipename" wrappingWidth="138.21875" />
+                  <HBox layoutY="22.0" prefHeight="44.0" prefWidth="221.0">
+                     <children>
+                        <Label prefHeight="20.0" prefWidth="20.0">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0">
+                                 <image>
+                                    <Image url="@五角星-3的副本.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Label>
+                        <Label prefHeight="20.0" prefWidth="20.0">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0">
+                                 <image>
+                                    <Image url="@五角星-3的副本.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Label>
+                        <Label prefHeight="20.0" prefWidth="20.0">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0">
+                                 <image>
+                                    <Image url="@五角星-3的副本.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Label>
+                        <Label prefHeight="20.0" prefWidth="20.0">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0">
+                                 <image>
+                                    <Image url="@五角星-3的副本.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Label>
+                        <Label prefHeight="20.0" prefWidth="20.0">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0">
+                                 <image>
+                                    <Image url="@五角星-3的副本.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Label>
+                        <Label fx:id="favourite" prefHeight="20.0" prefWidth="20.0" />
+                     </children>
+                  </HBox>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

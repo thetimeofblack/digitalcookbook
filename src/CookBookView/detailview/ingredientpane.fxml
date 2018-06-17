@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="249.0" prefWidth="247.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox prefHeight="29.0" prefWidth="247.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="No" wrappingWidth="25.21875" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Usage" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Unit" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Description" />
+         </children>
+      </HBox>
+      <Pane fx:id="ingredientPane" layoutY="23.0" onDragDetected="#showIngredients" prefHeight="226.0" prefWidth="247.0">
+         <children>
+            <ScrollBar layoutX="227.0" layoutY="-4.0" orientation="VERTICAL" prefHeight="220.0" prefWidth="14.0" />
+         </children>
+      </Pane>
+   </children>
+</Pane>
