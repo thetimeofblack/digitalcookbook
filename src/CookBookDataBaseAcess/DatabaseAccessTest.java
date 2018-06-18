@@ -8,7 +8,7 @@ import org.junit.Assert.*;
 import CookBookEntity.Recipe;
 public class DatabaseAccessTest {
 	public static void main(String[] args) throws Exception {
-		DatabaseAccessObject dao = new DatabaseAccessObject();
+		DatabaselayerObject dao = new DatabaselayerObject();
 		Recipe recipe = CookBookApp.createGongBaoJiding();
 		Recipe recipe2 = CookBookApp.createHongShaoRou();
 		

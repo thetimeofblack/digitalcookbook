@@ -15,7 +15,7 @@ import CookBookEntity.PreparationSteps;
 import CookBookEntity.Recipe;
 
 import CookBookEntity.User;
-public class DatabaseAccessObject {
+public class DatabaselayerObject {
 
 	private Connection con;
 	private Statement sql;
@@ -26,7 +26,7 @@ public class DatabaseAccessObject {
 	final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306/?characterEncoding=utf8&useSSL=true&serverTimezone=GMT";
 	//final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306";
 	private User user; 
-	public DatabaseAccessObject(){
+	public DatabaselayerObject(){
 		try {
 		this.user= new User();
 		Class.forName(driver);

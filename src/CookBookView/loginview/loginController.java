@@ -2,7 +2,7 @@ package CookBookView.loginview;
 
 import java.io.IOException;
 
-import CookBookDataBaseAcess.DatabaseAccessObject;
+import CookBookDataBaseAcess.DatabaselayerObject;
 import CookBookEntity.User;
 import CookBookView.loginview.tinywin.miniController;
 import CookBookView.registerview.registerViewController;

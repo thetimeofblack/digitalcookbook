@@ -1,7 +1,7 @@
 package CookBookEntity;
 
 public class User {
-	private double UserID;
+	private String UserID;
 	private String UserName;
 	private String UserPassword;
 				
@@ -15,11 +15,11 @@ public class User {
 		this.UserPassword = userPassword;
 	}
 	
-	public double getUserID() {
+	public String getUserID() {
 		return UserID;
 	}
 	
-	public void setUserID(double userID) {
+	public void setUserID(String userID) {
 		UserID = userID;
 	}
 	
