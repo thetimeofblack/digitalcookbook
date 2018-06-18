@@ -23,8 +23,8 @@ public class DatabaseAccessObject {
 	final private String driver = "com.mysql.jdbc.Driver";
 	final private String Databaseuser = "root";
 	final private String Databasepassword = "heyining";
-	//final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306/?characterEncoding=utf8&useSSL=true&serverTimezone=GMT";
-	final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306";
+	final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306/?characterEncoding=utf8&useSSL=true&serverTimezone=GMT";
+	//final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306";
 	private User user; 
 	public DatabaseAccessObject(){
 		try {
@@ -60,26 +60,27 @@ public class DatabaseAccessObject {
 	
 	// login方法,返回0为密码不一样，不为0则为userid，-1则为未找到用户名
 	public int login(String username, String userpassword) throws SQLException {
-		int i = 1;
+		
 	
 		String s1 = "select * from cookbook.user where UserName = '"+ username +"'";
 		res = this.sql.executeQuery(s1);
 		if(res.first()){
 			String s2 = "select * from cookbook.user where UserName = '" + username + "' and UserPassword = '" + userpassword+"'";
-			sql = con.createStatement();
-			res = sql.executeQuery(s2);
-			if (res.first()) {
-				i = res.getInt("userid");
+		
+			res = this.sql.executeQuery(s2);
+			String databasepassword = res.getString("UserPassword");
+			
+			if (userpassword == databasepassword) {
+				return 1;
 			} else {
-				i = 0;
+				return 0 ; 
 			}
-		}else{
-				i = -1;
 		}
+		return -1; 
 		//String s = "select * from cookbook.user where UserName = ? and UserPassword = ?";
 		//PreparedStatement ps = (PreparedStatement) con.prepareStatement(s);
 		//ps.setString(arg0, arg1);
-		return i;
+	
 	}
 
 	// INSERT INTO `cookbook`.`user` (`UserName`, `UserPassword`) VALUES
@@ -137,6 +138,7 @@ public class DatabaseAccessObject {
 			// 提取recipe一般信息部分
 			String ss1 = "select * from cookbook.recipe where name = '" + name + "'";
 			res = this.sql.executeQuery(ss1);
+			
 			if (res.next()) {
 				recipe.setRecipeID(res.getInt("ID"));
 				recipe.setName(res.getString("Name"));
@@ -288,6 +290,8 @@ public class DatabaseAccessObject {
 			if (res1 >= 1) {
 				successflag = successflag++;
 			}
+			
+		
 
 			// 返回recipeid
 			String ss = "select * from `cookbook`.`recipe` where Name = '" + recipe.getName() + "'";
@@ -423,18 +427,18 @@ public class DatabaseAccessObject {
 	}
 
 	// rate和comments功能,true为成功
-	public boolean addRateandComments(int userid, Recipe recipe, int rate, String comments) {
-		con = this.getConnection();
-		int recipeid = recipe.getRecipeID();
+	public boolean addRateandComments(int userid, int recipeid, int rate, String comments) {
+		
+		
 		int res1 = 0;
 		boolean i = false;
 		try {
-			String ss = "insert into `cookbook`.`rate (`recipeid`,`userid`,`rate`,`comments`) values('" 
+			String insertrateandcomments = "insert into `cookbook`.`rate (`recipeid`,`userid`,`rate`,`comments`) values('" 
 					+ recipeid+ "','" 
 					+ userid + "','" 
 					+ rate + "','" 
 					+ comments + "')";
-			res1 = sql.executeUpdate(ss);
+			res1 = sql.executeUpdate(insertrateandcomments);
 			if (res1 >= 1) {
 				i = true;
 			}

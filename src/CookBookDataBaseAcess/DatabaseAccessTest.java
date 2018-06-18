@@ -12,7 +12,10 @@ public class DatabaseAccessTest {
 		Recipe recipe = CookBookApp.createGongBaoJiding();
 		User user = new User("heyining","heyining");
 		assertEquals(dao.UserRegister(user),true);
+		assertEquals(dao.login(user.getUserName(),user.getUserPassword()),1);
+		
 		
 		assertEquals(dao.insertRecipe(0, recipe),true);
+		dao.close();
 	}
 }
