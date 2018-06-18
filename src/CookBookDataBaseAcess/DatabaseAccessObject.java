@@ -22,7 +22,7 @@ public class DatabaseAccessObject {
 	static ResultSet res, res2;
 	final private String driver = "com.mysql.jdbc.Driver";
 	final private String Databaseuser = "root";
-	final private String Databasepassword = "258000";
+	final private String Databasepassword = "heyining";
 	//final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306/?characterEncoding=utf8&useSSL=true&serverTimezone=GMT";
 	final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306";
 	private User user; 
