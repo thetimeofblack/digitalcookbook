@@ -28,7 +28,9 @@ public class DatabaseAccessObject {
 	private User user; 
 	public DatabaseAccessObject(){
 		try {
+		this.user= new User();
 		Class.forName(driver);
+		
 		System.out.println("the driver for database has been initialized");
 		this.con = DriverManager.getConnection(this.Databaseurl, this.Databaseuser, this.Databasepassword);
 		System.out.println("database access sucessful!");
@@ -41,6 +43,14 @@ public class DatabaseAccessObject {
 	public void UserLogin(User user) throws Exception{
 		login(user.getUserName(),user.getUserPassword());
 		this.user = user; 
+	}
+	
+	private void setUserid(int userid) {
+		this.user.setUserID(String.valueOf(userid));
+	}
+	
+	private void setUserid(String userid) {
+		this.user.setUserID(userid);
 	}
 	
 	public Connection getConnection() {
@@ -68,9 +78,12 @@ public class DatabaseAccessObject {
 			String s2 = "select * from cookbook.user where UserName = '" + username + "' and UserPassword = '" + userpassword+"'";
 		
 			res = this.sql.executeQuery(s2);
+			res.next();
 			String databasepassword = res.getString("UserPassword");
-			
-			if (userpassword == databasepassword) {
+			System.out.println(databasepassword);
+			if (userpassword.equals(databasepassword)) {
+				System.out.println("Login in Successful");
+				this.setUserid(res.getString("userid"));
 				return 1;
 			} else {
 				return 0 ; 
@@ -288,7 +301,7 @@ public class DatabaseAccessObject {
 			System.out.println(ss1);
 			res1 = this.sql.executeUpdate(ss1);
 			if (res1 >= 1) {
-				successflag = successflag++;
+				successflag = successflag+1;
 			}
 			
 		
@@ -321,7 +334,7 @@ public class DatabaseAccessObject {
 			}
 			
 			if (res1 >= 1) {
-				successflag = successflag++;
+				successflag = successflag+1;
 			}
 
 			// 插入到preparationsteps表中
@@ -337,7 +350,7 @@ public class DatabaseAccessObject {
 				res1 = sql.executeUpdate(sqlstr3);
 			}
 			if (res1 >= 1) {
-				successflag = successflag++;
+				successflag = successflag+1;
 			}
 
 			// 插入到recipe-user表中
@@ -346,13 +359,13 @@ public class DatabaseAccessObject {
 			+ recipeid+ ")";
 			res1 = sql.executeUpdate(ss4);
 			if (res1 >= 1) {
-				successflag = successflag++;
+				successflag = successflag+1;
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if (successflag >= 3) {
+		if (successflag > 3) {
 			return true;
 		}
 		return false;
@@ -431,22 +444,24 @@ public class DatabaseAccessObject {
 		
 		
 		int res1 = 0;
-		boolean i = false;
+	
 		try {
-			String insertrateandcomments = "insert into `cookbook`.`rate (`recipeid`,`userid`,`rate`,`comments`) values('" 
-					+ recipeid+ "','" 
-					+ userid + "','" 
-					+ rate + "','" 
+			String insertrateandcomments = "insert into `cookbook`.`rateandcomments (`recipeid`,`userid`,`rate`,`comments`) values(" 
+					+ recipeid+ "," 
+					+ userid + "," 
+					+ rate + ",'" 
 					+ comments + "')";
 			res1 = sql.executeUpdate(insertrateandcomments);
-			if (res1 >= 1) {
-				i = true;
+			if (res1 >0) {
+				return true;
 			}
+			return false;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return i;
+		return false;
+	
 	}
 	
 	private void getbasicRecipe(Recipe recipe , ResultSet res) throws Exception{
