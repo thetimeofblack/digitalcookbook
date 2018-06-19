@@ -14,7 +14,7 @@ public class registerView extends javafx.application.Application{
 	        try {
 	            GridPane root = (GridPane) FXMLLoader.load(getClass().getResource("registerView.fxml"));
 	            Scene scene = new Scene(root, 290, 470);
-	     
+	            
 	            
 
 	            primaryStage.setScene(scene);

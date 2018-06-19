@@ -34,6 +34,8 @@ public class FirstView extends javafx.application.Application {
 			primaryStage.show();
 			// primaryStage.getIcons().add(newImage(getClass().getResourceAsStream("images/earth.png")));
 			primaryStage.show();
+		
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

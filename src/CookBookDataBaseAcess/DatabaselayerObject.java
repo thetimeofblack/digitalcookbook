@@ -1,6 +1,7 @@
 package CookBookDataBaseAcess;
 
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,7 +10,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 
-
+import CookBookEntity.Comment;
 import CookBookEntity.Ingredient;
 import CookBookEntity.PreparationSteps;
 import CookBookEntity.Recipe;
@@ -205,6 +206,12 @@ public class DatabaselayerObject {
 		}
 		return recipe;
 	}
+	
+	public Recipe searchRecipe(String recipename) {
+		Recipe recipe = new Recipe(); 
+		
+		return recipe; 
+	}
 
 	// show all recipe list method
 	/*
@@ -397,7 +404,7 @@ public class DatabaselayerObject {
 	// `Category` = 'meat' WHERE (`ID` = '4');
 	// 修改recipe方法，recipe1为想要修改的recipe，recipe2为修改之后的recipe
 	public boolean editRecipe(int userid, Recipe recipe1, Recipe recipe2) {
-		con = this.getConnection();
+		
 		boolean i = false;
 		int recipe1id = recipe1.getRecipeID();
 		int recipe2id = recipe2.getRecipeID();
@@ -410,7 +417,7 @@ public class DatabaselayerObject {
 					"', `description` = '" + recipe2.getDescription() + 
 					"', `cooktime` = '" + recipe2.getCookTime() + 
 					"' where (`id` = " + recipe1id + ")";
-			res = sql.executeQuery(ss1);
+			res = this.sql.executeQuery(ss1);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -494,11 +501,18 @@ public class DatabaselayerObject {
        
     }
     
-    public String saveRecipeRate(int recipeid,int userid)throws Exception{
-        this.con = this.getConnection();
-        String ss = "insert into values()";
-        res = sql.executeQuery(ss);
-        return res.getString("rate");
+    public boolean saveCommentandRate(Comment comment , int recipeid)throws Exception{
+        int userid = Integer.parseInt(this.user.getUserID());
+        String sqlstr = "insert into commentandrates (recipeid,userid,rate,comments) values("+
+        recipeid+","+
+        this.user.getUserID()+","+
+        comment.getGrade()+",'"+
+        comment.getComment()+"')";
+        
+        int  result = this.sql.executeUpdate(sqlstr);
+        if(result>0) return true; 
+        return false;
+         
     }
     
     
