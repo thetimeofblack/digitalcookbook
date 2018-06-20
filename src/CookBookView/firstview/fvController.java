@@ -46,7 +46,7 @@ public class fvController {
 		stage.show();
 	}
 
-	// Event Listener on Button[#signupbutton].onAction
+	//Event Listener on Button[#signupbutton].onAction
 	@FXML
 	public void signupView(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../registerview/registerView.fxml"));

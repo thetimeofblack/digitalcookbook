@@ -6,6 +6,7 @@ import CookBookDataBaseAcess.DatabaselayerObject;
 import CookBookEntity.User;
 import CookBookView.loginview.tinywin.miniController;
 import CookBookView.registerview.registerViewController;
+import CookBookView.searchview.SearchViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,12 +36,19 @@ public class loginController {
 
 	private Stage stage;
 
-	private Scene scene;
+	private Scene scene ;
 
 	// Event Listener on Button[#confirm].onAction
 	@FXML
 	public void checkNameAndPassword(ActionEvent event) throws Exception {
-
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../searchview/searchView.fxml"));
+		GridPane root = (GridPane) loader.load();
+		SearchViewController svc = loader.getController();
+		svc.setStage(stage);
+		svc.setScene(scene);
+		scene.setRoot(root);
+		stage.setScene(scene);
+		stage.show();
 	}
 
 	// Event Listener on Button[#clearpw].onAction
