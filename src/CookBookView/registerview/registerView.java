@@ -30,6 +30,7 @@ public class registerView extends javafx.application.Application{
 	            //scene.getStylesheets().add(LoginView.class.getResource("registerview.css").toExternalForm());  
 	            //primaryStage.show(); 
 	            //primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("images/earth.png")));
+	            registerController.setStage(primaryStage);
 	            primaryStage.show();
 	        } catch (Exception e) {
 	            e.printStackTrace();

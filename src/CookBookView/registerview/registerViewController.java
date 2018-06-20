@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -29,16 +30,36 @@ public class registerViewController {
 
 	// Event Listener on Button[#ok].onAction
 	@FXML
-	public void userRegister(ActionEvent event) throws IOException {
+	public void userRegister(ActionEvent event) throws Exception {
 
 		// if()
-
-		GridPane root = (GridPane) FXMLLoader.load(getClass().getResource("mini2.fxml"));
+		FXMLLoader fxml = new FXMLLoader(getClass().getResource("mini2.fxml"));
+		GridPane root = (GridPane) fxml.load();
+		
+		miniController controller = fxml.getController();
+		//Text resultText = (Text)root.lookup("mainText");
+		Text resultText = controller.getText();
+		if(this.username.getText().isEmpty()) {
+			resultText.setText("please enter the username");
+		}else {
+			if(this.userpassword1.getText().isEmpty()  | this.userpassword2.getText().isEmpty() | !this.userpassword1.getText().equals(this.userpassword2.getText())) {
+				resultText.setText("please rewrite the password");
+			}else {
+				
+				resultText.setText("Register successfully");
+				FXMLLoader fxmlforlogin  = new FXMLLoader(getClass().getResource("../login.fxml"));
+				GridPane rootforlogin = (GridPane)fxmlforlogin.load();
+				this.scene = new Scene(rootforlogin,290,470);
+				this.stage.setScene(this.scene);
+				this.stage.show();
+			}
+		}
 		Scene scene = new Scene(root, 270, 160);
 		Stage stage = new Stage();
+		
 		stage.setScene(scene);
 		stage.show();
-
+		controller.setStage(stage);
 		/**
 		 * if()
 		 * 

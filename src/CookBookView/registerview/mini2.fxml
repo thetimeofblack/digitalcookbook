@@ -62,7 +62,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="       User existed.                    /Passwords are not the same." wrappingWidth="201.4931640625" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Text fx:id="mainText" strokeType="OUTSIDE" strokeWidth="0.0" text="       User existed./Passwords are not the same." wrappingWidth="201.4931640625" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
