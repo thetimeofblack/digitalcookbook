@@ -6,8 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="290.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller= "CookBookView.listview.ListViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="290.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.listview.ListViewController">
 
 
    <children>
@@ -45,60 +44,65 @@
       <Pane layoutX="41.0" prefHeight="459.0" prefWidth="243.0">
          <children>
             <ScrollBar layoutX="229.0" orientation="VERTICAL" prefHeight="457.0" prefWidth="21.0" />
-            <Pane prefHeight="62.0" prefWidth="221.0">
+            <VBox prefHeight="457.0" prefWidth="229.0">
                <children>
-                  <Text fx:id="Recipename" layoutY="19.0" onDragDetected="#showRecipename" strokeType="OUTSIDE" strokeWidth="0.0" text="Recipename" wrappingWidth="138.21875" />
-                  <HBox layoutY="22.0" prefHeight="44.0" prefWidth="221.0">
+                  <Pane prefHeight="62.0" prefWidth="221.0">
                      <children>
-                        <Label prefHeight="20.0" prefWidth="20.0">
-                           <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="20.0">
-                                 <image>
-                                    <Image url="@五角星-3的副本.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Label>
-                        <Label prefHeight="20.0" prefWidth="20.0">
-                           <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="20.0">
-                                 <image>
-                                    <Image url="@五角星-3的副本.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Label>
-                        <Label prefHeight="20.0" prefWidth="20.0">
-                           <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="20.0">
-                                 <image>
-                                    <Image url="@五角星-3的副本.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Label>
-                        <Label prefHeight="20.0" prefWidth="20.0">
-                           <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="20.0">
-                                 <image>
-                                    <Image url="@五角星-3的副本.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Label>
-                        <Label prefHeight="20.0" prefWidth="20.0">
-                           <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="20.0">
-                                 <image>
-                                    <Image url="@五角星-3的副本.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic></Label>
-                        <Label fx:id="favourite" prefHeight="20.0" prefWidth="20.0" />
+                        <Text fx:id="Recipename" layoutY="19.0" onDragDetected="#showRecipename" strokeType="OUTSIDE" strokeWidth="0.0" text="Recipename" wrappingWidth="138.21875" />
+                        <HBox layoutY="22.0" prefHeight="44.0" prefWidth="221.0">
+                           <children>
+                              <Label prefHeight="20.0" prefWidth="20.0">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0">
+                                       <image>
+                                          <Image url="@五角星-3的副本.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Label>
+                              <Label prefHeight="20.0" prefWidth="20.0">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0">
+                                       <image>
+                                          <Image url="@五角星-3的副本.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Label>
+                              <Label prefHeight="20.0" prefWidth="20.0">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0">
+                                       <image>
+                                          <Image url="@五角星-3的副本.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Label>
+                              <Label prefHeight="20.0" prefWidth="20.0">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0">
+                                       <image>
+                                          <Image url="@五角星-3的副本.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Label>
+                              <Label prefHeight="20.0" prefWidth="20.0">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0">
+                                       <image>
+                                          <Image url="@五角星-3的副本.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Label>
+                              <Label fx:id="favourite" prefHeight="20.0" prefWidth="20.0" />
+                           </children>
+                        </HBox>
                      </children>
-                  </HBox>
+                  </Pane>
                </children>
-            </Pane>
+            </VBox>
          </children>
       </Pane>
    </children>
