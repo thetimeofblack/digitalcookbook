@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -63,10 +64,13 @@ public class SearchViewController {
 	@FXML
 	public void showAllrecipes(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../listview/listview.fxml"));
-		GridPane root = (GridPane) loader.load();
+		AnchorPane root = (AnchorPane) loader.load();
 		ListViewController lvc = loader.getController();
 		//lvc.setStageAndScene(stage, scene);
-		scene.setRoot(root);
+		lvc.setStage(stage);
+		lvc.setScene(scene);
+		
+		scene = new Scene(root,290,470);
 		stage.setScene(scene);
 		stage.show();
 		
