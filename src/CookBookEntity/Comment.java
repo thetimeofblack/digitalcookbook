@@ -6,7 +6,7 @@ public class Comment {
 	private String recipeid ; 
 	private String userid; 
 	private String Commentid;
-	Comment(int grade , String Comment){
+	public Comment(int grade , String Comment){
 		this.grade = grade ; 
 		this.Comment = Comment ; 
 		

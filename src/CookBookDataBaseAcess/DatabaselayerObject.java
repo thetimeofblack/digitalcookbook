@@ -3,6 +3,7 @@ package CookBookDataBaseAcess;
 import java.sql.Connection;
 
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -12,7 +13,7 @@ import java.util.LinkedList;
 
 import CookBookEntity.Comment;
 import CookBookEntity.Ingredient;
-import CookBookEntity.PreparationSteps;
+import CookBookEntity.PreparationStep;
 import CookBookEntity.Recipe;
 
 import CookBookEntity.User;
@@ -145,8 +146,7 @@ public class DatabaselayerObject {
 	public Recipe getUserRecipe(int userid, String name) {
 	
 		Recipe recipe = new Recipe();
-		LinkedList<Ingredient> ls1 = new LinkedList<Ingredient>();
-		LinkedList<PreparationSteps> ls2 = new LinkedList<PreparationSteps>();
+		
 		try {
 			
 			// 提取recipe一般信息部分
@@ -171,26 +171,26 @@ public class DatabaselayerObject {
 			String ss2 = "select * from cookbook.ingredients where RecipeID = " + recipeid;
 			res = sql.executeQuery(ss2);
 			while (res.next()) {
-				Ingredient ingredients = new Ingredient();
-				ingredients.setIngredientsID(res.getDouble("ID"));
-				ingredients.setName(res.getString("Name"));
-				ingredients.setAmount(res.getDouble("Amount"));
-				ingredients.setUnit(res.getString("Unit"));
-				ls1.add(ingredients);
+				Ingredient ingredient = new Ingredient();
+				ingredient.setIngredientsID(res.getDouble("ID"));
+				ingredient.setName(res.getString("Name"));
+				ingredient.setAmount(res.getDouble("Amount"));
+				ingredient.setUnit(res.getString("Unit"));
+				recipe.addIngredient(ingredient);
 			}
-			recipe.setIngredientlist(ls1);
+			
 
 			// 提取对应preparationsteps部分
 			String ss3 = "select * from cookbook.preparationsteps where RecipeID = " + recipeid;
 			res = sql.executeQuery(ss3);
 			while (res.next()) {
-				PreparationSteps preparationsteps = new PreparationSteps();
+				PreparationStep preparationsteps = new PreparationStep();
 				preparationsteps.setStepsID(res.getDouble("ID"));
 				preparationsteps.setDescription(res.getString("Description"));
 				preparationsteps.setOrder(res.getDouble("preparationstepsorder"));
-				ls2.add(preparationsteps);
+				recipe.addPreparationStep(preparationsteps);
 			}
-			recipe.setPreparationSteps(ls2);
+			
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -348,7 +348,7 @@ public class DatabaselayerObject {
 			}
 
 			// 插入到preparationsteps表中
-			LinkedList<PreparationSteps> ls2 = recipe.getPreparationSteps();
+			LinkedList<PreparationStep> ls2 = recipe.getPreparationSteps();
 			for (int y = 0; y < ls2.size(); y++) {
 				ls2.get(y);
 				String sqlstr3 = "INSERT INTO `cookbook`.`preparationstep` (`Description`,`RecipeID`)"
@@ -365,7 +365,7 @@ public class DatabaselayerObject {
 
 			// 插入到recipe-user表中
 			String ss4 = "INSERT INTO `cookbook`.`UserRecipe` (`userid`,`recipeid`) values(" 
-			+ userid + "," 
+			+ Integer.parseInt(this.user.getUserID()) + "," 
 			+ recipeid+ ")";
 			res1 = sql.executeUpdate(ss4);
 			if (res1 >= 1) {
@@ -450,6 +450,7 @@ public class DatabaselayerObject {
 	}
 
 	// rate和comments功能,true为成功
+	/*
 	public boolean addRateandComments(int userid, int recipeid, int rate, String comments) {
 		
 		
@@ -473,7 +474,7 @@ public class DatabaselayerObject {
 		return false;
 	
 	}
-	
+	*/
 	private void getbasicRecipe(Recipe recipe , ResultSet res) throws Exception{
 		
 		recipe.setRecipeID(res.getInt("ID"));
@@ -490,7 +491,7 @@ public class DatabaselayerObject {
 		
 	}
 	
-	private void savePreparationSteps(PreparationSteps preparationSteps, ResultSet res) throws Exception{
+	private void savePreparationSteps(PreparationStep preparationSteps, ResultSet res) throws Exception{
 		
 	}
 	
@@ -506,14 +507,26 @@ public class DatabaselayerObject {
     
     public boolean saveCommentandRate(Comment comment , int recipeid)throws Exception{
         int userid = Integer.parseInt(this.user.getUserID());
-        String sqlstr = "insert into commentandrates (recipeid,userid,rate,comments) values("+
+        String sqlstr = "insert into cookbook.rateandcomments (recipeid,userid,rate,comments) values("+
         recipeid+","+
         this.user.getUserID()+","+
         comment.getGrade()+",'"+
         comment.getComment()+"')";
         
-        int  result = this.sql.executeUpdate(sqlstr);
-        if(result>0) return true; 
+        PreparedStatement pstmt = this.con.prepareStatement(sqlstr,Statement.RETURN_GENERATED_KEYS);//获取自动增加的id号
+        pstmt.executeUpdate();
+        ResultSet rs = pstmt.getGeneratedKeys();
+
+        if(rs.next())
+
+        {
+        
+         int enterInfoId = rs.getInt(1);
+         comment.setCommentid(String.valueOf(enterInfoId));
+         System.out.println(enterInfoId);
+         return true;
+        }
+     
         return false;
          
     }

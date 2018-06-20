@@ -1,5 +1,6 @@
 package CookBookDataBaseAcess;
 import static org.junit.Assert.assertEquals;
+import CookBookEntity.Comment;
 import CookBookEntity.User;
 import DigitalCookbook.CookBookApp;
 import org.junit.Assert.*;
@@ -21,8 +22,14 @@ public class DatabaseAccessTest {
 		assertEquals(dao.userLogin(user3.getUserName(),user3.getUserPassword()),-1);
 		//assertEquals(dao.)
 		//assertEquals(dao.getUserRecipe(, name))
+		//Recipe recipeget = new Recipe();
+		//recipeget = dao.getUserRecipe(0, "Gong Bao Jiding");
+		//recipeget.show();
+		Comment comment = new Comment(1,"hello");
+		dao.saveCommentandRate(comment, 1);
 		
 		assertEquals(dao.insertRecipe(0, recipe),true);
+		
 		dao.close();
 	}
 }

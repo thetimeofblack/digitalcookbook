@@ -1,18 +1,18 @@
 package CookBookEntity;
 
-public class PreparationSteps {
+public class PreparationStep {
 	private double StepsID;
 	private String Description;
 	private double Order;
 	
-	public PreparationSteps(){
+	public PreparationStep(){
 		
 	}
-	public PreparationSteps(String description) {
+	public PreparationStep(String description) {
 		this.Description = description ; 
 	}
 	
-	public PreparationSteps(double stepsID, String description) {
+	public PreparationStep(double stepsID, String description) {
 		this.StepsID = stepsID;
 		this.Description = description;
 	}

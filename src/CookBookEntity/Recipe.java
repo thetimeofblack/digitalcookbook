@@ -12,7 +12,7 @@ public class Recipe {
 	private int PrepareTime;
 	private int CookTime;
 	private String Category;
-	private LinkedList<PreparationSteps> PreparationSteps;
+	private LinkedList<PreparationStep> PreparationSteps;
 	private LinkedList<Ingredient> ingredientlist;
 	private int Rate;
 	private String Comments;
@@ -22,7 +22,7 @@ public class Recipe {
 		this.Category = Category; 
 		this.ServeNumber = ServeNumber; 
 		ingredientlist = new LinkedList<Ingredient>();
-		PreparationSteps = new LinkedList<PreparationSteps>();
+		PreparationSteps = new LinkedList<PreparationStep>();
 		
 	}
 	
@@ -47,11 +47,11 @@ public class Recipe {
 		this.Comments = comments;
 	}
 	
-	public LinkedList<PreparationSteps> getPreparationSteps() {
+	public LinkedList<PreparationStep> getPreparationSteps() {
 		return PreparationSteps;
 	}
 
-	public void setPreparationSteps(LinkedList<PreparationSteps> preparationSteps) {
+	public void setPreparationSteps(LinkedList<PreparationStep> preparationSteps) {
 		this.PreparationSteps = preparationSteps;
 	}
 
@@ -125,9 +125,10 @@ public class Recipe {
 
 	public void setCategory(String category) {
 		Category = category;
-	}	
+	}
+	
 	public void addPreparationStep(String steps) {
-		PreparationSteps preparationSteps = new PreparationSteps(steps);
+		PreparationStep preparationSteps = new PreparationStep(steps);
 		this.PreparationSteps.add(preparationSteps);
 	}
 	public void addIngredient(Ingredient ingredient) {
@@ -140,6 +141,9 @@ public class Recipe {
 	}
 	public void setCookingTime(int cookTime) {
 		this.CookTime = cookTime ; 
+	}
+	public void addPreparationStep(PreparationStep preparationstep) {
+		this.PreparationSteps.add(preparationstep);
 	}
 	
 	public void show() {
@@ -156,7 +160,7 @@ public class Recipe {
 		while(itri.hasNext()) {
 			System.out.print(itri.next().toString());
 		}
-		Iterator<PreparationSteps> itrp = this.PreparationSteps.iterator();
+		Iterator<PreparationStep> itrp = this.PreparationSteps.iterator();
 		while(itrp.hasNext()) {
 			System.out.print(itrp.next().toString());
 		}
