@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane prefHeight="62.0" prefWidth="221.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane prefHeight="62.0" prefWidth="221.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.listview.PaneController">
    <children>
       <Text fx:id="Recipename" layoutY="19.0" onDragDetected="#showRecipename" strokeType="OUTSIDE" strokeWidth="0.0" text="Recipename" wrappingWidth="138.21875" />
       <HBox layoutY="22.0" prefHeight="44.0" prefWidth="221.0">

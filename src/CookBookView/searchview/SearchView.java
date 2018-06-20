@@ -19,11 +19,8 @@ public class SearchView extends javafx.application.Application {
             
             Scene scene = new Scene(root, 290, 470);
 
-            int recipenumber = 5; 
-            while(recipenumber!= 0 ) {
-            	
-            }
-
+            svc.setScene(scene);
+            svc.setStage(primaryStage);
 
             primaryStage.setTitle("Welcome back");
             
