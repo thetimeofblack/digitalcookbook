@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import CookBookView.listview.ListViewController;
+import CookBookView.listview.PaneController;
 import CookBookView.loginview.loginController;
 import CookBookView.registerview.registerViewController;
 import javafx.event.ActionEvent;
@@ -70,10 +71,16 @@ public class SearchViewController {
 		AnchorPane root = (AnchorPane) loader.load();
 		ListViewController lvc = loader.getController();
 		//lvc.setStageAndScene(stage, scene);
-		VBox vbox = new VBox();
-		Pane recipepane = (Pane)FXMLLoader.load(getClass().getResource("../listview/pan.fxml"));
+		
+		//VBox vbox = root.getChildren<VBox>("");
+		
 		int recipenumber =3; 
 		while(recipenumber>0) {
+			FXMLLoader recipeloader = new FXMLLoader(getClass().getResource("../listview/pane.fxml"));
+			Pane recipepane = (Pane)recipeloader.load();
+			PaneController panecontroller = recipeloader.getController();
+			
+			//vbox.getChildren().add(recipepane);
 			
 			recipenumber = recipenumber -1; 
 		}
