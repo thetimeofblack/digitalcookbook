@@ -30,7 +30,7 @@ public class DatabaselayerObject {
 	public DatabaselayerObject(){
 		try {
 		this.user= new User();
-		Class.forName(driver);
+		Class.forName(this.driver);
 		
 		System.out.println("the driver for database has been initialized");
 		this.con = DriverManager.getConnection(this.Databaseurl, this.Databaseuser, this.Databasepassword);
@@ -42,7 +42,7 @@ public class DatabaselayerObject {
 	}
 	
 	public void UserLogin(User user) throws Exception{
-		login(user.getUserName(),user.getUserPassword());
+		userLogin(user.getUserName(),user.getUserPassword());
 		this.user = user; 
 	}
 	
@@ -70,7 +70,7 @@ public class DatabaselayerObject {
 	}
 	
 	// login方法,返回0为密码不一样，不为0则为userid，-1则为未找到用户名
-	public int login(String username, String userpassword) throws SQLException {
+	public int userLogin(String username, String userpassword) throws SQLException {
 		
 	
 		String s1 = "select * from cookbook.user where UserName = '"+ username +"'";
@@ -100,7 +100,7 @@ public class DatabaselayerObject {
 	// INSERT INTO `cookbook`.`user` (`UserName`, `UserPassword`) VALUES
 	// ('Xiyuan', '12345'); 傻逼符号操你妈
 	// create account 方法,已成功添加
-	public boolean UserRegister(User user) throws SQLException {
+	public boolean userRegister(User user) throws SQLException {
 		
 		String sqlstr = "insert into `cookbook`.`user` (`UserName`,`UserPassword`) values('" 
 				+ user.getUserName() + "','"
@@ -118,7 +118,7 @@ public class DatabaselayerObject {
 	}
 	
 	
-	public boolean UserRegister() throws SQLException {
+	public boolean userRegister() throws SQLException {
 		
 		String sqlstr = "insert into `cookbook`.`user` (`UserName`,`UserPassword`) values('" 
 				+ this.user.getUserName() + "',"
@@ -150,7 +150,10 @@ public class DatabaselayerObject {
 		try {
 			
 			// 提取recipe一般信息部分
-			String ss1 = "select * from cookbook.recipe where name = '" + name + "'";
+			String ss1 = "select * from cookbook.recipe, cookbook.userrecipe where userid = "+
+					this.user.getUserID()+"and"+
+					"name = '" + name + "'"+"and"+
+					"userrecipe.recipeid = recipe.recipeid";
 			res = this.sql.executeQuery(ss1);
 			
 			if (res.next()) {

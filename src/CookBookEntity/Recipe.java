@@ -142,4 +142,24 @@ public class Recipe {
 		this.CookTime = cookTime ; 
 	}
 	
+	public void show() {
+		System.out.println("RecipeID: "+this.RecipeID);
+		System.out.println("RecipeName: "+this.Name);
+		System.out.println("RecipeCategory: "+this.Category);
+		System.out.println("RecipeDescription: "+this.Description);
+		System.out.println("RecipePrivacy: "+this.Privacy);
+		System.out.println("PreparationTime: "+this.PrepareTime);
+		System.out.println("RecipeNumber: "+this.ServeNumber);
+		System.out.println("RecipeCookTime: "+this.CookTime);
+	 
+		Iterator<Ingredient> itri = this.ingredientlist.iterator(); 
+		while(itri.hasNext()) {
+			System.out.print(itri.next().toString());
+		}
+		Iterator<PreparationSteps> itrp = this.PreparationSteps.iterator();
+		while(itrp.hasNext()) {
+			System.out.print(itrp.next().toString());
+		}
+	}
+	
 }

@@ -15,12 +15,12 @@ public class DatabaseAccessTest {
 		User user = new User("heyining","heyining");
 		User user2 = new User("heyining","Heyining");
 		User user3 = new User("heyinin","heyining");
-		assertEquals(dao.UserRegister(user),true);
-		assertEquals(dao.login(user.getUserName(),user.getUserPassword()),1);
-		assertEquals(dao.login(user2.getUserName(),user2.getUserPassword()),0);
-		assertEquals(dao.login(user3.getUserName(),user3.getUserPassword()),-1);
-		
-		
+		assertEquals(dao.userRegister(user),true);
+		assertEquals(dao.userLogin(user.getUserName(),user.getUserPassword()),1);
+		assertEquals(dao.userLogin(user2.getUserName(),user2.getUserPassword()),0);
+		assertEquals(dao.userLogin(user3.getUserName(),user3.getUserPassword()),-1);
+		//assertEquals(dao.)
+		//assertEquals(dao.getUserRecipe(, name))
 		
 		assertEquals(dao.insertRecipe(0, recipe),true);
 		dao.close();

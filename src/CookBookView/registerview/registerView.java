@@ -1,5 +1,6 @@
 package CookBookView.registerview;
 import CookBookView.firstview.FirstView;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -12,7 +13,12 @@ public class registerView extends javafx.application.Application{
 	
 		public void start(Stage primaryStage) throws Exception {
 	        try {
-	            GridPane root = (GridPane) FXMLLoader.load(getClass().getResource("registerView.fxml"));
+	           // GridPane root = (GridPane) FXMLLoader.load(getClass().getResource("registerView.fxml"));
+	            FXMLLoader fxml = new FXMLLoader(getClass().getResource("registerView.fxml"));
+	            GridPane root = fxml.load();
+	            registerViewController registerController = fxml.getController();
+	            
+	            
 	            Scene scene = new Scene(root, 290, 470);
 	            
 	            
@@ -22,7 +28,7 @@ public class registerView extends javafx.application.Application{
 	            primaryStage.setResizable(false);
 	            
 	            //scene.getStylesheets().add(LoginView.class.getResource("registerview.css").toExternalForm());  
-	            primaryStage.show(); 
+	            //primaryStage.show(); 
 	            //primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("images/earth.png")));
 	            primaryStage.show();
 	        } catch (Exception e) {
