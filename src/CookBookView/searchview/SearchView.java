@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 public class SearchView extends javafx.application.Application {
 	public void start(Stage primaryStage) throws Exception {
         try {
+        	
             FXMLLoader loader  = new  FXMLLoader(getClass().getResource("searchView.fxml"));
             GridPane root = (GridPane) loader.load();
             SearchViewController svc = loader.getController();
