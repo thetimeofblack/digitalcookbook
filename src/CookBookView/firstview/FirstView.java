@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 package CookBookView.firstview;
 
 import java.awt.Button;
