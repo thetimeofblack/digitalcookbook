@@ -13,6 +13,7 @@ public class SearchView extends javafx.application.Application {
             FXMLLoader loader  = new  FXMLLoader(getClass().getResource("searchView.fxml"));
             GridPane root = (GridPane) loader.load();
 
+
             SearchViewController svc = loader.getController();
 
             
@@ -22,7 +23,7 @@ public class SearchView extends javafx.application.Application {
             while(recipenumber!= 0 ) {
             	
             }
-            svc.setScene(scene);
+
 
             primaryStage.setTitle("Welcome back");
             
@@ -34,14 +35,7 @@ public class SearchView extends javafx.application.Application {
             //scene.getStylesheets().add(LoginView.class.getResource("firstview.css").toExternalForm());  
             primaryStage.show(); 
             //primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("images/earth.png")));
-
-            
-            svc.setStage(primaryStage);
-
-            //svc.setScene(scene);
-            //svc.setStage(primaryStage);
-
-        } catch (Exception e) {
+       } catch (Exception e) {
             e.printStackTrace();
         }
 	}

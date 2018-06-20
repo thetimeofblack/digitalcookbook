@@ -68,25 +68,17 @@ public class SearchViewController {
 		GridPane root = (GridPane) loader.load();
 		ListViewController lvc = loader.getController();
 		//lvc.setStageAndScene(stage, scene);
-
-	
-		//stage.hide();
-		Scene scene = new Scene(root,290,470);
-
+		
 		
 		
 		lvc.setStage(stage);
 		lvc.setScene(scene);
-
 		
-
 		scene.setRoot(root);
-
 		stage.setScene(scene);
 		
 		stage.show();
-		lvc.setStage(stage);
-		lvc.setScene(scene);
+		
 		
 		/** FXMLLoader loader = new FXMLLoader();  
          loader.setLocation(getClass().getResource("study.fxml"));  
