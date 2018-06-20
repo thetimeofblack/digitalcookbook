@@ -34,7 +34,7 @@ public class FirstView extends javafx.application.Application {
 			scene.getStylesheets().add(FirstView.class.getResource("firstview.css").toExternalForm());
 			//primaryStage.show();
 			// primaryStage.getIcons().add(newImage(getClass().getResourceAsStream("images/earth.png")));
-			//primaryStage.show();
+			primaryStage.show();
 		
 		
 		} catch (Exception e) {

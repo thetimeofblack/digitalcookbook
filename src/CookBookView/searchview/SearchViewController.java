@@ -64,8 +64,8 @@ public class SearchViewController {
 	// Event Listener on Button[#showrecipes].onAction
 	@FXML
 	public void showAllrecipes(ActionEvent event) throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../searchview/searchView.fxml"));
-		GridPane root = (GridPane) loader.load();
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../listview/listview.fxml"));
+		AnchorPane root = (AnchorPane) loader.load();
 		ListViewController lvc = loader.getController();
 		//lvc.setStageAndScene(stage, scene);
 		
