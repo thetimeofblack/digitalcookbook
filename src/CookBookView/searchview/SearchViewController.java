@@ -67,13 +67,14 @@ public class SearchViewController {
 		AnchorPane root = (AnchorPane) loader.load();
 		ListViewController lvc = loader.getController();
 		//lvc.setStageAndScene(stage, scene);
-		lvc.setStage(stage);
-		lvc.setScene(scene);
+	
+		//stage.hide();
+		Scene scene = new Scene(root,290,470);
 		
-		scene = new Scene(root,290,470);
 		stage.setScene(scene);
 		stage.show();
-		
+		lvc.setStage(stage);
+		lvc.setScene(scene);
 		
 		/** FXMLLoader loader = new FXMLLoader();  
          loader.setLocation(getClass().getResource("study.fxml"));  
