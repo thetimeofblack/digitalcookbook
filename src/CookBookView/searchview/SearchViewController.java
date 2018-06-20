@@ -72,14 +72,14 @@ public class SearchViewController {
 		ListViewController lvc = loader.getController();
 		//lvc.setStageAndScene(stage, scene);
 		
-		//VBox vbox = root.getChildren<VBox>("");
+		VBox recipevbox = lvc.getVBox();
 		
 		int recipenumber =3; 
 		while(recipenumber>0) {
 			FXMLLoader recipeloader = new FXMLLoader(getClass().getResource("../listview/pane.fxml"));
 			Pane recipepane = (Pane)recipeloader.load();
 			PaneController panecontroller = recipeloader.getController();
-			
+			recipevbox.getChildren().add(recipepane);
 			//vbox.getChildren().add(recipepane);
 			
 			recipenumber = recipenumber -1; 
