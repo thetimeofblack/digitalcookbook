@@ -12,15 +12,18 @@ public class SearchView extends javafx.application.Application {
         	
             FXMLLoader loader  = new  FXMLLoader(getClass().getResource("searchView.fxml"));
             GridPane root = (GridPane) loader.load();
+
             SearchViewController svc = loader.getController();
+
             
             Scene scene = new Scene(root, 290, 470);
+
             int recipenumber = 5; 
             while(recipenumber!= 0 ) {
             	
             }
             svc.setScene(scene);
-            
+
             primaryStage.setTitle("Welcome back");
             
             //primaryStage.setResizable(false);
@@ -31,8 +34,13 @@ public class SearchView extends javafx.application.Application {
             //scene.getStylesheets().add(LoginView.class.getResource("firstview.css").toExternalForm());  
             primaryStage.show(); 
             //primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("images/earth.png")));
+
             
             svc.setStage(primaryStage);
+
+            //svc.setScene(scene);
+            //svc.setStage(primaryStage);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

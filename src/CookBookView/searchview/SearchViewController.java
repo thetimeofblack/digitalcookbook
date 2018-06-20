@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import CookBookView.listview.ListViewController;
+import CookBookView.loginview.loginController;
 import CookBookView.registerview.registerViewController;
 import javafx.event.ActionEvent;
 
@@ -63,15 +64,26 @@ public class SearchViewController {
 	// Event Listener on Button[#showrecipes].onAction
 	@FXML
 	public void showAllrecipes(ActionEvent event) throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../listview/listview.fxml"));
-		AnchorPane root = (AnchorPane) loader.load();
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../searchview/searchView.fxml"));
+		GridPane root = (GridPane) loader.load();
 		ListViewController lvc = loader.getController();
 		//lvc.setStageAndScene(stage, scene);
+
 	
 		//stage.hide();
 		Scene scene = new Scene(root,290,470);
+
 		
+		
+		lvc.setStage(stage);
+		lvc.setScene(scene);
+
+		
+
+		scene.setRoot(root);
+
 		stage.setScene(scene);
+		
 		stage.show();
 		lvc.setStage(stage);
 		lvc.setScene(scene);
