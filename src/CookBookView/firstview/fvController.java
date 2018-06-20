@@ -34,7 +34,7 @@ public class fvController {
 	}
 
 	public void loginView(ActionEvent event) throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../loginview/login.fxml"));
 		GridPane root = (GridPane) loader.load();
 		DatabaselayerObject dao = new DatabaselayerObject();	
 		
