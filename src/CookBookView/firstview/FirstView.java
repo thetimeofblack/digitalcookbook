@@ -1,3 +1,4 @@
+
 package CookBookView.firstview;
 
 import java.awt.Button;
@@ -31,7 +32,7 @@ public class FirstView extends javafx.application.Application {
 			primaryStage.setTitle("Nice to meet you");
 			primaryStage.setResizable(false);
 			scene.getStylesheets().add(FirstView.class.getResource("firstview.css").toExternalForm());
-			primaryStage.show();
+			//primaryStage.show();
 			// primaryStage.getIcons().add(newImage(getClass().getResourceAsStream("images/earth.png")));
 			primaryStage.show();
 		
@@ -44,5 +45,6 @@ public class FirstView extends javafx.application.Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
+
 
 }

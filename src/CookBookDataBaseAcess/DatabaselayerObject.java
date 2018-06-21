@@ -24,11 +24,12 @@ public class DatabaselayerObject {
 	static ResultSet res, res2;
 	final private String driver = "com.mysql.jdbc.Driver";
 	final private String Databaseuser = "root";
-	//final private String Databasepassword = "heyining";//¿ÉÐÞ¸ÄÏîÄ¿
-	final private String Databasepassword = "1989";//¿ÉÐÞ¸ÄÏîÄ¿
-	//final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306/?characterEncoding=utf8&useSSL=true&serverTimezone=GMT";//¿ÉÐÞ¸ÄÏîÄ¿
-	final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306";//¿ÉÐÞ¸ÄÏîÄ¿
-	
+
+	final private String Databasepassword = "root";
+	final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306/?characterEncoding=utf8&useSSL=true&serverTimezone=GMT";
+	//final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306";
+	//final private String Databaseurl = "jdbc:mysql://localhost:3306/recipedatabase?useSSL=true&serverTimezone=GMT";
+
 	private User user; 
 	
 	public DatabaselayerObject(){
@@ -59,8 +60,10 @@ public class DatabaselayerObject {
 	}
 	
 	
+
 	
-	// login·½·¨,·µ»Ø0ÎªÃÜÂë²»Ò»Ñù£¬·µ»Ø1ÔòÎªµÇÂ½³É¹¦£¬-1ÔòÎªÎ´ÕÒµ½ÓÃ»§Ãû
+	// loginï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½0Îªï¿½ï¿½ï¿½ë²»Ò»ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½Îªï¿½ï¿½Â½ï¿½É¹ï¿½ï¿½ï¿½-1ï¿½ï¿½ÎªÎ´ï¿½Òµï¿½ï¿½Ã»ï¿½ï¿½ï¿½
+
 	public int userLogin(String username, String userpassword) throws SQLException {
 			
 		String s1 = "select * from cookbook.user where UserName = '"+ username +"'";
@@ -87,9 +90,11 @@ public class DatabaselayerObject {
 	}
 	
 
+
 	
 
-	//ÐÂ½¨ÕË»§·½·¨,·µ»ØtrueÎª³É¹¦£¬·µ»ØfalseÎªÓÐÖØ¸´ÓÃ»§Ãû
+	//ï¿½Â½ï¿½ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½trueÎªï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½falseÎªï¿½ï¿½ï¿½Ø¸ï¿½ï¿½Ã»ï¿½ï¿½ï¿½
+
 	public boolean userRegister(User user) throws SQLException {
 		String sqlstr1 = "select * from `cookbook`.`user` where username = '"+user.getUserName()+"'";
 		res = this.sql.executeQuery(sqlstr1);
@@ -106,7 +111,7 @@ public class DatabaselayerObject {
 		System.out.println(res1);
         ResultSet rs = pstmt.getGeneratedKeys();
 				
-		//»ñÈ¡×Ô¶¯Ôö¼ÓµÄidºÅ		        
+		//ï¿½ï¿½È¡ï¿½Ô¶ï¿½ï¿½ï¿½Óµï¿½idï¿½ï¿½		        
         String id = rs.getString(1);
         user.setUserID(id);            
         this.user = user;
@@ -144,8 +149,10 @@ public class DatabaselayerObject {
 		
 		try {
 			
-			// ÌáÈ¡recipeÒ»°ãÐÅÏ¢²¿·Ö
+
+			// ï¿½ï¿½È¡recipeÒ»ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
 			String ss1 = "select * from cookbook.recipe where id = '"+recipeid+"'";
+
 			res = this.sql.executeQuery(ss1);
 			
 			if (res.next()) {
@@ -158,8 +165,10 @@ public class DatabaselayerObject {
 				recipe.setDescription(res.getString("Description"));
 			}
 
-			
-			// ÌáÈ¡¶ÔÓ¦ingredients²¿·Ö
+
+			// ï¿½ï¿½È¡ï¿½ï¿½Ó¦ingredientsï¿½ï¿½ï¿½ï¿½
+			String recipeid = res.getString("ID");
+
 			String ss2 = "select * from cookbook.ingredients where RecipeID = " + recipeid;
 			res = sql.executeQuery(ss2);
 			while (res.next()) {
@@ -172,7 +181,7 @@ public class DatabaselayerObject {
 			}
 			
 
-			// ÌáÈ¡¶ÔÓ¦preparationsteps²¿·Ö
+			// ï¿½ï¿½È¡ï¿½ï¿½Ó¦preparationstepsï¿½ï¿½ï¿½ï¿½
 			String ss3 = "select * from cookbook.preparationsteps where RecipeID = " + recipeid;
 			res = sql.executeQuery(ss3);
 			while (res.next()) {
@@ -191,7 +200,7 @@ public class DatabaselayerObject {
 		return recipe;
 	}
 	
-	//Î´ÊµÏÖ²¿·Ö
+	//Î´Êµï¿½Ö²ï¿½ï¿½ï¿½
 	/*
 	public Recipe getRecipe(ResultSet res) throws Exception{
 		Recipe recipe = new Recipe();
@@ -220,8 +229,10 @@ public class DatabaselayerObject {
 		LinkedList<Recipe> ls = new LinkedList<Recipe>();
 		try {
 
-			// ÏÔÊ¾³öËùÓÐµÄrecipe list		
+
+			// ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½recipe list		
 			res = this.sql.executeQuery("select * from cookbook.recipe ");
+
 			while (res.next()) {
 				Recipe recipe = new Recipe();
 				recipe.setRecipeID(res.getString("ID"));
@@ -234,9 +245,11 @@ public class DatabaselayerObject {
 				ls.add(recipe);
 			}
 
-			// ÏÔÊ¾³öË½ÓÐ²¿·Örecipe
+
+			// ï¿½ï¿½Ê¾ï¿½ï¿½Ë½ï¿½Ð²ï¿½ï¿½ï¿½recipe
 			/* 
-			 * ´Ë·½·¨ÒÑ²»ÓÃÊµÏÖ
+			 * ï¿½Ë·ï¿½ï¿½ï¿½ï¿½Ñ²ï¿½ï¿½ï¿½Êµï¿½ï¿½
+
 			String ss = "select * from `cookbook`.`user-recipe` where userid = " + userid;
 			res = sql.executeQuery(ss);
 			String s1;
@@ -260,10 +273,13 @@ public class DatabaselayerObject {
 		return ls;
 	}
 
+
 	
-	// ÓÃ»§ÊäÈë²ËÃû£¬ËÑË÷recipe ·½·¨
+	// ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½recipe ï¿½ï¿½ï¿½ï¿½
 	public LinkedList<Recipe> showsearchingrecipelist(String s) {
 		
+
+
 		LinkedList<Recipe> ls = new LinkedList<Recipe>();
 		try {			
 			String ss = "select * from cookbook.recipe where name is like '%" + s + "%'";
@@ -288,8 +304,8 @@ public class DatabaselayerObject {
 	// create recipe method
 	
 	
-	//recipe±í ²åÈë·½·¨	
-	public Recipe insertrecipe(Recipe recipe) {//´ËrecipeÎÞrecipeid
+	//recipeï¿½ï¿½ ï¿½ï¿½ï¿½ë·½ï¿½ï¿½	
+	public Recipe insertrecipe(Recipe recipe) {//ï¿½ï¿½recipeï¿½ï¿½recipeid
 		String recipeid = "null";
 		int res1 = 0;
 		String ss1 = "INSERT INTO cookbook.recipe (Name, ServeNumber, Privacy, PrepareTime, Category, Description, CookTime) values(\'"
@@ -303,11 +319,13 @@ public class DatabaselayerObject {
 		System.out.println(ss1);
 		PreparedStatement pstmt;
 		try {
+
 			pstmt = this.con.prepareStatement(ss1,Statement.RETURN_GENERATED_KEYS);
 			res1 = pstmt.executeUpdate();
 			ResultSet rs = pstmt.getGeneratedKeys();
 	        recipeid = rs.getString(1);
 		} catch (SQLException e) {
+
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
@@ -316,7 +334,7 @@ public class DatabaselayerObject {
 	}
 	
 	
-	//ingredients±í²åÈë·½·¨
+	//ingredientsï¿½ï¿½ï¿½ï¿½ë·½ï¿½ï¿½
 	public void insertingredients(Recipe recipe) throws SQLException {
 		int res1 = 0;
 		LinkedList<Ingredient> ls1 = recipe.getIngredientlist();
@@ -336,7 +354,7 @@ public class DatabaselayerObject {
 	}
 	
 	
-	//preparationsteps±í²åÈë·½·¨
+	//preparationstepsï¿½ï¿½ï¿½ï¿½ë·½ï¿½ï¿½
 	public void insertpreparationsteps(Recipe recipe) throws SQLException {
 		int res1 = 0;
 		LinkedList<PreparationStep> ls2 = recipe.getPreparationSteps();
@@ -354,7 +372,7 @@ public class DatabaselayerObject {
 	}
 	
 	
-	//recipe-user±í²åÈë·½·¨
+	//recipe-userï¿½ï¿½ï¿½ï¿½ë·½ï¿½ï¿½
 	public void insertrecipeuser(Recipe recipe) throws SQLException{
 		int res1 = 0;
 		String ss4 = "INSERT INTO `cookbook`.`UserRecipe` (`userid`,`recipeid`) values('" 
@@ -364,7 +382,7 @@ public class DatabaselayerObject {
 		
 	}
 	
-	//×Ü£ºrecipe²åÈë·½·¨	
+	//ï¿½Ü£ï¿½recipeï¿½ï¿½ï¿½ë·½ï¿½ï¿½	
 	public boolean insertRecipe(Recipe recipe) throws SQLException {
 		Recipe newrecipe = new Recipe();
 		newrecipe = insertrecipe(recipe);
@@ -376,16 +394,17 @@ public class DatabaselayerObject {
 	
 	
 	
-	//recipe±íÉ¾³ý·½·¨
+	//recipeï¿½ï¿½É¾ï¿½ï¿½
 	public void deleterecipe(Recipe recipe) throws SQLException {
 		String recipeid = recipe.getRecipeID();
+
 		String ss = "delete from `cookbook`.`recipe` "
 				+ "where id = '" + recipeid + "' and privacy = 1";
 		int res1 = 0;
 		res1 = this.sql.executeUpdate(ss);
 		
 	}		
-	//ingredients±íÉ¾³ý·½·¨
+	//ingredientsï¿½ï¿½É¾ï¿½ï¿½
 	public void deleteingredients(Recipe recipe) throws SQLException {
 		String recipeid = recipe.getRecipeID();
 		String ss = "delete from `cookbook`.`ingredients` "
@@ -394,7 +413,7 @@ public class DatabaselayerObject {
 		res1 = this.sql.executeUpdate(ss);
 		
 	}	
-	//preparationsteps±íÉ¾³ý·½·¨
+	//preparationstepsï¿½ï¿½É¾ï¿½ï¿½
 	public void deletepreparationsteps(Recipe recipe) throws SQLException {
 		String recipeid = recipe.getRecipeID();
 		String ss = "delete from `cookbook`.`preparationsteps` "
@@ -403,7 +422,7 @@ public class DatabaselayerObject {
 		res1 = this.sql.executeUpdate(ss);
 		
 	}
-	//recipe-user±íÅÐ¶Ï·½·¨£¬·µ»ØtrueÎªÓÃ»§Ë½ÓÐÏî£¨¿ÉÉ¾¸Ä£©£¬falseÎª¹«¹²Ïî£¨²»¿ÉÉ¾¸Ä£©
+	//recipe-userï¿½ï¿½ï¿½Ð¶Ï·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½trueÎªï¿½Ã»ï¿½Ë½ï¿½ï¿½ï¿½î£¨ï¿½ï¿½É¾ï¿½Ä£ï¿½ï¿½ï¿½falseÎªï¿½ï¿½ï¿½ï¿½ï¿½î£¨ï¿½ï¿½ï¿½ï¿½É¾ï¿½Ä£ï¿½
 	public boolean judgerecipeuser(Recipe recipe) throws SQLException {
 		String recipeid = recipe.getRecipeID();
 		String ss1 = "select * from `cookbook`.`user-recipe` where userid = '"+this.user.getUserID()+"' and recipeid = '"+recipeid+"'";
@@ -413,7 +432,7 @@ public class DatabaselayerObject {
 		}
 		return false;
 	}
-	//recipe-user±íÉ¾³ý·½·¨
+	//recipe-userï¿½ï¿½É¾ï¿½ï¿½
 	public void deleterecipeuser(Recipe recipe) throws SQLException {
 		String recipeid = recipe.getRecipeID();
 		String ss2 = "delete from `cookbook`.`user-recipe` "
@@ -422,8 +441,9 @@ public class DatabaselayerObject {
 		res1 = this.sql.executeUpdate(ss2);
 				
 	}
+
 		
-	//×Ü£ºrecipeÉ¾³ý·½·¨,·µ»Øtrue³É¹¦É¾³ý£¬falseÎª²»¿ÉÉ¾³ý
+	//ï¿½Ü£ï¿½recipeÉ¾ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½trueï¿½É¹ï¿½É¾ï¿½ï¿½falseÎªï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½
 	public boolean deleteRecipe(Recipe recipe) throws SQLException {
 		if(judgerecipeuser(recipe)) {
 			deleterecipe(recipe);
@@ -437,7 +457,7 @@ public class DatabaselayerObject {
 	
 	
 	
-	//recipeÐÞ¸Ä·½·¨£¨ingredientsºÍpreparationsteps²¿·ÖÏÈÉ¾ÔÙ²å£©,trueÎªÉ¾³ý³É¹¦£¬falseÎª²»¿ÉÉ¾
+	//recipeï¿½Þ¸Ä·ï¿½ï¿½ï¿½ï¿½ï¿½ingredientsï¿½ï¿½preparationstepsï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½Ù²å£©,trueÎªÉ¾ï¿½ï¿½É¹ï¿½ï¿½ï¿½falseÎªï¿½ï¿½ï¿½ï¿½É¾
 	public boolean editRecipe(Recipe recipe) throws SQLException {
 		String recipeid = recipe.getRecipeID();
 		if(judgerecipeuser(recipe)) {
@@ -462,14 +482,16 @@ public class DatabaselayerObject {
 	}
 	
 
+
 	// UPDATE `cookbook`.`recipe` SET `Name` = 'qiezi', `ServeNumber` = '2',
 	// `Category` = 'meat' WHERE (`ID` = '4');
-	// ÐÞ¸Ärecipe·½·¨£¬recipe1ÎªÏëÒªÐÞ¸ÄµÄrecipe£¬recipe2ÎªÐÞ¸ÄÖ®ºóµÄrecipe
+	// ï¿½Þ¸ï¿½recipeï¿½ï¿½ï¿½ï¿½ï¿½ï¿½recipe1Îªï¿½ï¿½Òªï¿½Þ¸Äµï¿½recipeï¿½ï¿½recipe2Îªï¿½Þ¸ï¿½Ö®ï¿½ï¿½ï¿½recipe
 	
 	
-	// favourite±íÔö¼Ó·½·¨
+	// favouriteï¿½ï¿½ï¿½ï¿½Ó·ï¿½ï¿½ï¿½
 	public void insertfavourite(Recipe recipe) throws SQLException {		
 		String recipeid = recipe.getRecipeID();
+
 		int res1 = 0;
 		String ss = "insert into `cookbook`.`favourite` (`recipeid`,`userid`) values('" 
 				+ recipeid + "','" 
@@ -477,7 +499,7 @@ public class DatabaselayerObject {
 		res1 = this.sql.executeUpdate(ss);		
 	}
 	
-	//favourite±íÏÔÊ¾·½·¨,trueÎªÏ²»¶£¬falseÎª²»Ï²»¶
+	//favouriteï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½,trueÎªÏ²ï¿½ï¿½ï¿½ï¿½falseÎªï¿½ï¿½Ï²ï¿½ï¿½
 	public boolean judgefavourite(Recipe recipe) throws SQLException {
 		String recipeid = recipe.getRecipeID();
 		String ss = "select * from `cookbook`.`favourite` where recipeid = '"+recipeid+"' and userid = "+this.user.getUserID();
@@ -490,7 +512,7 @@ public class DatabaselayerObject {
 	}
 	
 
-	// rateºÍcomments¹¦ÄÜ,trueÎª³É¹¦
+	// rateï¿½ï¿½commentsï¿½ï¿½ï¿½ï¿½,trueÎªï¿½É¹ï¿½
 	/*
 	public boolean addRateandComments(int userid, int recipeid, int rate, String comments) {
 		
@@ -530,7 +552,7 @@ public class DatabaselayerObject {
 	
 	
 	/*
-	 * ÒÔÏÂÁ½¸ö¹¦ÄÜÒÑ¾­ÊµÏÖ¹ý
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½Êµï¿½Ö¹ï¿½
 	 */
 	private void saveIngredients(Ingredient ingredients , ResultSet res) throws Exception{
 		
@@ -561,7 +583,7 @@ public class DatabaselayerObject {
         		comment.getGrade()+"','"+
         		comment.getComment()+"')";
         
-        PreparedStatement pstmt = this.con.prepareStatement(sqlstr,Statement.RETURN_GENERATED_KEYS);//»ñÈ¡×Ô¶¯Ôö¼ÓµÄidºÅ
+        PreparedStatement pstmt = this.con.prepareStatement(sqlstr,Statement.RETURN_GENERATED_KEYS);//ï¿½ï¿½È¡ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½Óµï¿½idï¿½ï¿½
         pstmt.executeUpdate();
         ResultSet rs = pstmt.getGeneratedKeys();
 
