@@ -10,13 +10,13 @@
 
 
    <children>
-      <VBox prefHeight="132.0" prefWidth="44.0">
+      <VBox layoutY="62.0" prefHeight="132.0" prefWidth="44.0">
          <children>
             <Label maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="44.0" prefWidth="44.0">
                <graphic>
                   <ImageView fx:id="vegen" fitHeight="44.0" fitWidth="40.0" onDragDetected="#showVegen">
                      <image>
-                        <Image url="@素菜.png" />
+                        <Image url="@vegan.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -25,7 +25,7 @@
                <graphic>
                   <ImageView fx:id="egg_milk" fitHeight="36.0" fitWidth="44.0" onDragDetected="#showEgg_Mlik">
                      <image>
-                        <Image url="@煎鸡蛋-2.png" />
+                        <Image url="@egg.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -34,19 +34,19 @@
                <graphic>
                   <ImageView fx:id="meat" fitHeight="44.0" fitWidth="47.0" onDragDetected="#showMeat">
                      <image>
-                        <Image url="@五花肉.png" />
+                        <Image url="@meat.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Label>
          </children>
       </VBox>
-      <Pane layoutX="41.0" prefHeight="459.0" prefWidth="243.0">
+      <Pane layoutX="41.0" layoutY="37.0" prefHeight="422.0" prefWidth="254.0">
          <children>
-            <ScrollBar layoutX="229.0" orientation="VERTICAL" prefHeight="457.0" prefWidth="21.0" />
-            <VBox fx:id = "recipeVBox" prefHeight="457.0" prefWidth="229.0">
+            <ScrollBar layoutX="229.0" orientation="VERTICAL" prefHeight="422.0" prefWidth="20.0" />
+            <VBox fx:id="recipeVBox" prefHeight="422.0" prefWidth="229.0">
                <children>
-                  <Pane prefHeight="62.0" prefWidth="221.0">
+                  <Pane prefHeight="50.0" prefWidth="229.0">
                      <children>
                         <Text fx:id="Recipename" layoutY="19.0" onDragDetected="#showRecipename" strokeType="OUTSIDE" strokeWidth="0.0" text="Recipename" wrappingWidth="138.21875" />
                         <HBox layoutY="22.0" prefHeight="44.0" prefWidth="221.0">
@@ -55,7 +55,7 @@
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0">
                                        <image>
-                                          <Image url="@五角星-3的副本.png" />
+                                          <Image url="@emptystar.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -64,7 +64,7 @@
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0">
                                        <image>
-                                          <Image url="@五角星-3的副本.png" />
+                                          <Image url="@emptystar.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -73,7 +73,7 @@
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0">
                                        <image>
-                                          <Image url="@五角星-3的副本.png" />
+                                          <Image url="@emptystar.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -82,7 +82,7 @@
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0">
                                        <image>
-                                          <Image url="@五角星-3的副本.png" />
+                                          <Image url="@emptystar.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -91,7 +91,7 @@
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0">
                                        <image>
-                                          <Image url="@五角星-3的副本.png" />
+                                          <Image url="@emptystar.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -105,5 +105,11 @@
             </VBox>
          </children>
       </Pane>
+      <Label layoutX="239.0" layoutY="20.0" prefHeight="15.0" prefWidth="37.0" text="  User" />
+      <Button fx:id="logout" layoutX="230.0" mnemonicParsing="false" onAction="#logOut" text="Log out" textFill="#140b43">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
