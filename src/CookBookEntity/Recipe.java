@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Recipe {
 	
-	private int RecipeID;
+	private String RecipeID;
 	private String Name;
 	private String Description;
 	private int Privacy;
@@ -63,11 +63,11 @@ public class Recipe {
 		this.ingredientlist = ingredientlist;
 	}
 	
-	public int getRecipeID() {
+	public String getRecipeID() {
 		return RecipeID;
 	}
 
-	public void setRecipeID(int recipeid) {
+	public void setRecipeID(String recipeid) {
 		RecipeID = recipeid;
 	}
 
