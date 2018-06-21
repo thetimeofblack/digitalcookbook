@@ -9,7 +9,7 @@ import org.junit.Assert.*;
 import CookBookEntity.Recipe;
 public class DatabaseAccessTest {
 	public static void main(String[] args) throws Exception {
-		DatabaselayerObject dao = new DatabaselayerObject();
+		DatabaseLayerObject dao = new DatabaseLayerObject();
 		Recipe recipe = CookBookApp.createGongBaoJiding();
 		Recipe recipe2 = CookBookApp.createHongShaoRou();
 		

@@ -14,7 +14,7 @@ import CookBookView.loginview.LoginView;
 import CookBookView.loginview.loginController;
 import CookBookView.registerview.registerViewController;
 import javafx.event.ActionEvent;
-import CookBookDataBaseAcess.DatabaselayerObject;
+import CookBookDataBaseAcess.DatabaseLayerObject;
 public class fvController {
 	@FXML
 	private Button loginbutton;
@@ -36,7 +36,7 @@ public class fvController {
 	public void loginView(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
 		GridPane root = (GridPane) loader.load();
-		DatabaselayerObject dao = new DatabaselayerObject();	
+		DatabaseLayerObject dao = new DatabaseLayerObject();	
 		
 	
 		loginController lc = loader.getController();
