@@ -14,7 +14,7 @@ import javafx.scene.image.ImageView;
 
 import javafx.scene.input.MouseEvent;
 
-public class maindetailController {
+public class MaindetailController {
 	@FXML
 	private Label recipeName;
 	@FXML
