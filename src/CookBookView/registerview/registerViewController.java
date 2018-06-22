@@ -15,7 +15,7 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 
 
-import CookBookDataBaseAcess.DatabaseLayerObject;
+import CookBookDataBaseAcess.DatabaselayerObject;
 public class registerViewController {
 	@FXML
 	private TextField username;
@@ -30,7 +30,7 @@ public class registerViewController {
 	
 	private Scene scene;
 	
-	private DatabaseLayerObject dao; 
+	private DatabaselayerObject dao; 
 	// Event Listener on Button[#ok].onAction
 	@FXML
 	public void userRegister(ActionEvent event) throws Exception {
@@ -83,7 +83,7 @@ public class registerViewController {
 		this.scene = scene;
 	}
 	
-	public void setDatabase(DatabaseLayerObject dao) {
+	public void setDatabase(DatabaselayerObject dao) {
 		this.dao = dao; 
 	}
 }
