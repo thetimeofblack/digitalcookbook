@@ -36,8 +36,6 @@ public class SubviewController {
 	private DatabaselayerObject databaselayerObject;
 
 	public void toDetailView() throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../detailview/maindetail.fxml"));
-		AnchorPane root = loader.load();
 		
 	}
 
@@ -48,25 +46,25 @@ public class SubviewController {
 
 	public void setStar(int rate) {
 		if (rate == 1) {
-			Image image = new Image(getClass().getResourceAsStream("五角星-2.png"));
+			Image image = new Image(getClass().getResourceAsStream("star.png"));
 			star1.setGraphic(new ImageView(image));
 		} else if (rate == 2) {
-			Image image = new Image(getClass().getResourceAsStream("五角星-2.png"));
+			Image image = new Image(getClass().getResourceAsStream("star.png"));
 			star1.setGraphic(new ImageView(image));
 			star2.setGraphic(new ImageView(image));
 		} else if (rate == 3) {
-			Image image = new Image(getClass().getResourceAsStream("五角星-2.png"));
+			Image image = new Image(getClass().getResourceAsStream("star.png"));
 			star1.setGraphic(new ImageView(image));
 			star2.setGraphic(new ImageView(image));
 			star3.setGraphic(new ImageView(image));
 		} else if (rate == 4) {
-			Image image = new Image(getClass().getResourceAsStream("五角星-2.png"));
+			Image image = new Image(getClass().getResourceAsStream("star.png"));
 			star1.setGraphic(new ImageView(image));
 			star2.setGraphic(new ImageView(image));
 			star3.setGraphic(new ImageView(image));
 			star4.setGraphic(new ImageView(image));
 		} else if (rate == 5) {
-			Image image = new Image(getClass().getResourceAsStream("五角星-2.png"));
+			Image image = new Image(getClass().getResourceAsStream("star.png"));
 			star1.setGraphic(new ImageView(image));
 			star2.setGraphic(new ImageView(image));
 			star3.setGraphic(new ImageView(image));
