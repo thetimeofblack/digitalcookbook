@@ -16,7 +16,7 @@ public class DetailView extends Application{
 		
 		AnchorPane root = (AnchorPane)loader.load();
 		MaindetailController mdcontroller = loader.getController();
-		Pane pane = mdcontroller.getpane();
+		ScrollPane pane = mdcontroller.getpane();
 		ScrollPane scrollpane= new ScrollPane();
 		//Pane pane1 = (Pane)loader1.load();
 		VBox vbox = new VBox();
