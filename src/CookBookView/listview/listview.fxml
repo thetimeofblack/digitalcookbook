@@ -5,16 +5,16 @@
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="290.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ListViewController">
+
    <children>
-      <VBox prefHeight="132.0" prefWidth="44.0">
+      <VBox layoutY="62.0" prefHeight="132.0" prefWidth="44.0">
          <children>
             <Label maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="44.0" prefWidth="44.0">
                <graphic>
                   <ImageView fx:id="vegen" fitHeight="44.0" fitWidth="40.0" onDragDetected="#showVegen">
                      <image>
-                        <Image url="@素菜.png" />
+                        <Image url="@vegan.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -23,7 +23,7 @@
                <graphic>
                   <ImageView fx:id="egg_milk" fitHeight="36.0" fitWidth="44.0" onDragDetected="#showEgg_Mlik">
                      <image>
-                        <Image url="@煎鸡蛋-2.png" />
+                        <Image url="@egg.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -32,17 +32,94 @@
                <graphic>
                   <ImageView fx:id="meat" fitHeight="44.0" fitWidth="47.0" onDragDetected="#showMeat">
                      <image>
-                        <Image url="@五花肉.png" />
+                        <Image url="@meat.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Label>
          </children>
       </VBox>
+<<<<<<< HEAD
       <VBox layoutX="40.0" prefHeight="470.0" prefWidth="250.0" fx:id="vbox">
+=======
+      <Pane layoutX="41.0" layoutY="37.0" prefHeight="422.0" prefWidth="254.0">
+>>>>>>> refs/remotes/origin/master
          <children>
+<<<<<<< HEAD
             <ScrollBar orientation="VERTICAL" prefHeight="475.0" prefWidth="14.0" />
+=======
+            <ScrollBar layoutX="229.0" orientation="VERTICAL" prefHeight="422.0" prefWidth="20.0" />
+            <VBox fx:id="recipeVBox" prefHeight="422.0" prefWidth="229.0">
+               <children>
+                  <Pane prefHeight="50.0" prefWidth="229.0">
+                     <children>
+                        <Text fx:id="Recipename" layoutY="19.0" onDragDetected="#showRecipename" strokeType="OUTSIDE" strokeWidth="0.0" text="Recipename" wrappingWidth="138.21875" />
+                        <HBox layoutY="22.0" prefHeight="44.0" prefWidth="221.0">
+                           <children>
+                              <Label prefHeight="20.0" prefWidth="20.0">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0">
+                                       <image>
+                                          <Image url="@emptystar.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Label>
+                              <Label prefHeight="20.0" prefWidth="20.0">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0">
+                                       <image>
+                                          <Image url="@emptystar.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Label>
+                              <Label prefHeight="20.0" prefWidth="20.0">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0">
+                                       <image>
+                                          <Image url="@emptystar.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Label>
+                              <Label prefHeight="20.0" prefWidth="20.0">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0">
+                                       <image>
+                                          <Image url="@emptystar.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Label>
+                              <Label prefHeight="20.0" prefWidth="20.0">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0">
+                                       <image>
+                                          <Image url="@emptystar.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Label>
+                              <Label fx:id="favourite" prefHeight="20.0" prefWidth="20.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+>>>>>>> refs/remotes/origin/master
          </children>
+<<<<<<< HEAD
       </VBox>
+=======
+      </Pane>
+      <Label layoutX="239.0" layoutY="20.0" prefHeight="15.0" prefWidth="37.0" text="  User" />
+      <Button fx:id="logout" layoutX="230.0" mnemonicParsing="false" onAction="#logOut" text="Log out" textFill="#140b43">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Button>
+>>>>>>> refs/remotes/origin/master
    </children>
 </AnchorPane>
