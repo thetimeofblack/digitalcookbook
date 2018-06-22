@@ -24,12 +24,20 @@ public class DatabaselayerObject {
 	static ResultSet res, res2;
 	final private String driver = "com.mysql.jdbc.Driver";
 	final private String Databaseuser = "root";
+<<<<<<< HEAD
+	//final private String Databasepassword = "heyining";//¿ÉĞŞ¸ÄÏîÄ¿
+	final private String Databasepassword = "258000";//¿ÉĞŞ¸ÄÏîÄ¿
+	//final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306/?characterEncoding=utf8&useSSL=true&serverTimezone=GMT";//¿ÉĞŞ¸ÄÏîÄ¿
+	final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306";//¿ÉĞŞ¸ÄÏîÄ¿
+	
+=======
 
 	final private String Databasepassword = "root";
 	final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306/?characterEncoding=utf8&useSSL=true&serverTimezone=GMT";
 	//final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306";
 	//final private String Databaseurl = "jdbc:mysql://localhost:3306/recipedatabase?useSSL=true&serverTimezone=GMT";
 
+>>>>>>> refs/remotes/origin/master
 	private User user; 
 	
 	public DatabaselayerObject(){
@@ -60,10 +68,17 @@ public class DatabaselayerObject {
 	}
 	
 	
+<<<<<<< HEAD
+=======
 
+>>>>>>> refs/remotes/origin/master
 	
+<<<<<<< HEAD
+	// login·½·¨,·µ»Ø0ÎªÃÜÂë²»Ò»Ñù£¬·µ»Ø1ÔòÎªµÇÂ½³É¹¦£¬-1ÔòÎªÎ´ÕÒµ½ÓÃ»§Ãû
+=======
 	// loginé”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·,é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·0ä¸ºé”Ÿæ–¤æ‹·é”Ÿè¯«ä¸ä¸€é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·1é”Ÿæ–¤æ‹·ä¸ºé”Ÿæ–¤æ‹·é™†é”Ÿç¼´ç™¸æ‹·é”Ÿæ–¤æ‹·-1é”Ÿæ–¤æ‹·ä¸ºæœªé”Ÿæ­ç¢‰æ‹·é”ŸçŸ«ä¼™æ‹·é”Ÿæ–¤æ‹·
 
+>>>>>>> refs/remotes/origin/master
 	public int userLogin(String username, String userpassword) throws SQLException {
 			
 		String s1 = "select * from cookbook.user where UserName = '"+ username +"'";
@@ -90,11 +105,17 @@ public class DatabaselayerObject {
 	}
 	
 
+<<<<<<< HEAD
+	
+
+	//ĞÂ½¨ÕË»§·½·¨,·µ»ØtrueÎª³É¹¦£¬·µ»ØfalseÎªÓĞÖØ¸´ÓÃ»§Ãû
+=======
 
 	
 
 	//é”Ÿé“°æ–¤æ‹·é”Ÿå‰¿ä¼™æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·,é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·trueä¸ºé”Ÿç¼´ç™¸æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·falseä¸ºé”Ÿæ–¤æ‹·é”Ÿæˆªé©æ‹·é”ŸçŸ«ä¼™æ‹·é”Ÿæ–¤æ‹·
 
+>>>>>>> refs/remotes/origin/master
 	public boolean userRegister(User user) throws SQLException {
 		String sqlstr1 = "select * from `cookbook`.`user` where username = '"+user.getUserName()+"'";
 		res = this.sql.executeQuery(sqlstr1);
@@ -111,7 +132,11 @@ public class DatabaselayerObject {
 		System.out.println(res1);
         ResultSet rs = pstmt.getGeneratedKeys();
 				
+<<<<<<< HEAD
+		//»ñÈ¡×Ô¶¯Ôö¼ÓµÄidºÅ		        
+=======
 		//é”Ÿæ–¤æ‹·å–é”Ÿçš†è®¹æ‹·é”Ÿæ–¤æ‹·æ‹¥é”Ÿçµ dé”Ÿæ–¤æ‹·		        
+>>>>>>> refs/remotes/origin/master
         String id = rs.getString(1);
         user.setUserID(id);            
         this.user = user;
@@ -149,10 +174,15 @@ public class DatabaselayerObject {
 		
 		try {
 			
+<<<<<<< HEAD
+			// ÌáÈ¡recipeÒ»°ãĞÅÏ¢²¿·Ö
+			String ss1 = "select * from cookbook.recipe where id = '"+recipeid+"'";
+=======
 
 			// é”Ÿæ–¤æ‹·å–recipeä¸€é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·æ¯é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·
 			String ss1 = "select * from cookbook.recipe where id = '"+recipeid+"'";
 
+>>>>>>> refs/remotes/origin/master
 			res = this.sql.executeQuery(ss1);
 			
 			if (res.next()) {
@@ -165,11 +195,17 @@ public class DatabaselayerObject {
 				recipe.setDescription(res.getString("Description"));
 			}
 
+<<<<<<< HEAD
+			
+			// ÌáÈ¡¶ÔÓ¦ingredients²¿·Ö
+			String ss2 = "select * from cookbook.ingredients where RecipeID = " + recipeid;
+=======
 
 			// é”Ÿæ–¤æ‹·å–é”Ÿæ–¤æ‹·åº”ingredientsé”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·
 			String recipeid1 = res.getString("ID");
 
 			String ss2 = "select * from cookbook.ingredients where RecipeID = " + recipeid1;
+>>>>>>> refs/remotes/origin/master
 			res = sql.executeQuery(ss2);
 			while (res.next()) {
 				Ingredient ingredient = new Ingredient();
@@ -200,7 +236,11 @@ public class DatabaselayerObject {
 		return recipe;
 	}
 	
+<<<<<<< HEAD
+	//Î´ÊµÏÖ²¿·Ö
+=======
 	//æœªå®é”Ÿè¡—è¯§æ‹·é”Ÿæ–¤æ‹·
+>>>>>>> refs/remotes/origin/master
 	/*
 	public Recipe getRecipe(ResultSet res) throws Exception{
 		Recipe recipe = new Recipe();
@@ -229,10 +269,15 @@ public class DatabaselayerObject {
 		LinkedList<Recipe> ls = new LinkedList<Recipe>();
 		try {
 
+<<<<<<< HEAD
+			// ÏÔÊ¾³öËùÓĞµÄrecipe list		
+			res = this.sql.executeQuery("select * from cookbook.recipe ");
+=======
 
 			// é”Ÿæ–¤æ‹·ç¤ºé”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿå«ç¢‰æ‹·recipe list		
 			res = this.sql.executeQuery("select * from cookbook.recipe ");
 
+>>>>>>> refs/remotes/origin/master
 			while (res.next()) {
 				Recipe recipe = new Recipe();
 				recipe.setRecipeID(res.getString("ID"));
@@ -245,11 +290,17 @@ public class DatabaselayerObject {
 				ls.add(recipe);
 			}
 
+<<<<<<< HEAD
+			// ÏÔÊ¾³öË½ÓĞ²¿·Örecipe
+			/* 
+			 * ´Ë·½·¨ÒÑ²»ÓÃÊµÏÖ
+=======
 
 			// é”Ÿæ–¤æ‹·ç¤ºé”Ÿæ–¤æ‹·ç§é”Ÿå«è¯§æ‹·é”Ÿæ–¤æ‹·recipe
 			/* 
 			 * é”Ÿå‰¿å‡¤æ‹·é”Ÿæ–¤æ‹·é”Ÿçª–è¯§æ‹·é”Ÿæ–¤æ‹·å®é”Ÿæ–¤æ‹·
 
+>>>>>>> refs/remotes/origin/master
 			String ss = "select * from `cookbook`.`user-recipe` where userid = " + userid;
 			res = sql.executeQuery(ss);
 			String s1;
@@ -273,6 +324,12 @@ public class DatabaselayerObject {
 		return ls;
 	}
 
+<<<<<<< HEAD
+	
+	// ÓÃ»§ÊäÈë²ËÃû£¬ËÑË÷recipe ·½·¨
+	public LinkedList<Recipe> showsearchingrecipelist(String s) {
+		
+=======
 
 	
 	// é”ŸçŸ«ä¼™æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿçµ©ecipe é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·
@@ -280,6 +337,7 @@ public class DatabaselayerObject {
 		
 
 
+>>>>>>> refs/remotes/origin/master
 		LinkedList<Recipe> ls = new LinkedList<Recipe>();
 		try {			
 			String ss = "select * from cookbook.recipe where name is like '%" + s + "%'";
@@ -304,8 +362,13 @@ public class DatabaselayerObject {
 	// create recipe method
 	
 	
+<<<<<<< HEAD
+	//recipe±í ²åÈë·½·¨	
+	public Recipe insertrecipe(Recipe recipe) {//´ËrecipeÎŞrecipeid
+=======
 	//recipeé”Ÿæ–¤æ‹· é”Ÿæ–¤æ‹·é”Ÿè¯«æ–¹é”Ÿæ–¤æ‹·	
 	public Recipe insertrecipe(Recipe recipe) {//é”Ÿæ–¤æ‹·recipeé”Ÿæ–¤æ‹·recipeid
+>>>>>>> refs/remotes/origin/master
 		String recipeid = "null";
 		int res1 = 0;
 		String ss1 = "INSERT INTO cookbook.recipe (Name, ServeNumber, Privacy, PrepareTime, Category, Description, CookTime) values(\'"
@@ -319,6 +382,13 @@ public class DatabaselayerObject {
 		System.out.println(ss1);
 		PreparedStatement pstmt;
 		try {
+<<<<<<< HEAD
+			pstmt = this.con.prepareStatement(ss1,Statement.RETURN_GENERATED_KEYS);
+			res1 = pstmt.executeUpdate();
+			ResultSet rs = pstmt.getGeneratedKeys();
+	        recipeid = rs.getString(1);
+		} catch (SQLException e) {
+=======
 
 			pstmt = this.con.prepareStatement(ss1,Statement.RETURN_GENERATED_KEYS);
 			res1 = pstmt.executeUpdate();
@@ -326,6 +396,7 @@ public class DatabaselayerObject {
 	        recipeid = rs.getString(1);
 		} catch (SQLException e) {
 
+>>>>>>> refs/remotes/origin/master
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
@@ -334,7 +405,11 @@ public class DatabaselayerObject {
 	}
 	
 	
+<<<<<<< HEAD
+	//ingredients±í²åÈë·½·¨
+=======
 	//ingredientsé”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·æ••æ–¤æ‹·é”Ÿï¿½
+>>>>>>> refs/remotes/origin/master
 	public void insertingredients(Recipe recipe) throws SQLException {
 		int res1 = 0;
 		LinkedList<Ingredient> ls1 = recipe.getIngredientlist();
@@ -354,6 +429,76 @@ public class DatabaselayerObject {
 	}
 	
 	
+<<<<<<< HEAD
+	//preparationsteps±í²åÈë·½·¨
+	public void insertpreparationsteps(Recipe recipe) throws SQLException {
+		int res1 = 0;
+		LinkedList<PreparationStep> ls2 = recipe.getPreparationSteps();
+		for (int y = 0; y < ls2.size(); y++) {
+			ls2.get(y);
+			String sqlstr3 = "INSERT INTO `cookbook`.`preparationstep` (`Description`,`preparationstepsorder`,`RecipeID`)"
+					+ "values('" 
+					+ ls2.get(y).getDescription() + "','" 
+					+ ls2.get(y).getOrder() + "','"
+					+ recipe.getRecipeID()+ "')";
+			System.out.println(sqlstr3);
+			res1 = sql.executeUpdate(sqlstr3);
+		}
+		
+	}
+	
+	
+	//recipe-user±í²åÈë·½·¨
+	public void insertrecipeuser(Recipe recipe) throws SQLException{
+		int res1 = 0;
+		String ss4 = "INSERT INTO `cookbook`.`UserRecipe` (`userid`,`recipeid`) values('" 
+				+ Integer.parseInt(this.user.getUserID()) + "','" 
+				+ recipe.getRecipeID()+ "')";
+		res1 = sql.executeUpdate(ss4);
+		
+	}
+	
+	//×Ü£ºrecipe²åÈë·½·¨	
+	public boolean insertRecipe(Recipe recipe) throws SQLException {
+		Recipe newrecipe = new Recipe();
+		newrecipe = insertrecipe(recipe);
+		insertingredients(newrecipe);
+		insertpreparationsteps(newrecipe);
+		insertrecipeuser(newrecipe);
+		return true;
+	}
+	
+	
+	
+	//recipe±íÉ¾³ı·½·¨
+	public void deleterecipe(Recipe recipe) throws SQLException {
+		String recipeid = recipe.getRecipeID();
+		String ss = "delete from `cookbook`.`recipe` "
+				+ "where id = '" + recipeid + "' and privacy = 1";
+		int res1 = 0;
+		res1 = this.sql.executeUpdate(ss);
+		
+	}		
+	//ingredients±íÉ¾³ı·½·¨
+	public void deleteingredients(Recipe recipe) throws SQLException {
+		String recipeid = recipe.getRecipeID();
+		String ss = "delete from `cookbook`.`ingredients` "
+				+ "where recipeid = '" + recipeid + "'";
+		int res1 = 0;
+		res1 = this.sql.executeUpdate(ss);
+		
+	}	
+	//preparationsteps±íÉ¾³ı·½·¨
+	public void deletepreparationsteps(Recipe recipe) throws SQLException {
+		String recipeid = recipe.getRecipeID();
+		String ss = "delete from `cookbook`.`preparationsteps` "
+				+ "where recipeid = '" + recipeid + "'";
+		int res1 = 0;
+		res1 = this.sql.executeUpdate(ss);
+		
+	}
+	//recipe-user±íÅĞ¶Ï·½·¨£¬·µ»ØtrueÎªÓÃ»§Ë½ÓĞÏî£¨¿ÉÉ¾¸Ä£©£¬falseÎª¹«¹²Ïî£¨²»¿ÉÉ¾¸Ä£©
+=======
 	//preparationstepsé”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·æ••æ–¤æ‹·é”Ÿï¿½
 	public void insertpreparationsteps(Recipe recipe) throws SQLException {
 		int res1 = 0;
@@ -423,6 +568,7 @@ public class DatabaselayerObject {
 		
 	}
 	//recipe-useré”Ÿæ–¤æ‹·é”Ÿå«æ–­å‡¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·trueä¸ºé”ŸçŸ«ä¼™æ‹·ç§é”Ÿæ–¤æ‹·é”Ÿç­‹ï¼ˆé”Ÿæ–¤æ‹·åˆ é”Ÿä¾¥ï½æ‹·é”Ÿæ–¤æ‹·falseä¸ºé”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿç­‹ï¼ˆé”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·åˆ é”Ÿä¾¥ï½æ‹·
+>>>>>>> refs/remotes/origin/master
 	public boolean judgerecipeuser(Recipe recipe) throws SQLException {
 		String recipeid = recipe.getRecipeID();
 		String ss1 = "select * from `cookbook`.`user-recipe` where userid = '"+this.user.getUserID()+"' and recipeid = '"+recipeid+"'";
@@ -432,7 +578,11 @@ public class DatabaselayerObject {
 		}
 		return false;
 	}
+<<<<<<< HEAD
+	//recipe-user±íÉ¾³ı·½·¨
+=======
 	//recipe-useré”Ÿæ–¤æ‹·åˆ é”Ÿæ–¤æ‹·
+>>>>>>> refs/remotes/origin/master
 	public void deleterecipeuser(Recipe recipe) throws SQLException {
 		String recipeid = recipe.getRecipeID();
 		String ss2 = "delete from `cookbook`.`user-recipe` "
@@ -441,6 +591,45 @@ public class DatabaselayerObject {
 		res1 = this.sql.executeUpdate(ss2);
 				
 	}
+		
+	//×Ü£ºrecipeÉ¾³ı·½·¨,·µ»Øtrue³É¹¦É¾³ı£¬falseÎª²»¿ÉÉ¾³ı
+	public boolean deleteRecipe(Recipe recipe) throws SQLException {
+		if(judgerecipeuser(recipe)) {
+			deleterecipe(recipe);
+			deleteingredients(recipe);
+			deletepreparationsteps(recipe);
+			return true;
+		}else {
+			return false;
+		}	
+	}
+	
+	
+	
+	//recipeĞŞ¸Ä·½·¨£¨ingredientsºÍpreparationsteps²¿·ÖÏÈÉ¾ÔÙ²å£©,trueÎªÉ¾³ı³É¹¦£¬falseÎª²»¿ÉÉ¾
+	public boolean editRecipe(Recipe recipe) throws SQLException {
+		String recipeid = recipe.getRecipeID();
+		if(judgerecipeuser(recipe)) {
+			String ss2 = "update `cookbook`.`recipe` "
+					+ "set `name` = '" + recipe.getName() + 
+					"', `servenumber` = '"+ recipe.getServeNumber() + 
+					"', `preparetime` = '" + recipe.getPrepareTime() + 
+					"', `category` = '" + recipe.getCategory() + 
+					"', `description` = '" + recipe.getDescription() + 
+					"', `cooktime` = '" + recipe.getCookTime() + 
+					"' where (`id` = " + recipe.getRecipeID() + ")";
+			int res1 = this.sql.executeUpdate(ss2);
+			deleteingredients(recipe);
+			deletepreparationsteps(recipe);
+			insertingredients(recipe);
+			insertpreparationsteps(recipe);
+			return true;
+		}	
+		else {
+			return false;
+		}
+	}
+	
 
 		
 	//é”Ÿæ°ï½æ‹·recipeåˆ é”Ÿæ–¤æ‹·,é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·trueé”Ÿç¼´ç™¸æ‹·åˆ é”Ÿæ–¤æ‹·falseä¸ºé”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·åˆ é”Ÿæ–¤æ‹·
@@ -485,6 +674,14 @@ public class DatabaselayerObject {
 
 	// UPDATE `cookbook`.`recipe` SET `Name` = 'qiezi', `ServeNumber` = '2',
 	// `Category` = 'meat' WHERE (`ID` = '4');
+<<<<<<< HEAD
+	// ĞŞ¸Ärecipe·½·¨£¬recipe1ÎªÏëÒªĞŞ¸ÄµÄrecipe£¬recipe2ÎªĞŞ¸ÄÖ®ºóµÄrecipe
+	
+	
+	// favourite±íÔö¼Ó·½·¨
+	public void insertfavourite(Recipe recipe) throws SQLException {		
+		String recipeid = recipe.getRecipeID();
+=======
 	// é”Ÿç«é©æ‹·recipeé”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·recipe1ä¸ºé”Ÿæ–¤æ‹·è¦é”Ÿç«æ”¹ç¢‰æ‹·recipeé”Ÿæ–¤æ‹·recipe2ä¸ºé”Ÿç«é©æ‹·ä¹‹é”Ÿæ–¤æ‹·é”Ÿçµ©ecipe
 	
 	
@@ -492,6 +689,7 @@ public class DatabaselayerObject {
 	public void insertfavourite(Recipe recipe) throws SQLException {		
 		String recipeid = recipe.getRecipeID();
 
+>>>>>>> refs/remotes/origin/master
 		int res1 = 0;
 		String ss = "insert into `cookbook`.`favourite` (`recipeid`,`userid`) values('" 
 				+ recipeid + "','" 
@@ -499,7 +697,11 @@ public class DatabaselayerObject {
 		res1 = this.sql.executeUpdate(ss);		
 	}
 	
+<<<<<<< HEAD
+	//favourite±íÏÔÊ¾·½·¨,trueÎªÏ²»¶£¬falseÎª²»Ï²»¶
+=======
 	//favouriteé”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·ç¤ºé”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·,trueä¸ºå–œé”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·falseä¸ºé”Ÿæ–¤æ‹·å–œé”Ÿæ–¤æ‹·
+>>>>>>> refs/remotes/origin/master
 	public boolean judgefavourite(Recipe recipe) throws SQLException {
 		String recipeid = recipe.getRecipeID();
 		String ss = "select * from `cookbook`.`favourite` where recipeid = '"+recipeid+"' and userid = "+this.user.getUserID();
@@ -552,7 +754,11 @@ public class DatabaselayerObject {
 	
 	
 	/*
+<<<<<<< HEAD
+	 * ÒÔÏÂÁ½¸ö¹¦ÄÜÒÑ¾­ÊµÏÖ¹ı
+=======
 	 * é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·ä¸«é”Ÿç»ç¢‰æ‹·æ­¢é”Ÿï¿½
+>>>>>>> refs/remotes/origin/master
 	 */
 	private void saveIngredients(Ingredient ingredients , ResultSet res) throws Exception{
 		
