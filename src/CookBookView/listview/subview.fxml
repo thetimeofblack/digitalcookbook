@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" prefHeight="77.0"
+	prefWidth="250.0" xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1" fx:controller="SubViewController">
+	<children>
+		<HBox layoutY="32.0" prefHeight="44.0" prefWidth="250.0">
+			<children>
+				<Label prefHeight="20.0" prefWidth="20.0" fx:id="star1">
+					<graphic>
+						<ImageView fitHeight="20.0" fitWidth="20.0">
+							<image>
+								<Image url="@五角星-3的副本.png" />
+							</image>
+						</ImageView>
+					</graphic>
+				</Label>
+				<Label prefHeight="20.0" prefWidth="20.0" fx:id="star2">
+					<graphic>
+						<ImageView fitHeight="20.0" fitWidth="20.0">
+							<image>
+								<Image url="@五角星-3的副本.png" />
+							</image>
+						</ImageView>
+					</graphic>
+				</Label>
+				<Label prefHeight="20.0" prefWidth="20.0" fx:id="star3">
+					<graphic>
+						<ImageView fitHeight="20.0" fitWidth="20.0">
+							<image>
+								<Image url="@五角星-3的副本.png" />
+							</image>
+						</ImageView>
+					</graphic>
+				</Label>
+				<Label prefHeight="20.0" prefWidth="20.0" fx:id="star4">
+					<graphic>
+						<ImageView fitHeight="20.0" fitWidth="20.0">
+							<image>
+								<Image url="@五角星-3的副本.png" />
+							</image>
+						</ImageView>
+					</graphic>
+				</Label>
+				<Label prefHeight="20.0" prefWidth="20.0" fx:id="star5">
+					<graphic>
+						<ImageView fitHeight="20.0" fitWidth="20.0">
+							<image>
+								<Image url="@五角星-3的副本.png" />
+							</image>
+						</ImageView>
+					</graphic>
+				</Label>
+				<Label fx:id="favourite" prefHeight="20.0" prefWidth="20.0" />
+			</children>
+		</HBox>
+		<Label layoutX="1.0" layoutY="6.0" prefHeight="17.0"
+			prefWidth="250.0" text="RecipeName" fx:id="recipeName" onMouseClicked="#toDetailView" />
+	</children>
+</Pane>
