@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="77.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SubViewController">
+	<children>
+		<HBox layoutY="32.0" prefHeight="44.0" prefWidth="250.0">
+			<children>
+				<Label fx:id="star1" prefHeight="20.0" prefWidth="20.0">
+					<graphic>
+						<ImageView fitHeight="20.0" fitWidth="20.0">
+							<image>
+								<Image url="@star.png" />
+							</image>
+						</ImageView>
+					</graphic>
+				</Label>
+				<Label fx:id="star2" prefHeight="20.0" prefWidth="20.0">
+					<graphic>
+						<ImageView fitHeight="20.0" fitWidth="20.0">
+							<image>
+								<Image url="@star.png" />
+							</image>
+						</ImageView>
+					</graphic>
+				</Label>
+				<Label fx:id="star3" prefHeight="20.0" prefWidth="20.0">
+					<graphic>
+						<ImageView fitHeight="20.0" fitWidth="20.0">
+							<image>
+								<Image url="@star.png" />
+							</image>
+						</ImageView>
+					</graphic>
+				</Label>
+				<Label fx:id="star4" prefHeight="20.0" prefWidth="20.0">
+					<graphic>
+						<ImageView fitHeight="20.0" fitWidth="20.0">
+							<image>
+								<Image url="@star.png" />
+							</image>
+						</ImageView>
+					</graphic>
+				</Label>
+				<Label fx:id="star5" prefHeight="20.0" prefWidth="20.0">
+					<graphic>
+						<ImageView fitHeight="20.0" fitWidth="20.0">
+							<image>
+								<Image url="@star.png" />
+							</image>
+						</ImageView>
+					</graphic>
+				</Label>
+				<Label fx:id="favourite" prefHeight="20.0" prefWidth="20.0" />
+			</children>
+		</HBox>
+		<Label fx:id="recipeName" layoutX="1.0" layoutY="6.0" onMouseClicked="#toDetailView" prefHeight="17.0" prefWidth="250.0" text="RecipeName" />
+	</children>
+</Pane>

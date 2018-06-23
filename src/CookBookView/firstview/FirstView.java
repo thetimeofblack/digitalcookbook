@@ -18,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class FirstView extends javafx.application.Application {
@@ -26,6 +27,8 @@ public class FirstView extends javafx.application.Application {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("fv.fxml"));
 			BorderPane root = (BorderPane) loader.load();
 			fvController fvc = loader.getController();
+			//VBox vbox = new VBox();
+			//ox.getChildren().add();
 			Scene scene = new Scene(root, 290, 470);
 			fvc.setStageAndScene(primaryStage, scene);
 			primaryStage.setScene(scene);
