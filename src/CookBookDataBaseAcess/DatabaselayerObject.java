@@ -601,7 +601,7 @@ public class DatabaselayerObject {
 //	 * 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷丫锟绞碉拷止锟�
 
 
-	 */
+	 
 	private void saveIngredients(Ingredient ingredients , ResultSet res) throws Exception{
 		
 	}
