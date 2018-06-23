@@ -20,6 +20,7 @@ public class DatabaseAccessTest {
 		assertEquals(dao.userLogin(user.getUserName(),user.getUserPassword()),1);
 		assertEquals(dao.userLogin(user2.getUserName(),user2.getUserPassword()),0);
 		assertEquals(dao.userLogin(user3.getUserName(),user3.getUserPassword()),-1);
+		System.out.println("___");
 		//assertEquals(dao.)
 		//assertEquals(dao.getUserRecipe(, name))
 		//Recipe recipeget = new Recipe();

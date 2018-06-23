@@ -73,6 +73,7 @@ public class SubviewController {
 			star3.setGraphic(iv);
 			star4.setGraphic(iv);
 			star5.setGraphic(iv);
+			
 		}
 	}
 
