@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0"
+	prefWidth="290.0" xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="CookBookView.listview.ListAllController">
+	<children>
+		<VBox layoutY="62.0" prefHeight="132.0" prefWidth="44.0">
+			<children>
+				<Label fx:id="vegan" maxHeight="-Infinity"
+					maxWidth="-Infinity" prefHeight="44.0" prefWidth="44.0">
+					<graphic>
+						<ImageView fitHeight="44.0" fitWidth="40.0">
+							<image>
+								<Image url="@vegan.png" />
+							</image>
+						</ImageView>
+					</graphic>
+				</Label>
+				<Label fx:id="egg_milk" prefHeight="44.0" prefWidth="44.0">
+					<graphic>
+						<ImageView fitHeight="36.0" fitWidth="44.0">
+							<image>
+								<Image url="@egg.png" />
+							</image>
+						</ImageView>
+					</graphic>
+				</Label>
+				<Label fx:id="meat" prefHeight="44.0" prefWidth="44.0">
+					<graphic>
+						<ImageView fitHeight="44.0" fitWidth="47.0">
+							<image>
+								<Image url="@meat.png" />
+							</image>
+						</ImageView>
+					</graphic>
+				</Label>
+			</children>
+		</VBox>
+		<Label layoutX="239.0" layoutY="20.0" prefHeight="15.0"
+			prefWidth="37.0" text="  User" />
+		<Button fx:id="logout" layoutX="230.0" mnemonicParsing="false"
+			onAction="#logOut" text="Log out" textFill="#140b43">
+			<font>
+				<Font size="11.0" />
+			</font>
+		</Button>
+		<ScrollPane layoutX="47.0" layoutY="37.0"
+			prefHeight="427.0" prefWidth="236.0">
+			<content>
+				<VBox fx:id="recipeVBox" prefHeight="427.0" prefWidth="224.0" />
+			</content>
+		</ScrollPane>
+		<Label fx:id="toSearchView" layoutX="2.0" layoutY="412.0"
+			maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="44.0"
+			prefWidth="44.0" onMouseClicked="#backToSearchView">
+			<graphic>
+				<ImageView fitHeight="44.0" fitWidth="40.0">
+					<image>
+						<Image url="@return.png" />
+					</image>
+				</ImageView>
+			</graphic>
+		</Label>
+	</children>
+</AnchorPane>
