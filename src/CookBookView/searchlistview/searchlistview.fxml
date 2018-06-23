@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="290.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="logout" layoutX="225.0" layoutY="1.0" mnemonicParsing="false" onAction="#logOut" style="-fx-background-color: #ffffff;" text="Log out" />
+      <Label fx:id="user" layoutX="230.0" layoutY="28.0" prefHeight="17.0" prefWidth="55.0" />
+      <VBox layoutY="54.0" prefHeight="374.0" prefWidth="290.0" />
+      <Label layoutX="212.0" layoutY="415.0" prefHeight="45.0" prefWidth="43.0" />
+      <ImageView fitHeight="38.0" fitWidth="37.0" layoutX="237.0" layoutY="428.0">
+         <image>
+            <Image url="@back.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
