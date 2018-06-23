@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane prefHeight="267.0" prefWidth="239.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <AnchorPane prefHeight="264.0" prefWidth="237.0">
+         <children>
+            <ImageView fx:id="add" fitHeight="28.0" fitWidth="29.0" layoutX="202.0" layoutY="230.0" onDragDetected="#addLine">
+               <image>
+                  <Image url="@Add.png" />
+               </image>
+            </ImageView>
+            <VBox layoutY="18.0" prefHeight="208.0" prefWidth="232.0" />
+            <HBox prefHeight="29.0" prefWidth="232.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="No" wrappingWidth="25.21875" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Usage" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Unit" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Description" wrappingWidth="78.54296875" />
+               </children>
+            </HBox>
+            <Button fx:id="confirm" layoutX="135.0" layoutY="231.0" mnemonicParsing="false" onAction="#saveRecipe" text="Confirm" />
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>

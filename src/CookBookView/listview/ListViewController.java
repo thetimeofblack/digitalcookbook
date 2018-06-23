@@ -1,5 +1,7 @@
 package CookBookView.listview;
 
+import java.awt.ScrollPane;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -12,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 public class ListViewController {
@@ -30,9 +33,13 @@ public class ListViewController {
 	@FXML
 	private Label favourite;
 	@FXML
-	private VBox recipeVBox;
+	private VBox vbox;
+	
 	private Stage stage;
 	private Scene scene;
+	
+	@FXML
+	private ScrollPane pane;
 	
 
 	// Event Listener on Button[#logout].onAction
@@ -70,7 +77,15 @@ public class ListViewController {
 	}
 	
 	public VBox getVBox() {
-		return this.recipeVBox;
+		return this.vbox;
+	}
+
+	public ScrollPane getPane() {
+		return pane;
+	}
+
+	public void setPane(ScrollPane pane) {
+		this.pane = pane;
 	}
 	
 }

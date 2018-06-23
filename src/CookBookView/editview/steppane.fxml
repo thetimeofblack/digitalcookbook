@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="257.0" prefWidth="254.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="252.0" prefWidth="252.0">
+         <children>
+            <VBox prefHeight="212.0" prefWidth="254.0">
+               <children>
+                  <HBox prefHeight="25.0" prefWidth="254.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1" wrappingWidth="15.06201171875" />
+                        <TextField prefHeight="27.0" prefWidth="231.0" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <ImageView fx:id="add" fitHeight="25.0" fitWidth="26.0" layoutX="212.0" layoutY="212.0" onDragDetected="#addLine">
+               <image>
+                  <Image url="@Add.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="confirm" layoutX="140.0" layoutY="211.0" mnemonicParsing="false" onAction="#saveSteps" prefHeight="27.0" prefWidth="67.0" text="Confirm" />
+         </children></AnchorPane>
+  </content>
+</ScrollPane>
