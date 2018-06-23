@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox prefHeight="20.0" prefWidth="247.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField prefHeight="27.0" prefWidth="22.0" />
+      <TextField prefHeight="27.0" prefWidth="41.0" />
+      <TextField prefHeight="27.0" prefWidth="35.0" />
+      <TextField prefHeight="27.0" prefWidth="30.0" />
+      <TextField prefHeight="27.0" prefWidth="93.0" />
+      <Button fx:id="delete" mnemonicParsing="false" onAction="#deletenode" text="X" />
+   </children>
+</HBox>
