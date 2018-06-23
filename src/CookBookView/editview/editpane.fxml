@@ -121,6 +121,7 @@
             </ImageView>
             <Button fx:id="cancel" layoutX="215.0" layoutY="425.0" mnemonicParsing="false" onAction="#back" text="Cancel" textFill="#0917d7" />
             <Pane layoutX="53.0" layoutY="150.0" prefHeight="270.0" prefWidth="229.0" />
+            <Button layoutX="168.0" layoutY="425.0" mnemonicParsing="false" text="OK" />
          </children>
       </Pane>
    </children>
