@@ -49,31 +49,30 @@ public class SubviewController {
 	}
 
 	public void setStar() {
+		Image image = new Image(getClass().getResourceAsStream("star.png"));
+		ImageView iv = new ImageView(image);
+		iv.setFitHeight(20);
+		iv.setFitWidth(20);
 		if (recipe.getRate() == 1) {
-			Image image = new Image(getClass().getResourceAsStream("star.png"));
-			star1.setGraphic(new ImageView(image));
+			star1.setGraphic(iv);
 		} else if (recipe.getRate() == 2) {
-			Image image = new Image(getClass().getResourceAsStream("star.png"));
-			star1.setGraphic(new ImageView(image));
-			star2.setGraphic(new ImageView(image));
+			star1.setGraphic(iv);
+			star2.setGraphic(iv);
 		} else if (recipe.getRate() == 3) {
-			Image image = new Image(getClass().getResourceAsStream("star.png"));
-			star1.setGraphic(new ImageView(image));
-			star2.setGraphic(new ImageView(image));
-			star3.setGraphic(new ImageView(image));
+			star1.setGraphic(iv);
+			star2.setGraphic(iv);
+			star3.setGraphic(iv);
 		} else if (recipe.getRate() == 4) {
-			Image image = new Image(getClass().getResourceAsStream("star.png"));
-			star1.setGraphic(new ImageView(image));
-			star2.setGraphic(new ImageView(image));
-			star3.setGraphic(new ImageView(image));
-			star4.setGraphic(new ImageView(image));
+			star1.setGraphic(iv);
+			star2.setGraphic(iv);
+			star3.setGraphic(iv);
+			star4.setGraphic(iv);
 		} else if (recipe.getRate() == 5) {
-			Image image = new Image(getClass().getResourceAsStream("star.png"));
-			star1.setGraphic(new ImageView(image));
-			star2.setGraphic(new ImageView(image));
-			star3.setGraphic(new ImageView(image));
-			star4.setGraphic(new ImageView(image));
-			star5.setGraphic(new ImageView(image));
+			star1.setGraphic(iv);
+			star2.setGraphic(iv);
+			star3.setGraphic(iv);
+			star4.setGraphic(iv);
+			star5.setGraphic(iv);
 		}
 	}
 

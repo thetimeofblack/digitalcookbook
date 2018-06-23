@@ -9,7 +9,8 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity"
 	minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0"
 	prefWidth="290.0" xmlns="http://javafx.com/javafx/8"
-	xmlns:fx="http://javafx.com/fxml/1" fx:controller="ListViewController">
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="CookBookView.listview.ListviewController">
 
 	<children>
 		<VBox layoutY="62.0" prefHeight="132.0" prefWidth="44.0">
@@ -34,13 +35,16 @@
 				<VBox fx:id="recipeVBox" prefHeight="431.0" prefWidth="223.0" />
 			</content>
 		</ScrollPane>
-		<ImageView fx:id="toSearchView" fitHeight="44.0"
-			fitWidth="44.0" layoutX="-1.0" layoutY="420.0"
-			onMouseClicked="#backToSearchView">
-			<image>
-				<Image url="@return.png" />
-			</image>
-		</ImageView>
-
+		<Label fx:id="toSearchView" layoutX="2.0" layoutY="412.0"
+			maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="44.0"
+			prefWidth="44.0" onMouseClicked="#backToSearchView">
+			<graphic>
+				<ImageView fitHeight="44.0" fitWidth="40.0">
+					<image>
+						<Image url="@return.png" />
+					</image>
+				</ImageView>
+			</graphic>
+		</Label>
 	</children>
 </AnchorPane>

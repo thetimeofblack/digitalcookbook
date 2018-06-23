@@ -56,7 +56,7 @@
       <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Press here to" />
-            <Button fx:id="register" mnemonicParsing="false" onAction="#backtoRegisterView" prefHeight="19.0" prefWidth="59.0" text="register" textFill="#000000ed">
+            <Button fx:id="register" mnemonicParsing="false" onAction="#backtoRegisterView" prefHeight="29.0" prefWidth="75.0" text="register" textFill="#000000ed">
                <font>
                   <Font name="Optima Regular" size="13.0" />
                </font></Button>

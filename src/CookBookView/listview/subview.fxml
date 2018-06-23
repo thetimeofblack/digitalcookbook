@@ -14,7 +14,7 @@
 					<graphic>
 						<ImageView fitHeight="20.0" fitWidth="20.0">
 							<image>
-								<Image url="@star.png" />
+								<Image url="@emptystar.png" />
 							</image>
 						</ImageView>
 					</graphic>
@@ -23,7 +23,7 @@
 					<graphic>
 						<ImageView fitHeight="20.0" fitWidth="20.0">
 							<image>
-								<Image url="@star.png" />
+								<Image url="@emptystar.png" />
 							</image>
 						</ImageView>
 					</graphic>
@@ -32,7 +32,7 @@
 					<graphic>
 						<ImageView fitHeight="20.0" fitWidth="20.0">
 							<image>
-								<Image url="@star.png" />
+								<Image url="@emptystar.png" />
 							</image>
 						</ImageView>
 					</graphic>
@@ -41,7 +41,7 @@
 					<graphic>
 						<ImageView fitHeight="20.0" fitWidth="20.0">
 							<image>
-								<Image url="@star.png" />
+								<Image url="@emptystar.png" />
 							</image>
 						</ImageView>
 					</graphic>
@@ -50,7 +50,7 @@
 					<graphic>
 						<ImageView fitHeight="20.0" fitWidth="20.0">
 							<image>
-								<Image url="@star.png" />
+								<Image url="@emptystar.png" />
 							</image>
 						</ImageView>
 					</graphic>

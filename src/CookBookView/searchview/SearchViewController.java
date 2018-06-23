@@ -54,11 +54,14 @@ public class SearchViewController {
 		stage.show();
 	}
 
-	// Event Listener on Button[#blacksearch].onMouseEntered
+	 //Event Listener on Button[#blacksearch].onMouseEntered
 	@FXML
 	public void showblue(MouseEvent event) {
 		Image image = new Image(getClass().getResourceAsStream("搜索-5.png"));
-		blacksearch.setGraphic(new ImageView(image));
+		ImageView iv =new ImageView(image);
+		iv.setFitHeight(33);
+		iv.setFitWidth(33);
+		blacksearch.setGraphic(iv);
 	}
 
 	// Event Listener on Button[#blacksearch].onMouseClicked
