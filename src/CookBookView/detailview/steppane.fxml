@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="249.0" prefWidth="247.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="263.0" prefWidth="204.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ScrollBar layoutX="230.0" orientation="VERTICAL" prefHeight="249.0" prefWidth="17.0" />
-      <Pane prefHeight="32.0" prefWidth="230.0">
+      <VBox layoutX="2.0" prefHeight="263.0" prefWidth="204.0">
          <children>
-            <HBox prefHeight="32.0" prefWidth="230.0">
+            <HBox prefHeight="24.0" prefWidth="204.0">
                <children>
-                  <Label fx:id="number" text="  1" />
-                  <Label text="     " />
-                  <Label fx:id="steps" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="No." />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="    Description" wrappingWidth="122.21875" />
                </children>
             </HBox>
          </children>
-      </Pane>
+      </VBox>
    </children>
-</AnchorPane>
+</Pane>

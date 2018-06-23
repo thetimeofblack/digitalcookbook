@@ -19,6 +19,20 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.awt.Component;
+import java.awt.ScrollPane;
+import java.io.IOException;
+
+import CookBookView.listview.ListViewController;
+import CookBookView.listview.PaneController;
+import CookBookView.loginview.loginController;
+import CookBookView.registerview.registerViewController;
+import javafx.event.ActionEvent;
+
+
+
+
+
 public class SearchViewController {
 	@FXML
 	private TextField searcher;
@@ -79,11 +93,29 @@ public class SearchViewController {
 	@FXML
 	public void showAllrecipes(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../listview/listview.fxml"));
-		Parent root = loader.load();
-		ListViewController controller = loader.getController();
-		controller.setStageAndScene(stage, scene);
-		controller.setDatabaselayerObject(databaselayerObject);
-		controller.createAllRecipeSubView(searcher);
+
+		VBox root = (AnchorPane) loader.load();
+		ListViewController lvc = loader.getController();
+		//lvc.setStageAndScene(stage, scene);
+		
+		ScrollPane recipepane1 = lvc.getPane();
+		
+		int recipenumber =30; 
+		while(recipenumber>0) {
+			FXMLLoader recipeloader = new FXMLLoader(getClass().getResource("../listview/pane.fxml"));
+			Pane pane = recipeloader.load();
+			PaneController panecontroller = recipeloader.getController();
+			recipepane1.add(vbox);
+			
+			
+			recipenumber = recipenumber -1; 
+		}
+		
+		
+		lvc.setStage(stage);
+		lvc.setScene(scene);
+		
+
 		scene.setRoot(root);
 		stage.setScene(scene);
 		stage.show();
