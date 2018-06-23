@@ -1,6 +1,7 @@
 package CookBookView.listview;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import CookBookDataBaseAcess.DatabaselayerObject;
 import CookBookEntity.Recipe;
@@ -36,40 +37,50 @@ public class SubviewController {
 	private DatabaselayerObject databaselayerObject;
 
 	public void toDetailView() throws IOException {
-		
+
 	}
 
 	public void setRecipe(Recipe recipe) {
 		this.recipe = recipe;
+	}
+
+	public void setName() {
 		this.recipeName.setText(recipe.getName());
 	}
 
-	public void setStar(int rate) {
-		if (rate == 1) {
+	public void setStar() {
+		if (recipe.getRate() == 1) {
 			Image image = new Image(getClass().getResourceAsStream("star.png"));
 			star1.setGraphic(new ImageView(image));
-		} else if (rate == 2) {
+		} else if (recipe.getRate() == 2) {
 			Image image = new Image(getClass().getResourceAsStream("star.png"));
 			star1.setGraphic(new ImageView(image));
 			star2.setGraphic(new ImageView(image));
-		} else if (rate == 3) {
+		} else if (recipe.getRate() == 3) {
 			Image image = new Image(getClass().getResourceAsStream("star.png"));
 			star1.setGraphic(new ImageView(image));
 			star2.setGraphic(new ImageView(image));
 			star3.setGraphic(new ImageView(image));
-		} else if (rate == 4) {
+		} else if (recipe.getRate() == 4) {
 			Image image = new Image(getClass().getResourceAsStream("star.png"));
 			star1.setGraphic(new ImageView(image));
 			star2.setGraphic(new ImageView(image));
 			star3.setGraphic(new ImageView(image));
 			star4.setGraphic(new ImageView(image));
-		} else if (rate == 5) {
+		} else if (recipe.getRate() == 5) {
 			Image image = new Image(getClass().getResourceAsStream("star.png"));
 			star1.setGraphic(new ImageView(image));
 			star2.setGraphic(new ImageView(image));
 			star3.setGraphic(new ImageView(image));
 			star4.setGraphic(new ImageView(image));
 			star5.setGraphic(new ImageView(image));
+		}
+	}
+
+	public void setFavourite() throws SQLException {
+		if (databaselayerObject.judgefavourite(recipe)) {
+			Image image = new Image(getClass().getResourceAsStream("favourite.png"));
+			favourite.setGraphic(new ImageView(image));
 		}
 	}
 
