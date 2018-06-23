@@ -628,7 +628,7 @@ public class DatabaselayerObject {
         String sqlstr = "insert into cookbook.rateandcomments (recipeid,userid,rate,comments) values('"+
         		recipeid+"','"+
         		this.user.getUserID()+"','"+
-        		comment.getGrade()+"','"+
+        		comment.getGrade()+"','"+ 
         		comment.getComment()+"')";
         
 
