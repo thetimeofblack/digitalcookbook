@@ -17,7 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-public class ListViewController {
+public class ListviewController {
 	@FXML
 	private TextField searcher;
 	@FXML

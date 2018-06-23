@@ -8,7 +8,7 @@ import CookBookDataBaseAcess.DatabaselayerObject;
 import CookBookEntity.Recipe;
 import CookBookView.firstview.fvController;
 
-import CookBookView.listview.ListViewController;
+import CookBookView.listview.ListviewController;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,7 +26,7 @@ import java.awt.Component;
 import java.awt.ScrollPane;
 import java.io.IOException;
 
-import CookBookView.listview.ListViewController;
+import CookBookView.listview.ListviewController;
 import CookBookView.listview.PaneController;
 import CookBookView.loginview.loginController;
 import CookBookView.registerview.registerViewController;
@@ -81,7 +81,7 @@ public class SearchViewController {
 	public void searchRecipes(MouseEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../listview/listview.fxml"));
 		Parent root = loader.load();
-		ListViewController controller = loader.getController();
+		ListviewController controller = loader.getController();
 		controller.setStageAndScene(stage, scene);
 		controller.setDatabaselayerObject(databaselayerObject);
 		controller.createSearchedRecipeSubview(searcher);
@@ -111,7 +111,7 @@ public class SearchViewController {
 	public void showUserRecipes(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../listview/listview.fxml"));
 		Parent root = loader.load();
-		ListViewController controller = loader.getController();
+		ListviewController controller = loader.getController();
 		controller.setStageAndScene(stage, scene);
 		controller.setDatabaselayerObject(databaselayerObject);
 		controller.createUserRecipeSubView();
@@ -125,7 +125,7 @@ public class SearchViewController {
 	public void showUserFavouriteRecipes(ActionEvent event) throws IOException, SQLException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../listview/listview.fxml"));
 		Parent root = loader.load();
-		ListViewController controller = loader.getController();
+		ListviewController controller = loader.getController();
 		controller.setStageAndScene(stage, scene);
 		controller.setDatabaselayerObject(databaselayerObject);
 		controller.createUserFavouriteRecipeSubView();
