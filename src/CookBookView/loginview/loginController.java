@@ -37,6 +37,8 @@ public class loginController {
 	private Stage stage;
 
 	private Scene scene ;
+	
+	private DatabaselayerObject dao; 
 
 	// Event Listener on Button[#confirm].onAction
 	@FXML
@@ -44,6 +46,10 @@ public class loginController {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../searchview/searchView.fxml"));
 		GridPane root = (GridPane) loader.load();
 		SearchViewController svc = loader.getController();
+		
+		if(nameText.getText()!=null) {
+			
+		}
 		svc.setStage(stage);
 		svc.setScene(scene);
 		scene.setRoot(root);
@@ -90,5 +96,9 @@ public class loginController {
 	public void setStageAndScene(Stage stage, Scene scene) {
 		this.stage = stage;
 		this.scene = scene;
+	}
+	
+	public void setDatabase(DatabaselayerObject dao) {
+		this.dao = dao;
 	}
 }

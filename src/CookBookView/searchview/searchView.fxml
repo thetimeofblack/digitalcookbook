@@ -7,8 +7,8 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="290.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.searchview.SearchViewController">
+
 
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="271.0" minWidth="10.0" prefWidth="228.0" />
@@ -83,7 +83,9 @@
                <graphic>
                   <ImageView fitHeight="33.0" fitWidth="33.0">
                      <image>
-                        <Image url="@../../../../../../view/searchview/search.png" />
+
+                        <Image url="@search.png" />
+
                      </image>
                   </ImageView>
                </graphic>

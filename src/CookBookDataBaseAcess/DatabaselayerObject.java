@@ -24,11 +24,15 @@ public class DatabaselayerObject {
 	static ResultSet res, res2;
 	final private String driver = "com.mysql.jdbc.Driver";
 	final private String Databaseuser = "root";
-	final private String Databasepassword = "root";
-	final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306/?characterEncoding=utf8&useSSL=true&serverTimezone=GMT";
-	//final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306";
-	//final private String Databaseurl = "jdbc:mysql://localhost:3306/recipedatabase?useSSL=true&serverTimezone=GMT";
+
+	//final private String Databasepassword = "heyining";//¿ÉÐÞ¸ÄÏîÄ¿
+	final private String Databasepassword = "258000";//¿ÉÐÞ¸ÄÏîÄ¿
+	//final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306/?characterEncoding=utf8&useSSL=true&serverTimezone=GMT";//¿ÉÐÞ¸ÄÏîÄ¿
+	final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306";//¿ÉÐÞ¸ÄÏîÄ¿
+	
+
 	private User user; 
+	
 	public DatabaselayerObject(){
 		try {
 		this.user= new User();
@@ -56,30 +60,20 @@ public class DatabaselayerObject {
 		this.user.setUserID(userid);
 	}
 	
-	public Connection getConnection() {
 	
-		try {
-			Class.forName("com.mysql.jdbc.Driver");// ʹ��forName��������jdbc��������
-			System.out.println("the driver for database has been initialized");
-			// ʹ��Drivemanager��getConnection�ķ����õ����ݿ����ӣ�������������ָ��·�����û���������
-			this.con = DriverManager.getConnection("jdbc:mysql:" + "//127.0.0.1:3306/?characterEncoding=utf8&useSSL=true&serverTimezone=GMT", "root", "258000");
-			System.out.println("database access sucessful!");
-			this.sql = this.con.createStatement();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return this.con;
-	}
-	
-	// login����,����0Ϊ���벻һ������Ϊ0��Ϊuserid��-1��Ϊδ�ҵ��û���
+
+
+
+	// login·½·¨,·µ»Ø0ÎªÃÜÂë²»Ò»Ñù£¬·µ»Ø1ÔòÎªµÇÂ½³É¹¦£¬-1ÔòÎªÎ´ÕÒµ½ÓÃ»§Ãû
+
+
 	public int userLogin(String username, String userpassword) throws SQLException {
-		
-	
+			
 		String s1 = "select * from cookbook.user where UserName = '"+ username +"'";
 		res = this.sql.executeQuery(s1);
 		if(res.first()){
 			String s2 = "select * from cookbook.user where UserName = '" + username + "' and UserPassword = '" + userpassword+"'";
-		
+			
 			res = this.sql.executeQuery(s2);
 			res.next();
 			String databasepassword = res.getString("UserPassword");
@@ -95,28 +89,40 @@ public class DatabaselayerObject {
 		return -1; 
 		//String s = "select * from cookbook.user where UserName = ? and UserPassword = ?";
 		//PreparedStatement ps = (PreparedStatement) con.prepareStatement(s);
-		//ps.setString(arg0, arg1);
-	
+		//ps.setString(arg0, arg1);	
 	}
+	
 
-	// INSERT INTO `cookbook`.`user` (`UserName`, `UserPassword`) VALUES
-	// ('Xiyuan', '12345'); ɵ�Ʒ��Ų�����
-	// create account ����,�ѳɹ����
+
+	
+
+
+	//锟铰斤拷锟剿伙拷锟斤拷锟斤拷,锟斤拷锟斤拷true为锟缴癸拷锟斤拷锟斤拷锟斤拷false为锟斤拷锟截革拷锟矫伙拷锟斤拷
+
+
 	public boolean userRegister(User user) throws SQLException {
-		
-		String sqlstr = "insert into `cookbook`.`user` (`UserName`,`UserPassword`) values('" 
-				+ user.getUserName() + "','"
-				+ user.getUserPassword() + "')";
-		System.out.println(sqlstr);
-		int res1 = this.sql.executeUpdate(sqlstr);
-		System.out.println(res1);
-		
-		if (res1 > 0) {
-			return true; 
-		} else {
+		String sqlstr1 = "select * from `cookbook`.`user` where username = '"+user.getUserName()+"'";
+		res = this.sql.executeQuery(sqlstr1);
+		if(res.first()) {
 			return false; 
 		}
-		
+		String sqlstr2 = "insert into `cookbook`.`user` (`UserName`,`UserPassword`) values('" 
+				+ user.getUserName() + "','"
+				+ user.getUserPassword() + "')";
+		System.out.println(sqlstr2);
+		//int res1 = this.sql.executeUpdate(sqlstr2);
+		PreparedStatement pstmt = this.con.prepareStatement(sqlstr2,Statement.RETURN_GENERATED_KEYS);
+		int res1 = pstmt.executeUpdate();
+		System.out.println(res1);
+        ResultSet rs = pstmt.getGeneratedKeys();
+
+				
+		//锟斤拷取锟皆讹拷锟斤拷拥锟絠d锟斤拷		        
+
+        String id = rs.getString(1);
+        user.setUserID(id);            
+        this.user = user;
+		return true; 	
 	}
 	
 	
@@ -139,26 +145,27 @@ public class DatabaselayerObject {
 	
 
 	/**
-	 * get a complete recipe
+	 * get a complete recipe detail
 	 * @param userid
 	 * @param name
 	 * 
 	 */
-	public Recipe getUserRecipe(int userid, String name) {
+	public Recipe getUserRecipe(String recipeid) {
 	
-		Recipe recipe = new Recipe();
+		Recipe recipe = new Recipe();	
 		
 		try {
 			
-			// ��ȡrecipeһ����Ϣ����
-			String ss1 = "select * from cookbook.recipe, cookbook.userrecipe where userid = "+
-					this.user.getUserID()+"and"+
-					"name = '" + name + "'"+"and"+
-					"userrecipe.recipeid = recipe.recipeid";
+
+
+			// 锟斤拷取recipe一锟斤拷锟斤拷息锟斤拷锟斤拷
+
+			String ss1 = "select * from cookbook.recipe where id = '"+recipeid+"'";
+
 			res = this.sql.executeQuery(ss1);
 			
 			if (res.next()) {
-				recipe.setRecipeID(res.getInt("ID"));
+				recipe.setRecipeID(res.getString("ID"));
 				recipe.setName(res.getString("Name"));
 				recipe.setServeNumber(res.getInt("serveNumber"));
 				recipe.setPrepareTime(res.getInt("PrepareTime"));
@@ -167,9 +174,13 @@ public class DatabaselayerObject {
 				recipe.setDescription(res.getString("Description"));
 			}
 
-			// ��ȡ��Ӧingredients����
-			String recipeid = res.getString("ID");
+
+
+			// 锟斤拷取锟斤拷应ingredients锟斤拷锟斤拷
+			//String recipeid = res.getString("ID");
+
 			String ss2 = "select * from cookbook.ingredients where RecipeID = " + recipeid;
+
 			res = sql.executeQuery(ss2);
 			while (res.next()) {
 				Ingredient ingredient = new Ingredient();
@@ -181,8 +192,9 @@ public class DatabaselayerObject {
 			}
 			
 
-			// ��ȡ��Ӧpreparationsteps����
-			String ss3 = "select * from cookbook.preparationsteps where RecipeID = " + recipeid;
+			// é”Ÿæ–¤æ‹·å�–é”Ÿæ–¤æ‹·åº”preparationstepsé”Ÿæ–¤æ‹·é”Ÿæ–¤æ‹·
+			String ss3 = "select * from cookbook.preparationsteps where RecipeID = '" + recipeid+"'";
+
 			res = sql.executeQuery(ss3);
 			while (res.next()) {
 				PreparationStep preparationsteps = new PreparationStep();
@@ -200,7 +212,8 @@ public class DatabaselayerObject {
 		return recipe;
 	}
 	
-	
+
+	/*
 	public Recipe getRecipe(ResultSet res) throws Exception{
 		Recipe recipe = new Recipe();
 		if(res.next()) {
@@ -216,23 +229,27 @@ public class DatabaselayerObject {
 		
 		return recipe; 
 	}
+	*/
 
-	// show all recipe list method
+	
+	// 
 	/*
-	 * @description
+	 * @description show all recipe list method
 	 * 
 	 */
-	public LinkedList<Recipe> getPublicRecipe(int userid, String name) {
-		con = this.getConnection();
+	public LinkedList<Recipe> getallrecipelist() {		
 		LinkedList<Recipe> ls = new LinkedList<Recipe>();
 		try {
 
-			// ��ʾ�����й�������recipe
-			sql = con.createStatement();
-			res = sql.executeQuery("select * from cookbook.recipe where `privacy` = 0");
+
+
+			// 锟斤拷示锟斤拷锟斤拷锟叫碉拷recipe list		
+
+			res = this.sql.executeQuery("select * from cookbook.recipe ");
+
 			while (res.next()) {
 				Recipe recipe = new Recipe();
-				recipe.setRecipeID(res.getInt("ID"));
+				recipe.setRecipeID(res.getString("ID"));
 				recipe.setName(res.getString("Name"));
 				recipe.setServeNumber(res.getInt("serveNumber"));
 				recipe.setPrepareTime(res.getInt("PrepareTime"));
@@ -242,7 +259,11 @@ public class DatabaselayerObject {
 				ls.add(recipe);
 			}
 
-			// ��ʾ��˽�в���recipe
+
+			// 锟斤拷示锟斤拷私锟叫诧拷锟斤拷recipe
+			/* 
+			 * 锟剿凤拷锟斤拷锟窖诧拷锟斤拷实锟斤拷
+
 			String ss = "select * from `cookbook`.`user-recipe` where userid = " + userid;
 			res = sql.executeQuery(ss);
 			String s1;
@@ -259,23 +280,28 @@ public class DatabaselayerObject {
 				recipe.setDescription(res2.getString("Description"));
 				ls.add(recipe);
 			}
+			*/
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return ls;
 	}
 
-	// show searching recipe list ����.�Ҳ�û��ʵ��A�û�����Ĳ�������B�û��Լ�create�Ĳ���ͬ���������
-	public LinkedList<Recipe> showsearchingrecipelist(int userid, String s) {
-		con = this.getConnection();
+
+
+	// 锟矫伙拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟絩ecipe 锟斤拷锟斤拷
+
+	public LinkedList<Recipe> showsearchingrecipelist(String s) {
+		
+
 		LinkedList<Recipe> ls = new LinkedList<Recipe>();
-		try {
-			sql = con.createStatement();
+		try {			
 			String ss = "select * from cookbook.recipe where name is like '%" + s + "%'";
-			res = sql.executeQuery(ss);
+			res = this.sql.executeQuery(ss);
 			while (res.next()) {
 				Recipe recipe = new Recipe();
-				recipe.setRecipeID(res.getInt("ID"));
+				recipe.setRecipeID(res.getString("ID"));
 				recipe.setName(res.getString("Name"));
 				recipe.setServeNumber(res.getInt("serveNumber"));
 				recipe.setPrepareTime(res.getInt("PrepareTime"));
@@ -292,165 +318,247 @@ public class DatabaselayerObject {
 
 	// create recipe method
 	
-	public boolean insertRecipe(int userid, Recipe recipe) {
-		
-		
-		boolean j = false;
-		int successflag = 0, res1 = 0;
 	
+
+	public Recipe insertrecipe(Recipe recipe) {//锟斤拷recipe锟斤拷recipeid
+
+		String recipeid = "null";
+		int res1 = 0;
+		String ss1 = "INSERT INTO cookbook.recipe (Name, ServeNumber, Privacy, PrepareTime, Category, Description, CookTime) values(\'"
+				+ recipe.getName() + "\','" 
+				+ recipe.getServeNumber() + "\','" 
+				+ recipe.getPrivacy() + "\','"
+				+ recipe.getPrepareTime() + "\',\'" 
+				+ recipe.getCategory() + "\',\'" 
+				+ recipe.getDescription() + "\',\'"
+				+ recipe.getCookTime()+"')";
+		System.out.println(ss1);
+		PreparedStatement pstmt;
 		try {
 
-			// ���뵽recipe����
-			String ss1 = "INSERT INTO cookbook.recipe (Name, ServeNumber, Privacy, PrepareTime, Category, Description, CookTime) values(\'"
-					+ recipe.getName() + "\'," 
-					+ recipe.getServeNumber() + "," 
-					+ recipe.getPrivacy() + ","
-					+ recipe.getPrepareTime() + ",\'" 
-					+ recipe.getCategory() + "\',\'" 
-					+ recipe.getDescription() + "\',"
-					+ recipe.getCookTime()+")";
-			System.out.println(ss1);
-			res1 = this.sql.executeUpdate(ss1);
-			if (res1 >= 1) {
-				successflag = successflag+1;
-			}
-			
-		
+			pstmt = this.con.prepareStatement(ss1,Statement.RETURN_GENERATED_KEYS);
+			res1 = pstmt.executeUpdate();
+			ResultSet rs = pstmt.getGeneratedKeys();
+	        recipeid = rs.getString(1);
+		} catch (SQLException e) {
 
-			// ����recipeid
-			String ss = "select * from `cookbook`.`recipe` where Name = '" + recipe.getName() + "'";
-			System.out.println(ss);
-		
-			res = sql.executeQuery(ss);
-			
-			res.next();
-			
-			int recipeid = res.getInt("ID");
-			System.out.println("insert recipe successfully");
-			
-			// ���뵽Ingredients����
-			LinkedList<Ingredient> ls1 = recipe.getIngredientlist();
-			// Iterator iter1 = ls1.iterator();
-			for (int x = 0; x < ls1.size(); x++) {
-				ls1.get(x);
-				String sqlstr2 = "INSERT INTO `cookbook`.`ingredient` (`Name`, `RecipeID`, `Amount`, `Unit`, `Description`) "
-						+ "values('" 
-						+ ls1.get(x).getName() + "','" 
-						+ recipeid + "','" 
-						+ ls1.get(x).getAmount() + "','"
-						+ ls1.get(x).getUnit() + "','" 
-						+ ls1.get(x).getDescription() + "')";
-				System.out.println(sqlstr2);
-				res1 = sql.executeUpdate(sqlstr2);
-			}
-			
-			if (res1 >= 1) {
-				successflag = successflag+1;
-			}
-
-			// ���뵽preparationsteps����
-			LinkedList<PreparationStep> ls2 = recipe.getPreparationSteps();
-			for (int y = 0; y < ls2.size(); y++) {
-				ls2.get(y);
-				String sqlstr3 = "INSERT INTO `cookbook`.`preparationstep` (`Description`,`RecipeID`)"
-						+ "values('" 
-						+ ls2.get(y).getDescription() + "'," 
-					
-						+ recipeid+ ")";
-				System.out.println(sqlstr3);
-				res1 = sql.executeUpdate(sqlstr3);
-			}
-			if (res1 >= 1) {
-				successflag = successflag+1;
-			}
-
-			// ���뵽recipe-user����
-			String ss4 = "INSERT INTO `cookbook`.`UserRecipe` (`userid`,`recipeid`) values(" 
-			+ Integer.parseInt(this.user.getUserID()) + "," 
-			+ recipeid+ ")";
-			res1 = sql.executeUpdate(ss4);
-			if (res1 >= 1) {
-				successflag = successflag+1;
-			}
-		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}		
+		recipe.setRecipeID(recipeid);
+		return recipe;
+	}
+	
+
+
+	public void insertingredients(Recipe recipe) throws SQLException {
+		int res1 = 0;
+		LinkedList<Ingredient> ls1 = recipe.getIngredientlist();
+		for (int x = 0; x < ls1.size(); x++) {
+			ls1.get(x);
+			String sqlstr2 = "INSERT INTO `cookbook`.`ingredient` (`Name`, `RecipeID`, `Amount`, `Unit`, `Description`) "
+					+ "values('" 
+					+ ls1.get(x).getName() + "','" 
+					+ recipe.getRecipeID() + "','" 
+					+ ls1.get(x).getAmount() + "','"
+					+ ls1.get(x).getUnit() + "','" 
+					+ ls1.get(x).getDescription() + "')";
+			System.out.println(sqlstr2);
+			res1 = sql.executeUpdate(sqlstr2);
 		}
-		if (successflag > 3) {
+		
+	}
+	
+	
+
+	//preparationsteps锟斤拷锟斤拷敕斤拷锟�
+
+
+	public void insertpreparationsteps(Recipe recipe) throws SQLException {
+		int res1 = 0;
+		LinkedList<PreparationStep> ls2 = recipe.getPreparationSteps();
+		for (int y = 0; y < ls2.size(); y++) {
+			ls2.get(y);
+			String sqlstr3 = "INSERT INTO `cookbook`.`preparationstep` (`Description`,`preparationstepsorder`,`RecipeID`)"
+					+ "values('" 
+					+ ls2.get(y).getDescription() + "','" 
+					+ ls2.get(y).getOrder() + "','"
+					+ recipe.getRecipeID()+ "')";
+			System.out.println(sqlstr3);
+			res1 = sql.executeUpdate(sqlstr3);
+		}
+		
+	}
+	
+	
+
+	//recipe-user锟斤拷锟斤拷敕斤拷锟�
+
+	public void insertrecipeuser(Recipe recipe) throws SQLException{
+		int res1 = 0;
+		String ss4 = "INSERT INTO `cookbook`.`UserRecipe` (`userid`,`recipeid`) values('" 
+				+ Integer.parseInt(this.user.getUserID()) + "','" 
+				+ recipe.getRecipeID()+ "')";
+		res1 = sql.executeUpdate(ss4);
+		
+	}
+	
+
+	//锟杰ｏ拷recipe锟斤拷锟诫方锟斤拷	
+	public boolean insertRecipe(Recipe recipe) throws SQLException {
+
+		Recipe newrecipe = new Recipe();
+		newrecipe = insertrecipe(recipe);
+		insertingredients(newrecipe);
+		insertpreparationsteps(newrecipe);
+		insertrecipeuser(newrecipe);
+		return true;
+	}
+	
+	
+	
+
+	//recipe锟斤拷删锟斤拷
+
+	public void deleterecipe(Recipe recipe) throws SQLException {
+		String recipeid = recipe.getRecipeID();
+
+		String ss = "delete from `cookbook`.`recipe` "
+				+ "where id = '" + recipeid + "' and privacy = 1";
+		int res1 = 0;
+		res1 = this.sql.executeUpdate(ss);
+		
+	}		
+
+	//ingredients锟斤拷删锟斤拷
+
+	public void deleteingredients(Recipe recipe) throws SQLException {
+		String recipeid = recipe.getRecipeID();
+		String ss = "delete from `cookbook`.`ingredients` "
+				+ "where recipeid = '" + recipeid + "'";
+		int res1 = 0;
+		res1 = this.sql.executeUpdate(ss);
+		
+	}	
+
+	//preparationsteps锟斤拷删锟斤拷
+
+	public void deletepreparationsteps(Recipe recipe) throws SQLException {
+		String recipeid = recipe.getRecipeID();
+		String ss = "delete from `cookbook`.`preparationsteps` "
+				+ "where recipeid = '" + recipeid + "'";
+		int res1 = 0;
+		res1 = this.sql.executeUpdate(ss);
+		
+	}
+
+	//recipe-user锟斤拷锟叫断凤拷锟斤拷锟斤拷锟斤拷锟斤拷true为锟矫伙拷私锟斤拷锟筋（锟斤拷删锟侥ｏ拷锟斤拷false为锟斤拷锟斤拷锟筋（锟斤拷锟斤拷删锟侥ｏ拷
+
+	public boolean judgerecipeuser(Recipe recipe) throws SQLException {
+		String recipeid = recipe.getRecipeID();
+		String ss1 = "select * from `cookbook`.`user-recipe` where userid = '"+this.user.getUserID()+"' and recipeid = '"+recipeid+"'";
+		res = this.sql.executeQuery(ss1);
+		if(res.first()) {
 			return true;
 		}
 		return false;
 	}
 
-	// ɾ��recipe����������trueΪ�ɹ�������falseΪʧ��
-	public boolean deleteRecipe(Recipe recipe) {
-		con = this.getConnection();
-		boolean i = false;
-		int recipeid = recipe.getRecipeID();
-		String ss = "delete from `cookbook`.`recipe` "
-				+ "where id = '" + recipeid + "' and privacy = 1";
-		try {
-			sql = con.createStatement();
-			int res1 = sql.executeUpdate(ss);
-			if (res1 == 1) {
-				i = true;
-			} else {
-				i = false;
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return i;
+	//recipe-user锟斤拷删锟斤拷
+
+	public void deleterecipeuser(Recipe recipe) throws SQLException {
+		String recipeid = recipe.getRecipeID();
+		String ss2 = "delete from `cookbook`.`user-recipe` "
+				+ "where recipeid = '" + recipeid + "' and userid = '"+this.user.getUserID();
+		int res1 = 0;
+		res1 = this.sql.executeUpdate(ss2);
+				
 	}
+		
+	
+
+		
+
+	//锟杰ｏ拷recipe删锟斤拷,锟斤拷锟斤拷true锟缴癸拷删锟斤拷false为锟斤拷锟斤拷删锟斤拷
+
+	public boolean deleteRecipe(Recipe recipe) throws SQLException {
+		if(judgerecipeuser(recipe)) {
+			deleterecipe(recipe);
+			deleteingredients(recipe);
+			deletepreparationsteps(recipe);
+			return true;
+		}else {
+			return false;
+		}	
+	}
+	
+	
+	
+
+	//recipe锟睫改凤拷锟斤拷锟斤拷ingredients锟斤拷preparationsteps锟斤拷锟斤拷锟斤拷删锟劫插）,true为删锟斤拷晒锟斤拷锟絝alse为锟斤拷锟斤拷删
+
+	public boolean editRecipe(Recipe recipe) throws SQLException {
+		String recipeid = recipe.getRecipeID();
+		if(judgerecipeuser(recipe)) {
+			String ss2 = "update `cookbook`.`recipe` "
+					+ "set `name` = '" + recipe.getName() + 
+					"', `servenumber` = '"+ recipe.getServeNumber() + 
+					"', `preparetime` = '" + recipe.getPrepareTime() + 
+					"', `category` = '" + recipe.getCategory() + 
+					"', `description` = '" + recipe.getDescription() + 
+					"', `cooktime` = '" + recipe.getCookTime() + 
+					"' where (`id` = " + recipe.getRecipeID() + ")";
+			int res1 = this.sql.executeUpdate(ss2);
+			deleteingredients(recipe);
+			deletepreparationsteps(recipe);
+			insertingredients(recipe);
+			insertpreparationsteps(recipe);
+			return true;
+		}	
+		else {
+			return false;
+		}
+	}
+	
+
 
 	// UPDATE `cookbook`.`recipe` SET `Name` = 'qiezi', `ServeNumber` = '2',
 	// `Category` = 'meat' WHERE (`ID` = '4');
-	// �޸�recipe������recipe1Ϊ��Ҫ�޸ĵ�recipe��recipe2Ϊ�޸�֮���recipe
-	public boolean editRecipe(int userid, Recipe recipe1, Recipe recipe2) {
-		
-		boolean i = false;
-		int recipe1id = recipe1.getRecipeID();
-		int recipe2id = recipe2.getRecipeID();
-		try {
-			String ss1 = "update `cookbook`.`recipe` "
-					+ "set `name` = '" + recipe2.getName() + 
-					"', `servenumber` = '"+ recipe2.getServeNumber() + 
-					"', `preparetime` = '" + recipe2.getPrepareTime() + 
-					"', `category` = '" + recipe2.getCategory() + 
-					"', `description` = '" + recipe2.getDescription() + 
-					"', `cooktime` = '" + recipe2.getCookTime() + 
-					"' where (`id` = " + recipe1id + ")";
-			res = this.sql.executeQuery(ss1);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return true;
-	}
 
-	// ��Ϊfavourite recipe����,trueΪ�ɹ�
-	public boolean favouriteRecipe(int userid, Recipe recipe) {
-		con = this.getConnection();
-		int recipeid = recipe.getRecipeID();
+	// 锟睫革拷recipe锟斤拷锟斤拷锟斤拷recipe1为锟斤拷要锟睫改碉拷recipe锟斤拷recipe2为锟睫革拷之锟斤拷锟絩ecipe
+	
+	
+	// favourite锟斤拷锟斤拷臃锟斤拷锟�
+
+	public void insertfavourite(Recipe recipe) throws SQLException {		
+		String recipeid = recipe.getRecipeID();
+
+
 		int res1 = 0;
-		boolean i = false;
-		try {
-			String ss = "insert into `cookbook`.`favourite` (`recipeid`,`userid`) values('" 
-		+ recipeid + "','" 
-		+ userid + "')";
-			res1 = sql.executeUpdate(ss);
-			if (res1 >= 1) {
-				i = true;
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return i;
+		String ss = "insert into `cookbook`.`favourite` (`recipeid`,`userid`) values('" 
+				+ recipeid + "','" 
+				+ this.user.getUserID() + "')";
+		res1 = this.sql.executeUpdate(ss);		
 	}
+	
 
-	// rate��comments����,trueΪ�ɹ�
+	//favourite锟斤拷锟斤拷示锟斤拷锟斤拷,true为喜锟斤拷锟斤拷false为锟斤拷喜锟斤拷
+
+	public boolean judgefavourite(Recipe recipe) throws SQLException {
+		String recipeid = recipe.getRecipeID();
+		String ss = "select * from `cookbook`.`favourite` where recipeid = '"+recipeid+"' and userid = "+this.user.getUserID();
+		res = this.sql.executeQuery(ss);
+		if(res.first()) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+
+
+	// rate锟斤拷comments锟斤拷锟斤拷,true为锟缴癸拷
+
 	/*
 	public boolean addRateandComments(int userid, int recipeid, int rate, String comments) {
 		
@@ -478,7 +586,7 @@ public class DatabaselayerObject {
 	*/
 	private void getbasicRecipe(Recipe recipe , ResultSet res) throws Exception{
 		
-		recipe.setRecipeID(res.getInt("ID"));
+		recipe.setRecipeID(res.getString("ID"));
 		recipe.setName(res.getString("Name"));
 		recipe.setServeNumber(res.getInt("serveNumber"));
 		recipe.setPrepareTime(res.getInt("PrepareTime"));
@@ -488,6 +596,12 @@ public class DatabaselayerObject {
 		
 	}
 	
+	
+
+//	 * 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷丫锟绞碉拷止锟�
+
+
+	 */
 	private void saveIngredients(Ingredient ingredients , ResultSet res) throws Exception{
 		
 	}
@@ -496,8 +610,10 @@ public class DatabaselayerObject {
 		
 	}
 	
+	
+	
 	public String saveRecipeDescription(int recipeid)throws Exception {
-        con = this.getConnection();
+       
         //int recipeid = recipe.getRecipeID();
         
         String ss = "select description from cookbook.recipe where recipeid = " + recipeid;
@@ -506,15 +622,18 @@ public class DatabaselayerObject {
        
     }
     
+	
     public boolean saveCommentandRate(Comment comment , int recipeid)throws Exception{
         int userid = Integer.parseInt(this.user.getUserID());
-        String sqlstr = "insert into cookbook.rateandcomments (recipeid,userid,rate,comments) values("+
-        recipeid+","+
-        this.user.getUserID()+","+
-        comment.getGrade()+",'"+
-        comment.getComment()+"')";
+        String sqlstr = "insert into cookbook.rateandcomments (recipeid,userid,rate,comments) values('"+
+        		recipeid+"','"+
+        		this.user.getUserID()+"','"+
+        		comment.getGrade()+"','"+
+        		comment.getComment()+"')";
         
-        PreparedStatement pstmt = this.con.prepareStatement(sqlstr,Statement.RETURN_GENERATED_KEYS);//��ȡ�Զ����ӵ�id��
+
+        PreparedStatement pstmt = this.con.prepareStatement(sqlstr,Statement.RETURN_GENERATED_KEYS);//锟斤拷取锟皆讹拷锟斤拷锟接碉拷id锟斤拷
+
         pstmt.executeUpdate();
         ResultSet rs = pstmt.getGeneratedKeys();
 
@@ -537,6 +656,26 @@ public class DatabaselayerObject {
     public void close() throws Exception{
     	this.sql.close();
     	this.con.close();
+    	
+    }
+    
+    //筛选肉和素方法,meat为肉，vegetarian为素
+    public LinkedList<Recipe> choosecategory(String description) throws SQLException{
+    	String  ss = "select * from `cookbook`.`recipe` where `Description` = '"+description+"'";
+    	LinkedList<Recipe> ls = new LinkedList<Recipe>();
+    	res = this.sql.executeQuery(ss);
+    	while (res.next()) {
+			Recipe recipe = new Recipe();
+			recipe.setRecipeID(res.getString("ID"));
+			recipe.setName(res.getString("Name"));
+			recipe.setServeNumber(res.getInt("serveNumber"));
+			recipe.setPrepareTime(res.getInt("PrepareTime"));
+			recipe.setCookTime(res.getInt("cookTime"));
+			recipe.setCategory(res.getString("Category"));
+			recipe.setDescription(res.getString("Description"));
+			ls.add(recipe);
+		}
+    	return ls;
     	
     }
 
