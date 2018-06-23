@@ -37,6 +37,8 @@ public class loginController {
 	private Stage stage;
 
 	private Scene scene ;
+	
+	private DatabaselayerObject dao; 
 
 	// Event Listener on Button[#confirm].onAction
 	@FXML
@@ -94,5 +96,9 @@ public class loginController {
 	public void setStageAndScene(Stage stage, Scene scene) {
 		this.stage = stage;
 		this.scene = scene;
+	}
+	
+	public void setDatabase(DatabaselayerObject dao) {
+		this.dao = dao;
 	}
 }

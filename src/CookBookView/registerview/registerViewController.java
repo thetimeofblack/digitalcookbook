@@ -62,6 +62,7 @@ public class registerViewController {
 				this.scene = new Scene(rootforlogin,290,470);
 				this.stage.setScene(this.scene);
 				this.stage.show();
+				dao.close();
 			}
 		}
 		Scene scene = new Scene(root, 270, 160);
