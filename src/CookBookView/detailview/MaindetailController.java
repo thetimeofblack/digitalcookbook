@@ -96,4 +96,8 @@ public class MaindetailController {
 	public void deleteRecipe() {
 		
 	}
+	
+	public void editRecipe() {
+		
+	}
 }
