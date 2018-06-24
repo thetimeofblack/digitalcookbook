@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="290.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.editview.editpaneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="290.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.createview.createpaneController">
    <children>
       <Pane prefHeight="470.0" prefWidth="290.0">
          <children>
@@ -114,8 +114,8 @@
             <Button fx:id="cancel" layoutX="215.0" layoutY="425.0" mnemonicParsing="false" onAction="#back" text="Cancel" textFill="#0917d7" />
             <Pane fx:id="mainPane" layoutX="104.0" layoutY="155.0" prefHeight="270.0" prefWidth="172.0" />
             <Button layoutX="144.0" layoutY="425.0" mnemonicParsing="false" onAction="#createRecipe" prefHeight="23.0" prefWidth="46.0" text="OK" />
-            <Button layoutX="14.0" layoutY="186.0" mnemonicParsing="false" text="ingredient" />
-            <Button layoutX="29.0" layoutY="279.0" mnemonicParsing="false" text="steps" />
+            <Button layoutX="14.0" layoutY="186.0" mnemonicParsing="false" text="ingredient" onAction="#createIngredient"/>
+            <Button layoutX="29.0" layoutY="279.0" mnemonicParsing="false" text="steps"  />  
             <Button layoutX="17.0" layoutY="371.0" mnemonicParsing="false" text="comment" />
             <ImageView fitHeight="39.0" fitWidth="41.0" layoutX="31.0" layoutY="139.0">
                <image>

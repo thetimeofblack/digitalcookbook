@@ -1,44 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity"
-	minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0"
-	prefWidth="290.0" xmlns="http://javafx.com/javafx/8"
-	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="CookBookView.listview.ListviewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="493.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.listview.ListviewController">
 
 
 	<children>
 		<VBox layoutY="62.0" prefHeight="132.0" prefWidth="44.0">
 			<children>
-				<Label maxHeight="-Infinity" maxWidth="-Infinity"
-					prefHeight="44.0" prefWidth="44.0" />
+				<Label maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="44.0" prefWidth="44.0" />
 				<Label prefHeight="44.0" prefWidth="44.0" />
 				<Label prefHeight="44.0" prefWidth="44.0" />
 			</children>
 		</VBox>
-		<Label layoutX="239.0" layoutY="20.0" prefHeight="15.0"
-			prefWidth="37.0" text="  User" />
-		<Button fx:id="logout" layoutX="230.0" mnemonicParsing="false"
-			onAction="#logOut" text="Log out" textFill="#140b43">
+		<Label layoutX="239.0" layoutY="20.0" prefHeight="15.0" prefWidth="37.0" text="  User" />
+		<Button fx:id="logout" layoutX="230.0" mnemonicParsing="false" onAction="#logOut" text="Log out" textFill="#140b43">
 			<font>
 				<Font size="11.0" />
 			</font>
 		</Button>
-		<ScrollPane layoutX="44.0" layoutY="37.0"
-			prefHeight="427.0" prefWidth="236.0">
+		<ScrollPane layoutX="44.0" layoutY="37.0" prefHeight="457.0" prefWidth="426.0">
 			<content>
-				<VBox fx:id="recipeVBox" prefHeight="431.0" prefWidth="223.0" />
+				<VBox fx:id="recipeVBox" prefHeight="457.0" prefWidth="427.0" />
 			</content>
 		</ScrollPane>
-		<ImageView fx:id="toSearchView" fitHeight="44.0"
-			fitWidth="44.0" layoutX="-1.0" layoutY="420.0"
-			onMouseClicked="#backToSearchView">
+		<ImageView fx:id="toSearchView" fitHeight="44.0" fitWidth="44.0" layoutX="-1.0" layoutY="420.0" onMouseClicked="#backToSearchView">
 			<image>
 				<Image url="@return.png" />
 			</image>

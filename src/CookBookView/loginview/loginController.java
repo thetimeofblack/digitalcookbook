@@ -57,7 +57,7 @@ public class loginController {
 		if(result==-1) resultstring = "username does not exist";
 		if(result==1) resultstring = "user login successfully";
 		if(result==0) resultstring = "user password is not right";
-		
+		scene.getStylesheets().clear();
 		svc.setDatabaselayerObject(this.dao);
 		svc.setStage(stage);
 		svc.setScene(scene);
