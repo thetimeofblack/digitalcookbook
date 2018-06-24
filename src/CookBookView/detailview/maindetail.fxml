@@ -135,7 +135,7 @@
                   <Image url="@Event%20Comments.png" />
                </image>
             </ImageView>
-            <Label fx:id="delete" layoutX="194.0" layoutY="413.0" onDragDetected="#deleteRecipe" prefHeight="34.0" prefWidth="36.0">
+            <Label fx:id="deletelabel" layoutX="194.0" layoutY="413.0" onDragDetected="#deleteRecipe" prefHeight="34.0" prefWidth="36.0">
                <graphic>
                   <ImageView fx:id="delete" fitHeight="34.0" fitWidth="38.0">
                      <image>
@@ -146,7 +146,7 @@
             </Label>
             <Label layoutX="153.0" layoutY="413.0" prefHeight="34.0" prefWidth="38.0">
                <graphic>
-                  <ImageView fx:id="edit" fitHeight="31.0" fitWidth="34.0" onDragDetected="#editRecipe">
+                  <ImageView fx:id="editImage" fitHeight="31.0" fitWidth="34.0" onDragDetected="#editRecipe">
                      <image>
                         <Image url="@修改.png" />
                      </image>

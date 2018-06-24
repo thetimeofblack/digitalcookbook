@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 import javafx.scene.control.TextField;
-
+import CookBookEntity.Recipe;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.Label;
@@ -16,6 +16,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.image.ImageView;
 
 public class MaindetailController {
 	@FXML
@@ -47,10 +48,18 @@ public class MaindetailController {
 	@FXML
 	private Label ingredient;
 	@FXML
-	private ImageView delete;
+	private Label deletelabel;
+	
+	@FXML
+	private ImageView  delete;
 	
 	@FXML
 	private ScrollPane scrollpane;
+	
+	@FXML
+	private ImageView editImage;
+	
+	private Recipe recipe;
 
 	// Event Listener on Label[#favourite].onDragDetected
 	@FXML
@@ -78,5 +87,13 @@ public class MaindetailController {
 	}
 	public void setPane(VBox vbox) {
 		this.scrollpane.setContent(vbox);
+	}
+	
+	public void setRecipe(Recipe recipe) {
+		this.recipe = recipe;
+	}
+	
+	public void deleteRecipe() {
+		
 	}
 }
