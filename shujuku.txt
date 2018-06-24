@@ -1,0 +1,116 @@
+CREATE TABLE `user` (
+  `userid` int(11) NOT NULL AUTO_INCREMENT,
+  
+`UserName` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+  
+`UserPassword` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+ 
+ PRIMARY KEY (`userid`)
+) 
+
+
+
+CREATE TABLE `user-recipe` (
+  `ID` int(11) NOT NULL,
+  
+`userid` int(11) DEFAULT NULL,
+  
+`recipeid` int(11) DEFAULT NULL,
+  
+PRIMARY KEY (`ID`)
+) 
+
+CREATE TABLE `recipe` (
+  `ID` int(11) NOT NULL auto_increment,
+  
+
+`Name` varchar(45) ,
+  
+
+`ServeNumber` int(11) DEFAULT NULL,
+ 
+ 
+`Privacy` tinyint(1) DEFAULT NULL,
+  
+
+`PrepareTime` double DEFAULT NULL,
+  
+
+`Category` varchar(100) ,
+ 
+ 
+`Description` varchar(100) ,
+  
+
+`CookTime` double DEFAULT NULL,
+  
+
+PRIMARY KEY (`ID`)
+) 
+
+CREATE TABLE `rateandcomments` (
+  `ID` int(11) NOT NULL auto_increment,
+ 
+
+`recipeid` int(11) DEFAULT NULL,
+
+`userid` int(11) DEFAULT NULL,
+  
+
+`rate` int(11) DEFAULT NULL,
+ 
+
+`comments` varchar(500) DEFAULT NULL,
+  
+
+PRIMARY KEY (`ID`)
+) 
+
+CREATE TABLE `preparationstep` (
+  `ID` int(11) NOT NULL auto_increment,
+ 
+
+`Description` varchar(1000)  DEFAULT NULL,
+ 
+
+`preparationstepsorder` int(11) DEFAULT NULL,
+  
+
+`RecipeID` varchar(45)  DEFAULT NULL,
+  
+
+PRIMARY KEY (`ID`)
+)
+
+CREATE TABLE `ingredient` (
+  `ID` int(11) NOT NULL auto_increment,
+ 
+
+`Name` varchar(45)  DEFAULT NULL,
+ 
+
+`RecipeID` varchar(45)  DEFAULT NULL,
+ 
+
+`Amount` varchar(45)  DEFAULT NULL,
+ 
+
+`Unit` varchar(45)  DEFAULT NULL,
+  
+
+`Description` varchar(45)  DEFAULT NULL,
+ 
+ 
+PRIMARY KEY (`ID`)
+) 
+
+
+CREATE TABLE `favourite` (
+  `ID` int(11) NOT NULL,
+ 
+ `recipeid` int(11) DEFAULT NULL,
+  
+`userid` int(11) DEFAULT NULL,
+  
+PRIMARY KEY (`ID`)
+)
