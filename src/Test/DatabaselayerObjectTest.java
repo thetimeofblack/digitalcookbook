@@ -1,19 +1,26 @@
 package Test;
 import static org.junit.Assert.assertEquals;
+
+
+import DigitalCookbook.CookBookApp;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.sql.SQLException;
+
 import CookBookEntity.User;
+import CookBookEntity.Recipe;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import CookBookDataBaseAcess.DatabaselayerObject;
 class DatabaselayerObjectTest {
-	private DatabaselayerObject dao ; 
+	private static DatabaselayerObject dao ; 
 	@BeforeAll 
-	void  initialize(){
-		this.dao = new DatabaselayerObject();
+    static void initialize(){
+		dao = new DatabaselayerObject();
 		
 	}
 	
@@ -61,8 +68,10 @@ class DatabaselayerObjectTest {
 	}
 
 	@Test
-	void testInsertrecipe() {
+	void testInsertrecipe() throws SQLException {
 		fail("Not yet implemented");
+		Recipe recipe = CookBookApp.createGongBaoJiding();
+		dao.insertRecipe(recipe);	
 	}
 
 	@Test

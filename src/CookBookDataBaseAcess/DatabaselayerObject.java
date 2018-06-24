@@ -80,8 +80,9 @@ public class DatabaselayerObject {
 			String databasepassword = res.getString("UserPassword");
 			System.out.println(databasepassword);
 			if (userpassword.equals(databasepassword)) {
-				System.out.println("Login in Successful");
-				this.setUserid(res.getString("userid"));
+				System.out.println("Login in Successful"+res.getString("userid"));
+				System.out.println("this is userid"+res.getString("userid"));
+				this.user.setUserID(res.getString("userid"));
 				return 1;
 			} else {
 				return 0 ; 
@@ -299,7 +300,7 @@ public class DatabaselayerObject {
 
 		LinkedList<Recipe> ls = new LinkedList<Recipe>();
 		try {			
-			String ss = "select * from cookbook.recipe where name is like '%" + s + "%'";
+			String ss = "select * from cookbook.recipe where name like '%" + s + "%'";
 			res = this.sql.executeQuery(ss);
 			while (res.next()) {
 				Recipe recipe = new Recipe();
@@ -341,6 +342,7 @@ public class DatabaselayerObject {
 			pstmt = this.con.prepareStatement(ss1,Statement.RETURN_GENERATED_KEYS);
 			res1 = pstmt.executeUpdate();
 			ResultSet rs = pstmt.getGeneratedKeys();
+			System.out.print(rs.next());
 	        recipeid = rs.getString(1);
 		} catch (SQLException e) {
 
@@ -398,9 +400,11 @@ public class DatabaselayerObject {
 
 	public void insertrecipeuser(Recipe recipe) throws SQLException{
 		int res1 = 0;
-		String ss4 = "INSERT INTO `cookbook`.`UserRecipe` (`userid`,`recipeid`) values('" 
-				+ Integer.parseInt(this.user.getUserID()) + "','" 
-				+ recipe.getRecipeID()+ "')";
+		System.out.println("This is recipe id "+recipe.getRecipeID());
+		String ss4 = "INSERT INTO `cookbook`.`UserRecipe` (`userid`,`recipeid`) values(" 
+				+ Integer.parseInt(this.user.getUserID())+ "," 
+				+ Integer.parseInt(recipe.getRecipeID())+ ")";
+				
 		res1 = sql.executeUpdate(ss4);
 		
 	}
@@ -690,6 +694,10 @@ public class DatabaselayerObject {
     		
     	}
     	return recipeidlist;
+    }
+    
+    public User getUser() {
+    	return this.user;
     }
 
 

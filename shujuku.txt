@@ -11,7 +11,7 @@ CREATE TABLE `user` (
 
 
 CREATE TABLE `userrecipe` (
-  `ID` int(11) NOT NULL,
+  `ID` int(11) NOT NULL auto_increment,
   
 `userid` int(11) DEFAULT NULL,
   
