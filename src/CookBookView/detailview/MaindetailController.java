@@ -1,7 +1,7 @@
 package CookBookView.detailview;
 
 import javafx.fxml.FXML;
-
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
 import javafx.scene.control.TextField;
@@ -16,6 +16,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.scene.image.ImageView;
 
 public class MaindetailController {
@@ -60,7 +61,10 @@ public class MaindetailController {
 	private ImageView editImage;
 	
 	private Recipe recipe;
-
+	
+	private Stage stage; 
+	
+	private Scene scene; 
 	// Event Listener on Label[#favourite].onDragDetected
 	@FXML
 	public void choosetobeFavourite(MouseEvent event) {
@@ -98,6 +102,23 @@ public class MaindetailController {
 	}
 	
 	public void editRecipe() {
+		
+	}
+	
+	public void setStage(Stage stage) {
+		this.stage  = stage ;
+	}
+	
+	public void setScene(Scene scene) {
+		this.scene = scene; 
+	}
+	
+	public void showbasicRecipe() {
+		this.recipeName.setText(recipe.getName());
+		this.preparationTime.setText(String.valueOf(recipe.getPrepareTime())); 
+		this.category.setText(recipe.getCategory());
+		this.cookTime.setText(String.valueOf(recipe.getCookTime()));
+		this.servingperson.setText(String.valueOf(recipe.getServeNumber()));
 		
 	}
 }

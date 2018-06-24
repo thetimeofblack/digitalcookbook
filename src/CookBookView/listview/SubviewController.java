@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 import CookBookDataBaseAcess.DatabaselayerObject;
 import CookBookEntity.Recipe;
+import CookBookView.detailview.MaindetailController;
 import CookBookView.detailview.detailController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -105,8 +106,16 @@ public class SubviewController {
 	public void showDetail() throws IOException {
 		FXMLLoader detailloader = new FXMLLoader(getClass().getResource("../detailview/maindetail.fxml"));
 		AnchorPane detailpane = (AnchorPane)detailloader.load();
-		detailController detailcontroller = detailloader.getController(); 
-		detailcontroller
+		MaindetailController detailcontroller = detailloader.getController(); 
+		detailcontroller.setRecipe(this.recipe);
+		detailcontroller.showbasicRecipe();
+		this.scene.setRoot(detailpane);
+		this.stage.setScene(this.scene);
+		this.stage.show();
+		
+		detailcontroller.setScene(scene);
+		detailcontroller.setStage(stage);
+		
 	}
 
 }
