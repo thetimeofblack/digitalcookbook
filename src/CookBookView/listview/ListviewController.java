@@ -18,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -30,7 +31,7 @@ public class ListviewController {
 	@FXML
 	private Button logout;
 	@FXML
-	private Label toSearchView;
+	private ImageView toSearchView;
 	private Stage stage;
 	private Scene scene;
 	private DatabaselayerObject databaselayerObject;
@@ -63,7 +64,10 @@ public class ListviewController {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("subview.fxml"));
 			Pane subView = loader.load();
 			SubviewController controller = loader.getController();
+			
 			controller.setRecipe(recipe);
+			controller.setName();
+			controller.setStar();
 			controller.setStageAndScene(stage, scene);
 			controller.setDatabaselayerObject(databaselayerObject);
 			recipeVBox.getChildren().add(subView);

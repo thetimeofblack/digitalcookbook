@@ -1,16 +1,16 @@
 CREATE TABLE `user` (
   `userid` int(11) NOT NULL AUTO_INCREMENT,
   
-`UserName` varchar(45) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
+`UserName` varchar(45)  ,
   
-`UserPassword` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+`UserPassword` varchar(45) ,
  
  PRIMARY KEY (`userid`)
 ) 
 
 
 
-CREATE TABLE `user-recipe` (
+CREATE TABLE `userrecipe` (
   `ID` int(11) NOT NULL,
   
 `userid` int(11) DEFAULT NULL,

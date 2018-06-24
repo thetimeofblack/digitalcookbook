@@ -151,7 +151,7 @@ public class DatabaselayerObject {
 	 * @param name
 	 * 
 	 */
-	public Recipe getUserRecipe(String recipeid) {
+	public Recipe getRecipe(String recipeid) {
 	
 		Recipe recipe = new Recipe();	
 		
@@ -679,6 +679,17 @@ public class DatabaselayerObject {
 		}
     	return ls;
     	
+    }
+    
+    public LinkedList<String> getRecipeid(String name) throws Exception{
+    	String sqlstr = "select recipeid from recipe where name= '"+name+"'";
+    	LinkedList<String> recipeidlist = new LinkedList<String>();
+    	this.res = this.sql.executeQuery(sqlstr);
+    	while (res.next()) {
+    		recipeidlist.add(res.getString(1));
+    		
+    	}
+    	return recipeidlist;
     }
 
 

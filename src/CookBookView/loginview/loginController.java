@@ -51,9 +51,14 @@ public class loginController {
 		if(nameText.getText()!=null) {
 			
 		
-		DatabaselayerObject databaselayerObject = new DatabaselayerObject();
-		databaselayerObject.userLogin(nameText.getText(), passwordText.getText());
-		svc.setDatabaselayerObject(databaselayerObject);
+		this.dao = new DatabaselayerObject();
+		int result = dao.userLogin(this.nameText.getText(), this.passwordText.getText());
+		String resultstring ; 
+		if(result==-1) resultstring = "username does not exist";
+		if(result==1) resultstring = "user login successfully";
+		if(result==0) resultstring = "user password is not right";
+		
+		svc.setDatabaselayerObject(this.dao);
 		svc.setStage(stage);
 		svc.setScene(scene);
 		scene.setRoot(root);

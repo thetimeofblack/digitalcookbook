@@ -68,7 +68,11 @@ public class ListAllController {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("subview.fxml"));
 			Pane subView = loader.load();
 			SubviewController controller = loader.getController();
+			
 			controller.setRecipe(recipe);
+			controller.setName();
+			controller.setStar();
+			
 			controller.setStageAndScene(stage, scene);
 			controller.setDatabaselayerObject(databaselayerObject);
 			recipeVBox.getChildren().add(subView);
@@ -91,5 +95,6 @@ public class ListAllController {
 	public void setDatabaselayerObject(DatabaselayerObject databaselayerObject) {
 		this.databaselayerObject = databaselayerObject;
 	}
+	
 
 }
