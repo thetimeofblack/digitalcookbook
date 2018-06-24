@@ -2,6 +2,7 @@ package CookBookView.loginview;
 
 import java.io.IOException;
 
+
 import CookBookDataBaseAcess.DatabaselayerObject;
 import CookBookEntity.User;
 import CookBookView.loginview.tinywin.miniController;
@@ -49,12 +50,16 @@ public class loginController {
 		
 		if(nameText.getText()!=null) {
 			
-		}
+		
+		DatabaselayerObject databaselayerObject = new DatabaselayerObject();
+		databaselayerObject.userLogin(nameText.getText(), passwordText.getText());
+		svc.setDatabaselayerObject(databaselayerObject);
 		svc.setStage(stage);
 		svc.setScene(scene);
 		scene.setRoot(root);
 		stage.setScene(scene);
 		stage.show();
+		}
 	}
 
 	// Event Listener on Button[#clearpw].onAction

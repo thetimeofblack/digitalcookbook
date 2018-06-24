@@ -132,5 +132,21 @@ public class ListviewController {
 	public void setDatabaselayerObject(DatabaselayerObject databaselayerObject) {
 		this.databaselayerObject = databaselayerObject;
 	}
-
+	
+	public void toSearchView() throws IOException{
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../searchview/searchView.fxml"));
+		GridPane root = (GridPane) loader.load();
+		SearchViewController svc = loader.getController();
+		
+				
+	
+		svc.setDatabaselayerObject(this.databaselayerObject);
+		svc.setStage(stage);
+		svc.setScene(scene);
+		scene.setRoot(root);
+		stage.setScene(scene);
+		stage.show();
+		}
 }
+
+

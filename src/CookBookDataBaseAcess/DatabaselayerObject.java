@@ -247,7 +247,7 @@ public class DatabaselayerObject {
 			// 锟斤拷示锟斤拷锟斤拷锟叫碉拷recipe list		
 
 			res = this.sql.executeQuery("select * from cookbook.recipe ");
-
+			
 			while (res.next()) {
 				Recipe recipe = new Recipe();
 				recipe.setRecipeID(res.getString("ID"));
@@ -258,6 +258,7 @@ public class DatabaselayerObject {
 				recipe.setCategory(res.getString("Category"));
 				recipe.setDescription(res.getString("Description"));
 				ls.add(recipe);
+				System.out.println(recipe.getCookTime());
 			}
 
 
