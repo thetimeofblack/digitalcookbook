@@ -1,5 +1,6 @@
 package Test;
-
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 import CookBookEntity.User;
@@ -26,7 +27,7 @@ class DatabaselayerObjectTest {
 	void testUserLogin() {
 		fail("Not yet implemented");
 		User user = new User("heyining","heyining");
-		assertEquals(dao.UserLogin(user),1);
+		
 	}
 
 	@Test

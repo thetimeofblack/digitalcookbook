@@ -22,13 +22,14 @@ public class DatabaselayerObject {
 	private Connection con;
 	private Statement sql;
 	static ResultSet res, res2;
-	final private String driver = "com.mysql.jdbc.Driver";
+	//final private String driver = "com.mysql.jdbc.Driver";
 	final private String Databaseuser = "root";
+	final private String driver = "com.mysql.cj.jdbc.Driver";
 
-	//final private String Databasepassword = "heyining";//¿ÉÐÞ¸ÄÏîÄ¿
-	final private String Databasepassword = "258000";//¿ÉÐÞ¸ÄÏîÄ¿
-	//final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306/?characterEncoding=utf8&useSSL=true&serverTimezone=GMT";//¿ÉÐÞ¸ÄÏîÄ¿
-	final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306";//¿ÉÐÞ¸ÄÏîÄ¿
+	final private String Databasepassword = "heyining";//¿ÉÐÞ¸ÄÏîÄ¿
+	//final private String Databasepassword = "258000";//¿ÉÐÞ¸ÄÏîÄ¿
+	final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306/?characterEncoding=utf8&useSSL=true&serverTimezone=GMT&autoReconnect=true&failOverReadOnly=false";//¿ÉÐÞ¸ÄÏîÄ¿
+	//final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306";//¿ÉÐÞ¸ÄÏîÄ¿
 	
 
 	private User user; 
