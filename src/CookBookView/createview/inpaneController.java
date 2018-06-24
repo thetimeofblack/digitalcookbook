@@ -38,11 +38,11 @@ public class inpaneController {
 	@FXML
 	private Button deleteIngredient;
 	
-	private HBox Currenthbox; 
+
 	
 	private int addnumber =0;
 	
-	private Recipe recipe;
+
 	
 	private LinkedList<Ingredient> Ingredientlist;
 	@FXML
@@ -97,9 +97,7 @@ public class inpaneController {
 		return this.inpaneVBox;
 	}
 	
-	public void setRecipe(Recipe recipe) {
-		this.recipe =recipe;
-	}
+
 	
 	public LinkedList<Ingredient> getIngredientList() {
 		return this.Ingredientlist;
