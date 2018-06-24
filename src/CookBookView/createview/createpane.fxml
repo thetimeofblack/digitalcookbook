@@ -103,7 +103,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
             </GridPane>
-            <Label fx:id="ingredient" layoutX="6.0" layoutY="141.0" onDragDetected="#showIngredients" prefHeight="35.0" prefWidth="34.0" />
+            <Label fx:id="ingredient" layoutX="6.0" layoutY="141.0" prefHeight="35.0" prefWidth="34.0" />
             <Label layoutX="8.0" layoutY="180.0" prefHeight="35.0" prefWidth="34.0" />
             <Label layoutX="8.0" layoutY="215.0" prefHeight="35.0" prefWidth="34.0" />
             <ImageView fitHeight="34.0" fitWidth="35.0" layoutX="35.0" layoutY="337.0">
@@ -115,8 +115,8 @@
             <Pane fx:id="mainPane" layoutX="104.0" layoutY="155.0" prefHeight="270.0" prefWidth="172.0" />
             <Button layoutX="144.0" layoutY="425.0" mnemonicParsing="false" onAction="#createRecipe" prefHeight="23.0" prefWidth="46.0" text="OK" />
             <Button layoutX="14.0" layoutY="186.0" mnemonicParsing="false" text="ingredient" onAction="#createIngredient"/>
-            <Button layoutX="29.0" layoutY="279.0" mnemonicParsing="false" text="steps"  />  
-            <Button layoutX="17.0" layoutY="371.0" mnemonicParsing="false" text="comment" />
+            <Button layoutX="29.0" layoutY="279.0" mnemonicParsing="false" text="steps" onAction="#createSteps" />  
+            <Button layoutX="17.0" layoutY="371.0" mnemonicParsing="false" text="comment" onAction = "#createComment"/>
             <ImageView fitHeight="39.0" fitWidth="41.0" layoutX="31.0" layoutY="139.0">
                <image>
                   <Image url="@../detailview/material-information-outline.png" />

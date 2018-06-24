@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane prefHeight="267.0" prefWidth="239.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<ScrollPane prefHeight="267.0" prefWidth="239.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller= "CookBookView.createview.inpaneController">
    <content>
       <AnchorPane prefHeight="264.0" prefWidth="237.0">
          <children>
-            <ImageView fx:id="add" fitHeight="28.0" fitWidth="29.0" layoutX="202.0" layoutY="230.0" onDragDetected="#addLine">
+            <ImageView fx:id="add" fitHeight="28.0" fitWidth="29.0" layoutX="202.0" layoutY="230.0" >
                <image>
                   <Image url="@Add.png" />
                </image>
@@ -28,7 +28,7 @@
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Description" wrappingWidth="78.54296875" />
                </children>
             </HBox>
-            <Button fx:id="confirm" OnAction = "addIngredient" layoutX="135.0" layoutY="231.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="60.0" text="Add" />
+            <Button fx:id="confirm"  OnAction = "#addIngredient" layoutX="135.0" layoutY="231.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="60.0" text="Add" />
          </children>
       </AnchorPane>
    </content>

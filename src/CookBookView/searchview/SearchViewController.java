@@ -6,6 +6,7 @@ import java.util.LinkedList;
 
 import CookBookDataBaseAcess.DatabaselayerObject;
 import CookBookEntity.Recipe;
+import CookBookView.createview.createpaneController;
 import CookBookView.editview.editpaneController;
 import CookBookView.firstview.fvController;
 import CookBookView.listview.ListAllController;
@@ -32,6 +33,7 @@ import CookBookView.listview.ListviewController;
 //import CookBookView.listview.PaneController;
 import CookBookView.loginview.loginController;
 import CookBookView.registerview.registerViewController;
+import DigitalCookbook.CookBook;
 import javafx.event.ActionEvent;
 
 
@@ -58,6 +60,7 @@ public class SearchViewController {
 	private Stage stage;
 	private Scene scene;
 	private DatabaselayerObject databaselayerObject;
+	private CookBook cookbook;
 
 	// Event Listener on Button[#logout].onAction
 	@FXML
@@ -156,12 +159,14 @@ public class SearchViewController {
 	// Event Listener on Button[#createrecipes].onAction
 	@FXML
 	public void createNewRecipes(ActionEvent event) throws Exception{
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../editview/editpane.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../createview/createpane.fxml"));
 		AnchorPane anchorPane = (AnchorPane)loader.load(); 
-		editpaneController controller = loader.getController(); 
-		controller.setDataBase(this.databaselayerObject);
+		createpaneController controller = loader.getController(); 
+		CookBook cookBook = new CookBook() ; 
+		controller.setCookBook(cookBook);
 		controller.setScene(this.scene);
 		controller.setStage(this.stage);
+	
 		this.scene.setRoot(anchorPane);
 		this.stage.setScene(this.scene);
 		this.stage.show();
