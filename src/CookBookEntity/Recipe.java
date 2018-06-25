@@ -16,6 +16,7 @@ public class Recipe {
 	private LinkedList<Ingredient> ingredientlist;
 	private int Rate;
 	private String Comments;
+	private boolean favourite ;
 	
 	public Recipe(String Name, String Category , int ServeNumber){
 		this.Name  = Name ; 
@@ -165,5 +166,7 @@ public class Recipe {
 			System.out.print(itrp.next().toString());
 		}
 	}
-	
+	public void setFavourite(boolean favourite) {
+		this.favourite = favourite ; 
+	}
 }

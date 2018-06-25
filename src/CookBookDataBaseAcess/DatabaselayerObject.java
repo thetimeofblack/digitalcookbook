@@ -14,6 +14,7 @@ import java.util.LinkedList;
 
 import com.mysql.cj.exceptions.RSAException;
 import com.mysql.cj.jdbc.ha.SequentialBalanceStrategy;
+import com.mysql.cj.xdevapi.Result;
 
 import CookBookEntity.Comment;
 import CookBookEntity.Ingredient;
@@ -717,6 +718,46 @@ public class DatabaselayerObject {
     	}
     	if(comments.isEmpty()) return false; 
     	return true;
+    }
+    
+    public LinkedList<Recipe> getUserRecipe(String userid) throws Exception{
+    	String sqlstr ="select * from cookbook.userrecipe , cookbook.recipe "+
+    	"where cookbook.userrecipe.userid = "+userid+ 
+    	"and cookbook.userrecipe.recipeid=cookbook.recipe.recipeid";
+    	this.res = this.sql.executeQuery(sqlstr);
+    	LinkedList<Recipe> recipelist = new LinkedList<Recipe>();
+    	while(res.next()) {
+    		Recipe recipe = this.getRecipe(res.getString("ID"));
+    		recipelist.add(recipe);
+    	}
+    	return recipelist ; 
+    	
+    	
+    }
+    
+    private Recipe getRecipe(String recipeid,ResultSet res) throws Exception {
+    	Recipe recipe = new Recipe();
+    	
+    	recipe.setRecipeID(res.getString("ID"));
+		recipe.setName(res.getString("Name"));
+		recipe.setServeNumber(res.getInt("serveNumber"));
+		recipe.setPrepareTime(res.getInt("PrepareTime"));
+		recipe.setCookTime(res.getInt("cookTime"));
+		recipe.setCategory(res.getString("Category"));
+		recipe.setDescription(res.getString("Description"));
+		recipe.setIngredientlist(this.getIngredient(recipeid));
+		recipe.setPreparationSteps(this.getPreparationSteps(recipeid));
+		return recipe; 
+    }
+    
+    private LinkedList<Ingredient> getIngredient(String recipeid) throws Exception{
+    	LinkedList<Ingredient> ingredientlist = new LinkedList<Ingredient>();
+    	return ingredientlist ; 
+    }
+    
+    private LinkedList<PreparationStep> getPreparationSteps(String recipeid){
+    	LinkedList<PreparationStep> preparationSteps= new LinkedList<PreparationStep>();
+    	return preparationSteps;
     }
 
 

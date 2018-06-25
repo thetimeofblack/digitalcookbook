@@ -25,6 +25,7 @@ import javafx.stage.*;
 import javafx.scene.*;
 import CookBookEntity.Ingredient;
 import CookBookEntity.Recipe;
+import DigitalCookbook.CookBook;
 public class editpaneController implements Initializable {
 	@FXML
 	private Label star5;
@@ -58,6 +59,8 @@ public class editpaneController implements Initializable {
 	private ScrollPane substPane;
 	// Event Listener on Label[#favourite].onDragDetected
 	
+	
+	private CookBook cookbook ; 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -111,6 +114,10 @@ public class editpaneController implements Initializable {
 		recipe.setName(this.recipename.getText());
 		
 		
+	}
+	
+	public void setCookBook(CookBook cookbook) {
+		this.cookbook = cookbook ; 
 	}
 	
 

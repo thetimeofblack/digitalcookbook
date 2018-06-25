@@ -7,6 +7,7 @@ import CookBookDataBaseAcess.DatabaselayerObject;
 import CookBookEntity.Recipe;
 import CookBookView.detailview.MaindetailController;
 import CookBookView.detailview.detailController;
+import DigitalCookbook.CookBook;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -37,6 +38,7 @@ public class SubviewController {
 	private Stage stage;
 	private Scene scene;
 	private DatabaselayerObject databaselayerObject;
+	private CookBook cookBook ; 
 
 	public void toDetailView() throws IOException {
 
@@ -117,5 +119,7 @@ public class SubviewController {
 		detailcontroller.setStage(stage);
 		
 	}
-
+	public void setCookBook(CookBook cookBook) {
+		this.cookBook = cookBook ; 
+	}
 }

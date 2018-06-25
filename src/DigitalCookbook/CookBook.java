@@ -87,4 +87,54 @@ public class CookBook {
 		boolean result = databaselayerObject.getRecipeComment(comments, recipeid);
 		return comments;
 	}
+	
+	public LinkedList<Recipe> getallrecipelist(){
+		this.recipelist = this.databaselayerObject.getallrecipelist();
+		return this.recipelist;
+	}
+	
+	public LinkedList<Recipe> getVegrecipelist(){
+		LinkedList<Recipe> vegrecipelist = new LinkedList<Recipe>();
+		Iterator<Recipe> iterator = this.recipelist.iterator(); 
+		while(iterator.hasNext()) {
+			Recipe recipe = (Recipe)iterator.next();
+			if(recipe.getDescription().equals("vegetable")) {
+				vegrecipelist.add(recipe);
+			}
+			
+		}
+		return vegrecipelist;
+	}
+	
+	public LinkedList<Recipe> getEggrecipelist(){
+		LinkedList<Recipe> vegrecipelist = new LinkedList<Recipe>();
+		Iterator<Recipe> iterator = this.recipelist.iterator(); 
+		while(iterator.hasNext()) {
+			Recipe recipe = (Recipe)iterator.next();
+			if(recipe.getDescription().equals("Egg")) {
+				vegrecipelist.add(recipe);
+			}
+			
+		}
+		return vegrecipelist;
+	}
+	
+	public LinkedList<Recipe> getMeatrecipelist(){
+		LinkedList<Recipe> vegrecipelist = new LinkedList<Recipe>();
+		Iterator<Recipe> iterator = this.recipelist.iterator(); 
+		while(iterator.hasNext()) {
+			Recipe recipe = (Recipe)iterator.next();
+			if(recipe.getDescription().equals("Meat")) {
+				vegrecipelist.add(recipe);
+			}
+			
+		}
+		return vegrecipelist;
+	}
+	
+	public LinkedList<Recipe> getUserRecipe()throws Exception{
+		String userid = this.user.getUserID(); 
+		LinkedList<Recipe> recipelist = this.databaselayerObject.getUserRecipe(userid);
+		return recipelist;
+	}
 }

@@ -13,7 +13,7 @@
 	<children>
 		<VBox layoutY="62.0" prefHeight="132.0" prefWidth="44.0">
 			<children>
-				<Label fx:id="vegan" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="44.0" prefWidth="44.0">
+				<Label fx:id="vegan" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#createVegrecipelist" prefHeight="44.0" prefWidth="44.0">
 					<graphic>
 						<ImageView fitHeight="44.0" fitWidth="40.0">
 							<image>
@@ -55,7 +55,7 @@
 		</ScrollPane>
 		<Label fx:id="toSearchView" layoutX="2.0" layoutY="412.0" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#backToSearchView" prefHeight="44.0" prefWidth="44.0">
 			<graphic>
-				<ImageView fitHeight="44.0" fitWidth="40.0">
+				<ImageView fitHeight="44.0" fitWidth="40.0" onMouseClicked="#backToSearchView">
 					<image>
 						<Image url="@return.png" />
 					</image>

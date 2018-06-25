@@ -10,6 +10,10 @@ import javafx.scene.control.Label;
 import java.io.IOException;
 import java.util.LinkedList;
 
+import javax.xml.crypto.dsig.spec.ExcC14NParameterSpec;
+
+import org.omg.CORBA.PUBLIC_MEMBER;
+
 import CookBookDataBaseAcess.DatabaselayerObject;
 import CookBookEntity.Recipe;
 import CookBookView.firstview.fvController;
@@ -20,6 +24,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 
 public class ListAllController {
@@ -39,6 +44,7 @@ public class ListAllController {
 	private Scene scene;
 	private DatabaselayerObject databaselayerObject;
 	private CookBook cookbook; 
+	private LinkedList<Recipe> recipelist; 
 	// Event Listener on Button[#logout].onAction
 	@FXML
 	public void logOut(ActionEvent event) throws IOException {
@@ -62,22 +68,9 @@ public class ListAllController {
 		stage.show();
 	}
 
-	public void createAllRecipeSubView() throws IOException {
-		LinkedList<Recipe> list = databaselayerObject.getallrecipelist();
-		for (int i = 1; i <= list.size(); i++) {
-			Recipe recipe = list.get(i - 1);
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("subview.fxml"));
-			Pane subView = loader.load();
-			SubviewController controller = loader.getController();
-			
-			controller.setRecipe(recipe);
-			controller.setName();
-			controller.setStar();
-			
-			controller.setStageAndScene(stage, scene);
-			controller.setDatabaselayerObject(databaselayerObject);
-			recipeVBox.getChildren().add(subView);
-		}
+	public void createAllRecipeSubView() throws Exception {
+		this.recipelist = this.cookbook.getRecipelist();
+		this.createSubview(recipelist);
 	}
 
 	public void setStage(Stage stage) {
@@ -100,5 +93,42 @@ public class ListAllController {
 	public void setCookBook(CookBook cookbook){
 		this.cookbook = cookbook ;	
 	}
+	
+	@FXML
+	public void createVegrecipelist() throws Exception{
+		this.recipelist = this.cookbook.getVegrecipelist();
+		this.createSubview(recipelist);
+	}
+	
+	@FXML
+	public void createeggrecipelist() throws Exception{
+		this.recipelist = this.cookbook.getEggrecipelist();
+		this.createSubview(recipelist);
+	}
+	
+	@FXML
+	public void createmeatrecipelist() throws Exception{
+		this.recipelist = this.cookbook.getMeatrecipelist(); 
+		this.createSubview(recipelist);
+	}
+	
+	private void createSubview(LinkedList<Recipe> recipelist) throws Exception{
+		for (int i = 1; i <= recipelist.size(); i++) {
+			Recipe recipe = recipelist.get(i - 1);
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("subview.fxml"));
+			Pane subView = loader.load();
+			SubviewController controller = loader.getController();
+			
+			controller.setRecipe(recipe);
+			controller.setName();
+			controller.setStar();
+			
+			controller.setStageAndScene(stage, scene);
+			controller.setDatabaselayerObject(databaselayerObject);
+			recipeVBox.getChildren().add(subView);
+		}
+	}
+	
+	
 
 }

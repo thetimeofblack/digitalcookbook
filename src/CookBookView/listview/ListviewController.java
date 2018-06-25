@@ -63,9 +63,10 @@ public class ListviewController {
 	}
 
 	public void createSearchedRecipeSubview(TextField searcher) throws Exception {
-		LinkedList<Recipe> list = this.cookBook.searchRecipe(searcher.getText());
-		for (int i = 1; i <= list.size(); i++) {
-			Recipe recipe = list.get(i - 1);
+		this.recipelist = this.cookBook.searchRecipe(searcher.getText());
+		 
+		for (int i = 1; i <= this.recipelist.size(); i++) {
+			Recipe recipe = this.recipelist.get(i - 1);
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("subview.fxml"));
 			Pane subView = loader.load();
 			SubviewController controller = loader.getController();
@@ -75,12 +76,12 @@ public class ListviewController {
 			controller.setStar();
 			controller.setStageAndScene(stage, scene);
 			controller.setDatabaselayerObject(databaselayerObject);
-			recipeVBox.getChildren().add(subView);
+			this.recipeVBox.getChildren().add(subView);
 		}
 	}
 
 	public void createUserRecipeSubView() throws IOException {
-		LinkedList<Recipe> list = databaselayerObject.getallrecipelist();
+		LinkedList<Recipe> list = this.cookBook.getallrecipelist();
 		for (int i = 1; i <= list.size(); i++) {
 			Recipe recipe = list.get(i - 1);
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("subview.fxml"));
@@ -146,9 +147,6 @@ public class ListviewController {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../searchview/searchView.fxml"));
 		GridPane root = (GridPane) loader.load();
 		SearchViewController svc = loader.getController();
-		
-				
-	
 		svc.setDatabaselayerObject(this.databaselayerObject);
 		svc.setStage(stage);
 		svc.setScene(scene);

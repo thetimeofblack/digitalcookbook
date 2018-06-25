@@ -101,13 +101,14 @@ public class SearchViewController {
 
 	// Event Listener on Button[#showrecipes].onAction
 	@FXML
-	public void showAllrecipes(ActionEvent event) throws IOException {
+	public void showAllrecipes(ActionEvent event) throws Exception {
 
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../listview/listall.fxml"));
 		Parent root = loader.load();
 		ListAllController controller = loader.getController();
 		controller.setStageAndScene(stage, scene);
-		controller.setDatabaselayerObject(databaselayerObject);
+		//controller.setDatabaselayerObject(databaselayerObject);
+		controller.setCookBook(this.cookbook);
 		controller.createAllRecipeSubView();
 
 		scene.setRoot(root);
