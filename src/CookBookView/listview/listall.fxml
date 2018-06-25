@@ -48,7 +48,7 @@
 				<Font size="11.0" />
 			</font>
 		</Button>
-		<ScrollPane layoutX="47.0" layoutY="37.0" prefHeight="470.0" prefWidth="455.0">
+		<ScrollPane fx:id="mainpane" layoutX="47.0" layoutY="37.0" prefHeight="470.0" prefWidth="455.0">
 			<content>
       				<VBox fx:id="recipeVBox" prefHeight="462.0" prefWidth="433.0" />
 			</content>

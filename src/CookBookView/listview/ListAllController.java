@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -46,7 +47,8 @@ public class ListAllController {
 	private DatabaselayerObject databaselayerObject;
 	private CookBook cookbook; 
 	private LinkedList<Recipe> recipelist; 
-	private Pane pane; 
+	@FXML
+	private ScrollPane mainpane; 
 	
 	// Event Listener on Button[#logout].onAction
 	@FXML
@@ -65,7 +67,8 @@ public class ListAllController {
 		GridPane root = loader.load();
 		SearchViewController controller = loader.getController();
 		controller.setStageAndScene(stage, scene);
-		controller.setDatabaselayerObject(databaselayerObject);
+		//controller.setDatabaselayerObject(databaselayerObject);
+		controller.setCookBook(this.cookbook);
 		scene.setRoot(root);
 		stage.setScene(scene);
 		stage.show();
@@ -123,10 +126,13 @@ public class ListAllController {
 	private void createSubview(LinkedList<Recipe> recipelist) throws Exception{
 		//this.recipeVBox = new VBox();
 		if(!recipelist.isEmpty()) {
+		this.recipeVBox = new VBox();	
 		for (int i = 1; i <= recipelist.size(); i++) {
 			Recipe recipe = recipelist.get(i - 1);
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("subview.fxml"));
-			Pane pane = loader.load();
+			Pane pane = new Pane(); 
+			pane = loader.load(); 
+			
 			SubviewController controller = loader.getController();
 			
 			controller.setRecipe(recipe);
@@ -136,7 +142,9 @@ public class ListAllController {
 			controller.setStageAndScene(stage, scene);
 			//controller.setDatabaselayerObject(databaselayerObject);
 			controller.setCookBook(this.cookbook);
-			recipeVBox.getChildren().add(pane);
+			
+			this.recipeVBox.getChildren().add(pane);
+			this.mainpane.setContent(this.recipeVBox);
 		}
 		}
 			
