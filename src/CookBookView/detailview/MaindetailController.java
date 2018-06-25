@@ -16,6 +16,7 @@ import javax.xml.ws.AsyncHandler;
 import org.hamcrest.core.SubstringMatcher;
 
 import CookBookEntity.Ingredient;
+import CookBookEntity.PreparationStep;
 import CookBookEntity.Recipe;
 import DigitalCookbook.CookBook;
 import javafx.event.ActionEvent;
@@ -136,9 +137,6 @@ public class MaindetailController {
 		this.subin = true; 
 		System.out.println("show ingredient");
 		
-		}else {
-			System.out.println("recipe does not has ingredients");
-			return;
 		}
 		System.out.println("show ingredient");
 		this.scrollpane.setContent(subinpane);
@@ -186,8 +184,38 @@ public class MaindetailController {
 		this.cookbook = cookbook;
 	}
 	
-	public void showPreparationStep() {
+	@FXML
+	public void showPreparationStep() throws Exception{
+		LinkedList<PreparationStep> preparelist = recipe.getPreparationSteps();
+		if(this.subst==false && !preparelist.isEmpty())
+		{
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("steppane.fxml"));
+		this.substpane = (Pane)loader.load();
+		steppaneController controller = loader.getController(); 
+		VBox stepvbox = controller.getVbox(); 
+		Iterator<PreparationStep> iterator = preparelist.iterator();
+		int number = 0;
+		while(iterator.hasNext()) {
+			number = number+1;
+			PreparationStep step = iterator.next(); 
+			FXMLLoader hboxloader = new FXMLLoader(getClass().getResource("steppanehbox.fxml"));
+			HBox hBox = hboxloader.load();
+			Text No=(Text)hBox.getChildren().get(0);
+			Text stepdescription = (Text) hBox.getChildren().get(1);
+			stepdescription.setText(step.getDescription());
+			No.setText(String.valueOf(number));
+			stepvbox.getChildren().add(hBox);
+		}
 		
+		
+		this.subst = true; 
+		System.out.println("show ingredient");
+		
+		}
+		
+		
+		this.scrollpane.setContent(substpane);
+
 	}
 	
 	public void showComment() {
