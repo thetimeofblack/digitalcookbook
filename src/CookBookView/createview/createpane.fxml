@@ -15,18 +15,18 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="290.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.createview.createpaneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="290.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.createview.createpaneController">
    <children>
       <Pane prefHeight="470.0" prefWidth="290.0">
          <children>
             <GridPane layoutX="6.0" prefHeight="141.0" prefWidth="283.0">
                <children>
-                  <GridPane>
+                  <GridPane prefHeight="127.0" prefWidth="141.0">
                      <children>
                         <HBox prefHeight="14.0" prefWidth="109.0">
                            <children>
                               <Label prefHeight="25.0" prefWidth="76.0" text="Recipename" />
-                              <TextArea fx:id="recipename" prefHeight="9.0" prefWidth="59.0" />
+                              <TextArea fx:id="recipename" prefHeight="26.0" prefWidth="59.0" />
                            </children>
                         </HBox>
                         <HBox prefHeight="19.0" prefWidth="135.0" GridPane.rowIndex="1">
@@ -37,7 +37,7 @@
                         <HBox prefHeight="16.0" prefWidth="136.0" GridPane.rowIndex="3">
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Preparationtime" wrappingWidth="104.888671875" />
-                              <TextArea fx:id="preparationTime" prefHeight="16.0" prefWidth="18.0" />
+                              <TextArea fx:id="preparationTime" prefHeight="27.0" prefWidth="42.0" />
                            </children>
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
@@ -60,11 +60,11 @@
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="21.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="19.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="95.0" minHeight="4.0" prefHeight="18.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="95.0" minHeight="4.0" prefHeight="16.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="95.0" minHeight="2.0" prefHeight="2.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="95.0" minHeight="4.0" prefHeight="44.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="95.0" minHeight="0.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="95.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                   </GridPane>
                   <GridPane GridPane.columnIndex="1">
@@ -106,7 +106,7 @@
             <Label fx:id="ingredient" layoutX="6.0" layoutY="141.0" prefHeight="35.0" prefWidth="34.0" />
             <Label layoutX="8.0" layoutY="180.0" prefHeight="35.0" prefWidth="34.0" />
             <Label layoutX="8.0" layoutY="215.0" prefHeight="35.0" prefWidth="34.0" />
-            <ImageView fitHeight="34.0" fitWidth="35.0" layoutX="35.0" layoutY="337.0">
+            <ImageView fitHeight="34.0" fitWidth="35.0" layoutX="35.0" layoutY="337.0" onMouseClicked="#createComment">
                <image>
                   <Image url="@../detailview/Event%20Comments.png" />
                </image>
@@ -114,15 +114,15 @@
             <Button fx:id="cancel" layoutX="215.0" layoutY="425.0" mnemonicParsing="false" onAction="#back" text="Cancel" textFill="#0917d7" />
             <Pane fx:id="mainPane" layoutX="104.0" layoutY="155.0" prefHeight="270.0" prefWidth="172.0" />
             <Button layoutX="144.0" layoutY="425.0" mnemonicParsing="false" onAction="#createRecipe" prefHeight="23.0" prefWidth="46.0" text="OK" />
-            <Button layoutX="14.0" layoutY="186.0" mnemonicParsing="false" text="ingredient" onAction="#createIngredient"/>
-            <Button layoutX="29.0" layoutY="279.0" mnemonicParsing="false" text="steps" onAction="#createSteps" />  
-            <Button layoutX="17.0" layoutY="371.0" mnemonicParsing="false" text="comment" onAction = "#createComment"/>
-            <ImageView fitHeight="39.0" fitWidth="41.0" layoutX="31.0" layoutY="139.0">
+            <Button layoutX="14.0" layoutY="186.0" mnemonicParsing="false" onAction="#createIngredient" text="ingredient" />
+            <Button layoutX="29.0" layoutY="279.0" mnemonicParsing="false" onAction="#createSteps" text="steps" />  
+            <Button layoutX="17.0" layoutY="371.0" mnemonicParsing="false" onAction="#createComment" text="comment" />
+            <ImageView fitHeight="39.0" fitWidth="41.0" layoutX="32.0" layoutY="141.0" onMouseClicked="#createIngredient">
                <image>
                   <Image url="@../detailview/material-information-outline.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="36.0" layoutX="34.0" layoutY="234.0">
+            <ImageView fitHeight="32.0" fitWidth="36.0" layoutX="34.0" layoutY="234.0" onMouseClicked="#createSteps">
                <image>
                   <Image url="@../detailview/s.png" />
                </image>

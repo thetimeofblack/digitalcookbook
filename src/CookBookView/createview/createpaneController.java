@@ -9,7 +9,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 import java.security.KeyStore.PrivateKeyEntry;
+import java.util.LinkedList;
 
+import CookBookEntity.Ingredient;
+import CookBookEntity.PreparationStep;
+import CookBookEntity.Recipe;
 import CookBookView.firstview.fvController;
 import DigitalCookbook.CookBook;
 import javafx.event.ActionEvent;
@@ -61,6 +65,11 @@ public class createpaneController {
 
 	
 	private CookBook cookbook;
+	private Recipe recipe ; 
+	private LinkedList<Ingredient> ingredients; 
+	private LinkedList<PreparationStep> steps ; 
+	
+	
 	private Stage stage; 
 	private Scene scene; 
 	// Event Listener on Label[#favourite].onDragDetected
@@ -101,6 +110,8 @@ public class createpaneController {
 		{
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("inpane.fxml"));
 		this.subinpane = (ScrollPane)loader.load();
+		inpaneController controller = loader.getController(); 
+		controller.setIngredientList(ingredients);
 		this.subin = true; 
 		System.out.println("create ingredient");
 		}

@@ -103,9 +103,11 @@ public class inpaneController {
 		return this.inpaneVBox;
 	}
 	
-
-	
 	public LinkedList<Ingredient> getIngredientList() {
 		return this.Ingredientlist;
+	}
+	
+	public void setIngredientList(LinkedList<Ingredient> ingredients) {
+		this.Ingredientlist = ingredients; 
 	}
 }

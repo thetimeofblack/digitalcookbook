@@ -218,7 +218,7 @@ public class MaindetailController {
 
 	}
 	
-	public void showComment() {
-		
+	public void showComment() throws Exception {
+		this.cookbook.getRecipeComment(this.recipe.getRecipeID());
 	}
 }
