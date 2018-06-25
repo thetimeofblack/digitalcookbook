@@ -94,8 +94,9 @@ public class CookBook {
 		Iterator<Recipe> iterator = this.recipelist.iterator(); 
 		while(iterator.hasNext()) {
 			Recipe recipe = (Recipe)iterator.next();
-			if(recipe.getDescription().equals("vegetable")) {
+			if(recipe.getDescription().equals("Vegetable")) {
 				vegrecipelist.add(recipe);
+				System.out.println("add vegetable");
 			}
 			
 		}
@@ -109,6 +110,7 @@ public class CookBook {
 			Recipe recipe = (Recipe)iterator.next();
 			if(recipe.getDescription().equals("Egg")) {
 				vegrecipelist.add(recipe);
+				System.out.println("Add Egg");
 			}
 			
 		}
@@ -160,6 +162,8 @@ public class CookBook {
 		return this.databaselayerObject.userRegister(user);
 	}
 	
-
-	
+	public boolean saveComment(Comment comment,String recipeid) throws Exception {
+		boolean result =this.databaselayerObject.saveCommentandRate(comment, Integer.parseInt(recipeid));
+		return result; 
+	}
 }

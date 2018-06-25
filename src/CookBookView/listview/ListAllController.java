@@ -24,6 +24,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 
@@ -45,6 +46,8 @@ public class ListAllController {
 	private DatabaselayerObject databaselayerObject;
 	private CookBook cookbook; 
 	private LinkedList<Recipe> recipelist; 
+	private Pane pane; 
+	
 	// Event Listener on Button[#logout].onAction
 	@FXML
 	public void logOut(ActionEvent event) throws IOException {
@@ -98,28 +101,32 @@ public class ListAllController {
 	
 	@FXML
 	public void createVegrecipelist() throws Exception{
+		this.cookbook.getallrecipelist();
 		this.recipelist = this.cookbook.getVegrecipelist();
 		this.createSubview(recipelist);
 	}
 	
 	@FXML
 	public void createeggrecipelist() throws Exception{
+		this.cookbook.getallrecipelist();
 		this.recipelist = this.cookbook.getEggrecipelist();
 		this.createSubview(recipelist);
 	}
 	
 	@FXML
 	public void createmeatrecipelist() throws Exception{
+		this.cookbook.getallrecipelist();
 		this.recipelist = this.cookbook.getMeatrecipelist(); 
 		this.createSubview(recipelist);
 	}
 	
 	private void createSubview(LinkedList<Recipe> recipelist) throws Exception{
+		//this.recipeVBox = new VBox();
 		if(!recipelist.isEmpty()) {
 		for (int i = 1; i <= recipelist.size(); i++) {
 			Recipe recipe = recipelist.get(i - 1);
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("subview.fxml"));
-			Pane subView = loader.load();
+			Pane pane = loader.load();
 			SubviewController controller = loader.getController();
 			
 			controller.setRecipe(recipe);
@@ -127,10 +134,13 @@ public class ListAllController {
 			controller.setStar();
 			
 			controller.setStageAndScene(stage, scene);
-			controller.setDatabaselayerObject(databaselayerObject);
-			recipeVBox.getChildren().add(subView);
+			//controller.setDatabaselayerObject(databaselayerObject);
+			controller.setCookBook(this.cookbook);
+			recipeVBox.getChildren().add(pane);
 		}
 		}
+			
+		
 	}
 	
 	

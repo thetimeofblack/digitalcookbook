@@ -12,6 +12,11 @@ public class Comment {
 		
 		
 	}
+	
+	public Comment() {
+		this.grade = 0 ; 
+		
+	}
 	public int getGrade() {
 		return grade;
 	}

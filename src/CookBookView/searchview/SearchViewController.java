@@ -110,7 +110,7 @@ public class SearchViewController {
 		//controller.setDatabaselayerObject(databaselayerObject);
 		controller.setCookBook(this.cookbook);
 		controller.createAllRecipeSubView();
-
+		
 		scene.setRoot(root);
 		stage.setScene(scene);
 		stage.show();

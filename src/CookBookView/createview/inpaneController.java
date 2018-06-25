@@ -3,6 +3,7 @@ package CookBookView.createview;
 
 import javafx.scene.control.TextField;
 
+import java.security.KeyStore.PrivateKeyEntry;
 import java.util.LinkedList;
 
 import org.omg.CORBA.Current;
@@ -39,6 +40,19 @@ public class inpaneController {
 	private Button deleteIngredient;
 	
 
+	@FXML	
+	private TextField Name ;
+	
+	@FXML
+	private TextField Usage; 
+	
+	@FXML
+	private TextField Unit ; 
+	
+	@FXML
+	private TextField Description; 
+	
+	
 	
 	private int addnumber =0;
 	
@@ -64,7 +78,7 @@ public class inpaneController {
 	}
 	@FXML
 	public void saveIngredient() {
-		this.Ingredientlist = new LinkedList<Ingredient>();
+		//this.Ingredientlist = new LinkedList<Ingredient>();
 		int num = this.addnumber;
 		while(num>0) {
 		Ingredient ingredient = new Ingredient();

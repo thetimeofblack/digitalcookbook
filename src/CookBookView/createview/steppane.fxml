@@ -30,12 +30,17 @@
             </ImageView>
             <HBox prefHeight="42.0" prefWidth="254.0">
                <children>
-                  <Button mnemonicParsing="false" text="Add" />
-                  <Button mnemonicParsing="false" text="Sub" />
-                  <Button mnemonicParsing="false" text="Save" />
-                  <Button mnemonicParsing="false" text="Cancel" />
+                  <Button mnemonicParsing="false" onAction="#addLine" text="Add" />
+                  <Button mnemonicParsing="false" onAction="#subLine" text="Sub" />
+                  <Button mnemonicParsing="false" onAction="#saveSteps" text="Save" />
+                  <Button mnemonicParsing="false" onAction="#cancelsteps" text="Cancel" />
                </children>
             </HBox>
+            <ImageView fitHeight="25.0" fitWidth="26.0" layoutX="222.0" layoutY="222.0" onDragDetected="#addLine">
+               <image>
+                  <Image url="@Add.png" />
+               </image>
+            </ImageView>
          </children></AnchorPane>
   </content>
 </ScrollPane>

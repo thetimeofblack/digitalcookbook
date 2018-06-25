@@ -22,7 +22,7 @@
 						</ImageView>
 					</graphic>
 				</Label>
-				<Label fx:id="egg_milk" prefHeight="44.0" prefWidth="44.0">
+				<Label fx:id="egg_milk" onMouseClicked="#createeggrecipelist" prefHeight="44.0" prefWidth="44.0">
 					<graphic>
 						<ImageView fitHeight="36.0" fitWidth="44.0">
 							<image>
@@ -31,7 +31,7 @@
 						</ImageView>
 					</graphic>
 				</Label>
-				<Label fx:id="meat" prefHeight="44.0" prefWidth="44.0">
+				<Label fx:id="meat" onMouseClicked="#createmeatrecipelist" prefHeight="44.0" prefWidth="44.0">
 					<graphic>
 						<ImageView fitHeight="44.0" fitWidth="47.0">
 							<image>
