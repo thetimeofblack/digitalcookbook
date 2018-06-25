@@ -16,7 +16,7 @@
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Description" />
          </children>
       </HBox>
-      <VBox layoutY="15.0" prefHeight="231.0" prefWidth="247.0">
+      <VBox fx:id="vbox" layoutY="15.0" prefHeight="231.0" prefWidth="247.0">
          <children>
             <HBox prefHeight="20.0" prefWidth="247.0">
                <children>

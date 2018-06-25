@@ -59,7 +59,7 @@ public class editpaneController implements Initializable {
 	private ScrollPane substPane;
 	// Event Listener on Label[#favourite].onDragDetected
 	
-	
+	private Recipe recipe ;
 	private CookBook cookbook ; 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -107,17 +107,21 @@ public class editpaneController implements Initializable {
 		
 	}
 	public void createRecipe() {
-		Recipe recipe = new Recipe() ; 
+		this.recipe = new Recipe() ; 
 		recipe.setCategory(this.Category.getText());
 		recipe.setPreparationTime(Integer.parseInt(this.preparationTime.getText()));
 		recipe.setServeNumber(Integer.parseInt(this.servingperson.getText()));
 		recipe.setName(this.recipename.getText());
 		
-		
+		System.out.println(this.recipe.toString());
 	}
 	
 	public void setCookBook(CookBook cookbook) {
 		this.cookbook = cookbook ; 
+	}
+	
+	public Recipe getRecipe() {
+		return this.recipe; 
 	}
 	
 

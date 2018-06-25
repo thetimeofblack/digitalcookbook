@@ -136,10 +136,7 @@ public class CookBookApp {
 		cb.add(createHongShaoRou());
 		cb.add(createSuanLaFen());
 		
-		Recipe recipe = cb.getRecipe("Gong Bao Jiding");
-		if (recipe != null) {
-			System.out.println(recipe);
-		}
+	
 		cb.showallrecipe();
 	}
 }

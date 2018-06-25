@@ -53,16 +53,12 @@ public class CookBook {
 	}
 	
 	public boolean saveRecipe(Recipe recipe ) throws Exception {
-		boolean result = this.databaselayerObject.insertRecipe(recipe);
+		boolean result = this.databaselayerObject.insertrecipe(recipe);
 		if(result) return true; 
 		return false; 
 	}
 	
-	public Recipe getRecipe(String recipeid) throws Exception {
-		Recipe recipe = new Recipe();
-		recipe = this.databaselayerObject.getRecipe(recipeid);
-		return recipe; 
-	}
+
 	
 	public LinkedList<Recipe> searchRecipe(String recipename)throws Exception{
 		//LinkedList<String> recipeidlist = new LinkedList<String>();
@@ -142,14 +138,14 @@ public class CookBook {
 		Iterator<Recipe> iterator= recipelist.iterator(); 
 		while(iterator.hasNext()) {
 			Recipe recipe = iterator.next(); 
-			if(!this.databaselayerObject.insertRecipe(recipe)) break;
+			this.databaselayerObject.insertrecipe(recipe);
 		}
 	}
 	
 	
 	public void saveUserRecipe(User user, Recipe recipe) throws Exception{
 		this.databaselayerObject.setUser(user);
-		this.databaselayerObject.insertRecipe(recipe);
+		this.databaselayerObject.insertrecipe(recipe);
 	}
 	
 	public void deleteUserRecipe(User user, String recipeid)  throws Exception{
@@ -160,5 +156,10 @@ public class CookBook {
 		this.databaselayerObject.deleterecipeuser(recipe);
 	}
 	
+	public boolean userRegister(User user) throws Exception{
+		return this.databaselayerObject.userRegister(user);
+	}
+	
+
 	
 }

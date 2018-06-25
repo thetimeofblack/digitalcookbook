@@ -25,7 +25,7 @@ public class SearchView extends javafx.application.Application {
 			GridPane root = (GridPane) loader.load();
 				
 			SearchViewController svc = loader.getController();
-			
+			User user = new User("heyining","heyining");
 			Scene scene = new Scene(root, 290, 470);
 			svc.setCookBook(cookBook);
 			svc.setScene(scene);

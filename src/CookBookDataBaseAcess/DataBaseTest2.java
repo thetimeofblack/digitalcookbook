@@ -13,7 +13,7 @@ public class DataBaseTest2 {
 		Recipe recipe = CookBookApp.createGongBaoJiding();
 		Recipe recipe2 = CookBookApp.createHongShaoRou();
 		//heloo
-		dao.insertRecipe(recipe2);
+	
 		User user = new User("heyining","heyining");
 		User user2 = new User("heyining","Heyining");
 		User user3 = new User("heyinin","heyining");

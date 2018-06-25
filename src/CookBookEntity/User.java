@@ -10,7 +10,7 @@ public class User {
 	}
 
 	public User( String userName, String userPassword) {
-		
+		this.UserID = "";
 		this.UserName = userName;
 		this.UserPassword = userPassword;
 	}
@@ -37,6 +37,11 @@ public class User {
 	
 	public void setUserPassword(String userPassword) {
 		UserPassword = userPassword;
+	}
+	
+	public boolean isExist() {
+		if(this.UserID==null||this.UserID.equals("")) return false ;
+		return true; 
 	}
 	
 }

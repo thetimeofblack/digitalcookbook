@@ -91,7 +91,7 @@ public class SearchViewController {
 		Parent root = loader.load();
 		ListviewController controller = loader.getController();
 		controller.setStageAndScene(stage, scene);
-		controller.setDatabaselayerObject(databaselayerObject);
+		//controller.setDatabaselayerObject(databaselayerObject);
 		controller.createSearchedRecipeSubview(searcher);
 		controller.setCookBook(this.cookbook);
 		scene.setRoot(root);

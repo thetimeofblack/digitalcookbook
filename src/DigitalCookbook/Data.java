@@ -13,8 +13,10 @@ public class Data {
 		User user = new User("heyining","heyining");
 		
 		CookBook cookBook = new CookBook() ; 
+		
 		cookBook.saveRecipe(recipe1);
 		int userloginrs = cookBook.userLogin(user);
+		cookBook.saveUserRecipe(user, recipe2);
 		System.out.println(userloginrs);
 		
 	}

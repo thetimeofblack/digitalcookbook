@@ -53,6 +53,10 @@ public class DatabaselayerObject {
 		}
 	}
 	
+	private Connection getConnection() throws Exception {
+		Connection connection =  DriverManager.getConnection(this.Databaseurl, this.Databaseuser, this.Databasepassword);
+		return connection;
+	}
 	public void UserLogin(User user) throws Exception{
 		userLogin(user.getUserName(),user.getUserPassword());
 		this.user = user; 
@@ -157,6 +161,8 @@ public class DatabaselayerObject {
 	 * @param name
 	 * 
 	 */
+	
+	/*
 	public Recipe getRecipe(String recipeid) {
 	
 		Recipe recipe = new Recipe();	
@@ -188,7 +194,7 @@ public class DatabaselayerObject {
 
 			String ss2 = "select * from cookbook.ingredients where RecipeID = " + recipeid;
 
-			res = sql.executeQuery(ss2);
+			ResultSet res = sql.executeQuery(ss2);
 			while (res.next()) {
 				Ingredient ingredient = new Ingredient();
 				ingredient.setIngredientsID(res.getDouble("ID"));
@@ -219,7 +225,7 @@ public class DatabaselayerObject {
 		return recipe;
 	}
 	
-
+	*/
 
 
 	
@@ -231,17 +237,21 @@ public class DatabaselayerObject {
 	public LinkedList<Recipe> getallrecipelist() {		
 		LinkedList<Recipe> ls = new LinkedList<Recipe>();
 		try {
-			
-			res = this.sql.executeQuery("select * from cookbook.recipe ");
+			Connection connection = this.getConnection(); 
+			Statement state = connection.createStatement(); 
+			ResultSet res = state.executeQuery("select ID from cookbook.recipe ");
 			
 			while (res.next()) {
-				Recipe recipe = this.getRecipe(res.getString("ID"));
+				
+				Recipe recipe = this.getRecipe(res.getString(1),res);
+				
 				ls.add(recipe);
-				//System.out.println(recipe.getCookTime());
+				
+				System.out.println(recipe.getName());
 			}
 
-
-		
+			
+		connection.close(); 
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -251,7 +261,7 @@ public class DatabaselayerObject {
 
 
 
-	// 锟矫伙拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟絩ecipe 锟斤拷锟斤拷
+
 
 	public LinkedList<Recipe> showsearchingrecipelist(String s) {
 		
@@ -261,7 +271,7 @@ public class DatabaselayerObject {
 			String ss = "select * from cookbook.recipe where name like '%" + s + "%'";
 			res = this.sql.executeQuery(ss);
 			while (res.next()) {
-				Recipe recipe = this.getRecipe(res.getString("ID"));
+				Recipe recipe = this.getRecipe(res.getString("ID"),res);
 				ls.add(recipe);
 			}
 		} catch (Exception e) {
@@ -274,7 +284,7 @@ public class DatabaselayerObject {
 	
 	
 
-	public Recipe insertrecipe(Recipe recipe) {//锟斤拷recipe锟斤拷recipeid
+	public boolean insertrecipe(Recipe recipe) throws Exception {//锟斤拷recipe锟斤拷recipeid
 
 		String recipeid = "null";
 		int res1 = 0;
@@ -301,12 +311,18 @@ public class DatabaselayerObject {
 			e.printStackTrace();
 		}		
 		recipe.setRecipeID(recipeid);
-		return recipe;
+		insertingredients(recipe);
+		insertpreparationsteps(recipe);
+		
+		if(this.user.isExist()) insertrecipeuser(recipe);
+		
+		
+		return true;
 	}
 	
 
 
-	public void insertingredients(Recipe recipe) throws SQLException {
+	private void insertingredients(Recipe recipe) throws SQLException {
 		int res1 = 0;
 		LinkedList<Ingredient> ls1 = recipe.getIngredientlist();
 		for (int x = 0; x < ls1.size(); x++) {
@@ -329,7 +345,7 @@ public class DatabaselayerObject {
 	//preparationsteps锟斤拷锟斤拷敕斤拷锟�
 
 
-	public void insertpreparationsteps(Recipe recipe) throws SQLException {
+	private void insertpreparationsteps(Recipe recipe) throws SQLException {
 		int res1 = 0;
 		LinkedList<PreparationStep> ls2 = recipe.getPreparationSteps();
 		for (int y = 0; y < ls2.size(); y++) {
@@ -349,7 +365,7 @@ public class DatabaselayerObject {
 
 	//recipe-user锟斤拷锟斤拷敕斤拷锟�
 
-	public void insertrecipeuser(Recipe recipe) throws SQLException{
+	private void insertrecipeuser(Recipe recipe) throws SQLException{
 		int res1 = 0;
 		System.out.println("This is recipe id "+recipe.getRecipeID());
 		String ss4 = "INSERT INTO `cookbook`.`UserRecipe` (`userid`,`recipeid`) values(" 
@@ -361,21 +377,6 @@ public class DatabaselayerObject {
 	}
 	
 
-	//锟杰ｏ拷recipe锟斤拷锟诫方锟斤拷	
-	public boolean insertRecipe(Recipe recipe) throws SQLException {
-
-		Recipe newrecipe = new Recipe();
-		newrecipe = insertrecipe(recipe);
-		insertingredients(newrecipe);
-		insertpreparationsteps(newrecipe);
-		insertrecipeuser(newrecipe);
-		return true;
-	}
-	
-	
-	
-
-	//recipe锟斤拷删锟斤拷
 
 	private  void deleterecipe(Recipe recipe) throws SQLException {
 		String recipeid = recipe.getRecipeID();
@@ -569,7 +570,7 @@ public class DatabaselayerObject {
 	
 	
 	
-	public String saveRecipeDescription(int recipeid)throws Exception {
+	public String saveRecipeDescription(String recipeid)throws Exception {
        
         //int recipeid = recipe.getRecipeID();
         
@@ -656,9 +657,9 @@ public class DatabaselayerObject {
     }
     
     public boolean getRecipeComment(LinkedList<Comment> comments ,String recipeid) throws Exception{
-    	String sqlstr = "select * from rateandcomments"
+    	String sqlstr = "select * from cookbook.rateandcomments"
     			+ "where recipeid="+recipeid;
-    	this.res = this.sql.executeQuery(sqlstr);
+    	ResultSet res = this.sql.executeQuery(sqlstr);
         comments = new LinkedList<Comment>();
     	while(res.next()) {
     	Comment comment = new Comment(res.getInt("rate"), res.getString("comments"));
@@ -676,8 +677,9 @@ public class DatabaselayerObject {
     	"and cookbook.userrecipe.recipeid=cookbook.recipe.recipeid";
     	this.res = this.sql.executeQuery(sqlstr);
     	LinkedList<Recipe> recipelist = new LinkedList<Recipe>();
-    	while(res.next()) {
-    		Recipe recipe = this.getRecipe(res.getString("ID"));
+    	while(res.isFirst()) {
+    		res.next();
+    		Recipe recipe = this.getRecipe(res.getString("ID"),res);
     		recipelist.add(recipe);
     	}
     	return recipelist ; 
@@ -687,7 +689,8 @@ public class DatabaselayerObject {
     
     private Recipe getRecipe(String recipeid,ResultSet res) throws Exception {
     	Recipe recipe = new Recipe();
-    	
+    	res = this.sql.executeQuery("select * from cookbook.recipe where id="+recipeid);
+    	res.next();
     	recipe.setRecipeID(res.getString("ID"));
 		recipe.setName(res.getString("Name"));
 		recipe.setServeNumber(res.getInt("serveNumber"));
@@ -702,9 +705,9 @@ public class DatabaselayerObject {
     
     private LinkedList<Ingredient> getIngredient(String recipeid) throws Exception{
     	LinkedList<Ingredient> ingredientlist = new LinkedList<Ingredient>();
-    	String ss2 = "select * from cookbook.ingredients where RecipeID = " + recipeid;
+    	String ss2 = "select * from cookbook.ingredient where RecipeID = " + recipeid;
 
-		res = sql.executeQuery(ss2);
+		ResultSet res = sql.executeQuery(ss2);
 		while (res.next()) {
 			Ingredient ingredient = new Ingredient();
 			ingredient.setIngredientsID(res.getDouble("ID"));
@@ -718,7 +721,7 @@ public class DatabaselayerObject {
     
     private LinkedList<PreparationStep> getPreparationSteps(String recipeid) throws Exception{
     	LinkedList<PreparationStep> preparationSteps= new LinkedList<PreparationStep>();
-    	String sqlstr = "select * from cookbook.preparationsteps where RecipeID = '" + recipeid+"'";
+    	String sqlstr = "select * from cookbook.preparationstep where RecipeID = '" + recipeid+"'";
 
 		ResultSet result = sql.executeQuery(sqlstr);
 		while (result.next()) {

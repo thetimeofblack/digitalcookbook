@@ -69,8 +69,10 @@ public class ListAllController {
 	}
 
 	public void createAllRecipeSubView() throws Exception {
-		this.recipelist = this.cookbook.getRecipelist();
+		this.recipelist = this.cookbook.getallrecipelist();
+		if(!this.recipelist.isEmpty()) {
 		this.createSubview(recipelist);
+		}
 	}
 
 	public void setStage(Stage stage) {
@@ -113,6 +115,7 @@ public class ListAllController {
 	}
 	
 	private void createSubview(LinkedList<Recipe> recipelist) throws Exception{
+		if(!recipelist.isEmpty()) {
 		for (int i = 1; i <= recipelist.size(); i++) {
 			Recipe recipe = recipelist.get(i - 1);
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("subview.fxml"));
@@ -126,6 +129,7 @@ public class ListAllController {
 			controller.setStageAndScene(stage, scene);
 			controller.setDatabaselayerObject(databaselayerObject);
 			recipeVBox.getChildren().add(subView);
+		}
 		}
 	}
 	
