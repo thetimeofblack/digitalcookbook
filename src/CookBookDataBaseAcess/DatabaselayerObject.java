@@ -43,6 +43,11 @@ public class DatabaselayerObject {
 		}
 	}
 	
+	/**
+	 * @Description 
+	 * @param user
+	 * @throws Exception
+	 */
 	public void UserLogin(User user) throws Exception{
 		userLogin(user.getUserName(),user.getUserPassword());
 		this.user = user; 
@@ -72,6 +77,13 @@ public class DatabaselayerObject {
 	}
 	
 	// login����,����0Ϊ���벻һ������Ϊ0��Ϊuserid��-1��Ϊδ�ҵ��û���
+	/**
+	 * @Description Check whether the username exists in the datadbase first.If exists,check the password then.If username does not exist,return -1.If password is not correct,return 0.If login successfully,return 1. 
+	 * @param username
+	 * @param userpassword
+	 * @return
+	 * @throws SQLException
+	 */
 	public int userLogin(String username, String userpassword) throws SQLException {
 		
 	
@@ -102,6 +114,12 @@ public class DatabaselayerObject {
 	// INSERT INTO `cookbook`.`user` (`UserName`, `UserPassword`) VALUES
 	// ('Xiyuan', '12345'); ɵ�Ʒ��Ų�����
 	// create account ����,�ѳɹ����
+	/**
+	 * @Description Insert the new username and password 
+	 * @param user
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean userRegister(User user) throws SQLException {
 		
 		String sqlstr = "insert into `cookbook`.`user` (`UserName`,`UserPassword`) values('" 
@@ -139,7 +157,7 @@ public class DatabaselayerObject {
 	
 
 	/**
-	 * get a complete recipe
+	 * @Description get a recipe created by a specific user through his userid and the recipe name.
 	 * @param userid
 	 * @param name
 	 * 
@@ -201,6 +219,12 @@ public class DatabaselayerObject {
 	}
 	
 	
+	/**
+	 * @Description 
+	 * @param res
+	 * @return
+	 * @throws Exception
+	 */
 	public Recipe getRecipe(ResultSet res) throws Exception{
 		Recipe recipe = new Recipe();
 		if(res.next()) {
@@ -211,6 +235,11 @@ public class DatabaselayerObject {
 		return recipe;
 	}
 	
+	/**
+	 * @Description 
+	 * @param recipename
+	 * @return
+	 */
 	public Recipe searchRecipe(String recipename) {
 		Recipe recipe = new Recipe(); 
 		
@@ -221,6 +250,12 @@ public class DatabaselayerObject {
 	/*
 	 * @description
 	 * 
+	 */
+	/**
+	 * @Description 
+	 * @param userid
+	 * @param name
+	 * @return
 	 */
 	public LinkedList<Recipe> getPublicRecipe(int userid, String name) {
 		con = this.getConnection();
