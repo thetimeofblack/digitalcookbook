@@ -720,7 +720,7 @@ public class DatabaselayerObject {
     	return true;
     }
     
-    public LinkedList<Recipe> getUserRecipe(String userid) throws Exception{
+    public LinkedList<Recipe> getUserallRecipe(String userid) throws Exception{
     	String sqlstr ="select * from cookbook.userrecipe , cookbook.recipe "+
     	"where cookbook.userrecipe.userid = "+userid+ 
     	"and cookbook.userrecipe.recipeid=cookbook.recipe.recipeid";
@@ -752,11 +752,34 @@ public class DatabaselayerObject {
     
     private LinkedList<Ingredient> getIngredient(String recipeid) throws Exception{
     	LinkedList<Ingredient> ingredientlist = new LinkedList<Ingredient>();
+    	String ss2 = "select * from cookbook.ingredients where RecipeID = " + recipeid;
+
+		res = sql.executeQuery(ss2);
+		while (res.next()) {
+			Ingredient ingredient = new Ingredient();
+			ingredient.setIngredientsID(res.getDouble("ID"));
+			ingredient.setName(res.getString("Name"));
+			ingredient.setAmount(res.getDouble("Amount"));
+			ingredient.setUnit(res.getString("Unit"));
+			ingredientlist.add(ingredient);
+		}
     	return ingredientlist ; 
     }
     
-    private LinkedList<PreparationStep> getPreparationSteps(String recipeid){
+    private LinkedList<PreparationStep> getPreparationSteps(String recipeid) throws Exception{
     	LinkedList<PreparationStep> preparationSteps= new LinkedList<PreparationStep>();
+    	String sqlstr = "select * from cookbook.preparationsteps where RecipeID = '" + recipeid+"'";
+
+		ResultSet result = sql.executeQuery(sqlstr);
+		while (result.next()) {
+			PreparationStep preparationstep = new PreparationStep();
+			
+			preparationstep.setStepsID(result.getDouble("ID"));
+			preparationstep.setDescription(result.getString("Description"));
+			preparationstep.setOrder(result.getDouble("preparationstepsorder"));
+			preparationSteps.add(preparationstep);
+		}
+		
     	return preparationSteps;
     }
 

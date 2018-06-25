@@ -134,7 +134,7 @@ public class CookBook {
 	
 	public LinkedList<Recipe> getUserRecipe()throws Exception{
 		String userid = this.user.getUserID(); 
-		LinkedList<Recipe> recipelist = this.databaselayerObject.getUserRecipe(userid);
+		LinkedList<Recipe> recipelist = this.databaselayerObject.getUserallRecipe(userid);
 		return recipelist;
 	}
 }
