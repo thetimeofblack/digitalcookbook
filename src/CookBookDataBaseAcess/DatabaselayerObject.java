@@ -1,5 +1,7 @@
 package CookBookDataBaseAcess;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.sql.Connection;
 
 import java.sql.DriverManager;
@@ -10,6 +12,8 @@ import java.sql.Statement;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+import com.mysql.cj.exceptions.RSAException;
+import com.mysql.cj.jdbc.ha.SequentialBalanceStrategy;
 
 import CookBookEntity.Comment;
 import CookBookEntity.Ingredient;
@@ -698,6 +702,21 @@ public class DatabaselayerObject {
     
     public User getUser() {
     	return this.user;
+    }
+    
+    public boolean getRecipeComment(LinkedList<Comment> comments ,String recipeid) throws Exception{
+    	String sqlstr = "select * from rateandcomments"
+    			+ "where recipeid="+recipeid;
+    	this.res = this.sql.executeQuery(sqlstr);
+        comments = new LinkedList<Comment>();
+    	while(res.next()) {
+    	Comment comment = new Comment(res.getInt("rate"), res.getString("comments"));
+        comment.setUserid(res.getString("userid"));
+        comment.setCommentid(res.getString("ID"));
+        comments.add(comment);
+    	}
+    	if(comments.isEmpty()) return false; 
+    	return true;
     }
 
 

@@ -86,13 +86,14 @@ public class SearchViewController {
 
 	// Event Listener on Button[#blacksearch].onMouseClicked
 	@FXML
-	public void searchRecipes(MouseEvent event) throws IOException {
+	public void searchRecipes(MouseEvent event) throws Exception {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../listview/listview.fxml"));
 		Parent root = loader.load();
 		ListviewController controller = loader.getController();
 		controller.setStageAndScene(stage, scene);
 		controller.setDatabaselayerObject(databaselayerObject);
 		controller.createSearchedRecipeSubview(searcher);
+		controller.setCookBook(this.cookbook);
 		scene.setRoot(root);
 		stage.setScene(scene);
 		stage.show();
@@ -189,5 +190,9 @@ public class SearchViewController {
 
 	public void setDatabaselayerObject(DatabaselayerObject databaselayerObject) {
 		this.databaselayerObject = databaselayerObject;
+	}
+	
+	public void setCookBook(CookBook cookBook) {
+		this.cookbook = cookBook;
 	}
 }

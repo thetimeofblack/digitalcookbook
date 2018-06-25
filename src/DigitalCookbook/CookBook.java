@@ -3,6 +3,9 @@ import java.util.LinkedList;
 import CookBookDataBaseAcess.DatabaselayerObject;
 import CookBookEntity.Comment;
 import CookBookEntity.Recipe;
+import CookBookEntity.*;
+
+import static org.junit.jupiter.api.Assumptions.assumingThat;
 
 import java.sql.SQLException;
 import java.time.chrono.ThaiBuddhistChronology;
@@ -72,4 +75,16 @@ public class CookBook {
 		
 	}
 	
+	public int userLogin(User user ) throws Exception {
+		this.user = user ;
+		int result = this.databaselayerObject.userLogin(user.getUserName(), user.getUserPassword());
+		return result; 
+		
+	}
+	
+	public LinkedList<Comment> getRecipeComment (String recipeid) throws Exception {
+		LinkedList<Comment> comments= new LinkedList<Comment>();
+		boolean result = databaselayerObject.getRecipeComment(comments, recipeid);
+		return comments;
+	}
 }

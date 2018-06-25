@@ -90,7 +90,13 @@ public class inpaneController {
 	
 	@FXML
 	public void cancelIngredient() {
-		
+		int num = this.addnumber+1; 
+		while(num>1) {
+			this.inpaneVBox.getChildren().remove(num);
+			
+			num = num-1; 
+		}
+		this.addnumber = 0 ;
 	}
 	
 	public VBox getInpane() {

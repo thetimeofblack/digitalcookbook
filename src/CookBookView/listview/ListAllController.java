@@ -14,6 +14,7 @@ import CookBookDataBaseAcess.DatabaselayerObject;
 import CookBookEntity.Recipe;
 import CookBookView.firstview.fvController;
 import CookBookView.searchview.SearchViewController;
+import DigitalCookbook.CookBook;
 import javafx.event.ActionEvent;
 
 import javafx.scene.layout.GridPane;
@@ -37,7 +38,7 @@ public class ListAllController {
 	private Stage stage;
 	private Scene scene;
 	private DatabaselayerObject databaselayerObject;
-
+	private CookBook cookbook; 
 	// Event Listener on Button[#logout].onAction
 	@FXML
 	public void logOut(ActionEvent event) throws IOException {
@@ -96,5 +97,8 @@ public class ListAllController {
 		this.databaselayerObject = databaselayerObject;
 	}
 	
+	public void setCookBook(CookBook cookbook){
+		this.cookbook = cookbook ;	
+	}
 
 }

@@ -2,6 +2,7 @@
 package CookBookView.listview;
 
 import java.io.IOException;
+import java.security.KeyStore.PrivateKeyEntry;
 import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -10,6 +11,7 @@ import CookBookDataBaseAcess.DatabaselayerObject;
 import CookBookEntity.Recipe;
 import CookBookView.firstview.fvController;
 import CookBookView.searchview.SearchViewController;
+import DigitalCookbook.CookBook;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,6 +37,8 @@ public class ListviewController {
 	private Stage stage;
 	private Scene scene;
 	private DatabaselayerObject databaselayerObject;
+	private CookBook cookBook;
+	private LinkedList<Recipe> recipelist ; 
 
 	public void logOut(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../firstview/fv.fxml"));
@@ -52,13 +56,14 @@ public class ListviewController {
 		SearchViewController controller = loader.getController();
 		controller.setStageAndScene(stage, scene);
 		controller.setDatabaselayerObject(databaselayerObject);
+		controller.setCookBook(this.cookBook);
 		scene.setRoot(root);
 		stage.setScene(scene);
 		stage.show();
 	}
 
-	public void createSearchedRecipeSubview(TextField searcher) throws IOException {
-		LinkedList<Recipe> list = databaselayerObject.showsearchingrecipelist(searcher.getText());
+	public void createSearchedRecipeSubview(TextField searcher) throws Exception {
+		LinkedList<Recipe> list = this.cookBook.searchRecipe(searcher.getText());
 		for (int i = 1; i <= list.size(); i++) {
 			Recipe recipe = list.get(i - 1);
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("subview.fxml"));
@@ -151,6 +156,10 @@ public class ListviewController {
 		stage.setScene(scene);
 		stage.show();
 		}
+	
+	public void setCookBook(CookBook cookbook) {
+		this.cookBook = cookbook ; 
+	}
 }
 
 
