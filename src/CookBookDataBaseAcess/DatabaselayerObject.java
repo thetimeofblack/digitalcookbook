@@ -377,7 +377,7 @@ public class DatabaselayerObject {
 
 	//recipe锟斤拷删锟斤拷
 
-	public void deleterecipe(Recipe recipe) throws SQLException {
+	private  void deleterecipe(Recipe recipe) throws SQLException {
 		String recipeid = recipe.getRecipeID();
 
 		String ss = "delete from `cookbook`.`recipe` "
@@ -389,7 +389,7 @@ public class DatabaselayerObject {
 
 	//ingredients锟斤拷删锟斤拷
 
-	public void deleteingredients(Recipe recipe) throws SQLException {
+	private void deleteingredients(Recipe recipe) throws SQLException {
 		String recipeid = recipe.getRecipeID();
 		String ss = "delete from `cookbook`.`ingredients` "
 				+ "where recipeid = '" + recipeid + "'";
@@ -400,7 +400,7 @@ public class DatabaselayerObject {
 
 	//preparationsteps锟斤拷删锟斤拷
 
-	public void deletepreparationsteps(Recipe recipe) throws SQLException {
+	private void deletepreparationsteps(Recipe recipe) throws SQLException {
 		String recipeid = recipe.getRecipeID();
 		String ss = "delete from `cookbook`.`preparationsteps` "
 				+ "where recipeid = '" + recipeid + "'";
@@ -411,7 +411,7 @@ public class DatabaselayerObject {
 
 	//recipe-user锟斤拷锟叫断凤拷锟斤拷锟斤拷锟斤拷锟斤拷true为锟矫伙拷私锟斤拷锟筋（锟斤拷删锟侥ｏ拷锟斤拷false为锟斤拷锟斤拷锟筋（锟斤拷锟斤拷删锟侥ｏ拷
 
-	public boolean judgerecipeuser(Recipe recipe) throws SQLException {
+	private boolean judgerecipeuser(Recipe recipe) throws SQLException {
 		String recipeid = recipe.getRecipeID();
 		String ss1 = "select * from `cookbook`.`user-recipe` where userid = '"+this.user.getUserID()+"' and recipeid = '"+recipeid+"'";
 		res = this.sql.executeQuery(ss1);

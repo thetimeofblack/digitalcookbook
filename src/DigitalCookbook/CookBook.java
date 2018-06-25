@@ -152,5 +152,13 @@ public class CookBook {
 		this.databaselayerObject.insertRecipe(recipe);
 	}
 	
+	public void deleteUserRecipe(User user, String recipeid)  throws Exception{
+		this.user = user; 
+		Recipe recipe = new Recipe(); 
+		recipe.setRecipeID(recipeid);
+		this.databaselayerObject.setUser(user);
+		this.databaselayerObject.deleterecipeuser(recipe);
+	}
+	
 	
 }
