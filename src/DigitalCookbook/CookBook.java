@@ -137,4 +137,20 @@ public class CookBook {
 		LinkedList<Recipe> recipelist = this.databaselayerObject.getUserallRecipe(userid);
 		return recipelist;
 	}
+	
+	public void saveRecipelist(LinkedList<Recipe> recipelist) throws Exception{
+		Iterator<Recipe> iterator= recipelist.iterator(); 
+		while(iterator.hasNext()) {
+			Recipe recipe = iterator.next(); 
+			if(!this.databaselayerObject.insertRecipe(recipe)) break;
+		}
+	}
+	
+	
+	public void saveUserRecipe(User user, Recipe recipe) throws Exception{
+		this.databaselayerObject.setUser(user);
+		this.databaselayerObject.insertRecipe(recipe);
+	}
+	
+	
 }

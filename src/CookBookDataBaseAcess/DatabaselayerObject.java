@@ -220,23 +220,7 @@ public class DatabaselayerObject {
 	}
 	
 
-	/*
-	public Recipe getRecipe(ResultSet res) throws Exception{
-		Recipe recipe = new Recipe();
-		if(res.next()) {
-		recipe.setRecipeID(res.getInt("ID"));
-		
-			
-		}
-		return recipe;
-	}
-	
-	public Recipe searchRecipe(String recipename) {
-		Recipe recipe = new Recipe(); 
-		
-		return recipe; 
-	}
-	*/
+
 
 	
 	// 
@@ -247,48 +231,17 @@ public class DatabaselayerObject {
 	public LinkedList<Recipe> getallrecipelist() {		
 		LinkedList<Recipe> ls = new LinkedList<Recipe>();
 		try {
-
-
-
-			// 锟斤拷示锟斤拷锟斤拷锟叫碉拷recipe list		
-
+			
 			res = this.sql.executeQuery("select * from cookbook.recipe ");
 			
 			while (res.next()) {
-				Recipe recipe = new Recipe();
-				recipe.setRecipeID(res.getString("ID"));
-				recipe.setName(res.getString("Name"));
-				recipe.setServeNumber(res.getInt("serveNumber"));
-				recipe.setPrepareTime(res.getInt("PrepareTime"));
-				recipe.setCookTime(res.getInt("cookTime"));
-				recipe.setCategory(res.getString("Category"));
-				recipe.setDescription(res.getString("Description"));
+				Recipe recipe = this.getRecipe(res.getString("ID"));
 				ls.add(recipe);
-				System.out.println(recipe.getCookTime());
+				//System.out.println(recipe.getCookTime());
 			}
 
 
-			// 锟斤拷示锟斤拷私锟叫诧拷锟斤拷recipe
-			/* 
-			 * 锟剿凤拷锟斤拷锟窖诧拷锟斤拷实锟斤拷
-
-			String ss = "select * from `cookbook`.`user-recipe` where userid = " + userid;
-			res = sql.executeQuery(ss);
-			String s1;
-			while (res.next()) {
-				s1 = "select * from `cookbook`.`recipe` where recipeid = " + Integer.toString(res.getInt("recipeid"));
-				res2 = sql.executeQuery(s1);
-				Recipe recipe = new Recipe();
-				recipe.setRecipeID(res2.getInt("ID"));
-				recipe.setName(res2.getString("Name"));
-				recipe.setServeNumber(res2.getInt("serveNumber"));
-				recipe.setPrepareTime(res2.getInt("PrepareTime"));
-				recipe.setCookTime(res2.getInt("cookTime"));
-				recipe.setCategory(res2.getString("Category"));
-				recipe.setDescription(res2.getString("Description"));
-				ls.add(recipe);
-			}
-			*/
+		
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -308,14 +261,7 @@ public class DatabaselayerObject {
 			String ss = "select * from cookbook.recipe where name like '%" + s + "%'";
 			res = this.sql.executeQuery(ss);
 			while (res.next()) {
-				Recipe recipe = new Recipe();
-				recipe.setRecipeID(res.getString("ID"));
-				recipe.setName(res.getString("Name"));
-				recipe.setServeNumber(res.getInt("serveNumber"));
-				recipe.setPrepareTime(res.getInt("PrepareTime"));
-				recipe.setCookTime(res.getInt("cookTime"));
-				recipe.setCategory(res.getString("Category"));
-				recipe.setDescription(res.getString("Description"));
+				Recipe recipe = this.getRecipe(res.getString("ID"));
 				ls.add(recipe);
 			}
 		} catch (Exception e) {
@@ -699,6 +645,10 @@ public class DatabaselayerObject {
     		
     	}
     	return recipeidlist;
+    }
+    
+    public void setUser(User user) {
+    	this.user = user; 
     }
     
     public User getUser() {

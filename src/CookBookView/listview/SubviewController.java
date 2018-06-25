@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import CookBookDataBaseAcess.DatabaselayerObject;
 import CookBookEntity.Recipe;
 import CookBookView.detailview.MaindetailController;
-import CookBookView.detailview.detailController;
+
 import DigitalCookbook.CookBook;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
