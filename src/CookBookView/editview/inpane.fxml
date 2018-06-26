@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane prefHeight="267.0" prefWidth="239.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.createview.inpaneController">
+<ScrollPane prefHeight="267.0" prefWidth="239.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.editview.inpaneController">
    <content>
       <AnchorPane prefHeight="297.0" prefWidth="246.0">
          <children>

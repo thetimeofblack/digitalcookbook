@@ -22,6 +22,7 @@ import CookBookEntity.PreparationStep;
 import CookBookEntity.Recipe;
 
 import CookBookEntity.User;
+import javafx.scene.shape.Line;
 public class DatabaselayerObject {
 
 	private Connection con;
@@ -57,6 +58,7 @@ public class DatabaselayerObject {
 		Connection connection =  DriverManager.getConnection(this.Databaseurl, this.Databaseuser, this.Databasepassword);
 		return connection;
 	}
+	
 	public void UserLogin(User user) throws Exception{
 		userLogin(user.getUserName(),user.getUserPassword());
 		this.user = user; 
@@ -456,8 +458,7 @@ public class DatabaselayerObject {
 	//recipe锟睫改凤拷锟斤拷锟斤拷ingredients锟斤拷preparationsteps锟斤拷锟斤拷锟斤拷删锟劫插）,true为删锟斤拷晒锟斤拷锟絝alse为锟斤拷锟斤拷删
 
 	public boolean editRecipe(Recipe recipe) throws SQLException {
-		String recipeid = recipe.getRecipeID();
-		if(judgerecipeuser(recipe)) {
+	
 			String ss2 = "update `cookbook`.`recipe` "
 					+ "set `name` = '" + recipe.getName() + 
 					"', `servenumber` = '"+ recipe.getServeNumber() + 
@@ -472,10 +473,7 @@ public class DatabaselayerObject {
 			insertingredients(recipe);
 			insertpreparationsteps(recipe);
 			return true;
-		}	
-		else {
-			return false;
-		}
+		
 	}
 	
 
@@ -556,7 +554,7 @@ public class DatabaselayerObject {
 	
 	
 
-//	 * 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷丫锟绞碉拷止锟�
+
 
 
 	 
@@ -687,6 +685,23 @@ public class DatabaselayerObject {
     	
     }
     
+    public LinkedList<Recipe> getfavouriterecipelist(String userid) throws Exception {
+    	LinkedList<Recipe> recipelist = new LinkedList<Recipe>();
+    	Connection connection = this.getConnection() ;
+    	this.sql= connection.createStatement(); 
+    	String sqlstr = "select * from cookbook.favourite, cookbook.recipe "+
+    	"where cookbook.recipe.id = cookbook.favourite.recipeid and cookbook.favourite.userid="+userid; 
+    	
+    	ResultSet resultSet = this.sql.executeQuery(sqlstr) ; 
+    	while(resultSet.next()) {
+    		Recipe recipe = this.getRecipe(resultSet.getString("recipeid"), resultSet); 
+    		recipelist.add(recipe);    	
+    	}
+    	
+    	connection.close();
+    	return recipelist; 
+    }
+    
     private Recipe getRecipe(String recipeid,ResultSet res) throws Exception {
     	Recipe recipe = new Recipe();
     	res = this.sql.executeQuery("select * from cookbook.recipe where id="+recipeid);
@@ -736,5 +751,16 @@ public class DatabaselayerObject {
     	return preparationSteps;
     }
 
+    public boolean setfavourite(String userid , String recipeid) throws Exception {
+    	Connection connection = this.getConnection() ;
+    	this.sql = connection.createStatement(); 
+    	String sqlstr = "insert into cookbook.favourite(userid,recipeid) values ("+
+    	userid+","+recipeid+ ")";
+    	int result = this.sql.executeUpdate(sqlstr);
+    	connection.close();
+    	if(result>0) return true; 
+    	return false; 
+    	
+    }
 
 }

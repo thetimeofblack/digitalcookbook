@@ -48,7 +48,7 @@ public class steppaneController {
 		int num = this.addnumber;
 		while(num>0) {
 		Ingredient ingredient = new Ingredient();
-		HBox hBox = (HBox) this.vbox.getChildren().get(this.addnumber+1);
+		HBox hBox = (HBox) this.vbox.getChildren().get(num);
 		TextArea description = (TextArea) hBox.getChildren().get(1);
 		PreparationStep step = new PreparationStep();
 		step.setDescription(description.getText());
@@ -84,7 +84,7 @@ public class steppaneController {
 	@FXML
 	public void subLine() {
 		if(this.addnumber>0) {
-			this.vbox.getChildren().remove(1+addnumber);
+			this.vbox.getChildren().remove(addnumber);
 			addnumber=addnumber-1;
 		}
 	}

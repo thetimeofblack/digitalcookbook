@@ -44,7 +44,7 @@ public class ListAllController {
 	private Label toSearchView;
 	private Stage stage;
 	private Scene scene;
-	private DatabaselayerObject databaselayerObject;
+	//private DatabaselayerObject databaselayerObject;
 	private CookBook cookbook; 
 	private LinkedList<Recipe> recipelist; 
 	@FXML
@@ -94,9 +94,7 @@ public class ListAllController {
 		this.scene = scene;
 	}
 
-	public void setDatabaselayerObject(DatabaselayerObject databaselayerObject) {
-		this.databaselayerObject = databaselayerObject;
-	}
+	
 	
 	public void setCookBook(CookBook cookbook){
 		this.cookbook = cookbook ;	

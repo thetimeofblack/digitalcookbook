@@ -23,11 +23,6 @@
                   </AnchorPane>
                </children>
             </VBox>
-            <ImageView fx:id="add" fitHeight="25.0" fitWidth="26.0" layoutX="212.0" layoutY="212.0" onDragDetected="#addLine">
-               <image>
-                  <Image url="@Add.png" />
-               </image>
-            </ImageView>
             <HBox prefHeight="42.0" prefWidth="254.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#addLine" text="Add" />

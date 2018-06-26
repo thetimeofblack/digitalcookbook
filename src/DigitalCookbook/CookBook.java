@@ -74,6 +74,7 @@ public class CookBook {
 	public int userLogin(User user ) throws Exception {
 		this.user = user ;
 		int result = this.databaselayerObject.userLogin(user.getUserName(), user.getUserPassword());
+		this.user.setUserID(this.databaselayerObject.getUser().getUserID());
 		return result; 
 		
 	}
@@ -162,8 +163,21 @@ public class CookBook {
 		return this.databaselayerObject.userRegister(user);
 	}
 	
-	public boolean saveComment(Comment comment,String recipeid) throws Exception {
+	public boolean saveComment(Comment comment,String recipeid ) throws Exception {
 		boolean result =this.databaselayerObject.saveCommentandRate(comment, Integer.parseInt(recipeid));
 		return result; 
 	}
+	
+	public LinkedList<Recipe> getfavouriterecipe() throws Exception{
+		return this.databaselayerObject.getfavouriterecipelist(this.user.getUserID());
+	}
+	
+	public boolean setFavourite(String recipeid) throws Exception{
+	
+		return this.databaselayerObject.setfavourite(this.user.getUserID(), recipeid);
+	
+				
+	}
+	
+
 }

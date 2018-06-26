@@ -106,7 +106,7 @@ PRIMARY KEY (`ID`)
 
 
 CREATE TABLE `favourite` (
-  `ID` int(11) NOT NULL,
+  `ID` int(11) NOT NULL auto_increment,
  
  `recipeid` int(11) DEFAULT NULL,
   
@@ -114,3 +114,8 @@ CREATE TABLE `favourite` (
   
 PRIMARY KEY (`ID`)
 )
+
+
+insert into cookbook.favourite(userid, recipeid) values(1,1)
+
+insert into user(username,userpassword) values('Heyining','heyining')
