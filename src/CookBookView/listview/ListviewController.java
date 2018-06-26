@@ -63,6 +63,8 @@ public class ListviewController {
 	}
 
 	public void createSearchedRecipeSubview(TextField searcher) throws Exception {
+		this.recipelist = new LinkedList<Recipe>();
+		System.out.println("Searching"+searcher.getText());
 		this.recipelist = this.cookBook.searchRecipe(searcher.getText());
 		 
 		for (int i = 1; i <= this.recipelist.size(); i++) {
@@ -75,7 +77,8 @@ public class ListviewController {
 			controller.setName();
 			controller.setStar();
 			controller.setStageAndScene(stage, scene);
-			controller.setDatabaselayerObject(databaselayerObject);
+			//controller.setDatabaselayerObject(databaselayerObject);
+			controller.setCookBook(this.cookBook);
 			this.recipeVBox.getChildren().add(subView);
 		}
 	}

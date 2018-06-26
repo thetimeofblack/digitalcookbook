@@ -90,10 +90,11 @@ public class SearchViewController {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../listview/listview.fxml"));
 		Parent root = loader.load();
 		ListviewController controller = loader.getController();
+		controller.setCookBook(this.cookbook);
 		controller.setStageAndScene(stage, scene);
 		//controller.setDatabaselayerObject(databaselayerObject);
 		controller.createSearchedRecipeSubview(searcher);
-		controller.setCookBook(this.cookbook);
+		
 		scene.setRoot(root);
 		stage.setScene(scene);
 		stage.show();

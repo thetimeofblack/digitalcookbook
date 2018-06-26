@@ -270,12 +270,16 @@ public class DatabaselayerObject {
 
 		LinkedList<Recipe> ls = new LinkedList<Recipe>();
 		try {			
+			Connection connection = this.getConnection();
+			Statement statement = connection.createStatement();
 			String ss = "select * from cookbook.recipe where name like '%" + s + "%'";
-			res = this.sql.executeQuery(ss);
+			ResultSet res = statement.executeQuery(ss);
 			while (res.next()) {
 				Recipe recipe = this.getRecipe(res.getString("ID"),res);
 				ls.add(recipe);
+				System.out.println(recipe.toString());
 			}
+			connection.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

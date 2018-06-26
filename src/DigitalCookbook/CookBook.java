@@ -62,6 +62,8 @@ public class CookBook {
 	
 	public LinkedList<Recipe> searchRecipe(String recipename)throws Exception{
 		//LinkedList<String> recipeidlist = new LinkedList<String>();
+		this.recipelist = new LinkedList<Recipe>();
+		System.out.println("Cookbook searching");
 		this.recipelist=this.databaselayerObject.showsearchingrecipelist(recipename);
 		return this.recipelist;
 	}
