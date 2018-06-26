@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="249.0" prefWidth="247.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.detailview.IngredientController">
+   <children>
+      <HBox prefHeight="29.0" prefWidth="247.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="No" wrappingWidth="25.21875" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Usage" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Unit" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Description" />
+         </children>
+      </HBox>
+      <VBox fx:id="vbox" layoutY="15.0" prefHeight="231.0" prefWidth="247.0">
+         <children>
+            <HBox prefHeight="20.0" prefWidth="247.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="19.21875" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="52.21875" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="37.21875" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="33.21875" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="98.21875" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</Pane>
