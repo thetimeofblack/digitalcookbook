@@ -98,27 +98,33 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
             </GridPane>
-            <Label fx:id="ingredient" layoutX="6.0" layoutY="141.0" onDragDetected="#showIngredients" prefHeight="35.0" prefWidth="34.0" />
-            <Label layoutX="8.0" layoutY="180.0" prefHeight="35.0" prefWidth="34.0" />
-            <Label layoutX="8.0" layoutY="215.0" prefHeight="35.0" prefWidth="34.0" />
-            <ImageView fitHeight="34.0" fitWidth="35.0" layoutX="23.0" layoutY="471.0">
-               <image>
-                  <Image url="@../detailview/Event%20Comments.png" />
-               </image>
-            </ImageView>
+            <Label fx:id="ingredient" layoutX="25.0" layoutY="180.0" onDragDetected="#showIngredients" onMouseClicked="#showIngredients" prefHeight="35.0" prefWidth="34.0">
+               <graphic>
+                  <ImageView fitHeight="39.0" fitWidth="41.0" onMouseClicked="#showIngredients">
+                     <image>
+                        <Image url="@../detailview/material-information-outline.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Label>
+            <Label layoutX="23.0" layoutY="318.0" prefHeight="35.0" prefWidth="34.0">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="36.0">
+                     <image>
+                        <Image url="@../detailview/s.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Label>
+            <Label layoutX="23.0" layoutY="471.0" prefHeight="35.0" prefWidth="34.0">
+               <graphic>
+                  <ImageView fitHeight="34.0" fitWidth="35.0">
+                     <image>
+                        <Image url="@../detailview/Event%20Comments.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Label>
             <Button fx:id="cancel" layoutX="480.0" layoutY="554.0" mnemonicParsing="false" onAction="#back" text="Cancel" textFill="#0917d7" />
             <Pane fx:id="mainPane" layoutX="101.0" layoutY="147.0" prefHeight="377.0" prefWidth="432.0" />
             <Button layoutX="379.0" layoutY="554.0" mnemonicParsing="false" onAction="#createRecipe" prefHeight="23.0" prefWidth="46.0" text="OK" />
-            <ImageView fitHeight="39.0" fitWidth="41.0" layoutX="20.0" layoutY="178.0" onMouseClicked="#showIngredients">
-               <image>
-                  <Image url="@../detailview/material-information-outline.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="36.0" layoutX="22.0" layoutY="316.0">
-               <image>
-                  <Image url="@../detailview/s.png" />
-               </image>
-            </ImageView>
          </children>
       </Pane>
    </children>

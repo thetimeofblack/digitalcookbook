@@ -109,10 +109,10 @@ public class editpaneController implements Initializable {
 			Ingredient ingredient = iterator.next(); 
 			FXMLLoader hboxloader = new FXMLLoader(getClass().getResource("inpanehbox.fxml"));
 			HBox hBox = hboxloader.load();
-			Text Name = (Text) hBox.getChildren().get(1);
-			Text Usage= (Text) hBox.getChildren().get(2);
-			Text Unit =(Text)hBox.getChildren().get(3);
-			Text Description = (Text)hBox.getChildren().get(4);
+			TextField Name = (TextField) hBox.getChildren().get(0);
+			TextField Usage= (TextField) hBox.getChildren().get(1);
+			TextField Unit =(TextField)hBox.getChildren().get(2);
+			TextField Description = (TextField)hBox.getChildren().get(3);
 			Name.setText(ingredient.getName());
 			Usage.setText(String.valueOf(ingredient.getAmount()));
 			Unit.setText(ingredient.getUnit());
