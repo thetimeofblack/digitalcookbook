@@ -20,11 +20,11 @@
          <children>
             <HBox prefHeight="20.0" prefWidth="247.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="19.21875" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="52.21875" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="37.21875" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="33.21875" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="98.21875" />
+                  <Text fx:id="No" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="19.21875" />
+                  <Text fx:id="Name" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="52.21875" />
+                  <Text fx:id="Usage" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="37.21875" />
+                  <Text fx:id="Unit" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="33.21875" />
+                  <Text fx:id="Description" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="98.21875" />
                </children>
             </HBox>
          </children>

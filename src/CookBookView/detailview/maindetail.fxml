@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="290.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.detailview.MaindetailController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="427.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.detailview.MaindetailController">
 
 
 
@@ -28,6 +28,7 @@
 
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="185.0" minWidth="10.0" prefWidth="185.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="142.0" minWidth="10.0" prefWidth="98.0" />
+                  <ColumnConstraints />
 
               </columnConstraints>
               <rowConstraints>
@@ -124,9 +125,9 @@
                   </ImageView>
                </graphic>
             </Label>
-            <Label layoutX="8.0" layoutY="180.0" prefHeight="35.0" prefWidth="34.0" onMouseClicked="#showPreparationStep">
+            <Label layoutX="8.0" layoutY="180.0" onMouseClicked="#showPreparationStep" prefHeight="35.0" prefWidth="34.0">
                <graphic>
-                  <ImageView fitHeight="32.0" fitWidth="36.0" >
+                  <ImageView fitHeight="32.0" fitWidth="36.0">
                      <image>
                         <Image url="@s.png" />
                      </image>
@@ -160,6 +161,12 @@
                   <Image url="@back.png" />
                </image>
             </ImageView>
+            <ScrollPane fx:id="scrollpane" layoutX="118.0" layoutY="210.0" prefHeight="414.0" prefWidth="258.0">
+              <content>
+               
+               
+              </content>
+            </ScrollPane>
 
          </children>
       </Pane>

@@ -62,6 +62,8 @@ public class createpaneController {
 	
 	private AnchorPane subcmpane;
 	
+	private Pane previouspain;
+	
 	private boolean subsm = false;
 	private boolean subin = false;
 	private boolean subst = false;
@@ -138,6 +140,7 @@ public class createpaneController {
 	// Event Listener on Button.onAction
 	@FXML
 	public void createIngredient(ActionEvent event) throws Exception {
+		this.mainPane = new Pane();
 		if(this.subin==false)
 		{
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("inpane.fxml"));
@@ -156,6 +159,7 @@ public class createpaneController {
 	// Event Listener on Button.onAction
 	@FXML
 	public void createSteps(ActionEvent event) throws Exception {
+		this.mainPane= new Pane(); 
 		if(this.subst==false)
 		{
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("steppane.fxml"));
@@ -169,7 +173,7 @@ public class createpaneController {
 		System.out.println("create steps");
 		Pane pane = new Pane();
 		pane.getChildren().add(this.substpane);
-		this.mainPane.getChildren().add(pane);
+		this.mainPane.getChildren().add(this.substpane);
 		}
 	// Event Listener on Button.onAction
 	@FXML
@@ -184,8 +188,9 @@ public class createpaneController {
 		
 		}
 		Pane pane = new Pane();
-		pane.getChildren().add(this.subcmpane);
-		this.mainPane.getChildren().add(pane);
+		this.previouspain = pane; 
+		this.previouspain.getChildren().add(this.subcmpane);
+		this.mainPane.getChildren().add(this.previouspain);
 	}
 	
 	public void setStage(Stage stage) {
