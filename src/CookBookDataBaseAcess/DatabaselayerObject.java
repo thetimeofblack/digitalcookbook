@@ -54,6 +54,12 @@ public class DatabaselayerObject {
 		}
 	}
 	
+	private Connection getConnection() throws Exception {
+		Class.forName(this.driver);
+		Connection connection = DriverManager.getConnection(this.Databaseurl, this.Databaseuser, this.Databasepassword);
+		return connection;
+	}
+	
 	/**
 	 * @Description 
 	 * @param user
@@ -117,7 +123,7 @@ public class DatabaselayerObject {
 	
 
 
-	//锟铰斤拷锟剿伙拷锟斤拷锟斤拷,锟斤拷锟斤拷true为锟缴癸拷锟斤拷锟斤拷锟斤拷false为锟斤拷锟截革拷锟矫伙拷锟斤�?
+	//锟铰斤拷锟剿伙拷锟斤拷锟斤拷,锟斤拷锟斤拷true为锟缴癸拷锟斤拷锟斤拷锟斤拷false为锟斤拷锟截革拷锟矫伙拷锟斤�?
 
 
 	/**
@@ -143,7 +149,7 @@ public class DatabaselayerObject {
         ResultSet rs = pstmt.getGeneratedKeys();
 
 				
-		//锟斤拷取锟皆讹拷锟斤拷拥锟絠d锟斤�?		        
+		//锟斤拷取锟皆讹拷锟斤拷拥锟絠d锟斤�?		        
 
         String id = rs.getString(1);
         user.setUserID(id);            
@@ -186,7 +192,7 @@ public class DatabaselayerObject {
 			
 
 
-			// 锟斤拷取recipe�?锟斤拷锟斤拷息锟斤拷锟斤�?
+			// 锟斤拷取recipe�?锟斤拷锟斤拷息锟斤拷锟斤�?
 
 			String ss1 = "select * from cookbook.recipe where id = '"+recipeid+"'";
 
@@ -220,7 +226,7 @@ public class DatabaselayerObject {
 			}
 			
 
-			// é”Ÿæ�?�¤æ�?�·å�–é�?�Ÿæ�?�¤æ�?�·åº�?�preparationstepsé”Ÿæ�?�¤æ�?�·é�?�Ÿæ�?�¤æ�?��?
+			// é”Ÿæ�?�¤æ�?�·å�–é�?�Ÿæ�?�¤æ�?�·åº�?�preparationstepsé”Ÿæ�?�¤æ�?�·é�?�Ÿæ�?�¤æ�?��?
 			String ss3 = "select * from cookbook.preparationsteps where RecipeID = '" + recipeid+"'";
 
 			res = sql.executeQuery(ss3);
@@ -244,21 +250,7 @@ public class DatabaselayerObject {
 
 
 	
-	/**
-	 * @Description 
-	 * @param res
-	 * @return
-	 * @throws Exception
-	 */
-	public Recipe getRecipe(ResultSet res) throws Exception{
-		Recipe recipe = new Recipe();
-		if(res.next()) {
-		recipe.setRecipeID(res.getInt("ID"));
-		
-			
-		}
-		return recipe;
-	}
+
 	
 	/**
 	 * @Description 
@@ -394,7 +386,7 @@ public class DatabaselayerObject {
 	
 	
 
-	//preparationsteps锟斤拷锟斤拷敕斤拷锟�?
+	//preparationsteps锟斤拷锟斤拷敕斤拷锟�?
 
 
 	private void insertpreparationsteps(Recipe recipe) throws SQLException {
@@ -415,7 +407,7 @@ public class DatabaselayerObject {
 	
 	
 
-	//recipe-user锟斤拷锟斤拷敕斤拷锟�?
+	//recipe-user锟斤拷锟斤拷敕斤拷锟�?
 
 	private void insertrecipeuser(Recipe recipe) throws SQLException{
 		int res1 = 0;
@@ -440,7 +432,7 @@ public class DatabaselayerObject {
 		
 	}		
 
-	//ingredients锟斤拷删锟斤�?
+	//ingredients锟斤拷删锟斤�?
 
 	private void deleteingredients(Recipe recipe) throws SQLException {
 		String recipeid = recipe.getRecipeID();
@@ -451,7 +443,7 @@ public class DatabaselayerObject {
 		
 	}	
 
-	//preparationsteps锟斤拷删锟斤�?
+	//preparationsteps锟斤拷删锟斤�?
 
 	private void deletepreparationsteps(Recipe recipe) throws SQLException {
 		String recipeid = recipe.getRecipeID();
@@ -462,7 +454,7 @@ public class DatabaselayerObject {
 		
 	}
 
-	//recipe-user锟斤拷锟叫断凤拷锟斤拷锟斤拷锟斤拷锟斤拷true为锟矫伙拷私锟斤拷锟筋（锟斤拷删锟侥ｏ拷锟斤拷false为锟斤拷锟斤拷锟筋（锟斤拷锟斤拷删锟侥ｏ�?
+	//recipe-user锟斤拷锟叫断凤拷锟斤拷锟斤拷锟斤拷锟斤拷true为锟矫伙拷私锟斤拷锟筋（锟斤拷删锟侥ｏ拷锟斤拷false为锟斤拷锟斤拷锟筋（锟斤拷锟斤拷删锟侥ｏ�?
 
 	private boolean judgerecipeuser(Recipe recipe) throws SQLException {
 		String recipeid = recipe.getRecipeID();
@@ -474,7 +466,7 @@ public class DatabaselayerObject {
 		return false;
 	}
 
-	//recipe-user锟斤拷删锟斤�?
+	//recipe-user锟斤拷删锟斤�?
 
 	public void deleterecipeuser(Recipe recipe) throws SQLException {
 		String recipeid = recipe.getRecipeID();
@@ -489,7 +481,7 @@ public class DatabaselayerObject {
 
 		
 
-	//锟杰ｏ拷recipe删锟斤拷,锟斤拷锟斤拷true锟缴癸拷删锟斤拷false为锟斤拷锟斤拷删锟斤�?
+	//锟杰ｏ拷recipe删锟斤拷,锟斤拷锟斤拷true锟缴癸拷删锟斤拷false为锟斤拷锟斤拷删锟斤�?
 
 	public boolean deleteRecipe(Recipe recipe) throws SQLException {
 		if(judgerecipeuser(recipe)) {
@@ -548,7 +540,7 @@ public class DatabaselayerObject {
 	}
 	
 
-	//favourite锟斤拷锟斤拷示锟斤拷锟斤�?,true为喜锟斤拷锟斤拷false为锟斤拷喜锟斤拷
+	//favourite锟斤拷锟斤拷示锟斤拷锟斤�?,true为喜锟斤拷锟斤拷false为锟斤拷喜锟斤拷
 
 	public boolean judgefavourite(Recipe recipe) throws SQLException {
 		String recipeid = recipe.getRecipeID();
@@ -563,7 +555,7 @@ public class DatabaselayerObject {
 	
 
 
-	// rate锟斤拷comments锟斤拷锟斤拷,true为锟缴癸�?
+	// rate锟斤拷comments锟斤拷锟斤拷,true为锟缴癸�?
 
 	/*
 	public boolean addRateandComments(int userid, int recipeid, int rate, String comments) {
@@ -607,14 +599,7 @@ public class DatabaselayerObject {
 
 
 
-	 
-	private void saveIngredients(Ingredient ingredients , ResultSet res) throws Exception{
-		
-	}
-	
-	private void savePreparationSteps(PreparationStep preparationSteps, ResultSet res) throws Exception{
-		
-	}
+
 	
 	
 	
@@ -638,7 +623,7 @@ public class DatabaselayerObject {
         		comment.getComment()+"')";
         
 
-        PreparedStatement pstmt = this.con.prepareStatement(sqlstr,Statement.RETURN_GENERATED_KEYS);//锟斤拷取锟皆讹拷锟斤拷锟接碉拷id锟斤�?
+        PreparedStatement pstmt = this.con.prepareStatement(sqlstr,Statement.RETURN_GENERATED_KEYS);//锟斤拷取锟皆讹拷锟斤拷锟接碉拷id锟斤�?
 
         pstmt.executeUpdate();
         ResultSet rs = pstmt.getGeneratedKeys();
@@ -665,7 +650,7 @@ public class DatabaselayerObject {
     	
     }
     
-    //筛�?�肉和素方法,meat为肉，vegetarian为素
+    //筛�?�肉和素方法,meat为肉，vegetarian为素
     public LinkedList<Recipe> choosecategory(String description) throws SQLException{
     	String  ss = "select * from `cookbook`.`recipe` where `Description` = '"+description+"'";
     	LinkedList<Recipe> ls = new LinkedList<Recipe>();
@@ -723,13 +708,16 @@ public class DatabaselayerObject {
     	String sqlstr ="select * from cookbook.userrecipe , cookbook.recipe "+
     	"where cookbook.userrecipe.userid = "+userid+ 
     	"and cookbook.userrecipe.recipeid=cookbook.recipe.recipeid";
-    	this.res = this.sql.executeQuery(sqlstr);
+    	Connection connection = this.getConnection(); 
+    	Statement statement = connection.createStatement();
+    	ResultSet resultSet  = statement.executeQuery(sqlstr);
     	LinkedList<Recipe> recipelist = new LinkedList<Recipe>();
-    	while(res.isFirst()) {
-    		res.next();
-    		Recipe recipe = this.getRecipe(res.getString("ID"),res);
+    	while(resultSet.next()) {
+    		
+    		Recipe recipe = this.getRecipe(resultSet.getString("ID"),resultSet);
     		recipelist.add(recipe);
     	}
+    	connection.close();    	
     	return recipelist ; 
     	
     	
@@ -812,5 +800,6 @@ public class DatabaselayerObject {
     	return false; 
     	
     }
-
+    
+  
 }
