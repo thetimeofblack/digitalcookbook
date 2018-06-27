@@ -55,7 +55,7 @@ public class ListviewController {
 		GridPane root = loader.load();
 		SearchViewController controller = loader.getController();
 		controller.setStageAndScene(stage, scene);
-		controller.setDatabaselayerObject(databaselayerObject);
+		
 		controller.setCookBook(this.cookBook);
 		scene.setRoot(root);
 		stage.setScene(scene);
@@ -92,29 +92,30 @@ public class ListviewController {
 			SubviewController controller = loader.getController();
 			controller.setRecipe(recipe);
 			controller.setStageAndScene(stage, scene);
-			controller.setDatabaselayerObject(databaselayerObject);
+			controller.setCookBook(this.cookBook);
 			recipeVBox.getChildren().add(subView);
 		}
 	}
 
 	public void createUserFavouriteRecipeSubView() throws IOException, SQLException {
-		LinkedList<Recipe> list = databaselayerObject.getallrecipelist();
+		LinkedList<Recipe> list = this.cookBook.getallrecipelist();
 		for (int i = 1; i <= list.size(); i++) {
 			Recipe recipe = list.get(i - 1);
-			if (databaselayerObject.judgefavourite(recipe)) {
+			
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("subview.fxml"));
 				Pane subView = loader.load();
 				SubviewController controller = loader.getController();
 				controller.setRecipe(recipe);
 				controller.setStageAndScene(stage, scene);
-				controller.setDatabaselayerObject(databaselayerObject);
+				controller.setRecipe(recipe);
+				controller.setCookBook(this.cookBook);
 				recipeVBox.getChildren().add(subView);
-			}
+			
 		}
 	}
 
 	public void createRankedRecipesSubView() throws IOException {
-		LinkedList<Recipe> list = databaselayerObject.getallrecipelist();
+		LinkedList<Recipe> list = this.cookBook.getallrecipelist();
 		for (int i = 1; i <= list.size(); i++) {
 			Recipe recipe = list.get(i - 1);
 			if (recipe.getRate() > 0) {
@@ -150,7 +151,7 @@ public class ListviewController {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../searchview/searchView.fxml"));
 		GridPane root = (GridPane) loader.load();
 		SearchViewController svc = loader.getController();
-		svc.setDatabaselayerObject(this.databaselayerObject);
+		svc.setCookBook(this.cookBook);
 		svc.setStage(stage);
 		svc.setScene(scene);
 		scene.setRoot(root);

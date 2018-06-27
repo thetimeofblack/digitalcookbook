@@ -19,23 +19,16 @@
 
 
 
-<<<<<<< HEAD
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="maindetailController">
-=======
->>>>>>> master
+
    <children>
       <Pane prefHeight="690.0" prefWidth="430.0">
          <children>
             <GridPane layoutX="7.0" prefHeight="141.0" prefWidth="422.0">
               <columnConstraints>
-<<<<<<< HEAD
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="182.0" minWidth="10.0" prefWidth="182.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="142.0" minWidth="10.0" prefWidth="64.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="176.0" minWidth="10.0" prefWidth="176.0" />
-=======
+
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="185.0" minWidth="10.0" prefWidth="185.0" />
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="142.0" minWidth="10.0" prefWidth="98.0" />
->>>>>>> master
+
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -91,11 +84,9 @@
                         <Label fx:id="favourite" onDragDetected="#choosetobeFavourite" prefHeight="34.0" prefWidth="34.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
-<<<<<<< HEAD
+
                   <GridPane prefHeight="141.0" prefWidth="250.0" GridPane.columnIndex="2">
-=======
-                  <GridPane prefHeight="141.0" prefWidth="119.0" GridPane.columnIndex="1">
->>>>>>> master
+
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="104.0" minWidth="10.0" prefWidth="41.0" />
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="74.0" minWidth="10.0" prefWidth="57.0" />
@@ -142,35 +133,16 @@
                   </ImageView>
                </graphic>
             </Label>
-<<<<<<< HEAD
+
             <Label layoutX="8.0" layoutY="215.0" prefHeight="35.0" prefWidth="34.0">
                <graphic>
                   <ImageView fitHeight="34.0" fitWidth="35.0">
-=======
-            <Label layoutX="8.0" layoutY="215.0" onMouseClicked="#showComment" prefHeight="35.0" prefWidth="34.0" />
-            <ImageView fitHeight="34.0" fitWidth="35.0" layoutX="9.0" layoutY="218.0">
-               <image>
-                  <Image url="@Event%20Comments.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="deletelabel" layoutX="194.0" layoutY="413.0" onDragDetected="#deleteRecipe" prefHeight="34.0" prefWidth="36.0">
-               <graphic>
-                  <ImageView fx:id="delete" fitHeight="34.0" fitWidth="38.0">
-                     <image>
-                        <Image url="@删除的副本.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Label>
-            <Label layoutX="153.0" layoutY="413.0" prefHeight="34.0" prefWidth="38.0">
-               <graphic>
-                  <ImageView fx:id="editImage" fitHeight="31.0" fitWidth="34.0" onDragDetected="#editRecipe">
->>>>>>> master
+
                      <image>
                         <Image url="@Event%20Comments.png" />
                      </image>
                   </ImageView>
-<<<<<<< HEAD
+
                </graphic></Label>
             <ImageView fitHeight="31.0" fitWidth="34.0" layoutX="295.0" layoutY="650.0">
                <image>
@@ -188,14 +160,7 @@
                   <Image url="@back.png" />
                </image>
             </ImageView>
-=======
-               </graphic>
-            </Label>
 
-            <ScrollPane fx:id="scrollpane" layoutX="44.0" layoutY="151.0" prefHeight="255.0" prefWidth="241.0" />
-            <Button layoutX="244.0" layoutY="417.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="41.0" text="OK" />
-
->>>>>>> master
          </children>
       </Pane>
    </children>
