@@ -16,6 +16,7 @@ import javafx.event.ActionEvent;
 
 
 import CookBookDataBaseAcess.DatabaselayerObject;
+import CookBookEntity.User;
 public class registerViewController {
 	@FXML
 	private TextField username;
@@ -29,6 +30,8 @@ public class registerViewController {
 	private Stage stage;
 	
 	private Scene scene;
+	
+	
 	
 	private DatabaselayerObject dao; 
 	// Event Listener on Button[#ok].onAction
@@ -48,13 +51,18 @@ public class registerViewController {
 			if(this.userpassword1.getText().isEmpty()  | this.userpassword2.getText().isEmpty() | !this.userpassword1.getText().equals(this.userpassword2.getText())) {
 				resultText.setText("please rewrite the password");
 			}else {
+				User user = new User();
+				user.setUserName(username.getText());
+				user.setUserPassword(userpassword2.getText());
 				
+				dao.userRegister(user);
 				resultText.setText("Register successfully");
 				FXMLLoader fxmlforlogin  = new FXMLLoader(getClass().getResource("../login.fxml"));
 				GridPane rootforlogin = (GridPane)fxmlforlogin.load();
 				this.scene = new Scene(rootforlogin,290,470);
 				this.stage.setScene(this.scene);
 				this.stage.show();
+				dao.close();
 			}
 		}
 		Scene scene = new Scene(root, 270, 160);
@@ -86,4 +94,6 @@ public class registerViewController {
 	public void setDatabase(DatabaselayerObject dao) {
 		this.dao = dao; 
 	}
+	
+	
 }

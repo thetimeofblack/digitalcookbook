@@ -127,18 +127,16 @@ public class CookBookApp {
 	 * Program entry point. 
 	 * 
 	 * @param args  command line arguments; not used.
+	 * @throws Exception 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		CookBook cb = new CookBook("Chinese Cuisine");
 				
 		cb.add(createGongBaoJiding());
 		cb.add(createHongShaoRou());
 		cb.add(createSuanLaFen());
 		
-		Recipe recipe = cb.getRecipe("Gong Bao Jiding");
-		if (recipe != null) {
-			System.out.println(recipe);
-		}
+	
 		cb.showallrecipe();
 	}
 }

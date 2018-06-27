@@ -2,11 +2,13 @@ package CookBookView.loginview;
 
 import java.io.IOException;
 
+
 import CookBookDataBaseAcess.DatabaselayerObject;
 import CookBookEntity.User;
 import CookBookView.loginview.tinywin.miniController;
 import CookBookView.registerview.registerViewController;
 import CookBookView.searchview.SearchViewController;
+import DigitalCookbook.CookBook;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +19,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-
+import CookBookEntity.*;
 public class loginController {
 	@FXML
 	private Button confirm;
@@ -37,6 +39,11 @@ public class loginController {
 	private Stage stage;
 
 	private Scene scene ;
+	
+	private DatabaselayerObject dao; 
+	
+	private CookBook cookkbook; 
+	
 
 	// Event Listener on Button[#confirm].onAction
 	@FXML
@@ -44,11 +51,32 @@ public class loginController {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../searchview/searchView.fxml"));
 		GridPane root = (GridPane) loader.load();
 		SearchViewController svc = loader.getController();
+		
+		if(nameText.getText()!="") {
+			
+		User user = new User(nameText.getText(),passwordText.getText());
+		
+		
+		this.cookkbook =  new CookBook(); 
+		int result = cookkbook.userLogin(user);
+		String resultstring ; 
+		if(result==-1) resultstring = "username does not exist";
+		
+		if(result==0) resultstring = "user password is not right";
+		if(result==1) {
+		resultstring = "user login successfully";
+		
+		scene.getStylesheets().clear();
+		//svc.setDatabaselayerObject(this.dao);
 		svc.setStage(stage);
 		svc.setScene(scene);
+		svc.setCookBook(this.cookkbook);
 		scene.setRoot(root);
 		stage.setScene(scene);
 		stage.show();
+		}
+		
+		}
 	}
 
 	// Event Listener on Button[#clearpw].onAction
@@ -90,5 +118,9 @@ public class loginController {
 	public void setStageAndScene(Stage stage, Scene scene) {
 		this.stage = stage;
 		this.scene = scene;
+	}
+	
+	public void setDatabase(DatabaselayerObject dao) {
+		this.dao = dao;
 	}
 }

@@ -224,22 +224,22 @@
             </GridPane>
             <ImageView fitHeight="63.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <image>
-                  <Image url="@labelpic/辣椒.png" />
+                  <Image url="@labelpic/pepper.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="63.0" fitWidth="60.0" layoutX="10.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
                <image>
-                  <Image url="@labelpic/蔬菜集.png" />
+                  <Image url="@labelpic/salad.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="62.0" fitWidth="53.0" layoutX="62.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1">
                <image>
-                  <Image url="@labelpic/土豆.png" />
+                  <Image url="@labelpic/potato.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="59.0" fitWidth="54.0" layoutX="129.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <image>
-                  <Image url="@labelpic/西红柿.png" />
+                  <Image url="@labelpic/tomato.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="54.0" fitWidth="59.0" layoutX="181.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">

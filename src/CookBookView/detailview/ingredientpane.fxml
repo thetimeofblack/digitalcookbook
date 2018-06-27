@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane prefHeight="249.0" prefWidth="247.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane prefHeight="249.0" prefWidth="247.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.detailview.IngredientController">
    <children>
       <HBox prefHeight="29.0" prefWidth="247.0">
          <children>
@@ -16,10 +16,18 @@
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  Description" />
          </children>
       </HBox>
-      <Pane fx:id="ingredientPane" layoutY="23.0" onDragDetected="#showIngredients" prefHeight="226.0" prefWidth="247.0">
+      <VBox fx:id="vbox" layoutY="15.0" prefHeight="231.0" prefWidth="247.0">
          <children>
-            <ScrollBar layoutX="227.0" layoutY="-4.0" orientation="VERTICAL" prefHeight="220.0" prefWidth="14.0" />
+            <HBox prefHeight="20.0" prefWidth="247.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="19.21875" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="52.21875" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="37.21875" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="33.21875" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="98.21875" />
+               </children>
+            </HBox>
          </children>
-      </Pane>
+      </VBox>
    </children>
 </Pane>
