@@ -7,10 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
-
-<ScrollPane prefHeight="452.0" prefWidth="517.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.editview.inpaneController">
-   <content>
-      <AnchorPane prefHeight="452.0" prefWidth="518.0">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="452.0" prefWidth="518.0"xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.editview.inpaneController">
          <children>
             <VBox fx:id="inpaneVBox" layoutY="3.0" prefHeight="437.0" prefWidth="510.0">
                <children>
@@ -35,6 +32,5 @@
                   </HBox>
                </children></VBox>
          </children>
-      </AnchorPane>
-   </content>
-</ScrollPane>
+</Pane>
+  

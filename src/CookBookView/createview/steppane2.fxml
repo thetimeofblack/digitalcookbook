@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.createview.inpaneController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.createview.steppaneController">
    <children>
-      <VBox fx:id="inpaneVBox" layoutY="103.0" prefHeight="497.0" prefWidth="450.0" spacing="10.0">
+      <VBox fx:id="vbox" layoutY="103.0" prefHeight="497.0" prefWidth="450.0" spacing="10.0">
          <children>
             <HBox prefHeight="42.0" prefWidth="450.0">
                <children>
@@ -26,10 +26,10 @@
             </HBox>
          </children>
       </VBox>
-      <Button layoutX="14.0" layoutY="80.0" mnemonicParsing="false" onAction="#addIngredient" text="ADD" />
-      <Button layoutX="86.0" layoutY="80.0" mnemonicParsing="false" onAction="#deleteIngredient" prefHeight="23.0" prefWidth="53.0" text="SUB" />
-      <Button layoutX="174.0" layoutY="80.0" mnemonicParsing="false" onAction="#saveIngredient" text="OK" />
-      <Button layoutX="241.0" layoutY="80.0" mnemonicParsing="false" onAction="#cancelIngredient" text="CANCEL" />
+      <Button layoutX="14.0" layoutY="80.0" mnemonicParsing="false" onAction="#addLine" text="ADD" />
+      <Button layoutX="86.0" layoutY="80.0" mnemonicParsing="false" onAction="#subLine" prefHeight="23.0" prefWidth="53.0" text="SUB" />
+      <Button layoutX="174.0" layoutY="80.0" mnemonicParsing="false" onAction="#saveSteps" text="OK" />
+      <Button layoutX="241.0" layoutY="80.0" mnemonicParsing="false" onAction="#cancelsteps" text="CANCEL" />
       <Label layoutX="15.0" layoutY="6.0" prefHeight="60.0" prefWidth="175.0" text="Add Steps">
          <font>
             <Font size="18.0" />

@@ -99,8 +99,10 @@ public class inpaneController {
 		num=num-1;
 		this.Ingredientlist.add(ingredient);
 		}
+		if(!Ingredientlist.isEmpty()) {
 		Ingredient ingredient = this.Ingredientlist.get(0);
 		System.out.println(ingredient.toString());
+		}
 		
 	}
 	

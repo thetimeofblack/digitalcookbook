@@ -133,7 +133,11 @@ public class createpaneController {
 		//please notice the problem that the character is input into the number textfield;
 		this.recipe.setIngredientlist(this.ingredients);
 		this.recipe.setPreparationSteps(this.steps);
+		if(!recipe.getName().equals("")) {
 		cookbook.saveRecipe(recipe);
+		}else {
+			System.out.println("Please enter a recipe name");
+		}
 		if(this.comment!=null) cookbook.saveComment(comment, this.recipe.getRecipeID());
 		
 		
@@ -143,8 +147,8 @@ public class createpaneController {
 	}
 	// Event Listener on Button.onAction
 	@FXML
-	public void createIngredient(ActionEvent event) throws Exception {
-		this.scrollpane = new ScrollPane();
+	public void createIngredient() throws Exception {
+		
 		if(this.subin==false)
 		{
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("inpane.fxml"));
@@ -156,17 +160,17 @@ public class createpaneController {
 		System.out.println("create ingredient");
 		}
 		System.out.println("create ingredient");
-		Pane pane = new Pane() ;
-		pane.getChildren().add(this.subinpane);
-		this.scrollpane.setContent(pane); 
+		
+		this.scrollpane.setContent(this.subinpane); 
 	}
 	// Event Listener on Button.onAction
 	@FXML
-	public void createSteps(ActionEvent event) throws Exception {
-		this.mainPane= new Pane(); 
+	public void createSteps() throws Exception {
+	
+		
 		if(this.subst==false)
 		{
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("steppane.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("steppane2.fxml"));
 		this.substpane = (Pane)loader.load();
 		steppaneController controller = loader.getController();
 		this.steps = new LinkedList<PreparationStep>();
@@ -175,13 +179,12 @@ public class createpaneController {
 		System.out.println("create steps");
 		}
 		System.out.println("create steps");
-		Pane pane = new Pane();
-		pane.getChildren().add(this.substpane);
-		this.mainPane.getChildren().add(this.substpane);
+		
+		this.scrollpane.setContent(this.substpane);
 		}
 	// Event Listener on Button.onAction
 	@FXML
-	public void createComment(ActionEvent event) throws Exception {
+	public void createComment() throws Exception {
 		if(this.subsm==false) {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("commentpane.fxml"));
 		this.subcmpane =(AnchorPane) loader.load() ; 

@@ -62,11 +62,14 @@ public class editpaneController implements Initializable {
 	private Pane mainPane; 
 	@FXML
 	private TextArea Cooktime ;
-	private ScrollPane subinPane;
+	private Pane subinPane;
 	
-	private ScrollPane substPane;
+	private Pane substPane;
 	
-	private ScrollPane subcmPane; 
+	private Pane subcmPane; 
+	@FXML
+	private ScrollPane scrollpane;
+	
 	
 	private boolean subin ; 
 	private boolean subsp; 
