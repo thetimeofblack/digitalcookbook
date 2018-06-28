@@ -14,18 +14,14 @@
          <children>
             <HBox prefHeight="42.0" prefWidth="450.0">
                <children>
-                  <Label prefHeight="45.0" prefWidth="110.0" text="  Name" />
-                  <Label prefHeight="42.0" prefWidth="90.0" text="Amount" />
-                  <Label prefHeight="42.0" prefWidth="67.0" text="Unit" />
-                  <Label prefHeight="42.0" prefWidth="196.0" text="Description" />
+                  <Label prefHeight="45.0" prefWidth="110.0" text="No" />
+                  <Label prefHeight="42.0" prefWidth="90.0" text="Description" />
                </children>
             </HBox>
             <HBox prefHeight="60.0" prefWidth="450.0">
                <children>
                   <TextField prefHeight="23.0" prefWidth="90.0" />
-                  <TextField prefHeight="23.0" prefWidth="113.0" />
-                  <TextField prefHeight="23.0" prefWidth="60.0" />
-                  <TextField prefHeight="23.0" prefWidth="215.0" />
+                  <TextField prefHeight="23.0" prefWidth="360.0" />
                </children>
             </HBox>
          </children>
@@ -34,7 +30,7 @@
       <Button layoutX="86.0" layoutY="80.0" mnemonicParsing="false" onAction="#deleteIngredient" prefHeight="23.0" prefWidth="53.0" text="SUB" />
       <Button layoutX="174.0" layoutY="80.0" mnemonicParsing="false" onAction="#saveIngredient" text="OK" />
       <Button layoutX="241.0" layoutY="80.0" mnemonicParsing="false" onAction="#cancelIngredient" text="CANCEL" />
-      <Label layoutX="15.0" layoutY="6.0" prefHeight="60.0" prefWidth="175.0" text="Add Ingredient">
+      <Label layoutX="15.0" layoutY="6.0" prefHeight="60.0" prefWidth="175.0" text="Add Steps">
          <font>
             <Font size="18.0" />
          </font>

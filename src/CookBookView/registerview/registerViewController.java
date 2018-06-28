@@ -17,6 +17,7 @@ import javafx.event.ActionEvent;
 
 import CookBookDataBaseAcess.DatabaselayerObject;
 import CookBookEntity.User;
+import DigitalCookbook.CookBook;
 public class registerViewController {
 	@FXML
 	private TextField username;
@@ -34,6 +35,7 @@ public class registerViewController {
 	
 	
 	private DatabaselayerObject dao; 
+	private CookBook cookbook; 
 	// Event Listener on Button[#ok].onAction
 	@FXML
 	public void userRegister(ActionEvent event) throws Exception {
@@ -54,15 +56,15 @@ public class registerViewController {
 				User user = new User();
 				user.setUserName(username.getText());
 				user.setUserPassword(userpassword2.getText());
-				
-				dao.userRegister(user);
+				this.cookbook = new CookBook(); 
+				cookbook.userRegister(user);
 				resultText.setText("Register successfully");
 				FXMLLoader fxmlforlogin  = new FXMLLoader(getClass().getResource("../login.fxml"));
 				GridPane rootforlogin = (GridPane)fxmlforlogin.load();
 				this.scene = new Scene(rootforlogin,290,470);
 				this.stage.setScene(this.scene);
 				this.stage.show();
-				dao.close();
+				
 			}
 		}
 		Scene scene = new Scene(root, 270, 160);
@@ -93,6 +95,10 @@ public class registerViewController {
 	
 	public void setDatabase(DatabaselayerObject dao) {
 		this.dao = dao; 
+	}
+	
+	public void setCookBook(CookBook cookbook) {
+		this.cookbook = cookbook;
 	}
 	
 	

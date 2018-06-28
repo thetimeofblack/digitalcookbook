@@ -2,6 +2,7 @@ package CookBookView.detailview;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
@@ -19,6 +20,9 @@ import org.hamcrest.core.SubstringMatcher;
 import CookBookEntity.Ingredient;
 import CookBookEntity.PreparationStep;
 import CookBookEntity.Recipe;
+import CookBookView.editview.editpaneController;
+import CookBookView.listview.ListAllController;
+import CookBookView.searchview.SearchViewController;
 import DigitalCookbook.CookBook;
 import javafx.event.ActionEvent;
 
@@ -29,6 +33,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -157,12 +162,31 @@ public class MaindetailController {
 		this.recipe = recipe;
 	}
 	
-	public void deleteRecipe() {
+	public void deleteRecipe() throws Exception{
+		this.cookbook.deleteUserRecipe(this.recipe.getRecipeID());
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../searchview/searchView.fxml"));
+		GridPane root = loader.load();
+		SearchViewController controller = loader.getController();
+		controller.setStageAndScene(stage, scene);
 		
+		controller.setCookBook(this.cookbook);
+		scene.setRoot(root);
+		stage.setScene(scene);
+		stage.show();
 	}
 	
-	public void editRecipe() {
-		
+	public void editRecipe() throws Exception{
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../editview/editpane.fxml"));
+		AnchorPane anchorPane = loader.load();
+		editpaneController controller = loader.getController();
+		controller.setRecipe(recipe);
+		controller.showpreviousRecipe();
+		controller.setCookBook(cookbook);
+		controller.setScene(scene);
+		controller.setStage(stage);
+		scene.setRoot(anchorPane);
+		stage.setScene(scene);
+		stage.show();
 	}
 	
 	public void setStage(Stage stage) {
@@ -223,6 +247,22 @@ public class MaindetailController {
 		
 	}
 	
+	@FXML
+	public void back() throws Exception{
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../listview/listall.fxml"));
+		Parent root = loader.load();
+		ListAllController controller = loader.getController();
+		controller.setStageAndScene(stage, scene);
+		//controller.setDatabaselayerObject(databaselayerObject);
+		controller.setCookBook(this.cookbook);
+		controller.createAllRecipeSubView();
+		
+		scene.setRoot(root);
+		stage.setScene(scene);
+		stage.show();
+	}
+	
+
 	
 	
 	public void showComment() throws Exception {

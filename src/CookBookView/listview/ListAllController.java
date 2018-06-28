@@ -132,7 +132,7 @@ public class ListAllController {
 			pane = loader.load(); 
 			
 			SubviewController controller = loader.getController();
-			
+			this.cookbook.setRateComment(recipe);
 			controller.setRecipe(recipe);
 			controller.setName();
 			controller.setStar();

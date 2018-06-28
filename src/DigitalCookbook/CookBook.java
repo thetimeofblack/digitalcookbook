@@ -1,8 +1,12 @@
 package DigitalCookbook;
 import java.util.LinkedList;
+
+import com.sun.glass.ui.TouchInputSupport;
+
 import CookBookDataBaseAcess.DatabaselayerObject;
 import CookBookEntity.Comment;
 import CookBookEntity.Recipe;
+import CookBookView.createview.commentController;
 import CookBookEntity.*;
 
 import static org.junit.jupiter.api.Assumptions.assumingThat;
@@ -153,11 +157,11 @@ public class CookBook {
 		this.databaselayerObject.insertrecipe(recipe);
 	}
 	
-	public void deleteUserRecipe(User user, String recipeid)  throws Exception{
-		this.user = user; 
+	public void deleteUserRecipe(String recipeid)  throws Exception{
+		
 		Recipe recipe = new Recipe(); 
 		recipe.setRecipeID(recipeid);
-		this.databaselayerObject.setUser(user);
+		this.databaselayerObject.setUser(this.user);
 		this.databaselayerObject.deleterecipeuser(recipe);
 	}
 	
@@ -180,6 +184,26 @@ public class CookBook {
 	
 				
 	}
+	public void setRateComment(Recipe recipe) throws Exception{
+		LinkedList<Comment> comments = new LinkedList<Comment>();
+		this.databaselayerObject.setUser(this.user);
+		this.databaselayerObject.setRecipecr(recipe, user.getUserID());
+		
+	}
 	
+	public void setUser(User user) throws Exception{
+		this.databaselayerObject.UserLogin(user);
+		this.databaselayerObject.setUserID(user);
+		this.user = user;
+		
+	}
+	
+	public LinkedList<Recipe> getRankedRecipeList() throws Exception{
+		LinkedList<Recipe> recipelist = new LinkedList<Recipe>();
+		recipelist = this.databaselayerObject.getRankedlist(this.user.getUserID());
+		if(!recipelist.isEmpty()) this.recipelist = recipelist;
+		
+		return recipelist;
+	}
 
 }

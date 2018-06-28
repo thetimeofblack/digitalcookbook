@@ -7,7 +7,7 @@
 <HBox prefHeight="31.0" prefWidth="471.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.createview.inpanehboxController">
    <children>
       <TextField fx:id="Name" prefHeight="27.0" prefWidth="103.0" />
-      <TextField fx:id="Usage" prefHeight="27.0" prefWidth="99.0" />
+      <TextField fx:id="Amount" prefHeight="27.0" prefWidth="99.0" />
       <TextField fx:id="Unit" prefHeight="27.0" prefWidth="109.0" />
       <TextField fx:id="Description" prefHeight="27.0" prefWidth="193.0" />
       <Button fx:id="delete" mnemonicParsing="false" onAction="#deletenode" prefHeight="23.0" prefWidth="50.0" text="X" />

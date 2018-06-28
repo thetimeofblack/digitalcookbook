@@ -27,6 +27,8 @@ public class SearchView extends javafx.application.Application {
 			SearchViewController svc = loader.getController();
 			User user = new User("heyining","heyining");
 			Scene scene = new Scene(root, 290, 470);
+			cookBook.setUser(user);
+			
 			svc.setCookBook(cookBook);
 			svc.setScene(scene);
 			svc.setStage(primaryStage);

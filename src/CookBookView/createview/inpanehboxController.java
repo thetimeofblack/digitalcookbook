@@ -12,7 +12,7 @@ public class inpanehboxController {
 	@FXML
 	private TextField Name;
 	@FXML
-	private TextField Usage;
+	private TextField Amount;
 	@FXML
 	private TextField Unit;
 	@FXML

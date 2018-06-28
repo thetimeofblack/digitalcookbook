@@ -2,6 +2,7 @@ package CookBookDataBaseAcess;
 
 import static org.junit.Assert.assertNotNull;
 
+import java.nio.channels.SelectableChannel;
 import java.sql.Connection;
 
 import java.sql.DriverManager;
@@ -15,6 +16,7 @@ import java.util.LinkedList;
 import com.mysql.cj.exceptions.RSAException;
 import com.mysql.cj.jdbc.ha.SequentialBalanceStrategy;
 import com.mysql.cj.xdevapi.Result;
+import com.sun.glass.ui.TouchInputSupport;
 
 import CookBookEntity.Comment;
 import CookBookEntity.Ingredient;
@@ -691,7 +693,9 @@ public class DatabaselayerObject {
     
     public boolean getRecipeComment(LinkedList<Comment> comments ,String recipeid) throws Exception{
     	String sqlstr = "select * from cookbook.rateandcomments"
-    			+ "where recipeid="+recipeid;
+    			+ " where recipeid= "+recipeid+" and userid= "+this.user.getUserID();
+    	Connection connection = this.getConnection();
+    	this.sql = connection.createStatement();
     	ResultSet res = this.sql.executeQuery(sqlstr);
         comments = new LinkedList<Comment>();
     	while(res.next()) {
@@ -700,14 +704,15 @@ public class DatabaselayerObject {
         comment.setCommentid(res.getString("ID"));
         comments.add(comment);
     	}
+    	connection.close();
     	if(comments.isEmpty()) return false; 
     	return true;
     }
     
     public LinkedList<Recipe> getUserallRecipe(String userid) throws Exception{
     	String sqlstr ="select * from cookbook.userrecipe , cookbook.recipe "+
-    	"where cookbook.userrecipe.userid = "+userid+ 
-    	"and cookbook.userrecipe.recipeid=cookbook.recipe.recipeid";
+    	" where cookbook.userrecipe.userid = "+userid+ 
+    	" and cookbook.userrecipe.recipeid=cookbook.recipe.id ";
     	Connection connection = this.getConnection(); 
     	Statement statement = connection.createStatement();
     	ResultSet resultSet  = statement.executeQuery(sqlstr);
@@ -726,11 +731,11 @@ public class DatabaselayerObject {
     public LinkedList<Recipe> getfavouriterecipelist(String userid) throws Exception {
     	LinkedList<Recipe> recipelist = new LinkedList<Recipe>();
     	Connection connection = this.getConnection() ;
-    	this.sql= connection.createStatement(); 
+    	Statement statement= connection.createStatement(); 
     	String sqlstr = "select * from cookbook.favourite, cookbook.recipe "+
     	"where cookbook.recipe.id = cookbook.favourite.recipeid and cookbook.favourite.userid="+userid; 
     	
-    	ResultSet resultSet = this.sql.executeQuery(sqlstr) ; 
+    	ResultSet resultSet = statement.executeQuery(sqlstr) ; 
     	while(resultSet.next()) {
     		Recipe recipe = this.getRecipe(resultSet.getString("recipeid"), resultSet); 
     		recipelist.add(recipe);    	
@@ -742,7 +747,9 @@ public class DatabaselayerObject {
     
     private Recipe getRecipe(String recipeid,ResultSet res) throws Exception {
     	Recipe recipe = new Recipe();
-    	res = this.sql.executeQuery("select * from cookbook.recipe where id="+recipeid);
+    	Connection connection = this.getConnection();
+    	Statement statement = connection.createStatement(); 
+    	res = statement.executeQuery("select * from cookbook.recipe where id="+recipeid);
     	res.next();
     	recipe.setRecipeID(res.getString("ID"));
 		recipe.setName(res.getString("Name"));
@@ -753,6 +760,7 @@ public class DatabaselayerObject {
 		recipe.setDescription(res.getString("Description"));
 		recipe.setIngredientlist(this.getIngredient(recipeid));
 		recipe.setPreparationSteps(this.getPreparationSteps(recipeid));
+		connection.close();
 		return recipe; 
     }
     
@@ -801,5 +809,74 @@ public class DatabaselayerObject {
     	
     }
     
-  
-}
+    public LinkedList<Recipe> getRankedlist(String userid) throws Exception{
+    	Connection connection = this.getConnection(); 
+    	Statement statement = connection.createStatement() ;
+    	LinkedList<Recipe> recipelist = new LinkedList<Recipe>();
+    	String sql = "select * from cookbook.rateandcomments "+
+    	"where userid = "+ userid+" "; 
+    	System.out.println("database get userid "+userid);
+    	//select * from rateandcomments where userid = 1
+    	System.out.println(sql);
+    	ResultSet resultSet =statement.executeQuery(sql);
+    	while(resultSet.next()) {
+    		System.out.println("This is comments and rate");
+    		Recipe recipe = new Recipe() ;
+    		//System.out.println(res.findColumn("comments"));
+    	//	System.out.println(resultSetgetInt(1));
+    		//System.out.println(res.getString(2));
+    		//System.out.println(res.getString(3));
+    		recipe.setComments(resultSet.getString("comments"));
+    		recipe.setRate(resultSet.getInt("rate"));
+    		recipe.setRecipeID(resultSet.getString("recipeid"));
+    		this.getRecipe(recipe.getRecipeID(), resultSet);
+    		recipelist.add(recipe);
+    	}
+    	connection.close();
+    	return recipelist;
+    }
+    
+    
+    public void setRecipecr(Recipe recipe,String userid) throws Exception {
+    	Connection connection = this.getConnection(); 
+    	String recipeid = recipe.getRecipeID(); 
+    	Statement statement  = connection.createStatement(); 
+    	String sql = "select * from cookbook.rateandcomments " + 
+    	" where recipeid = " +recipeid+" and userid = "+userid;
+    	ResultSet resultSet = statement.executeQuery(sql);
+    	while(resultSet.next()) {
+    		recipe.setRate(resultSet.getInt("rate"));
+    		recipe.setComments(resultSet.getString("comments"));
+    	}
+    	statement.close();
+    	connection.close();
+    }
+    
+    public boolean isReciperanked(String recipeid) throws Exception{
+    	Connection connection  = this.getConnection() ; 
+    	Statement statement = connection.createStatement(); 
+    	String sql = " select * from cookbook.rateandcomments " + 
+    	    	" where recipei = " +recipeid;
+    	int result = statement.executeUpdate(sql);
+    	if(result>0) return true; 
+    	return false;
+    	
+    }
+    
+  public void setUserID(User user) throws Exception{
+	  Connection connection = this.getConnection();
+	  Statement statement = connection.createStatement() ;
+	  String sql = "select * from cookbook.user where UserName = '" + user.getUserName()+"'";
+	  ResultSet resultSet = statement.executeQuery(sql);
+	  if(resultSet.first()) {
+		  System.out.println("User exists");
+		  while(resultSet.next()) {
+			  user.setUserID(resultSet.getString("userid"));
+		  }
+	  }else {
+		  System.out.println("User does not exist");
+			
+		}
+	  }
+ }
+

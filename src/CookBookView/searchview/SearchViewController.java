@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
+import org.junit.jupiter.api.function.ThrowingSupplier;
+
 import CookBookDataBaseAcess.DatabaselayerObject;
 import CookBookEntity.Recipe;
 import CookBookView.createview.createpaneController;
@@ -77,8 +79,17 @@ public class SearchViewController {
 	 //Event Listener on Button[#blacksearch].onMouseEntered
 	@FXML
 	public void showblue(MouseEvent event) {
-		Image image = new Image(getClass().getResourceAsStream("搜索-5.png"));
+		Image image = new Image(getClass().getResourceAsStream("searchblue.png"));
 		ImageView iv =new ImageView(image);
+		iv.setFitHeight(33);
+		iv.setFitWidth(33);
+		blacksearch.setGraphic(iv);
+	}
+	
+	@FXML
+	public void showblack(MouseEvent event) {
+		Image image= new Image(getClass().getResourceAsStream("search.png"));
+		ImageView iv = new ImageView(image);
 		iv.setFitHeight(33);
 		iv.setFitWidth(33);
 		blacksearch.setGraphic(iv);
@@ -119,12 +130,12 @@ public class SearchViewController {
 
 	// Event Listener on Button[#userRecipes].onAction
 	@FXML
-	public void showUserRecipes(ActionEvent event) throws IOException {
+	public void showUserRecipes(ActionEvent event) throws Exception {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../listview/listview.fxml"));
 		Parent root = loader.load();
 		ListviewController controller = loader.getController();
 		controller.setStageAndScene(stage, scene);
-		controller.setDatabaselayerObject(databaselayerObject);
+		controller.setCookBook(this.cookbook);
 		controller.createUserRecipeSubView();
 		scene.setRoot(root);
 		stage.setScene(scene);
@@ -133,7 +144,7 @@ public class SearchViewController {
 
 	// Event Listener on Button[#favouriterecipes].onAction
 	@FXML
-	public void showUserFavouriteRecipes(ActionEvent event) throws IOException, SQLException {
+	public void showUserFavouriteRecipes(ActionEvent event) throws Exception {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../listview/listview.fxml"));
 		Parent root = loader.load();
 		ListviewController controller = loader.getController();
@@ -147,12 +158,12 @@ public class SearchViewController {
 
 	// Event Listener on Button[#rankedrecipes].onAction
 	@FXML
-	public void showRankedRecipes(ActionEvent event) throws IOException {
+	public void showRankedRecipes(ActionEvent event) throws Exception {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../listview/listview.fxml"));
 		Parent root = loader.load();
 		ListviewController controller = loader.getController();
 		controller.setStageAndScene(stage, scene);
-		controller.setDatabaselayerObject(databaselayerObject);
+		controller.setCookBook(this.cookbook);
 		controller.createRankedRecipesSubView();
 		scene.setRoot(root);
 		stage.setScene(scene);
@@ -163,14 +174,17 @@ public class SearchViewController {
 	@FXML
 	public void createNewRecipes(ActionEvent event) throws Exception{
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../createview/createpane.fxml"));
-		AnchorPane anchorPane = (AnchorPane)loader.load(); 
+		AnchorPane anchorPane = (AnchorPane)loader.load();
+		anchorPane.setPrefHeight(800);
+		anchorPane.setPrefWidth(600);
 		createpaneController controller = loader.getController(); 
 		CookBook cookBook = new CookBook() ; 
 		controller.setCookBook(cookBook);
 		controller.setScene(this.scene);
 		controller.setStage(this.stage);
 	
-		this.scene.setRoot(anchorPane);
+		Scene scene = new Scene(anchorPane,600,800);
+		this.scene=scene;
 		this.stage.setScene(this.scene);
 		this.stage.show();
 		

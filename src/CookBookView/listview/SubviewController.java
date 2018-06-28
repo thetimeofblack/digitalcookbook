@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.Labeled;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -29,7 +30,7 @@ public class SubviewController {
 	@FXML
 	private Label star5;
 	@FXML
-	private Label favourite;
+	private ImageView favourite;
 	@FXML
 	private Label recipeName;
 
@@ -83,8 +84,8 @@ public class SubviewController {
 
 	public void setFavourite() throws SQLException {
 		if (databaselayerObject.judgefavourite(recipe)) {
-			Image image = new Image(getClass().getResourceAsStream("favourite.png"));
-			favourite.setGraphic(new ImageView(image));
+			Image image = new Image(getClass().getResourceAsStream("fullheart.png"));
+		
 		}
 	}
 
@@ -105,12 +106,13 @@ public class SubviewController {
 		this.databaselayerObject = databaselayerObject;
 	}
 	
-	public void showDetail() throws IOException {
+	public void showDetail() throws Exception {
 		FXMLLoader detailloader = new FXMLLoader(getClass().getResource("../detailview/maindetail.fxml"));
 		AnchorPane detailpane = (AnchorPane)detailloader.load();
 		MaindetailController detailcontroller = detailloader.getController(); 
 		detailcontroller.setRecipe(this.recipe);
 		detailcontroller.showbasicRecipe();
+		detailcontroller.setCookBook(this.cookBook);
 		this.scene.setRoot(detailpane);
 		this.stage.setScene(this.scene);
 		this.stage.show();

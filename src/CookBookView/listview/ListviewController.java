@@ -83,8 +83,8 @@ public class ListviewController {
 		}
 	}
 
-	public void createUserRecipeSubView() throws IOException {
-		LinkedList<Recipe> list = this.cookBook.getallrecipelist();
+	public void createUserRecipeSubView() throws Exception {
+		LinkedList<Recipe> list = this.cookBook.getUserRecipe();
 		for (int i = 1; i <= list.size(); i++) {
 			Recipe recipe = list.get(i - 1);
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("subview.fxml"));
@@ -97,8 +97,8 @@ public class ListviewController {
 		}
 	}
 
-	public void createUserFavouriteRecipeSubView() throws IOException, SQLException {
-		LinkedList<Recipe> list = this.cookBook.getallrecipelist();
+	public void createUserFavouriteRecipeSubView() throws Exception {
+		LinkedList<Recipe> list = this.cookBook.getfavouriterecipe();
 		for (int i = 1; i <= list.size(); i++) {
 				Recipe recipe = list.get(i - 1);
 			
@@ -114,8 +114,9 @@ public class ListviewController {
 		}
 	}
 
-	public void createRankedRecipesSubView() throws IOException {
-		LinkedList<Recipe> list = this.cookBook.getallrecipelist();
+	public void createRankedRecipesSubView() throws Exception {
+		LinkedList<Recipe> list = this.cookBook.getRankedRecipeList();
+		if(!list.isEmpty()) {
 		for (int i = 1; i <= list.size(); i++) {
 			Recipe recipe = list.get(i - 1);
 			if (recipe.getRate() > 0) {
@@ -124,10 +125,13 @@ public class ListviewController {
 				SubviewController controller = loader.getController();
 				controller.setRecipe(recipe);
 				controller.setStageAndScene(stage, scene);
-				controller.setDatabaselayerObject(databaselayerObject);
+				controller.setCookBook(this.cookBook);
 				recipeVBox.getChildren().add(subView);
 			}
 		}
+	  }else {
+		  this.recipeVBox= new VBox();
+	  }
 	}
 
 	public void setStage(Stage stage) {

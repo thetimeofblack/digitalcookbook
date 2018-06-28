@@ -32,15 +32,15 @@ import javafx.stage.Stage;
 
 public class createpaneController {
 	@FXML
-	private TextArea recipename;
+	private TextField recipename;
 	@FXML
 	private Label star5;
 	@FXML
-	private TextArea preparationTime;
+	private TextField preparationTime;
 	@FXML
-	private TextArea Category;
+	private TextField Category;
 	@FXML
-	private TextArea Cooktime;
+	private TextField Cooktime;
 	@FXML
 	private Label favourite;
 	@FXML
@@ -56,11 +56,15 @@ public class createpaneController {
 	@FXML
 	private Pane mainPane;
 	
-	private ScrollPane subinpane ;
+	@FXML 
+	private ScrollPane scrollpane;
 	
-	private ScrollPane substpane ;
 	
-	private AnchorPane subcmpane;
+	private Pane subinpane ;
+	
+	private Pane substpane ;
+	
+	private Pane subcmpane;
 	
 	private Pane previouspain;
 	
@@ -140,11 +144,11 @@ public class createpaneController {
 	// Event Listener on Button.onAction
 	@FXML
 	public void createIngredient(ActionEvent event) throws Exception {
-		this.mainPane = new Pane();
+		this.scrollpane = new ScrollPane();
 		if(this.subin==false)
 		{
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("inpane.fxml"));
-		this.subinpane = (ScrollPane)loader.load();
+		this.subinpane = (Pane)loader.load();
 		inpaneController controller = loader.getController(); 
 		this.ingredients = new LinkedList<Ingredient>();
 		controller.setIngredientList(this.ingredients);
@@ -154,7 +158,7 @@ public class createpaneController {
 		System.out.println("create ingredient");
 		Pane pane = new Pane() ;
 		pane.getChildren().add(this.subinpane);
-		this.mainPane.getChildren().add(pane); 
+		this.scrollpane.setContent(pane); 
 	}
 	// Event Listener on Button.onAction
 	@FXML
@@ -163,7 +167,7 @@ public class createpaneController {
 		if(this.subst==false)
 		{
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("steppane.fxml"));
-		this.substpane = (ScrollPane)loader.load();
+		this.substpane = (Pane)loader.load();
 		steppaneController controller = loader.getController();
 		this.steps = new LinkedList<PreparationStep>();
 		controller.setPreparationStepList(this.steps);
