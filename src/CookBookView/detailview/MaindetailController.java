@@ -19,6 +19,8 @@ import javax.xml.ws.AsyncHandler;
 
 import org.hamcrest.core.SubstringMatcher;
 
+import com.sun.org.apache.xpath.internal.operations.And;
+
 import CookBookEntity.Comment;
 import CookBookEntity.Ingredient;
 import CookBookEntity.PreparationStep;
@@ -105,7 +107,7 @@ public class MaindetailController {
 	private AnchorPane mainanchor;
 	private AnchorPane substpane; 
 	
-	private AnchorPane subcmpane; 
+	private Pane subcmpane; 
 	
 	private boolean subsm = false ;
 	private boolean subin = false ; 
@@ -270,16 +272,15 @@ public class MaindetailController {
 	
 	public void showComment() throws Exception {
 		LinkedList<Comment> comments = this.cookbook.getComments(recipe.getRecipeID());
+		if(subsm==false && !comments.isEmpty()) {
+		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("Comment.fxml"));
-		Parent root = loader.load();
-		Iterator iterator = comments.iterator();
-		while(iterator.hasNext()) {
-			Comment comment = (Comment) iterator.next();
-			FXMLLoader hbLoader = new FXMLLoader(getClass().getResource("commenthbox.fxml"));
-			HBox hBox = hbLoader.getController();
-			GridPane gridpane = (GridPane) hBox.getChildren().get(0);
-			
-			
+		this.subcmpane = loader.load();
+		CommentController controller = loader.getController();
+		controller.showComments(comments);
+		subsm = true; 
+		System.out.println("show all comments for this recipe");
 		}
+		this.scrollpane.setContent(this.subcmpane);
 	}
 }

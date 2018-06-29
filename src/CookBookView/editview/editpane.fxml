@@ -99,15 +99,15 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
             </GridPane>
-            <Label fx:id="ingredient" layoutX="25.0" layoutY="180.0" onMouseClicked="#showIngredients" prefHeight="80.0" prefWidth="64.0">
+            <Label fx:id="ingredient" layoutX="25.0" layoutY="180.0" onMouseClicked="#editIngredients" prefHeight="80.0" prefWidth="64.0">
                <graphic>
-                  <ImageView fitHeight="39.0" fitWidth="41.0" onMouseClicked="#showIngredients">
+                  <ImageView fitHeight="39.0" fitWidth="41.0" onMouseClicked="#editIngredients">
                      <image>
                         <Image url="@../detailview/material-information-outline.png" />
                      </image>
                   </ImageView>
                </graphic></Label>
-            <Label layoutX="27.0" layoutY="294.0" prefHeight="73.0" prefWidth="55.0">
+            <Label layoutX="27.0" layoutY="294.0" onMouseClicked="#editsteps" prefHeight="73.0" prefWidth="55.0">
                <graphic>
                   <ImageView fitHeight="35.0" fitWidth="37.0">
                      <image>
@@ -115,7 +115,7 @@
                      </image>
                   </ImageView>
                </graphic></Label>
-            <Label layoutX="27.0" layoutY="415.0" prefHeight="91.0" prefWidth="78.0">
+            <Label layoutX="27.0" layoutY="415.0" onMouseClicked="#editcomments" prefHeight="91.0" prefWidth="78.0">
                <graphic>
                   <ImageView fitHeight="34.0" fitWidth="35.0">
                      <image>

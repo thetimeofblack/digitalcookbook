@@ -212,5 +212,11 @@ public class CookBook {
 		this.databaselayerObject.getRecipeComment(comments, recipeid);
 		return comments; 
 	}
+	
+	public Comment getComment(String recipeid) throws Exception {
+		Comment comment = new Comment() ; 
+		comment = this.databaselayerObject.getComment(recipeid,this.user.getUserID());
+		return comment; 
+	}	
 
 }

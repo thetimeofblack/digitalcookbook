@@ -878,5 +878,20 @@ public class DatabaselayerObject {
 			
 		}
 	  }
+  
+  public Comment getComment(String recipeid, String userid) throws Exception{
+	  Comment comment = new Comment() ; 
+	  Connection connection = this.getConnection(); 
+	  Statement statement = connection.createStatement(); 
+	  String sql = "select * from cookbook.rateandcomments where userid="+userid+" and recipeid="+recipeid;
+	  ResultSet resultSet = statement.executeQuery(sql);
+	  while(resultSet.next()) {
+		  comment.setComment(resultSet.getString("comment"));
+		  comment.setCommentid(resultSet.getString("id"));
+		  comment.setGrade(resultSet.getInt("rate"));
+		  
+	  }
+	  return comment; 
+  }
  }
 

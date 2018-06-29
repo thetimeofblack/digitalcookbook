@@ -135,9 +135,9 @@
                </graphic>
             </Label>
 
-            <Label layoutX="8.0" layoutY="215.0" prefHeight="35.0" prefWidth="34.0">
+            <Label layoutX="8.0" layoutY="215.0" onMouseClicked="#showComment" prefHeight="35.0" prefWidth="34.0">
                <graphic>
-                  <ImageView fitHeight="34.0" fitWidth="35.0">
+                  <ImageView fitHeight="34.0" fitWidth="35.0" onMouseClicked="#showComment">
 
                      <image>
                         <Image url="@Event%20Comments.png" />
