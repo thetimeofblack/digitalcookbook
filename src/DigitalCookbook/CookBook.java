@@ -7,6 +7,7 @@ import CookBookDataBaseAcess.DatabaselayerObject;
 import CookBookEntity.Comment;
 import CookBookEntity.Recipe;
 import CookBookView.createview.commentController;
+import javafx.scene.shape.Line;
 import CookBookEntity.*;
 
 import static org.junit.jupiter.api.Assumptions.assumingThat;
@@ -204,6 +205,12 @@ public class CookBook {
 		if(!recipelist.isEmpty()) this.recipelist = recipelist;
 		
 		return recipelist;
+	}
+	
+	public LinkedList<Comment> getComments(String recipeid) throws Exception{
+		LinkedList<Comment> comments= new LinkedList<Comment>(); 
+		this.databaselayerObject.getRecipeComment(comments, recipeid);
+		return comments; 
 	}
 
 }

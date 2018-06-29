@@ -693,7 +693,7 @@ public class DatabaselayerObject {
     
     public boolean getRecipeComment(LinkedList<Comment> comments ,String recipeid) throws Exception{
     	String sqlstr = "select * from cookbook.rateandcomments"
-    			+ " where recipeid= "+recipeid+" and userid= "+this.user.getUserID();
+    			+ " where recipeid= "+recipeid;
     	Connection connection = this.getConnection();
     	this.sql = connection.createStatement();
     	ResultSet res = this.sql.executeQuery(sqlstr);

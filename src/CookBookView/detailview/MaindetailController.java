@@ -2,12 +2,14 @@ package CookBookView.detailview;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 
 import javafx.scene.control.TextField;
 
+import java.awt.TextArea;
 import java.security.KeyStore.PrivateKeyEntry;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -17,6 +19,7 @@ import javax.xml.ws.AsyncHandler;
 
 import org.hamcrest.core.SubstringMatcher;
 
+import CookBookEntity.Comment;
 import CookBookEntity.Ingredient;
 import CookBookEntity.PreparationStep;
 import CookBookEntity.Recipe;
@@ -266,6 +269,17 @@ public class MaindetailController {
 	
 	
 	public void showComment() throws Exception {
-		this.cookbook.getRecipeComment(this.recipe.getRecipeID());
+		LinkedList<Comment> comments = this.cookbook.getComments(recipe.getRecipeID());
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("Comment.fxml"));
+		Parent root = loader.load();
+		Iterator iterator = comments.iterator();
+		while(iterator.hasNext()) {
+			Comment comment = (Comment) iterator.next();
+			FXMLLoader hbLoader = new FXMLLoader(getClass().getResource("commenthbox.fxml"));
+			HBox hBox = hbLoader.getController();
+			GridPane gridpane = (GridPane) hBox.getChildren().get(0);
+			
+			
+		}
 	}
 }
