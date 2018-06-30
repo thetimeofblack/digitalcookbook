@@ -192,6 +192,10 @@ public class MaindetailController {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../editview/editpane.fxml"));
 		AnchorPane anchorPane = loader.load();
 		editpaneController controller = loader.getController();
+		Comment comment = new Comment(); 
+		comment = cookbook.getComment(recipe.getRecipeID());
+		recipe.setComments(comment.getComment());
+		recipe.setRate(comment.getGrade());
 		controller.setRecipe(recipe);
 		controller.showRecipe();
 		controller.setCookBook(cookbook);
