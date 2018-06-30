@@ -14,6 +14,7 @@ import DigitalCookbook.CookBook;
 class CookBookTest {
 	
 	private static CookBook cookbook = new CookBook();
+	
 	private Recipe recipe1 = null;
 	private Recipe recipe2 = null;
 	
@@ -25,6 +26,9 @@ class CookBookTest {
 	@Before
 	public void setUp() throws Exception{
 		//create recipes for insertion
+		User user = new User("heyining","heyining");
+		this.cookbook.userLogin(user);
+		this.cookbook.setUser(user);
 		recipe1 = new Recipe("test1","test1",1);
 		recipe1.setCookingTime(20);
 		recipe1.setPreparationTime(20);
