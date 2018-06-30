@@ -778,13 +778,15 @@ public class DatabaselayerObject {
 			ingredient.setUnit(res.getString("Unit"));
 			ingredientlist.add(ingredient);
 		}
+		connection.close();
     	return ingredientlist ; 
     }
     
     private LinkedList<PreparationStep> getPreparationSteps(String recipeid) throws Exception{
     	LinkedList<PreparationStep> preparationSteps= new LinkedList<PreparationStep>();
     	String sqlstr = "select * from cookbook.preparationstep where RecipeID = '" + recipeid+"'";
-
+    	this.con = this.getConnection();
+    	this.sql = this.con.createStatement();
 		ResultSet result = sql.executeQuery(sqlstr);
 		while (result.next()) {
 			PreparationStep preparationstep = new PreparationStep();
@@ -794,6 +796,7 @@ public class DatabaselayerObject {
 			preparationstep.setOrder(result.getDouble("preparationstepsorder"));
 			preparationSteps.add(preparationstep);
 		}
+		this.con.close();
 		
     	return preparationSteps;
     }
