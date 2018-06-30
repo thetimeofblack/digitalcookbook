@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="249.0" prefWidth="247.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.editview.CommentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="445.0" prefWidth="560.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.editview.CommentController">
    <children>
-      <TextField fx:id="commentfield" layoutY="1.0" prefHeight="217.0" prefWidth="247.0" />
-      <Button layoutX="167.0" layoutY="218.0" mnemonicParsing="false" onAction="#saveComments" text="Confirm" />
+      <TextField fx:id="commentfield" layoutY="1.0" prefHeight="355.0" prefWidth="560.0" />
+      <Button layoutX="464.0" layoutY="380.0" mnemonicParsing="false" onAction="#saveComments" text="Confirm" />
    </children>
 </AnchorPane>

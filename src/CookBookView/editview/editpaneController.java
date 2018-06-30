@@ -241,6 +241,9 @@ public class editpaneController implements Initializable {
 	
 	public void editRecipe() throws Exception{
 		this.createRecipe();
+		this.incontroller.saveIngredient();
+		this.cocontroller.saveComments();
+		this.stcontroller.savesteps();
 		this.cookbook.deleteUserRecipe(this.recipe.getRecipeID());
 		this.recipe.setIngredientlist(this.incontroller.getIngredients());
 		this.recipe.setPreparationSteps(this.stcontroller.getSteps());
