@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import CookBookDataBaseAcess.DatabaselayerObject;
+import CookBookEntity.Comment;
 import CookBookEntity.Recipe;
 import CookBookView.detailview.MaindetailController;
 
@@ -39,11 +40,7 @@ public class SubviewController {
 	private Stage stage;
 	private Scene scene;
 	private DatabaselayerObject databaselayerObject;
-	private CookBook cookBook ; 
-
-	public void toDetailView() throws IOException {
-
-	}
+	private CookBook cookBook;
 
 	public void setRecipe(Recipe recipe) {
 		this.recipe = recipe;
@@ -53,39 +50,45 @@ public class SubviewController {
 		this.recipeName.setText(recipe.getName());
 	}
 
-	public void setStar() {
+	public void setStar() throws Exception {
 		Image image = new Image(getClass().getResourceAsStream("star.png"));
 		ImageView iv = new ImageView(image);
 		iv.setFitHeight(20);
 		iv.setFitWidth(20);
-		if (recipe.getRate() == 1) {
+		Comment comment = new Comment();
+		comment = cookBook.getComment(recipe.getRecipeID());
+		int grade = comment.getGrade();
+		if (grade == 1) {
 			star1.setGraphic(iv);
-		} else if (recipe.getRate() == 2) {
+		} else if (grade == 2) {
 			star1.setGraphic(iv);
 			star2.setGraphic(iv);
-		} else if (recipe.getRate() == 3) {
+		} else if (grade == 3) {
 			star1.setGraphic(iv);
 			star2.setGraphic(iv);
 			star3.setGraphic(iv);
-		} else if (recipe.getRate() == 4) {
+		} else if (grade == 4) {
 			star1.setGraphic(iv);
 			star2.setGraphic(iv);
 			star3.setGraphic(iv);
 			star4.setGraphic(iv);
-		} else if (recipe.getRate() == 5) {
+		} else if (grade == 5) {
 			star1.setGraphic(iv);
 			star2.setGraphic(iv);
 			star3.setGraphic(iv);
 			star4.setGraphic(iv);
 			star5.setGraphic(iv);
-			
+
 		}
 	}
 
-	public void setFavourite() throws SQLException {
-		if (databaselayerObject.judgefavourite(recipe)) {
+	public void setFavourite() throws Exception {
+		if (this.cookBook.isFavourite(recipe)) {
 			Image image = new Image(getClass().getResourceAsStream("fullheart.png"));
-		
+			ImageView iv = new ImageView(image);
+			iv.setFitHeight(20);
+			iv.setFitWidth(20);
+			favourite.setImage(image);
 		}
 	}
 
@@ -105,23 +108,23 @@ public class SubviewController {
 	public void setDatabaselayerObject(DatabaselayerObject databaselayerObject) {
 		this.databaselayerObject = databaselayerObject;
 	}
-	
+
 	public void showDetail() throws Exception {
 		FXMLLoader detailloader = new FXMLLoader(getClass().getResource("../detailview/maindetail.fxml"));
-		AnchorPane detailpane = (AnchorPane)detailloader.load();
-		MaindetailController detailcontroller = detailloader.getController(); 
+		AnchorPane detailpane = (AnchorPane) detailloader.load();
+		MaindetailController detailcontroller = detailloader.getController();
+		detailcontroller.setCookBook(this.cookBook);
 		detailcontroller.setRecipe(this.recipe);
 		detailcontroller.showbasicRecipe();
-		detailcontroller.setCookBook(this.cookBook);
+		
 		this.scene.setRoot(detailpane);
 		this.stage.setScene(this.scene);
 		this.stage.show();
-		
 		detailcontroller.setScene(scene);
 		detailcontroller.setStage(stage);
-		
 	}
+
 	public void setCookBook(CookBook cookBook) {
-		this.cookBook = cookBook ; 
+		this.cookBook = cookBook;
 	}
 }

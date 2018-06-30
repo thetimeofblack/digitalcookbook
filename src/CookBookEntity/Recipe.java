@@ -14,9 +14,9 @@ public class Recipe {
 	private String Category;
 	private LinkedList<PreparationStep> PreparationSteps;
 	private LinkedList<Ingredient> ingredientlist;
-	private int Rate;
+	private int Rate =0 ;
 	private String Comments;
-	private boolean favourite ;
+	private boolean favourite =false;
 	
 	public Recipe(String Name, String Category , int ServeNumber){
 		this.Name  = Name ; 

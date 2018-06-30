@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -9,27 +13,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.createview.createpaneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.createview.createpaneController">
    <children>
       <Pane prefHeight="800.0" prefWidth="600.0">
          <children>
-            <ImageView fitHeight="34.0" fitWidth="35.0" layoutX="35.0" layoutY="312.0" onMouseClicked="#createComment">
-               <image>
-                  <Image url="@../detailview/Event%20Comments.png" />
-               </image>
-            </ImageView>
             <Button fx:id="cancel" layoutX="468.0" layoutY="728.0" mnemonicParsing="false" onAction="#back" prefHeight="35.0" prefWidth="69.0" text="back" textFill="#0917d7" />
             <Button layoutX="322.0" layoutY="727.0" mnemonicParsing="false" onAction="#createRecipe" prefHeight="32.0" prefWidth="69.0" text="save" />
-            <ImageView fitHeight="39.0" fitWidth="41.0" layoutX="32.0" layoutY="196.0" onMouseClicked="#createIngredient">
-               <image>
-                  <Image url="@../detailview/material-information-outline.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="32.0" fitWidth="36.0" layoutX="35.0" layoutY="258.0" onMouseClicked="#createSteps">
-               <image>
-                  <Image url="@../detailview/s.png" />
-               </image>
-            </ImageView>
             <ScrollPane fx:id="scrollpane" layoutX="113.0" layoutY="190.0" prefHeight="500.0" prefWidth="450.0" />
             <Button fx:id="logout" layoutX="419.0" layoutY="26.0" mnemonicParsing="false" onAction="#logOut" style="-fx-background-color: #ffffff;" text="Log out" />
             <Label layoutX="31.0" layoutY="26.0" prefHeight="23.0" prefWidth="78.0" text="Name" />
@@ -42,7 +31,42 @@
             <TextField fx:id="Cooktime" layoutX="103.0" layoutY="130.0" />
             <Label layoutX="345.0" layoutY="88.0" prefHeight="15.0" prefWidth="104.0" text="serve people" />
             <TextField fx:id="servingperson" layoutX="317.0" layoutY="119.0" />
-            <Label layoutX="489.0" layoutY="69.0" onMouseClicked="#choosetobeFavourite" prefHeight="39.0" prefWidth="61.0" text="favourite" />
+            <Label layoutX="36.0" layoutY="196.0" prefHeight="39.0" prefWidth="41.0">
+               <graphic>
+                  <ImageView  fitHeight="39.0" fitWidth="41.0" onMouseClicked="#createIngredient">
+                     <image>
+                        <Image url="@../detailview/material-information-outline.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Click here to provide ingredients of the recipe." />
+               </tooltip>
+            </Label>
+            <Label  layoutX="36.0" layoutY="260.0" prefHeight="39.0" prefWidth="41.0">
+               <graphic>
+                  <ImageView fitHeight="39.0" fitWidth="41.0" onMouseClicked="#createSteps">
+                     <image>
+                        <Image url="@../detailview/s.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Click here to provide steps of the recipe." />
+               </tooltip>
+            </Label>
+            <Label  layoutX="36.0" layoutY="335.0">
+               <graphic>
+                  <ImageView fitHeight="39.0" fitWidth="41.0" onMouseClicked="#createComment">
+                     <image>
+                        <Image url="@../detailview/Event%20Comments.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Click here to write your own comments." />
+               </tooltip>
+            </Label>
          </children>
       </Pane>
    </children>

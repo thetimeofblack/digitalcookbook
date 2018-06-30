@@ -132,14 +132,16 @@ public class ListAllController {
 			pane = loader.load(); 
 			
 			SubviewController controller = loader.getController();
+			
 			this.cookbook.setRateComment(recipe);
+			controller.setCookBook(this.cookbook);
 			controller.setRecipe(recipe);
 			controller.setName();
 			controller.setStar();
 			
 			controller.setStageAndScene(stage, scene);
 			//controller.setDatabaselayerObject(databaselayerObject);
-			controller.setCookBook(this.cookbook);
+			
 			
 			this.recipeVBox.getChildren().add(pane);
 			this.mainpane.setContent(this.recipeVBox);

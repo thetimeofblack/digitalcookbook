@@ -544,15 +544,20 @@ public class DatabaselayerObject {
 
 	//favourite锟斤拷锟斤拷示锟斤拷锟斤�?,true为喜锟斤拷锟斤拷false为锟斤拷喜锟斤拷
 
-	public boolean judgefavourite(Recipe recipe) throws SQLException {
+	public boolean judgefavourite(Recipe recipe) throws Exception {
 		String recipeid = recipe.getRecipeID();
 		String ss = "select * from `cookbook`.`favourite` where recipeid = '"+recipeid+"' and userid = "+this.user.getUserID();
-		res = this.sql.executeQuery(ss);
-		if(res.first()) {
+		this.con = this.getConnection();
+		this.sql = this.con.createStatement();
+		this.res = this.sql.executeQuery(ss);
+		boolean result = res.first(); 
+		this.con.close();
+		if(result) {
 			return true;
-		}else {
-			return false;
 		}
+			return false;
+		
+		
 	}
 	
 
@@ -890,7 +895,7 @@ public class DatabaselayerObject {
 	  String sql = "select * from cookbook.rateandcomments where userid="+userid+" and recipeid="+recipeid;
 	  ResultSet resultSet = statement.executeQuery(sql);
 	  while(resultSet.next()) {
-		  comment.setComment(resultSet.getString("comment"));
+		  comment.setComment(resultSet.getString("comments"));
 		  comment.setCommentid(resultSet.getString("id"));
 		  comment.setGrade(resultSet.getInt("rate"));
 		  

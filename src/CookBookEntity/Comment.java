@@ -1,8 +1,8 @@
 package CookBookEntity;
 
 public class Comment {
-	private int grade ; 
-	private String Comment;
+	private int grade =0; 
+	private String Comment ="";
 	private String recipeid ; 
 	private String userid; 
 	private String Commentid;
