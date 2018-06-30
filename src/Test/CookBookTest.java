@@ -1,25 +1,66 @@
 package Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
-class CookBookTest {
+import CookBookEntity.Comment;
+import CookBookEntity.Recipe;
+import CookBookEntity.User;
+import DigitalCookbook.CookBook;
 
-	@Test
-	void testCookBook() {
-		fail("Not yet implemented");
+class CookBookTest {
+	
+	private static CookBook cookbook = new CookBook();
+	private Recipe recipe1 = null;
+	private Recipe recipe2 = null;
+	
+	private User newuser = null; 
+	/**
+	 * create two recipe objects for testing
+	 * create one user object for testing
+	 */
+	@Before
+	public void setUp() throws Exception{
+		//create recipes for insertion
+		recipe1 = new Recipe("test1","test1",1);
+		recipe1.setCookingTime(20);
+		recipe1.setPreparationTime(20);
+		
+		recipe2 = new Recipe("test2","test2",1);
+		recipe2.setCookingTime(20);
+		recipe2.setPreparationTime(21);
+		
+		
+		
+		
+		//create user for insertion
+		newuser = new User("testuser","123456");
+	
 	}
+	
+
+	
+	/**
+	 * Test whether add function is valid
+	 */
 
 	@Test
 	void testAdd() {
-		fail("Not yet implemented");
+		cookbook.getRecipelist().add(recipe1);
+		assertNotNull(cookbook.getRecipelist());
 	}
-
-	@Test
-	void testShowallrecipe() {
-		fail("Not yet implemented");
-	}
+/*
+ * test showallrecipe function
+ */
+	//@Test
+	//public void testShowallrecipe() throws Exception{
+	//assertNotNull(cookbook.showallrecipe());
+		
+		
+	//}
 
 	@Test
 	void testCookBookString() {
@@ -33,112 +74,136 @@ class CookBookTest {
 
 	@Test
 	void testGetRecipelist() {
-		fail("Not yet implemented");
+		assertNotNull(cookbook.getallrecipelist());
+	}
+
+	/*
+	 * test whether saverecipe function is valid
+	 */
+	@Test
+	void testSaveRecipe() throws Exception {
+		assertTrue(cookbook.saveRecipe(recipe1));
+		
 	}
 
 	@Test
-	void testSaveRecipe() {
-		fail("Not yet implemented");
+	void testSearchRecipe() throws Exception {
+		assertNotNull(cookbook.searchRecipe("test1"));
+	}
+	
+	/**
+	 * Test whether commentrecipe function is valid
+	 * @throws Exception
+	 */
+	@Test
+	void testCommentRecipe() throws Exception {
+		
+		assertNotNull(cookbook.getRecipeComment("1"));
 	}
 
 	@Test
-	void testSearchRecipe() {
-		fail("Not yet implemented");
+	void testUserLogin() throws Exception {
+		assertNotNull(cookbook.userLogin(newuser));
 	}
 
 	@Test
-	void testCommentRecipe() {
-		fail("Not yet implemented");
-	}
+	void testGetRecipeComment() throws Exception {
+		assertNotNull(cookbook.getRecipeComment("1"));
 
-	@Test
-	void testUserLogin() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testGetRecipeComment() {
-		fail("Not yet implemented");
 	}
 
 	@Test
 	void testGetallrecipelist() {
-		fail("Not yet implemented");
+		assertNotNull(cookbook.getallrecipelist());
+
+		
+		
 	}
 
 	@Test
 	void testGetVegrecipelist() {
-		fail("Not yet implemented");
+		assertNotNull(cookbook.getVegrecipelist());
 	}
 
 	@Test
 	void testGetEggrecipelist() {
-		fail("Not yet implemented");
+		assertNotNull(cookbook.getEggrecipelist());
 	}
-
+	/**
+	 * 
+	 */
 	@Test
 	void testGetMeatrecipelist() {
-		fail("Not yet implemented");
+		assertNotNull(cookbook.getMeatrecipelist());
 	}
 
 	@Test
-	void testGetUserRecipe() {
-		fail("Not yet implemented");
+	void testGetUserRecipe() throws Exception {
+		assertNotNull(cookbook.getUserRecipe());
 	}
 
-	@Test
-	void testSaveRecipelist() {
-		fail("Not yet implemented");
-	}
+	/**@Test
+	void testSaveRecipelist() throws Exception {
+		
+		cookbook.saveRecipelist(recipe2);
+		assertNotNull(cookbook.searchRecipe("test2"));
 
+	}
+	*/
+
+	/**
+	 * @throws Exception 
+	 * 
+	 */
 	@Test
-	void testSaveUserRecipe() {
-		fail("Not yet implemented");
+	void testSaveUserRecipe() throws Exception {
+		
 	}
 
 	@Test
 	void testDeleteUserRecipe() {
-		fail("Not yet implemented");
+		
 	}
 
+	/**
+	 * test whether userregister function is valid
+	 * @throws Exception
+	 */
 	@Test
-	void testUserRegister() {
-		fail("Not yet implemented");
+	void testUserRegister() throws Exception {
+		assertTrue(cookbook.userRegister(newuser));
 	}
 
+	/**
+	 * test whether savecomment function is valid
+	 * @throws Exception
+	 */
 	@Test
-	void testSaveComment() {
-		fail("Not yet implemented");
-	}
+	void testSaveComment() throws Exception {
+		String userid = "1";
+		int grade = 1;
+		String comment = "test";
+		Comment commentandgrade = new Comment(grade,comment);
+		assertTrue(cookbook.saveComment(commentandgrade,userid));
 
-	@Test
-	void testGetfavouriterecipe() {
-		fail("Not yet implemented");
 	}
-
+	
+	/**
+	 * test whether getfavouriterecipe function is valid
+	 * @throws Exception
+	 */
 	@Test
-	void testSetFavourite() {
-		fail("Not yet implemented");
+	void testGetfavouriterecipe() throws Exception {
+		assertNotNull(cookbook.getfavouriterecipe());
 	}
-
+	
+	/**
+	 * test whether setfavourite function is valid
+	 * @throws Exception
+	 */
 	@Test
-	void testSetRateComment() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testSetUser() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testGetRankedRecipeList() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testGetComments() {
-		fail("Not yet implemented");
-	}
+	void testSetFavourite() throws Exception {
+		assertTrue(cookbook.setFavourite("1"));	
+		}
 
 }
