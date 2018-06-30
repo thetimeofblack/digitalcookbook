@@ -1,5 +1,6 @@
 package CookBookView.editview;
 
+import javafx.scene.control.*;
 import java.awt.event.ActionEvent;
 import java.security.KeyStore.PrivateKeyEntry;
 import java.util.Iterator;
@@ -22,7 +23,7 @@ public class StepController  {
 	
 	private LinkedList<PreparationStep> steps; 
 	
-	
+	private StepHBoxController stepcontroller;
 	
 	public void showSteps() throws Exception{
 		Iterator iterator = this.steps.iterator(); 
@@ -47,24 +48,40 @@ public class StepController  {
 	}
 	
 	private void SubLine() throws Exception{
-		this.vbox.getChildren().remove(addnumber+1);
+		this.vbox.getChildren().remove(addnumber);
 		addnumber = addnumber-1; 
 	}
 	
 	public void savesteps() {
 		int num = addnumber; 
+		this.steps = new LinkedList<PreparationStep>();
 		while(num>0) {
+			PreparationStep step = new PreparationStep(); 
 			
-			this.vbox.getChildren().get(num+1);
-		}
+			HBox hbox =  (HBox)this.vbox.getChildren().get(0);
+			TextArea stepdetail =(TextArea)hbox.getChildren().get(1); 
+			step.setDescription(stepdetail.getText());
+			this.steps.add(step);
+			num=num=-1; 
+ 		}
+		
 	}
 	
 	public void cancelSteps() {
 		int num =addnumber; 
+		while(num>0) {
+			this.vbox.getChildren().remove(num);
+			num=num-1;
+		}
+		this.addnumber = num ; 
 	}
 	
 	public void setSteps(LinkedList<PreparationStep> steps) {
 		this.steps = steps; 
 		
+	}
+	
+	public LinkedList<PreparationStep> getSteps(){
+		return this.steps; 
 	}
 }

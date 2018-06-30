@@ -134,10 +134,20 @@ public class inpaneController {
 		return this.vbox;
 	}
 	
-	public void showIngredients() {
+	public void showIngredients() throws Exception{
 		Iterator iterator = this.Ingredientlist.iterator(); 
 		while(iterator.hasNext()) {
 			Ingredient ingredient =(Ingredient)iterator.next(); 
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("inpanehbox.fxml"));
+			HBox hbox = (HBox)loader.load(); 
+			inpanehboxController controller = loader.getController(); 
+			controller.showingredient(ingredient);
+			this.vbox.getChildren().add(hbox);
+			
 		}
+	}
+	
+	public LinkedList<Ingredient> getIngredients() {
+		return this.Ingredientlist; 
 	}
 }

@@ -891,7 +891,19 @@ public class DatabaselayerObject {
 		  comment.setGrade(resultSet.getInt("rate"));
 		  
 	  }
+	  connection.close();
 	  return comment; 
+  }
+  
+  public boolean deleteComment(String recipeid) throws Exception{
+	  String userid = this.user.getUserID(); 
+	  Connection connection = this.getConnection(); 
+	  Statement statement = connection.createStatement(); 
+	  String sql = "delete from cookbook.rateandcomments where userid="+userid+" and recipeid="+recipeid;
+	  int result = statement.executeUpdate(sql);
+	  if(result>0) return true; 
+	  else return false; 
+	
   }
  }
 

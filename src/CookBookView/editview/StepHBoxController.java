@@ -12,4 +12,7 @@ public class StepHBoxController {
 	public void setStepText(String step) {
 		this.step.setText(step);
 	}
+	public void clean() {
+		this.step.setText("");
+	}
 }

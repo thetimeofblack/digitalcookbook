@@ -218,5 +218,12 @@ public class CookBook {
 		comment = this.databaselayerObject.getComment(recipeid,this.user.getUserID());
 		return comment; 
 	}	
+	
+	public void deleteUserComment(String recipeid)throws Exception {
+		this.databaselayerObject.setUser(this.user);
+		boolean result = this.databaselayerObject.deleteComment(recipeid);
+		if(result == false) System.out.println("there is no comment for recipe which can be deleted");
+		else System.out.println("Comment for recipe is deleted");
+	} 
 
 }

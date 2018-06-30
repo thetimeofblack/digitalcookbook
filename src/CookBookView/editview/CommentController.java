@@ -21,4 +21,9 @@ public class CommentController {
 	public Comment getComment() {
 		return this.comment; 
 	}
+	
+	public void saveComments() {
+		this.comment.setComment(commentfield.getText());
+	}
+	
 }

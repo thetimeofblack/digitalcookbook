@@ -5,6 +5,7 @@ import javafx.scene.control.ScrollPane;
 
 import java.io.IOException;
 import java.net.URL;
+import java.security.KeyStore.PrivateKeyEntry;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
@@ -28,6 +29,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.*;
 import javafx.scene.*;
+import CookBookEntity.Comment;
 import CookBookEntity.Ingredient;
 import CookBookEntity.PreparationStep;
 import CookBookEntity.Recipe;
@@ -84,6 +86,10 @@ public class editpaneController implements Initializable {
 	private LinkedList<PreparationStep> steps ;
 	private CookBook cookbook ; 
 	
+	
+	private inpaneController incontroller; 
+	private StepController stcontroller; 
+	private CommentController cocontroller; 
 	@Override
 	public void initialize(URL location, ResourceBundle resources){
 		System.out.println("initialize");
@@ -118,6 +124,7 @@ public class editpaneController implements Initializable {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("ingredient.fxml"));
 		this.subinPane = (Pane)loader.load();
 		inpaneController controller = loader.getController(); 
+		this.incontroller = controller; 
 		VBox ingredientvbox = controller.getVBox(); 
 		Iterator<Ingredient> iterator = this.ingredients.iterator(); 
 		while(iterator.hasNext()) {
@@ -149,6 +156,7 @@ public class editpaneController implements Initializable {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("steppane.fxml"));
 		this.substPane = (Pane) loader.load(); 
 		StepController controller = loader.getController(); 
+		this.stcontroller = controller; 
 		this.steps = this.recipe.getPreparationSteps();
 		controller.setSteps(this.steps);
 		controller.showSteps();
@@ -157,9 +165,15 @@ public class editpaneController implements Initializable {
 	}
 	
 	public void editcomments() throws Exception  {
+		if(this.subcm==false ) {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("commentpane.fxml"));
 		this.subcmPane = loader.load(); 
-		
+		CommentController controller = loader.getController();
+		this.cocontroller = controller ;
+		Comment comment = new Comment(recipe.getRate(),recipe.getComments());
+		controller.setComment(comment);
+		controller.showComment();
+		}
 		this.scrollpane.setContent(this.subcmPane);
 		
 	}
@@ -198,8 +212,7 @@ public class editpaneController implements Initializable {
 		recipe.setPreparationTime(Integer.parseInt(this.preparationTime.getText()));
 		recipe.setServeNumber(Integer.parseInt(this.servingperson.getText()));
 		recipe.setName(this.recipename.getText());
-		recipe.setIngredientlist(this.ingredients);
-		recipe.setPreparationSteps(this.steps);
+		
 		
 		System.out.println(this.recipe.toString());
 	}
@@ -228,8 +241,14 @@ public class editpaneController implements Initializable {
 	
 	public void editRecipe() throws Exception{
 		this.createRecipe();
-		cookbook.deleteUserRecipe(this.recipe.getRecipeID());
-		cookbook.saveRecipe(this.recipe);
+		this.cookbook.deleteUserRecipe(this.recipe.getRecipeID());
+		this.recipe.setIngredientlist(this.incontroller.getIngredients());
+		this.recipe.setPreparationSteps(this.stcontroller.getSteps());
+		this.cookbook.saveRecipe(this.recipe);
+		Comment comment = new Comment() ; 
+		comment= this.cocontroller.getComment(); 
+		this.cookbook.deleteUserComment(recipe.getRecipeID());
+		this.cookbook.saveComment(comment, this.recipe.getRecipeID());
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../searchview/searchView.fxml"));
 		Parent root = loader.load(); 
 		SearchViewController controller = loader.getController();

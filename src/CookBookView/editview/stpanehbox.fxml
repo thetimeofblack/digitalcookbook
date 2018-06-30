@@ -9,6 +9,6 @@
    <children>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1" wrappingWidth="22.21875" />
       <TextArea fx:id="step" prefHeight="25.0" prefWidth="156.0" />
-      <Button mnemonicParsing="false" text="X" />
+      <Button mnemonicParsing="false" text="X" onAction = "#clean"/>
    </children>
 </HBox>
