@@ -233,5 +233,11 @@ public class CookBook {
 		boolean result = this.databaselayerObject.judgefavourite(recipe);
 		return result;
 	}
+	
+	public void setRate(int rate , String recipeid)throws Exception{
+		boolean result = this.databaselayerObject.setRate(this.user.getUserID(), recipeid, rate);
+		if(result) System.out.println("set rate for recipe successfully");
+		else System.out.println("We can not set rate for the recipe");
+	}
 
 }
