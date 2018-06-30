@@ -4,6 +4,7 @@ package CookBookView.editview;
 import javafx.scene.control.TextField;
 
 import java.security.KeyStore.PrivateKeyEntry;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 import org.omg.CORBA.Current;
@@ -25,7 +26,7 @@ public class inpaneController {
 	@FXML
 	private Button addingredient;
 	@FXML
-	private VBox inpaneVBox;
+	private VBox vbox;
 	@FXML
 	private Button confirm;
 
@@ -65,13 +66,13 @@ public class inpaneController {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("inpanehbox.fxml"));
 		HBox hBox = loader.load();
 		addnumber = addnumber+1;
-		inpaneVBox.getChildren().add(hBox);
+		vbox.getChildren().add(hBox);
 	}
 	
 	@FXML
 	public void deleteIngredient() throws Exception{
 		if(this.addnumber>0) {
-			this.inpaneVBox.getChildren().remove(1+addnumber);
+			this.vbox.getChildren().remove(1+addnumber);
 			addnumber=addnumber-1;
 		}
 		
@@ -82,7 +83,7 @@ public class inpaneController {
 		int num = this.addnumber;
 		while(num>0) {
 		Ingredient ingredient = new Ingredient();
-		HBox hBox = (HBox) this.inpaneVBox.getChildren().get(this.addnumber+1);
+		HBox hBox = (HBox) this.vbox.getChildren().get(this.addnumber+1);
 		TextField Name = (TextField)hBox.getChildren().get(0);
 		
 		TextField Usage = (TextField)hBox.getChildren().get(1);
@@ -109,7 +110,7 @@ public class inpaneController {
 	public void cancelIngredient() {
 		int num = this.addnumber+1; 
 		while(num>1) {
-			this.inpaneVBox.getChildren().remove(num);
+			this.vbox.getChildren().remove(num);
 			
 			num = num-1; 
 		}
@@ -117,7 +118,7 @@ public class inpaneController {
 	}
 	
 	public VBox getInpane() {
-		return this.inpaneVBox;
+		return this.vbox;
 	}
 	
 	public LinkedList<Ingredient> getIngredientList() {
@@ -130,6 +131,13 @@ public class inpaneController {
 
 	public VBox getVBox() {
 		// TODO Auto-generated method stub
-		return this.inpaneVBox;
+		return this.vbox;
+	}
+	
+	public void showIngredients() {
+		Iterator iterator = this.Ingredientlist.iterator(); 
+		while(iterator.hasNext()) {
+			Ingredient ingredient =(Ingredient)iterator.next(); 
+		}
 	}
 }

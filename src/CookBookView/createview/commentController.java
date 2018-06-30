@@ -29,4 +29,8 @@ public class commentController {
 	public void setComment(Comment comment) {
 		this.recipecomment = comment ; 
 	}
+	
+	public TextField getCommentTextField() {
+		return this.comment; 
+	}
 }

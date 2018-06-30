@@ -1,6 +1,8 @@
 package CookBookView.editview;
 
 import CookBookEntity.Recipe;
+import CookBookEntity.User;
+import DigitalCookbook.CookBook;
 import DigitalCookbook.CookBookApp;
 import javafx.application.*;
 
@@ -20,11 +22,14 @@ public class EditView extends Application{
 		AnchorPane root = (AnchorPane)loader.load();
 		editpaneController edcontroller = loader.getController();
 		edcontroller.setRecipe(recipe);
-		
-		edcontroller.showpreviousRecipe();
+		CookBook cookBook = new CookBook(); 
+		User user = new User("Heyining","Heyining");
+		cookBook.setUser(user);
+		edcontroller.showRecipe();
 		
 		Scene scene = new Scene(root,600,800);
 		primaryStage.setScene(scene);
+		edcontroller.setCookBook(cookBook);
 		edcontroller.setScene(scene);
 		edcontroller.setStage(primaryStage);
 		primaryStage.show();

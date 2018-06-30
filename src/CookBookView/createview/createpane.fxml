@@ -42,6 +42,7 @@
             <TextField fx:id="Cooktime" layoutX="103.0" layoutY="130.0" />
             <Label layoutX="345.0" layoutY="88.0" prefHeight="15.0" prefWidth="104.0" text="serve people" />
             <TextField fx:id="servingperson" layoutX="317.0" layoutY="119.0" />
+            <Label layoutX="489.0" layoutY="69.0" onMouseClicked="#choosetobeFavourite" prefHeight="39.0" prefWidth="61.0" text="favourite" />
          </children>
       </Pane>
    </children>

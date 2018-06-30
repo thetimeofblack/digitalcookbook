@@ -116,18 +116,18 @@
                   </GridPane>
                </children>
             </GridPane>
-            <Label fx:id="ingredient" layoutX="6.0" layoutY="141.0" onDragDetected="#showIngredients" onMouseClicked="#showIngredients" prefHeight="35.0" prefWidth="34.0">
+            <Label fx:id="ingredient" layoutX="13.0" layoutY="220.0" onDragDetected="#showIngredients" onMouseClicked="#showIngredients" prefHeight="39.0" prefWidth="38.0">
                <graphic>
-                  <ImageView fitHeight="39.0" fitWidth="41.0">
+                  <ImageView fitHeight="39.0" fitWidth="41.0" onMouseClicked="#showIngredients">
                      <image>
                         <Image url="@material-information-outline.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Label>
-            <Label layoutX="8.0" layoutY="180.0" onMouseClicked="#showPreparationStep" prefHeight="35.0" prefWidth="34.0">
+            <Label layoutX="15.0" layoutY="310.0" onMouseClicked="#showPreparationStep" prefHeight="35.0" prefWidth="34.0">
                <graphic>
-                  <ImageView fitHeight="32.0" fitWidth="36.0">
+                  <ImageView fitHeight="32.0" fitWidth="36.0" onMouseClicked="#showPreparationStep">
                      <image>
                         <Image url="@s.png" />
                      </image>
@@ -135,10 +135,10 @@
                </graphic>
             </Label>
 
-            <Label layoutX="8.0" layoutY="215.0" onMouseClicked="#showComment" prefHeight="35.0" prefWidth="34.0">
+            <Label layoutX="15.0" layoutY="417.0" onMouseClicked="#showComment" prefHeight="35.0" prefWidth="34.0">
                <graphic>
                   <ImageView fitHeight="34.0" fitWidth="35.0" onMouseClicked="#showComment">
-
+      
                      <image>
                         <Image url="@Event%20Comments.png" />
                      </image>

@@ -33,6 +33,7 @@ import CookBookEntity.PreparationStep;
 import CookBookEntity.Recipe;
 import CookBookView.firstview.fvController;
 import CookBookView.listview.ListAllController;
+import CookBookView.searchview.SearchViewController;
 import DigitalCookbook.CookBook;
 public class editpaneController implements Initializable {
 	@FXML
@@ -140,15 +141,23 @@ public class editpaneController implements Initializable {
 		
 		}
 		System.out.println("show ingredient");
-		this.mainPane.getChildren().add(this.subinPane);
+		this.scrollpane.setContent(this.subinPane);
 	}
 	
-	public void editsteps(){
-		
+	public void editsteps() throws Exception {
+		if(this.subsp == false && !recipe.getPreparationSteps().isEmpty()){
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("steppane.fxml"));
+		this.substPane = (Pane) loader.load(); 
+		StepController controller = loader.getController(); 
+		this.steps = this.recipe.getPreparationSteps();
+		controller.setSteps(this.steps);
+		controller.showSteps();
+		}
+		this.scrollpane.setContent(this.substPane);
 	}
 	
 	public void editcomments() throws Exception  {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("commentpane"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("commentpane.fxml"));
 		this.subcmPane = loader.load(); 
 		
 		this.scrollpane.setContent(this.subcmPane);
@@ -189,6 +198,8 @@ public class editpaneController implements Initializable {
 		recipe.setPreparationTime(Integer.parseInt(this.preparationTime.getText()));
 		recipe.setServeNumber(Integer.parseInt(this.servingperson.getText()));
 		recipe.setName(this.recipename.getText());
+		recipe.setIngredientlist(this.ingredients);
+		recipe.setPreparationSteps(this.steps);
 		
 		System.out.println(this.recipe.toString());
 	}
@@ -205,7 +216,7 @@ public class editpaneController implements Initializable {
 		this.recipe = recipe; 
 	}
 	
-	public void showpreviousRecipe() {
+	public void showRecipe() {
 		this.recipename.setText(recipe.getName());
 		this.preparationTime.setText(String.valueOf(recipe.getPrepareTime())); 
 		this.Category.setText(recipe.getCategory());
@@ -213,6 +224,20 @@ public class editpaneController implements Initializable {
 		this.servingperson.setText(String.valueOf(recipe.getServeNumber()));
 		this.ingredients= recipe.getIngredientlist(); 
 		this.steps = recipe.getPreparationSteps(); 
+	}
+	
+	public void editRecipe() throws Exception{
+		this.createRecipe();
+		cookbook.deleteUserRecipe(this.recipe.getRecipeID());
+		cookbook.saveRecipe(this.recipe);
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../searchview/searchView.fxml"));
+		Parent root = loader.load(); 
+		SearchViewController controller = loader.getController();
+		controller.setScene(this.scene);
+		controller.setStage(this.stage);
+		controller.setCookBook(this.cookbook);
+		this.scene.setRoot(root);
+		this.stage.setScene(this.scene);
 	}
 
 	

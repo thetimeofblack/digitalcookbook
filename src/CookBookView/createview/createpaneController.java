@@ -194,10 +194,7 @@ public class createpaneController {
 		this.subsm=true; 
 		
 		}
-		Pane pane = new Pane();
-		this.previouspain = pane; 
-		this.previouspain.getChildren().add(this.subcmpane);
-		this.mainPane.getChildren().add(this.previouspain);
+		this.scrollpane.setContent(subcmpane);
 	}
 	
 	public void setStage(Stage stage) {
