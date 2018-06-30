@@ -767,8 +767,9 @@ public class DatabaselayerObject {
     private LinkedList<Ingredient> getIngredient(String recipeid) throws Exception{
     	LinkedList<Ingredient> ingredientlist = new LinkedList<Ingredient>();
     	String ss2 = "select * from cookbook.ingredient where RecipeID = " + recipeid;
-
-		ResultSet res = sql.executeQuery(ss2);
+    	Connection connection = this.getConnection(); 
+    	Statement statement = connection.createStatement(); 
+		ResultSet res = statement.executeQuery(ss2);
 		while (res.next()) {
 			Ingredient ingredient = new Ingredient();
 			ingredient.setIngredientsID(res.getDouble("ID"));

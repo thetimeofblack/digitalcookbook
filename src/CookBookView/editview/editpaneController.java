@@ -258,6 +258,7 @@ public class editpaneController implements Initializable {
 		controller.setScene(this.scene);
 		controller.setStage(this.stage);
 		controller.setCookBook(this.cookbook);
+		
 		this.scene.setRoot(root);
 		this.stage.setScene(this.scene);
 	}
