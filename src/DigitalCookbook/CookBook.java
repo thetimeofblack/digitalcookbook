@@ -225,5 +225,9 @@ public class CookBook {
 		if(result == false) System.out.println("there is no comment for recipe which can be deleted");
 		else System.out.println("Comment for recipe is deleted");
 	} 
+	
+	public void editRecipe(Recipe recipe) throws Exception{
+		this.databaselayerObject.editRecipe(recipe);
+	}
 
 }

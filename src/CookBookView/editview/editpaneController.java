@@ -152,7 +152,7 @@ public class editpaneController implements Initializable {
 	}
 	
 	public void editsteps() throws Exception {
-		if(this.subsp == false && !recipe.getPreparationSteps().isEmpty()){
+		if(this.subsp == false){
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("steppane.fxml"));
 		this.substPane = (Pane) loader.load(); 
 		StepController controller = loader.getController(); 
@@ -247,7 +247,7 @@ public class editpaneController implements Initializable {
 		this.cookbook.deleteUserRecipe(this.recipe.getRecipeID());
 		this.recipe.setIngredientlist(this.incontroller.getIngredients());
 		this.recipe.setPreparationSteps(this.stcontroller.getSteps());
-		this.cookbook.saveRecipe(this.recipe);
+		this.cookbook.editRecipe(this.recipe);
 		Comment comment = new Comment() ; 
 		comment= this.cocontroller.getComment(); 
 		this.cookbook.deleteUserComment(recipe.getRecipeID());
