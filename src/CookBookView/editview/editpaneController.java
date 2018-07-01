@@ -10,6 +10,9 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
 
+import org.junit.jupiter.api.function.ThrowingSupplier;
+import org.junit.platform.engine.discovery.PackageNameFilter;
+
 import CookBookDataBaseAcess.DatabaselayerObject;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -125,8 +128,9 @@ public class editpaneController implements Initializable {
 		this.subinPane = (Pane)loader.load();
 		inpaneController controller = loader.getController(); 
 		this.incontroller = controller; 
-		VBox ingredientvbox = controller.getVBox(); 
-		Iterator<Ingredient> iterator = this.ingredients.iterator(); 
+		VBox ingredientvbox = this.incontroller.getVBox(); 
+		Iterator<Ingredient> iterator = this.ingredients.iterator();
+		int number = 0;
 		while(iterator.hasNext()) {
 			Ingredient ingredient = iterator.next(); 
 			FXMLLoader hboxloader = new FXMLLoader(getClass().getResource("inpanehbox.fxml"));
@@ -140,41 +144,54 @@ public class editpaneController implements Initializable {
 			Unit.setText(ingredient.getUnit());
 			Description.setText(ingredient.getDescription());
 			ingredientvbox.getChildren().add(hBox);
+			number = number +1;
 			System.out.println("add ingredients");
 		}
-		
+		this.incontroller.setAddnumber(number);
+		ingredients= new LinkedList<Ingredient>();
+		this.incontroller.setIngredientList(ingredients);
 		this.subin = true; 
 		System.out.println("edit ingredient");
 		
 		}
 		System.out.println("edit ingredient");
+		//this.incontroller.addIngredient();
+		
+		this.subinPane.setPrefHeight(800);
 		this.scrollpane.setContent(this.subinPane);
+		this.incontroller.saveIngredient();
+		//this.scrollpane.setFitToHeight(true);
 	}
 	
 	public void editsteps() throws Exception {
 		if(this.subsp == false){
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("steppane.fxml"));
 		this.substPane = (Pane) loader.load(); 
-		StepController controller = loader.getController(); 
-		this.stcontroller = controller; 
+		this.stcontroller = loader.getController(); 
 		this.steps = this.recipe.getPreparationSteps();
-		controller.setSteps(this.steps);
-		controller.showSteps();
+		this.stcontroller.setSteps(this.steps);
+		this.stcontroller.showSteps();
+		this.subsp=true;
 		}
+		//this.stcontroller.AddLine();
+		this.substPane.setPrefHeight(800);
 		this.scrollpane.setContent(this.substPane);
+		this.stcontroller.savesteps();
 	}
 	
 	public void editcomments() throws Exception  {
 		if(this.subcm==false ) {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("commentpane.fxml"));
 		this.subcmPane = loader.load(); 
-		CommentController controller = loader.getController();
-		this.cocontroller = controller ;
+		this.cocontroller = loader.getController();
 		Comment comment = new Comment(recipe.getRate(),recipe.getComments());
-		controller.setComment(comment);
-		controller.showComment();
+		this.cocontroller.setComment(comment);
+		this.cocontroller.showComment();
+		this.subcm=true;
+		
 		}
 		this.scrollpane.setContent(this.subcmPane);
+		this.cocontroller.saveComments();
 		
 	}
 	// Event Listener on Button[#cancel].onAction
@@ -244,7 +261,7 @@ public class editpaneController implements Initializable {
 		this.incontroller.saveIngredient();
 		this.cocontroller.saveComments();
 		this.stcontroller.savesteps();
-		
+		System.out.println(this.incontroller.getIngredientList().toString());
 		this.recipe.setIngredientlist(this.incontroller.getIngredients());
 		this.recipe.setPreparationSteps(this.stcontroller.getSteps());
 		this.cookbook.editRecipe(this.recipe);

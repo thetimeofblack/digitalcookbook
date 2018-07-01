@@ -72,7 +72,7 @@ public class inpaneController {
 	@FXML
 	public void deleteIngredient() throws Exception{
 		if(this.addnumber>0) {
-			this.vbox.getChildren().remove(1+addnumber);
+			this.vbox.getChildren().remove(addnumber-1);
 			addnumber=addnumber-1;
 		}
 		
@@ -83,7 +83,7 @@ public class inpaneController {
 		int num = this.addnumber;
 		while(num>0) {
 		Ingredient ingredient = new Ingredient();
-		HBox hBox = (HBox) this.vbox.getChildren().get(this.addnumber);
+		HBox hBox = (HBox) this.vbox.getChildren().get(this.addnumber-1);
 		TextField Name = (TextField)hBox.getChildren().get(0);
 		
 		TextField Usage = (TextField)hBox.getChildren().get(1);
@@ -150,5 +150,9 @@ public class inpaneController {
 	
 	public LinkedList<Ingredient> getIngredients() {
 		return this.Ingredientlist; 
+	}
+	
+	public void setAddnumber(int number) {
+		this.addnumber = number; 
 	}
 }

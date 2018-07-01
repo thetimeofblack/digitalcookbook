@@ -196,11 +196,6 @@
                   <Tooltip text="Click here to view comments." />
                </tooltip>
 				</Label>
-				<ImageView fitHeight="31.0" fitWidth="34.0" layoutX="295.0" layoutY="650.0" onMouseClicked="#editRecipe">
-					<image>
-						<Image url="@edite.png" />
-					</image>
-				</ImageView>
 				<Label layoutX="387.0" layoutY="652.0" prefHeight="19.0" prefWidth="24.0">
                <graphic>
       				<ImageView fitHeight="28.0" fitWidth="29.0" onMouseClicked="#back">
@@ -220,6 +215,15 @@
 
 					</content>
 				</ScrollPane>
+            <Label layoutX="288.0" layoutY="648.0" onMouseClicked="#editRecipe">
+               <graphic>
+      				<ImageView fitHeight="31.0" fitWidth="34.0" onMouseClicked="#editRecipe">
+      					<image>
+      						<Image url="@edite.png" />
+      					</image>
+      				</ImageView>
+               </graphic>
+            </Label>
 
 			</children>
 		</Pane>

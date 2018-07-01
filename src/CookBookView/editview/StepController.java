@@ -16,6 +16,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class StepController  {
+	
 	@FXML
 	private VBox vbox ; 
 	
@@ -45,11 +46,14 @@ public class StepController  {
 		
 		this.vbox.getChildren().add(hBox); 
 		addnumber = addnumber+1; 
+		System.out.println("Now the addnumber is "+addnumber);
 	}
 	
 	public void SubLine() throws Exception{
-		this.vbox.getChildren().remove(addnumber);
+		if(addnumber>0) {
+		this.vbox.getChildren().remove(addnumber-1);
 		addnumber = addnumber-1; 
+		}
 	}
 	
 	public void savesteps() {
@@ -58,7 +62,7 @@ public class StepController  {
 		while(num>0) {
 			PreparationStep step = new PreparationStep(); 
 			
-			HBox hbox =  (HBox)this.vbox.getChildren().get(0);
+			HBox hbox =  (HBox)this.vbox.getChildren().get(num-1);
 			TextArea stepdetail =(TextArea)hbox.getChildren().get(1); 
 			step.setDescription(stepdetail.getText());
 			this.steps.add(step);
@@ -67,14 +71,16 @@ public class StepController  {
 		
 	}
 	
+	
 	public void cancelSteps() {
 		int num =addnumber; 
 		while(num>0) {
-			this.vbox.getChildren().remove(num);
+			this.vbox.getChildren().remove(num-1);
 			num=num-1;
 		}
 		this.addnumber = num ; 
 	}
+	
 	
 	public void setSteps(LinkedList<PreparationStep> steps) {
 		this.steps = steps; 
@@ -84,4 +90,11 @@ public class StepController  {
 	public LinkedList<PreparationStep> getSteps(){
 		return this.steps; 
 	}
+	
+
+	public VBox getVBox() {
+		return this.vbox;
+	}
+
+
 }
