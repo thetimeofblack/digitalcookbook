@@ -40,6 +40,7 @@ public class fvController {
 		
 	
 		loginController lc = loader.getController();
+		
 		lc.setStageAndScene(stage, scene);
 		scene.setRoot(root);
 		stage.setScene(scene);

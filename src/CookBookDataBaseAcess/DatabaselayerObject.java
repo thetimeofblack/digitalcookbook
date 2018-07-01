@@ -809,16 +809,17 @@ public class DatabaselayerObject {
     public boolean setfavourite(String userid , String recipeid) throws Exception {
     	Connection connection = this.getConnection() ;
     	this.sql = connection.createStatement(); 
-    	String firststr = "select * from cookbook.favourite(userid,recipeid) where userid= "+userid + " and recipeid="+recipeid;
-    	int firstresult= this.sql.executeUpdate(firststr);
-    	if(firstresult==0) {
+    	String firststr = "select * from cookbook.favourite where userid= "+userid + " and recipeid="+recipeid;
+    	ResultSet res= this.sql.executeQuery(firststr);
+    	if(res.first()) {
     	String sqlstr = "insert into cookbook.favourite(userid,recipeid) values ("+
     	userid+","+recipeid+ ")";
     	int result = this.sql.executeUpdate(sqlstr);
     	return true;
     	}
+    	this.sql.close();
     	connection.close();
-    	if(firstresult>0) return true; 
+    	if(res.first()) return true; 
     	return false; 
     	
     }

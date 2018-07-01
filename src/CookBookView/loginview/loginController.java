@@ -66,7 +66,7 @@ public class loginController {
 		if(result==1) {
 		resultstring = "user login successfully";
 		
-		scene.getStylesheets().clear();
+		//scene.getStylesheets().clear();
 		//svc.setDatabaselayerObject(this.dao);
 		svc.setStage(stage);
 		svc.setScene(scene);

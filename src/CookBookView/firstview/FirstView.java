@@ -29,7 +29,7 @@ public class FirstView extends javafx.application.Application {
 			fvController fvc = loader.getController();
 			//VBox vbox = new VBox();
 			//ox.getChildren().add();
-			Scene scene = new Scene(root, 600, 1000);
+			Scene scene = new Scene(root, 500, 800);
 			fvc.setStageAndScene(primaryStage, scene);
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Nice to meet you");
