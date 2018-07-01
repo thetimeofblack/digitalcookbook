@@ -457,7 +457,7 @@ public class DatabaselayerObject {
 		String recipeid = recipe.getRecipeID();
 		this.con =this.getConnection();
 		this.sql = this.con.createStatement();
-		String ss = "delete from `cookbook`.`preparationsteps` "
+		String ss = "delete from `cookbook`.`preparationstep` "
 				+ "where recipeid = '" + recipeid + "'";
 		int res1 = 0;
 		res1 = this.sql.executeUpdate(ss);

@@ -226,7 +226,7 @@ public class editpaneController implements Initializable {
 	}
 	
 	public void createRecipe() {
-		this.recipe = new Recipe() ; 
+		
 		recipe.setCategory(this.Category.getText());
 		recipe.setPreparationTime(Integer.parseInt(this.preparationTime.getText()));
 		recipe.setServeNumber(Integer.parseInt(this.servingperson.getText()));
@@ -261,6 +261,7 @@ public class editpaneController implements Initializable {
 	public void editRecipe() throws Exception{
 		System.out.println("we now start");
 		this.createRecipe();
+		
 		System.out.println("We have created recipe");
 		this.editIngredients();
 		this.editsteps();

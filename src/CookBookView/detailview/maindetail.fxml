@@ -124,6 +124,12 @@
 									</children>
 								</HBox>
 								<Label fx:id="favourite" onMouseClicked="#choosetobeFavourite" prefHeight="34.0" prefWidth="34.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
+                           <children>
+                              <Label layoutX="-1.0" layoutY="7.0" text="Description" />
+                              <Label fx:id="description" layoutX="80.0" layoutY="8.0" prefHeight="15.0" prefWidth="74.0" />
+                           </children>
+                        </AnchorPane>
 							</children>
 						</GridPane>
 
@@ -196,7 +202,7 @@
                   <Tooltip text="Click here to view comments." />
                </tooltip>
 				</Label>
-				<Label layoutX="387.0" layoutY="652.0" prefHeight="19.0" prefWidth="24.0">
+				<Label layoutX="387.0" layoutY="652.0" onMouseClicked="#back" prefHeight="19.0" prefWidth="24.0">
                <graphic>
       				<ImageView fitHeight="28.0" fitWidth="29.0" onMouseClicked="#back">
       					<image>

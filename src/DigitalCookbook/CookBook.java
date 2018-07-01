@@ -171,6 +171,7 @@ public class CookBook {
 	}
 	
 	public boolean saveComment(Comment comment,String recipeid ) throws Exception {
+		System.out.println(recipeid);
 		boolean result =this.databaselayerObject.saveCommentandRate(comment, Integer.parseInt(recipeid));
 		return result; 
 	}

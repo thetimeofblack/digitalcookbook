@@ -81,6 +81,7 @@ public class inpaneController {
 	public void saveIngredient() {
 		//this.Ingredientlist = new LinkedList<Ingredient>();
 		int num = this.addnumber;
+		this.Ingredientlist = new LinkedList<Ingredient>();
 		while(num>0) {
 		Ingredient ingredient = new Ingredient();
 		HBox hBox = (HBox) this.vbox.getChildren().get(this.addnumber-1);

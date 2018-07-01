@@ -21,6 +21,8 @@ import javax.xml.ws.AsyncHandler;
 
 import org.hamcrest.core.SubstringMatcher;
 
+import com.sun.org.glassfish.gmbal.Description;
+
 //import com.sun.org.apache.xpath.internal.operations.And;
 
 import CookBookEntity.Comment;
@@ -90,6 +92,9 @@ public class MaindetailController {
 
 	@FXML
 	private ImageView editImage;
+	
+	@FXML
+	private Label description ;
 
 	@FXML
 	private Pane mainPane;
@@ -116,9 +121,12 @@ public class MaindetailController {
 	private boolean subsm = false;
 	private boolean subin = false;
 	private boolean subst = false;
+	
+	int previousrate ; 
 
 	public void mouseClickStar1(MouseEvent event) {
-
+		this.previousrate =1; 
+		
 	}
 
 	public void mouseEnterStar1(MouseEvent event) {
@@ -127,7 +135,7 @@ public class MaindetailController {
 	}
 
 	public void mouseClickStar2(MouseEvent event) {
-
+		this.previousrate =2;
 	}
 
 	public void mouseEnterStar2(MouseEvent event) {
@@ -137,7 +145,7 @@ public class MaindetailController {
 	}
 
 	public void mouseClickStar3(MouseEvent event) {
-
+		this.previousrate =3 ;
 	}
 
 	public void mouseEnterStar3(MouseEvent event) {
@@ -148,7 +156,7 @@ public class MaindetailController {
 	}
 
 	public void mouseClickStar4(MouseEvent event) {
-
+		this.previousrate =4; 
 	}
 
 	public void mouseEnterStar4(MouseEvent event) {
@@ -160,7 +168,7 @@ public class MaindetailController {
 	}
 
 	public void mouseClickStar5(MouseEvent event) {
-
+		this.previousrate =5; 
 	}
 
 	public void mouseEnterStar5(MouseEvent event) {
@@ -347,7 +355,7 @@ public class MaindetailController {
 	public void showPreparationStep() throws Exception {
 		LinkedList<PreparationStep> preparelist = recipe.getPreparationSteps();
 
-		if (this.subst == false && !preparelist.isEmpty()) {
+		if (this.subst == false ) {
 			this.substpane = new AnchorPane();
 			this.substpane.setPrefHeight(800);
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("steppane.fxml"));
@@ -371,10 +379,6 @@ public class MaindetailController {
 			this.subst = true;
 			System.out.println("show steps");
 
-		}else {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("steppane.fxml"));
-			this.substpane = loader.load();
-			this.substpane.getChildren().add(new Text("There is no steps in this recipe"));
 		}
 		System.out.println("show steps");
 		this.scrollpane.setContent(this.substpane);
