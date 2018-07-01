@@ -1,7 +1,10 @@
 package CookBookView.detailview;
 
+import java.security.KeyStore.PrivateKeyEntry;
 import java.util.Iterator;
 import java.util.LinkedList;
+
+import org.omg.CosNaming.NamingContextExtPackage.AddressHelper;
 
 import CookBookEntity.Comment;
 import javafx.fxml.FXML;
@@ -21,14 +24,16 @@ public class CommentController {
 	
 	public void showComments(LinkedList<Comment> comments) throws Exception {
 		Iterator iterator = comments.iterator();
-		int number =1; 
+		int number = 1;
 		while(iterator.hasNext()) {
 			Comment comment = (Comment) iterator.next(); 
 			FXMLLoader loader  = new FXMLLoader(getClass().getResource("commenthbox.fxml"));
 			HBox hbox = loader.load();
 			CommentHBoxController controller = loader.getController(); 
 			controller.setComment(comment, number);
-			number = number +1; 
+			this.vbox.getChildren().add(hbox);
+			number = number+1;
+			
 		}
 	}
 	

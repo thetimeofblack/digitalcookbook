@@ -83,7 +83,7 @@ public class inpaneController {
 		int num = this.addnumber;
 		while(num>0) {
 		Ingredient ingredient = new Ingredient();
-		HBox hBox = (HBox) this.vbox.getChildren().get(this.addnumber+1);
+		HBox hBox = (HBox) this.vbox.getChildren().get(this.addnumber);
 		TextField Name = (TextField)hBox.getChildren().get(0);
 		
 		TextField Usage = (TextField)hBox.getChildren().get(1);
@@ -108,7 +108,7 @@ public class inpaneController {
 	
 	@FXML
 	public void cancelIngredient() {
-		int num = this.addnumber+1; 
+		int num = this.addnumber; 
 		while(num>1) {
 			this.vbox.getChildren().remove(num);
 			
@@ -142,6 +142,7 @@ public class inpaneController {
 			HBox hbox = (HBox)loader.load(); 
 			inpanehboxController controller = loader.getController(); 
 			controller.showingredient(ingredient);
+			this.addnumber =this.addnumber+1;
 			this.vbox.getChildren().add(hbox);
 			
 		}

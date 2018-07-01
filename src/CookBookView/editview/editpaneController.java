@@ -144,10 +144,10 @@ public class editpaneController implements Initializable {
 		}
 		
 		this.subin = true; 
-		System.out.println("show ingredient");
+		System.out.println("edit ingredient");
 		
 		}
-		System.out.println("show ingredient");
+		System.out.println("edit ingredient");
 		this.scrollpane.setContent(this.subinPane);
 	}
 	
@@ -244,7 +244,7 @@ public class editpaneController implements Initializable {
 		this.incontroller.saveIngredient();
 		this.cocontroller.saveComments();
 		this.stcontroller.savesteps();
-		this.cookbook.deleteUserRecipe(this.recipe.getRecipeID());
+		
 		this.recipe.setIngredientlist(this.incontroller.getIngredients());
 		this.recipe.setPreparationSteps(this.stcontroller.getSteps());
 		this.cookbook.editRecipe(this.recipe);

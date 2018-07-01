@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.createview.createpaneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.createview.createpaneController">
    <children>
       <Pane prefHeight="800.0" prefWidth="600.0">
          <children>
@@ -31,9 +28,9 @@
             <TextField fx:id="Cooktime" layoutX="103.0" layoutY="130.0" />
             <Label layoutX="345.0" layoutY="88.0" prefHeight="15.0" prefWidth="104.0" text="serve people" />
             <TextField fx:id="servingperson" layoutX="317.0" layoutY="119.0" />
-            <Label layoutX="36.0" layoutY="196.0" prefHeight="39.0" prefWidth="41.0">
+            <Label layoutX="36.0" layoutY="196.0" onMouseClicked="#createIngredient" prefHeight="39.0" prefWidth="41.0">
                <graphic>
-                  <ImageView  fitHeight="39.0" fitWidth="41.0" onMouseClicked="#createIngredient">
+                  <ImageView fitHeight="39.0" fitWidth="41.0" onMouseClicked="#createIngredient">
                      <image>
                         <Image url="@../detailview/material-information-outline.png" />
                      </image>
@@ -43,7 +40,7 @@
                   <Tooltip text="Click here to provide ingredients of the recipe." />
                </tooltip>
             </Label>
-            <Label  layoutX="36.0" layoutY="260.0" prefHeight="39.0" prefWidth="41.0">
+            <Label layoutX="36.0" layoutY="260.0" onMouseClicked="#createSteps" prefHeight="39.0" prefWidth="41.0">
                <graphic>
                   <ImageView fitHeight="39.0" fitWidth="41.0" onMouseClicked="#createSteps">
                      <image>
@@ -55,7 +52,7 @@
                   <Tooltip text="Click here to provide steps of the recipe." />
                </tooltip>
             </Label>
-            <Label  layoutX="36.0" layoutY="335.0">
+            <Label layoutX="36.0" layoutY="335.0" onMouseClicked="#createComment">
                <graphic>
                   <ImageView fitHeight="39.0" fitWidth="41.0" onMouseClicked="#createComment">
                      <image>

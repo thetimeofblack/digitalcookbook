@@ -38,7 +38,7 @@ public class StepController  {
 		}
 	}
 	
-	private void AddLine(ActionEvent event) throws Exception {
+	public void AddLine() throws Exception {
 		// TODO Auto-generated method stub
 		FXMLLoader loader  = new FXMLLoader(getClass().getResource("stpanehbox.fxml"));
 		HBox hBox = (HBox)loader.load(); 
@@ -47,7 +47,7 @@ public class StepController  {
 		addnumber = addnumber+1; 
 	}
 	
-	private void SubLine() throws Exception{
+	public void SubLine() throws Exception{
 		this.vbox.getChildren().remove(addnumber);
 		addnumber = addnumber-1; 
 	}
@@ -62,7 +62,7 @@ public class StepController  {
 			TextArea stepdetail =(TextArea)hbox.getChildren().get(1); 
 			step.setDescription(stepdetail.getText());
 			this.steps.add(step);
-			num=num=-1; 
+			num=num-1; 
  		}
 		
 	}

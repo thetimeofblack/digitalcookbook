@@ -157,6 +157,7 @@ public class createpaneController {
 		this.ingredients = new LinkedList<Ingredient>();
 		controller.setIngredientList(this.ingredients);
 		this.subin = true; 
+		controller.saveIngredient();
 		System.out.println("create ingredient");
 		}
 		System.out.println("create ingredient");
@@ -177,6 +178,7 @@ public class createpaneController {
 		controller.setPreparationStepList(this.steps);
 		this.subst = true; 
 		System.out.println("create steps");
+		controller.saveSteps();
 		}
 		System.out.println("create steps");
 		
@@ -188,9 +190,10 @@ public class createpaneController {
 		if(this.subsm==false) {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("commentpane.fxml"));
 		this.subcmpane =(AnchorPane) loader.load() ; 
-		commentController controller = loader.getController(); 
+		CommentController controller = loader.getController(); 
 		this.comment = new Comment();
 		controller.setComment(comment);
+		controller.saveComments();
 		this.subsm=true; 
 		
 		}

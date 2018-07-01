@@ -10,7 +10,7 @@ import javafx.event.ActionEvent;
 
 import javafx.scene.layout.AnchorPane;
 
-public class commentController {
+public class CommentController {
 	
 	@FXML
 	private TextField comment;
@@ -21,7 +21,7 @@ public class commentController {
 	
 	// Event Listener on Button[#confirm].onAction
 	@FXML
-	public void saveComments(ActionEvent event) {
+	public void saveComments() {
 		recipecomment.setComment(comment.getText());
 		
 	}

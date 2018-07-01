@@ -6,7 +6,7 @@ import com.sun.glass.ui.TouchInputSupport;
 import CookBookDataBaseAcess.DatabaselayerObject;
 import CookBookEntity.Comment;
 import CookBookEntity.Recipe;
-import CookBookView.createview.commentController;
+import CookBookView.createview.CommentController;
 import javafx.scene.shape.Line;
 import CookBookEntity.*;
 
