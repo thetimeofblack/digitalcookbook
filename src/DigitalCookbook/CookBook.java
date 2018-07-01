@@ -226,8 +226,8 @@ public class CookBook {
 		else System.out.println("Comment for recipe is deleted");
 	} 
 	
-	public void editRecipe(Recipe recipe) throws Exception{
-		this.databaselayerObject.editRecipe(recipe);
+	public boolean editRecipe(Recipe recipe) throws Exception{
+		return this.databaselayerObject.editRecipe(recipe);
 	}
 	public boolean isFavourite(Recipe recipe) throws Exception{
 		boolean result = this.databaselayerObject.judgefavourite(recipe);

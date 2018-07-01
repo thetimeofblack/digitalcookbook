@@ -368,8 +368,10 @@ public class DatabaselayerObject {
 	
 
 
-	private void insertingredients(Recipe recipe) throws SQLException {
+	private void insertingredients(Recipe recipe) throws Exception {
 		int res1 = 0;
+		this.con = this.getConnection();
+		this.sql = this.con.createStatement();
 		LinkedList<Ingredient> ls1 = recipe.getIngredientlist();
 		for (int x = 0; x < ls1.size(); x++) {
 			ls1.get(x);
@@ -391,8 +393,10 @@ public class DatabaselayerObject {
 	//preparationsteps锟斤拷锟斤拷敕斤拷锟�?
 
 
-	private void insertpreparationsteps(Recipe recipe) throws SQLException {
+	private void insertpreparationsteps(Recipe recipe) throws Exception {
 		int res1 = 0;
+		this.con = this.getConnection();
+		this.sql = this.con.createStatement(); 
 		LinkedList<PreparationStep> ls2 = recipe.getPreparationSteps();
 		for (int y = 0; y < ls2.size(); y++) {
 			ls2.get(y);
@@ -436,9 +440,11 @@ public class DatabaselayerObject {
 
 	//ingredients锟斤拷删锟斤�?
 
-	private void deleteingredients(Recipe recipe) throws SQLException {
+	private void deleteingredients(Recipe recipe) throws Exception {
 		String recipeid = recipe.getRecipeID();
-		String ss = "delete from `cookbook`.`ingredients` "
+		this.con = this.getConnection();
+		this.sql = this.con.createStatement();
+		String ss = "delete from `cookbook`.`ingredient` "
 				+ "where recipeid = '" + recipeid + "'";
 		int res1 = 0;
 		res1 = this.sql.executeUpdate(ss);
@@ -447,8 +453,10 @@ public class DatabaselayerObject {
 
 	//preparationsteps锟斤拷删锟斤�?
 
-	private void deletepreparationsteps(Recipe recipe) throws SQLException {
+	private void deletepreparationsteps(Recipe recipe) throws Exception {
 		String recipeid = recipe.getRecipeID();
+		this.con =this.getConnection();
+		this.sql = this.con.createStatement();
 		String ss = "delete from `cookbook`.`preparationsteps` "
 				+ "where recipeid = '" + recipeid + "'";
 		int res1 = 0;
@@ -485,7 +493,7 @@ public class DatabaselayerObject {
 
 	//锟杰ｏ拷recipe删锟斤拷,锟斤拷锟斤拷true锟缴癸拷删锟斤拷false为锟斤拷锟斤拷删锟斤�?
 
-	public boolean deleteRecipe(Recipe recipe) throws SQLException {
+	public boolean deleteRecipe(Recipe recipe) throws Exception {
 		if(judgerecipeuser(recipe)) {
 			deleterecipe(recipe);
 			deleteingredients(recipe);
@@ -501,8 +509,9 @@ public class DatabaselayerObject {
 
 	//recipe锟睫改凤拷锟斤拷锟斤拷ingredients锟斤拷preparationsteps锟斤拷锟斤拷锟斤拷删锟劫插）,true为删锟斤拷晒锟斤拷锟絝alse为锟斤拷锟斤拷删
 
-	public boolean editRecipe(Recipe recipe) throws SQLException {
-	
+	public boolean editRecipe(Recipe recipe) throws Exception {
+			this.con = this.getConnection();
+			this.sql = this.con.createStatement();
 			String ss2 = "update `cookbook`.`recipe` "
 					+ "set `name` = '" + recipe.getName() + 
 					"', `servenumber` = '"+ recipe.getServeNumber() + 

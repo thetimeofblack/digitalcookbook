@@ -26,6 +26,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -36,6 +37,7 @@ import CookBookEntity.Comment;
 import CookBookEntity.Ingredient;
 import CookBookEntity.PreparationStep;
 import CookBookEntity.Recipe;
+import CookBookView.detailview.MaindetailController;
 import CookBookView.firstview.fvController;
 import CookBookView.listview.ListAllController;
 import CookBookView.searchview.SearchViewController;
@@ -122,7 +124,7 @@ public class editpaneController implements Initializable {
 	// Event Listener on Label[#ingredient].onDragDetected
 	@FXML
 	public void editIngredients() throws Exception {
-		if(this.subin==false && !this.ingredients.isEmpty())
+		if(this.subin==false)
 		{
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("ingredient.fxml"));
 		this.subinPane = (Pane)loader.load();
@@ -231,7 +233,7 @@ public class editpaneController implements Initializable {
 		recipe.setName(this.recipename.getText());
 		
 		
-		System.out.println(this.recipe.toString());
+		
 	}
 	
 	public void setCookBook(CookBook cookbook) {
@@ -257,27 +259,37 @@ public class editpaneController implements Initializable {
 	}
 	
 	public void editRecipe() throws Exception{
+		System.out.println("we now start");
 		this.createRecipe();
+		System.out.println("We have created recipe");
+		this.editIngredients();
+		this.editsteps();
+		this.editcomments();
 		this.incontroller.saveIngredient();
 		this.cocontroller.saveComments();
 		this.stcontroller.savesteps();
 		System.out.println(this.incontroller.getIngredientList().toString());
 		this.recipe.setIngredientlist(this.incontroller.getIngredients());
 		this.recipe.setPreparationSteps(this.stcontroller.getSteps());
-		this.cookbook.editRecipe(this.recipe);
+		boolean result = this.cookbook.editRecipe(this.recipe);
+		if(result) System.out.println("recipe edit successfully");
 		Comment comment = new Comment() ; 
 		comment= this.cocontroller.getComment(); 
 		this.cookbook.deleteUserComment(recipe.getRecipeID());
 		this.cookbook.saveComment(comment, this.recipe.getRecipeID());
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../searchview/searchView.fxml"));
-		Parent root = loader.load(); 
-		SearchViewController controller = loader.getController();
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../detailview/maindetail.fxml"));
+		AnchorPane detailpane = (AnchorPane)loader.load();
+		MaindetailController controller = loader.getController();
+		
+		controller.setCookBook(this.cookbook);
+		controller.setRecipe(this.recipe);
+		controller.showbasicRecipe();
+		this.scene.setRoot(detailpane);
+		this.stage.setScene(this.scene);
+		this.stage.show();
 		controller.setScene(this.scene);
 		controller.setStage(this.stage);
-		controller.setCookBook(this.cookbook);
 		
-		this.scene.setRoot(root);
-		this.stage.setScene(this.scene);
 	}
 
 	
