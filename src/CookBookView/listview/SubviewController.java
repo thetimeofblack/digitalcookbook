@@ -55,35 +55,62 @@ public class SubviewController {
 	}
 
 	public void setStar() throws Exception {
-		Image image = new Image(getClass().getResourceAsStream("star.png"));
-		ImageView iv = new ImageView(image);
-		iv.setFitHeight(20);
-		iv.setFitWidth(20);
+	
 		Comment comment = new Comment();
 		comment = cookBook.getComment(recipe.getRecipeID());
 		int grade = comment.getGrade();
 		if (grade == 1) {
-			star1.setGraphic(iv);
+			setOneStar();
 		} else if (grade == 2) {
-			star1.setGraphic(iv);
-			star2.setGraphic(iv);
+			setTwoStar();
 		} else if (grade == 3) {
-			star1.setGraphic(iv);
-			star2.setGraphic(iv);
-			star3.setGraphic(iv);
+			setThreeStar();
 		} else if (grade == 4) {
-			star1.setGraphic(iv);
-			star2.setGraphic(iv);
-			star3.setGraphic(iv);
-			star4.setGraphic(iv);
+			setFourStar();
 		} else if (grade == 5) {
-			star1.setGraphic(iv);
-			star2.setGraphic(iv);
-			star3.setGraphic(iv);
-			star4.setGraphic(iv);
-			star5.setGraphic(iv);
+			setFiveStar();
 
 		}
+	}
+	
+	public void setStar(Label label) {
+		Image image = new Image(getClass().getResourceAsStream("../listview/star.png"));
+		ImageView iv = new ImageView(image);
+		iv.setFitHeight(25);
+		iv.setFitWidth(25);
+		label.setGraphic(iv);
+	}
+
+	
+	private void setOneStar() {
+		setStar(star1);
+		
+	}
+	
+	private void setTwoStar() {
+		setStar(star1);
+		setStar(star2);	
+	}
+	
+	private void setThreeStar() {
+		setStar(star1);
+		setStar(star2);
+		setStar(star3);
+	}
+	
+	private void setFourStar() {
+		setStar(star1);
+		setStar(star2);
+		setStar(star3);
+		setStar(star4);
+	}
+	
+	private void setFiveStar() {
+		setStar(star1);
+		setStar(star2);
+		setStar(star3);
+		setStar(star4);
+		setStar(star5);
 	}
 
 	public void setFavourite() throws Exception {

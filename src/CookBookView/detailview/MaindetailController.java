@@ -121,40 +121,78 @@ public class MaindetailController {
 	private boolean subst = false;
 	
 	int previousrate ; 
-
-	public void mouseClickStar1(MouseEvent event) {
-		this.previousrate =1; 
+	
+	private void setOneStar() {
+		setStar(star1);
 		
 	}
-
-	public void mouseEnterStar1(MouseEvent event) {
-		clearAllStar();
+	
+	private void setTwoStar() {
 		setStar(star1);
+		setStar(star2);	
 	}
-
-	public void mouseClickStar2(MouseEvent event) {
-		this.previousrate =2;
-	}
-
-	public void mouseEnterStar2(MouseEvent event) {
-		clearAllStar();
-		setStar(star1);
-		setStar(star2);
-	}
-
-	public void mouseClickStar3(MouseEvent event) {
-		this.previousrate =3 ;
-	}
-
-	public void mouseEnterStar3(MouseEvent event) {
-		clearAllStar();
+	
+	private void setThreeStar() {
 		setStar(star1);
 		setStar(star2);
 		setStar(star3);
 	}
+	
+	private void setFourStar() {
+		setStar(star1);
+		setStar(star2);
+		setStar(star3);
+		setStar(star4);
+	}
+	
+	private void setFiveStar() {
+		setStar(star1);
+		setStar(star2);
+		setStar(star3);
+		setStar(star4);
+		setStar(star5);
+	}
+	public void mouseClickStar1(MouseEvent event) throws Exception{
+		this.previousrate =1;
+		this.cookbook.setRate(this.previousrate, recipe.getRecipeID());
+		setOneStar();		
+	}
 
-	public void mouseClickStar4(MouseEvent event) {
-		this.previousrate =4; 
+	public void mouseEnterStar1(MouseEvent event) {
+		clearAllStar();
+		setOneStar();
+	}
+
+	public void mouseClickStar2(MouseEvent event) throws Exception{
+		this.previousrate =2;
+		this.cookbook.setRate(this.previousrate, recipe.getRecipeID());
+		clearAllStar();
+		setTwoStar();
+		
+	}
+
+	public void mouseEnterStar2(MouseEvent event) {
+		clearAllStar();
+		setTwoStar();
+	}
+
+	public void mouseClickStar3(MouseEvent event) throws Exception{
+		this.previousrate =3 ;
+		this.cookbook.setRate(this.previousrate, recipe.getRecipeID());
+		clearAllStar();
+		setTwoStar();
+	}
+
+	public void mouseEnterStar3(MouseEvent event) {
+		clearAllStar();
+		setThreeStar();
+	}
+
+	public void mouseClickStar4(MouseEvent event) throws Exception{
+		this.previousrate =4;
+		this.cookbook.setRate(this.previousrate, recipe.getRecipeID());
+		clearAllStar();
+		setFourStar();
 	}
 
 	public void mouseEnterStar4(MouseEvent event) {
@@ -165,17 +203,16 @@ public class MaindetailController {
 		setStar(star4);
 	}
 
-	public void mouseClickStar5(MouseEvent event) {
+	public void mouseClickStar5(MouseEvent event) throws Exception {
 		this.previousrate =5; 
+		this.cookbook.setRate(this.previousrate, recipe.getRecipeID());
+		setFiveStar();
+		
 	}
 
 	public void mouseEnterStar5(MouseEvent event) {
 		clearAllStar();
-		setStar(star1);
-		setStar(star2);
-		setStar(star3);
-		setStar(star4);
-		setStar(star5);
+		setFiveStar();
 	}
 
 	public void mouseExitStar(MouseEvent event) throws Exception {
@@ -289,27 +326,17 @@ public class MaindetailController {
 		iv.setFitWidth(25);
 		Comment comment = new Comment();
 		comment = this.cookbook.getComment(recipe.getRecipeID());
-		int grade = comment.getGrade();
-		if (grade == 1) {
-			star1.setGraphic(iv);
-		} else if (grade == 2) {
-			star1.setGraphic(iv);
-			star2.setGraphic(iv);
-		} else if (grade == 3) {
-			star1.setGraphic(iv);
-			star2.setGraphic(iv);
-			star3.setGraphic(iv);
-		} else if (grade == 4) {
-			star1.setGraphic(iv);
-			star2.setGraphic(iv);
-			star3.setGraphic(iv);
-			star4.setGraphic(iv);
-		} else if (grade == 5) {
-			star1.setGraphic(iv);
-			star2.setGraphic(iv);
-			star3.setGraphic(iv);
-			star4.setGraphic(iv);
-			star5.setGraphic(iv);
+		this.previousrate = comment.getGrade();
+		if (this.previousrate == 1) {
+			setOneStar();
+		} else if (this.previousrate == 2) {
+			setTwoStar();
+		} else if (this.previousrate == 3) {
+			setThreeStar();
+		} else if (this.previousrate == 4) {
+			setFourStar();
+		} else if (this.previousrate == 5) {
+			setFiveStar();
 		}
 	}
 

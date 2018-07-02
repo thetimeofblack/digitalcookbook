@@ -935,14 +935,14 @@ public class DatabaselayerObject {
 	  this.con = this.getConnection(); 
 	  this.sql = this.con.createStatement(); 
 	  String sql1 = "select * from cookbook.rateandcomments where userid=" + userid + " and recipeid= "+recipeid;
-	  int result = this.sql.executeUpdate(sql1);
+	  ResultSet resultSet = this.sql.executeQuery(sql1);
 	  int finalresult ; 
-	  if(result>0) {
+	  if(resultSet.isFirst()) {
 		  String sql2 = "update cookbook.rateandcomments set rate =" +grade +"where userid = " +userid +" and recipeid = "+recipeid; 
 		  finalresult = this.sql.executeUpdate(sql2);
 		 
 	  }else {
-		  String sql2 = "insert into rateandcomments(recipeid, userid,rate) values("+recipeid+","+userid+","+grade+")";
+		  String sql2 = "insert into cookbook.rateandcomments(recipeid, userid,rate) values("+recipeid+","+userid+","+grade+")";
 		  finalresult = this.sql.executeUpdate(sql2);
 	  }
 	  if(finalresult>0) return true; 

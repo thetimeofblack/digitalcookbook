@@ -159,7 +159,8 @@ public class editpaneController implements Initializable {
 		System.out.println("edit ingredient");
 		//this.incontroller.addIngredient();
 		
-		this.subinPane.setPrefHeight(600);
+		
+		this.scrollpane.setPrefViewportHeight(this.subinPane.getPrefHeight());
 		this.scrollpane.setContent(this.subinPane);
 		this.incontroller.saveIngredient();
 		//this.scrollpane.setFitToHeight(true);
