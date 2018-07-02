@@ -94,8 +94,9 @@ public class DatabaselayerObject {
 	 * @return
 	 * @throws SQLException
 	 */
-	public int userLogin(String username, String userpassword) throws SQLException {
-			
+	public int userLogin(String username, String userpassword) throws Exception {
+		this.con = this.getConnection(); 
+		this.sql = this.con.createStatement();
 		String s1 = "select * from cookbook.user where UserName = '"+ username +"'";
 		res = this.sql.executeQuery(s1);
 		if(res.first()){
@@ -118,6 +119,7 @@ public class DatabaselayerObject {
 		//String s = "select * from cookbook.user where UserName = ? and UserPassword = ?";
 		//PreparedStatement ps = (PreparedStatement) con.prepareStatement(s);
 		//ps.setString(arg0, arg1);	
+		
 	}
 	
 
