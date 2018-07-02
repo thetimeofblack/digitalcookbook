@@ -706,13 +706,13 @@ public class DatabaselayerObject {
     	return this.user;
     }
     
-    public boolean getRecipeComment(LinkedList<Comment> comments ,String recipeid) throws Exception{
+    public LinkedList<Comment>  getRecipeComment(String recipeid) throws Exception{
     	String sqlstr = "select * from cookbook.rateandcomments"
     			+ " where recipeid= "+recipeid;
     	Connection connection = this.getConnection();
     	this.sql = connection.createStatement();
     	ResultSet res = this.sql.executeQuery(sqlstr);
-        comments = new LinkedList<Comment>();
+        LinkedList<Comment> comments = new LinkedList<Comment>();
     	while(res.next()) {
     	Comment comment = new Comment(res.getInt("rate"), res.getString("comments"));
         comment.setUserid(res.getString("userid"));
@@ -720,8 +720,7 @@ public class DatabaselayerObject {
         comments.add(comment);
     	}
     	connection.close();
-    	if(comments.isEmpty()) return false; 
-    	return true;
+    	return comments; 
     }
     
     public LinkedList<Recipe> getUserallRecipe(String userid) throws Exception{
@@ -827,10 +826,11 @@ public class DatabaselayerObject {
     	int result = this.sql.executeUpdate(sqlstr);
     	return true;
     	}
-    	this.sql.close();
+    	
     	connection.close();
     	if(res.first()) return true; 
     	return false; 
+    	
     	
     }
     
@@ -969,8 +969,8 @@ public class DatabaselayerObject {
 	  String sql1  = "select * from cookbook.rateandcomments where userid="+ userid+" and recipeid="+recipeid;
 	  ResultSet resultSet = this.sql.executeQuery(sql1);
 	  if(resultSet.first()) {
-		  String sql2 = "update cookbook.rateandcomments set comments = '"+comment+"'" + "where userid ="+userid + "and recipeid= "+recipeid;
-		  resultSet = this.sql.executeQuery(sql2);
+		  String sql2 = "update cookbook.rateandcomments set comments = '"+comment+"'" + " where userid ="+userid + " and recipeid= "+recipeid;
+		  this.sql.executeUpdate(sql2);
 		  System.out.println("update comment successfully");
 		  
 	  }else {

@@ -87,9 +87,7 @@ public class CookBook {
 	}
 	
 	public LinkedList<Comment> getRecipeComment (String recipeid) throws Exception {
-		LinkedList<Comment> comments= new LinkedList<Comment>();
-		boolean result = databaselayerObject.getRecipeComment(comments, recipeid);
-		return comments;
+		return this.databaselayerObject.getRecipeComment(recipeid);
 	}
 	
 	public LinkedList<Recipe> getallrecipelist(){
@@ -209,9 +207,7 @@ public class CookBook {
 	}
 	
 	public LinkedList<Comment> getComments(String recipeid) throws Exception{
-		LinkedList<Comment> comments= new LinkedList<Comment>(); 
-		this.databaselayerObject.getRecipeComment(comments, recipeid);
-		return comments; 
+		return this.databaselayerObject.getRecipeComment(recipeid);
 	}
 	
 	public Comment getComment(String recipeid) throws Exception {

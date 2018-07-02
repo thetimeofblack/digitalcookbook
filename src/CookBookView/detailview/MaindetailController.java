@@ -427,7 +427,7 @@ public class MaindetailController {
 
 	public void showComment() throws Exception {
 		LinkedList<Comment> comments = this.cookbook.getComments(recipe.getRecipeID());
-		if (subsm == false && comments != null) {
+		if (subsm == false ) {
 
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("Comment.fxml"));
 			this.subcmpane = loader.load();

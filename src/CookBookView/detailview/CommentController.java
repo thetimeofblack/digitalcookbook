@@ -30,7 +30,7 @@ public class CommentController {
 			FXMLLoader loader  = new FXMLLoader(getClass().getResource("commenthbox.fxml"));
 			HBox hbox = loader.load();
 			CommentHBoxController controller = loader.getController(); 
-			controller.setComment(comment, number);
+			controller.showComment(comment, number);
 			this.vbox.getChildren().add(hbox);
 			number = number+1;
 			
