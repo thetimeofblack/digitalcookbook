@@ -159,7 +159,7 @@ public class editpaneController implements Initializable {
 		System.out.println("edit ingredient");
 		//this.incontroller.addIngredient();
 		
-		this.subinPane.setPrefHeight(800);
+		this.subinPane.setPrefHeight(600);
 		this.scrollpane.setContent(this.subinPane);
 		this.incontroller.saveIngredient();
 		//this.scrollpane.setFitToHeight(true);
@@ -176,7 +176,7 @@ public class editpaneController implements Initializable {
 		this.subsp=true;
 		}
 		//this.stcontroller.AddLine();
-		this.substPane.setPrefHeight(800);
+		this.substPane.setPrefHeight(600);
 		this.scrollpane.setContent(this.substPane);
 		this.stcontroller.savesteps();
 	}

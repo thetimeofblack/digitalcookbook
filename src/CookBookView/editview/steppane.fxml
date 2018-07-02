@@ -11,9 +11,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="338.0" prefWidth="345.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.editview.StepController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.editview.StepController">
    <children>
-      <GridPane layoutX="7.0" layoutY="62.0" prefHeight="42.0" prefWidth="332.0">
+      <GridPane layoutX="7.0" layoutY="62.0" prefHeight="42.0" prefWidth="392.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="332.0" minWidth="10.0" prefWidth="55.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="277.0" minWidth="0.0" prefWidth="277.0" />
@@ -34,13 +34,13 @@
             </Label>
          </children>
       </GridPane>
-      <VBox fx:id="vbox" layoutX="-2.0" layoutY="105.0" prefHeight="231.0" prefWidth="345.0" />
-      <Text layoutX="98.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preparation Steps" wrappingWidth="149.0000047236681">
+      <VBox fx:id="vbox" layoutX="-2.0" layoutY="105.0" prefHeight="211.0" prefWidth="400.0" />
+      <Text layoutX="130.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preparation Steps" wrappingWidth="140.0000047236681">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <HBox layoutX="171.0" layoutY="13.0" prefHeight="30.0" prefWidth="174.0">
+      <HBox layoutX="226.0" layoutY="14.0" prefHeight="30.0" prefWidth="174.0">
          <children>
             <Button mnemonicParsing="false" onAction="#AddLine" text="Add" />
             <Button mnemonicParsing="false" onAction="#SubLine" text="Sub" />
