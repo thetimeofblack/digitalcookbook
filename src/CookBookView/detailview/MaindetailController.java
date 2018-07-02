@@ -16,12 +16,10 @@ import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import javax.print.event.PrintServiceAttributeListener;
-import javax.xml.ws.AsyncHandler;
 
-import org.hamcrest.core.SubstringMatcher;
 
-import com.sun.org.glassfish.gmbal.Description;
+
+
 
 //import com.sun.org.apache.xpath.internal.operations.And;
 

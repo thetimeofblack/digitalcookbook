@@ -539,9 +539,10 @@ public class DatabaselayerObject {
 	
 	// favourite锟斤拷锟斤拷臃锟斤拷锟�
 
-	public void insertfavourite(Recipe recipe) throws SQLException {		
+	public void insertfavourite(Recipe recipe) throws Exception {		
 		String recipeid = recipe.getRecipeID();
-
+		this.con = this.getConnection(); 
+		this.sql = this.con.createStatement(); 
 
 		int res1 = 0;
 		String ss = "insert into `cookbook`.`favourite` (`recipeid`,`userid`) values('" 
@@ -553,8 +554,8 @@ public class DatabaselayerObject {
 
 	//favourite锟斤拷锟斤拷示锟斤拷锟斤�?,true为喜锟斤拷锟斤拷false为锟斤拷喜锟斤拷
 
-	public boolean judgefavourite(Recipe recipe) throws Exception {
-		String recipeid = recipe.getRecipeID();
+	public boolean judgefavourite(String recipeid) throws Exception {
+		
 		String ss = "select * from `cookbook`.`favourite` where recipeid = '"+recipeid+"' and userid = "+this.user.getUserID();
 		this.con = this.getConnection();
 		this.sql = this.con.createStatement();
@@ -820,7 +821,7 @@ public class DatabaselayerObject {
     	this.sql = connection.createStatement(); 
     	String firststr = "select * from cookbook.favourite where userid= "+userid + " and recipeid="+recipeid;
     	ResultSet res= this.sql.executeQuery(firststr);
-    	if(res.first()) {
+    	if(!res.first()) {
     	String sqlstr = "insert into cookbook.favourite(userid,recipeid) values ("+
     	userid+","+recipeid+ ")";
     	int result = this.sql.executeUpdate(sqlstr);
@@ -947,6 +948,17 @@ public class DatabaselayerObject {
 	  if(finalresult>0) return true; 
 	  else return false;
 	  
+  }
+  
+  public boolean deleteFavourite(String recipeid , String userid) throws Exception {
+	  this.con= this.getConnection(); 
+	  this.sql = this.con.createStatement(); 
+	  String first = "set SQL_SAFE_UPDATES=0";
+	  this.sql.executeUpdate(first);
+	  String sqlstr = "delete from cookbook.favourite where recipeid = "+ recipeid +" and  userid = "+userid;
+	  int res= this.sql.executeUpdate(sqlstr);
+	  if(res>0) return true;
+	  return false; 
   }
  }
 

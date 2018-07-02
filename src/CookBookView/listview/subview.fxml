@@ -56,8 +56,10 @@
 						</ImageView>
 					</graphic>
 				</Label>
-            <Label id="favourite" prefHeight="20.0" prefWidth="20.0" />
-            <ImageView fx:id="favourite" fitHeight="21.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" />
+            <Label id="favourite" onMouseClicked="#MouseClickedFavourite" onMouseEntered="#MouseEnterFavourite" onMouseExited="#MouseExistFavourite" prefHeight="20.0" prefWidth="20.0">
+               <graphic>
+                  <ImageView fx:id="favourite" fitHeight="28.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic></Label>
 			</children>
 		</HBox>
 		<Label fx:id="recipeName" layoutX="1.0" layoutY="6.0" onMouseClicked="#showDetail" prefHeight="17.0" prefWidth="250.0" text="RecipeName" />

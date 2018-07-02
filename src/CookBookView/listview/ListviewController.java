@@ -76,6 +76,7 @@ public class ListviewController {
 			controller.setRecipe(recipe);
 			controller.setName();
 			controller.setStar();
+			controller.setFavourite();
 			controller.setStageAndScene(stage, scene);
 			//controller.setDatabaselayerObject(databaselayerObject);
 			controller.setCookBook(this.cookBook);
@@ -90,9 +91,13 @@ public class ListviewController {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("subview.fxml"));
 			Pane subView = loader.load();
 			SubviewController controller = loader.getController();
-			controller.setRecipe(recipe);
-			controller.setStageAndScene(stage, scene);
 			controller.setCookBook(this.cookBook);
+			controller.setRecipe(recipe);
+			controller.setName();
+			controller.setStar();
+			controller.setFavourite();
+			controller.setStageAndScene(stage, scene);
+			
 			recipeVBox.getChildren().add(subView);
 		}
 	}
@@ -105,10 +110,14 @@ public class ListviewController {
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("subview.fxml"));
 				Pane subView = loader.load();
 				SubviewController controller = loader.getController();
+				controller.setCookBook(this.cookBook);
 				controller.setRecipe(recipe);
 				controller.setStageAndScene(stage, scene);
-				controller.setRecipe(recipe);
-				controller.setCookBook(this.cookBook);
+				controller.setName();
+				controller.setStar();
+				controller.setFavourite();
+				
+				
 				recipeVBox.getChildren().add(subView);
 			
 		}
@@ -124,6 +133,9 @@ public class ListviewController {
 				Pane subView = loader.load();
 				SubviewController controller = loader.getController();
 				controller.setRecipe(recipe);
+				controller.setName();
+				controller.setStar();
+				controller.setFavourite();
 				controller.setStageAndScene(stage, scene);
 				controller.setCookBook(this.cookBook);
 				recipeVBox.getChildren().add(subView);

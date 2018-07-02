@@ -3,6 +3,8 @@ package CookBookView.listview;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.crypto.spec.IvParameterSpec;
+
 import CookBookDataBaseAcess.DatabaselayerObject;
 import CookBookEntity.Comment;
 import CookBookEntity.Recipe;
@@ -41,6 +43,8 @@ public class SubviewController {
 	private Scene scene;
 	private DatabaselayerObject databaselayerObject;
 	private CookBook cookBook;
+	
+	private boolean isfavourite;
 
 	public void setRecipe(Recipe recipe) {
 		this.recipe = recipe;
@@ -88,6 +92,56 @@ public class SubviewController {
 			ImageView iv = new ImageView(image);
 			iv.setFitHeight(20);
 			iv.setFitWidth(20);
+			favourite.setImage(image);
+			
+			
+			this.isfavourite = true; 
+		
+		}else {
+			this.isfavourite =false; 
+			Image image = new Image(getClass().getResourceAsStream("emptyheart.png"));
+			favourite.setImage(image);
+		}
+	}
+	private void setFullHeart() {
+		Image image = new Image(getClass().getResourceAsStream("fullheart.png"));
+		favourite.setImage(image);
+	}
+	
+	private void setEmptyHeart() {
+		Image image = new Image(getClass().getResourceAsStream("emptyheart.png"));
+		favourite.setImage(image);
+	}
+	public void MouseClickedFavourite() throws Exception{
+		if(this.isfavourite) {
+			this.cookBook.deleteFavourite(this.recipe);
+			this.isfavourite = false;
+			this.setEmptyHeart();
+			
+		}else {
+			this.cookBook.setFavourite(this.recipe.getRecipeID());
+			this.isfavourite = true;
+			this.setFavourite();
+			this.setFullHeart();
+		}
+	}
+	
+	public void MouseEnterFavourite() {
+		if(isfavourite) {
+			Image image = new Image(getClass().getResourceAsStream("emptyheart.png"));
+			favourite.setImage(image);
+		}else {
+			Image image = new Image(getClass().getResourceAsStream("fullheart.png"));
+			favourite.setImage(image);
+		}
+	}
+	
+	public void MouseExistFavourite() {
+		if(!isfavourite) {
+			Image image = new Image(getClass().getResourceAsStream("emptyheart.png"));
+			favourite.setImage(image);
+		}else {
+			Image image = new Image(getClass().getResourceAsStream("fullheart.png"));
 			favourite.setImage(image);
 		}
 	}

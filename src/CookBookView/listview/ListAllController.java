@@ -134,10 +134,12 @@ public class ListAllController {
 			SubviewController controller = loader.getController();
 			
 			this.cookbook.setRateComment(recipe);
+			
 			controller.setCookBook(this.cookbook);
 			controller.setRecipe(recipe);
 			controller.setName();
 			controller.setStar();
+			controller.setFavourite();
 			
 			controller.setStageAndScene(stage, scene);
 			//controller.setDatabaselayerObject(databaselayerObject);

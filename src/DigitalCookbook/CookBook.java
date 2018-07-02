@@ -231,7 +231,7 @@ public class CookBook {
 		return this.databaselayerObject.editRecipe(recipe);
 	}
 	public boolean isFavourite(Recipe recipe) throws Exception{
-		boolean result = this.databaselayerObject.judgefavourite(recipe);
+		boolean result = this.databaselayerObject.judgefavourite(recipe.getRecipeID());
 		return result;
 	}
 	
@@ -239,6 +239,13 @@ public class CookBook {
 		boolean result = this.databaselayerObject.setRate(this.user.getUserID(), recipeid, rate);
 		if(result) System.out.println("set rate for recipe successfully");
 		else System.out.println("We can not set rate for the recipe");
+	}
+	
+	public void deleteFavourite(Recipe recipe) throws Exception{
+		String recipeid = recipe.getRecipeID(); 
+		String userid = this.user.getUserID(); 
+		this.databaselayerObject.deleteFavourite(recipeid, userid);
+		
 	}
 
 }
