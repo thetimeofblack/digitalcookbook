@@ -631,11 +631,11 @@ public class DatabaselayerObject {
     }
     
 	
-    public boolean saveCommentandRate(Comment comment , int recipeid)throws Exception{
-        int userid = Integer.parseInt(this.user.getUserID());
+    public boolean saveCommentandRate(Comment comment , int recipeid ,String userid)throws Exception{
+       
         String sqlstr = "insert into cookbook.rateandcomments (recipeid,userid,rate,comments) values('"+
         		recipeid+"','"+
-        		this.user.getUserID()+"','"+
+        		userid+"','"+
         		comment.getGrade()+"','"+ 
         		comment.getComment()+"')";
         
@@ -960,5 +960,25 @@ public class DatabaselayerObject {
 	  if(res>0) return true;
 	  return false; 
   }
+  
+  public void editComment(String userid, String recipeid,String comment) throws Exception {
+	  this.con = this.getConnection(); 
+	  this.sql = this.con.createStatement() ; 
+	  String first = "set SQL_SAFE_UPDATES=0";
+	  this.sql.executeUpdate(first);
+	  String sql1  = "select * from cookbook.rateandcomments where userid="+ userid+" and recipeid="+recipeid;
+	  ResultSet resultSet = this.sql.executeQuery(sql1);
+	  if(resultSet.first()) {
+		  String sql2 = "update cookbook.rateandcomments set comments = '"+comment+"'" + "where userid ="+userid + "and recipeid= "+recipeid;
+		  resultSet = this.sql.executeQuery(sql2);
+		  System.out.println("update comment successfully");
+		  
+	  }else {
+		  String sql3 = "insert into cookbook.rateandcomments(recipeid, userid,comments) values("+recipeid+","+userid+",'"+comment+"')";
+		  this.sql.executeUpdate(sql3);
+		  System.out.println("insert into comment successfully");
+	  }
+  }
+  
  }
 

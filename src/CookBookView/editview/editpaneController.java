@@ -277,8 +277,7 @@ public class editpaneController implements Initializable {
 		if(result) System.out.println("recipe edit successfully");
 		Comment comment = new Comment() ; 
 		comment= this.cocontroller.getComment(); 
-		this.cookbook.deleteUserComment(recipe.getRecipeID());
-		this.cookbook.saveComment(comment, this.recipe.getRecipeID());
+		this.cookbook.editComment(recipe.getRecipeID(), comment.getComment());
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../detailview/maindetail.fxml"));
 		AnchorPane detailpane = (AnchorPane)loader.load();
 		MaindetailController controller = loader.getController();
