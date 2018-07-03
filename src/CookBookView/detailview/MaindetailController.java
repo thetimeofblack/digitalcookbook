@@ -275,7 +275,7 @@ public class MaindetailController {
 	}
 
 	public void deleteRecipe() throws Exception {
-		this.cookbook.deleteUserRecipe(this.recipe.getRecipeID());
+		this.cookbook.deleteUserRecipe(recipe);
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../searchview/searchView.fxml"));
 		GridPane root = loader.load();
 		SearchViewController controller = loader.getController();

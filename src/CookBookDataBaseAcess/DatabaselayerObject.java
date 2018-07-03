@@ -13,6 +13,8 @@ import java.sql.Statement;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+import org.junit.jupiter.api.function.ThrowingSupplier;
+
 import com.mysql.cj.exceptions.RSAException;
 import com.mysql.cj.jdbc.ha.SequentialBalanceStrategy;
 import com.mysql.cj.xdevapi.Result;
@@ -468,11 +470,14 @@ public class DatabaselayerObject {
 
 	//recipe-user锟斤拷锟叫断凤拷锟斤拷锟斤拷锟斤拷锟斤拷true为锟矫伙拷私锟斤拷锟筋（锟斤拷删锟侥ｏ拷锟斤拷false为锟斤拷锟斤拷锟筋（锟斤拷锟斤拷删锟侥ｏ�?
 
-	private boolean judgerecipeuser(Recipe recipe) throws SQLException {
+	private boolean judgerecipeuser(Recipe recipe) throws Exception {
 		String recipeid = recipe.getRecipeID();
-		String ss1 = "select * from `cookbook`.`user-recipe` where userid = '"+this.user.getUserID()+"' and recipeid = '"+recipeid+"'";
+		this.con = this.getConnection();
+		this.sql = this.con.createStatement(); 
+		String ss1 = "select * from `cookbook`.`userrecipe` where userid = '"+this.user.getUserID()+"' and recipeid = '"+recipeid+"'";
 		res = this.sql.executeQuery(ss1);
 		if(res.first()) {
+			System.out.println("this is the user recipe");
 			return true;
 		}
 		return false;
@@ -480,11 +485,13 @@ public class DatabaselayerObject {
 
 	//recipe-user锟斤拷删锟斤�?
 
-	public void deleterecipeuser(Recipe recipe) throws SQLException {
+	public void deleterecipeuser(Recipe recipe) throws Exception {
 		String recipeid = recipe.getRecipeID();
-		String ss2 = "delete from `cookbook`.`user-recipe` "
+		String ss2 = "delete from `cookbook`.`userrecipe` "
 				+ "where recipeid = '" + recipeid + "' and userid = '"+this.user.getUserID();
 		int res1 = 0;
+		this.con = this.getConnection();
+		this.sql = this.con.createStatement(); 
 		res1 = this.sql.executeUpdate(ss2);
 				
 	}
