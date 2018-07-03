@@ -4,6 +4,7 @@ import CookBookEntity.Comment;
 import CookBookEntity.User;
 import DigitalCookbook.CookBookApp;
 import org.junit.Assert.*;
+import org.junit.jupiter.api.function.ThrowingSupplier;
 import org.junit.*;
 import org.junit.Assert.*;
 import CookBookEntity.Recipe;
@@ -30,7 +31,7 @@ public class DatabaseAccessTest {
 		//recipeget = dao.getUserRecipe(0, "Gong Bao Jiding");
 		//recipeget.show();
 		Comment comment = new Comment(1,"hello");
-		dao.saveCommentandRate(comment, 1);
+	
 		
 		//assertEquals(dao.insertRecipe(0, recipe),true);
 		
