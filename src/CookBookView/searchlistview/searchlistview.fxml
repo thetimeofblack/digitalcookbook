@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="470.0" prefWidth="290.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="logout" layoutX="225.0" layoutY="1.0" mnemonicParsing="false" onAction="#logOut" style="-fx-background-color: #ffffff;" text="Log out" />
-      <Label fx:id="user" layoutX="230.0" layoutY="28.0" prefHeight="17.0" prefWidth="55.0" />
-      <VBox layoutY="54.0" prefHeight="374.0" prefWidth="290.0" />
+      <Button fx:id="logout" layoutX="359.0" layoutY="3.0" mnemonicParsing="false" onAction="#logOut" style="-fx-background-color: #f29720;" text="Log out" textFill="#4a3305">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font></Button>
+      <Label fx:id="user" layoutX="361.0" layoutY="26.0" prefHeight="17.0" prefWidth="55.0" />
       <Label layoutX="212.0" layoutY="415.0" prefHeight="45.0" prefWidth="43.0" />
-      <ImageView fitHeight="38.0" fitWidth="37.0" layoutX="237.0" layoutY="428.0">
+      <ImageView fitHeight="38.0" fitWidth="37.0" layoutX="391.0" layoutY="643.0">
          <image>
             <Image url="@back.png" />
          </image>
       </ImageView>
+      <ScrollPane layoutX="15.0" layoutY="48.0" prefHeight="602.0" prefWidth="377.0">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="594.0" prefWidth="373.0" />
+         </content>
+      </ScrollPane>
    </children>
 </AnchorPane>

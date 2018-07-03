@@ -30,14 +30,14 @@ public class DatabaselayerObject {
 	private Connection con;
 	private Statement sql;
 	static ResultSet res, res2;
-	//final private String driver = "com.mysql.jdbc.Driver";
+	final private String driver = "com.mysql.jdbc.Driver";
 	final private String Databaseuser = "root";
-	final private String driver = "com.mysql.cj.jdbc.Driver";
+	//final private String driver = "com.mysql.cj.jdbc.Driver";
 
-	final private String Databasepassword = "heyining";//¿ÉÐÞ¸ÄÏîÄ¿
-	//final private String Databasepassword = "258000";//¿ÉÐÞ¸ÄÏîÄ¿
-	final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306/?characterEncoding=utf8&useSSL=true&serverTimezone=GMT&autoReconnect=true&failOverReadOnly=false";//¿ÉÐÞ¸ÄÏîÄ¿
-	//final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306";//¿ÉÐÞ¸ÄÏîÄ¿
+	//final private String Databasepassword = "heyining";//¿ÉÐÞ¸ÄÏîÄ¿
+	final private String Databasepassword = "1989";//¿ÉÐÞ¸ÄÏîÄ¿
+	//final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306/?characterEncoding=utf8&useSSL=true&serverTimezone=GMT&autoReconnect=true&failOverReadOnly=false";//¿ÉÐÞ¸ÄÏîÄ¿
+	final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306";//¿ÉÐÞ¸ÄÏîÄ¿
 	
 
 	private User user; 
@@ -725,9 +725,9 @@ public class DatabaselayerObject {
     }
     
     public LinkedList<Recipe> getUserallRecipe(String userid) throws Exception{
-    	String sqlstr ="select * from cookbook.userrecipe , cookbook.recipe "+
-    	" where cookbook.userrecipe.userid = "+userid+ 
-    	" and cookbook.userrecipe.recipeid=cookbook.recipe.id ";
+    	String sqlstr ="select * from `cookbook`.`user-recipe` , `cookbook`.`recipe` "+
+    	" where `cookbook`.`user-recipe`.`userid` = "+userid+ 
+    	" and `cookbook`.`user-recipe`.`recipeid`=`cookbook`.`recipe`.`id` ";
     	Connection connection = this.getConnection(); 
     	Statement statement = connection.createStatement();
     	ResultSet resultSet  = statement.executeQuery(sqlstr);

@@ -283,7 +283,7 @@ public class MaindetailController {
 
 	// initialize star
 	public void initializeStar() throws Exception {
-		Image image = new Image(getClass().getResourceAsStream("../listview/star.png"));
+		Image image = new Image(getClass().getResourceAsStream("../pic/star.png"));
 		ImageView iv = new ImageView(image);
 		iv.setFitHeight(25);
 		iv.setFitWidth(25);
@@ -316,7 +316,7 @@ public class MaindetailController {
 	// initialize favourite
 	public void initializeFavourite() throws Exception {
 		if (cookbook.isFavourite(recipe)) {
-			Image image = new Image(getClass().getResourceAsStream("../listview/fullheart.png"));
+			Image image = new Image(getClass().getResourceAsStream("../pic/fullheart.png"));
 			ImageView iv = new ImageView(image);
 			iv.setFitHeight(34);
 			iv.setFitWidth(34);
@@ -326,7 +326,7 @@ public class MaindetailController {
 
 	// star operations
 	public void setStar(Label label) {
-		Image image = new Image(getClass().getResourceAsStream("../listview/star.png"));
+		Image image = new Image(getClass().getResourceAsStream("../pic/star.png"));
 		ImageView iv = new ImageView(image);
 		iv.setFitHeight(25);
 		iv.setFitWidth(25);

@@ -20,6 +20,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -50,15 +51,15 @@ public class SearchViewController {
 	@FXML
 	private Button blacksearch;
 	@FXML
-	private Button showrecipes;
+	private Label showrecipes;
 	@FXML
-	private Button userRecipes;
+	private Label userRecipes;
 	@FXML
-	private Button favouriterecipes;
+	private Label favouriterecipes;
 	@FXML
-	private Button rankedrecipes;
+	private Label rankedrecipes;
 	@FXML
-	private Button createrecipes;
+	private Label createrecipes;
 	private Stage stage;
 	private Scene scene;
 	private DatabaselayerObject databaselayerObject;
@@ -79,7 +80,7 @@ public class SearchViewController {
 	 //Event Listener on Button[#blacksearch].onMouseEntered
 	@FXML
 	public void showblue(MouseEvent event) {
-		Image image = new Image(getClass().getResourceAsStream("searchblue.png"));
+		Image image = new Image(getClass().getResourceAsStream("../pic/searchblue.png"));
 		ImageView iv =new ImageView(image);
 		iv.setFitHeight(33);
 		iv.setFitWidth(33);
@@ -88,7 +89,7 @@ public class SearchViewController {
 	
 	@FXML
 	public void showblack(MouseEvent event) {
-		Image image= new Image(getClass().getResourceAsStream("search.png"));
+		Image image= new Image(getClass().getResourceAsStream("../pic/search.png"));
 		ImageView iv = new ImageView(image);
 		iv.setFitHeight(33);
 		iv.setFitWidth(33);
@@ -111,9 +112,9 @@ public class SearchViewController {
 		stage.show();
 	}
 
-	// Event Listener on Button[#showrecipes].onAction
+	// Event Listener on Label[#showrecipes].onAction
 	@FXML
-	public void showAllrecipes(ActionEvent event) throws Exception {
+	public void showAllrecipes(MouseEvent event) throws Exception {
 
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../listview/listall.fxml"));
 		Parent root = loader.load();
@@ -130,7 +131,7 @@ public class SearchViewController {
 
 	// Event Listener on Button[#userRecipes].onAction
 	@FXML
-	public void showUserRecipes(ActionEvent event) throws Exception {
+	public void showUserRecipes(MouseEvent event) throws Exception {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../listview/listview.fxml"));
 		Parent root = loader.load();
 		ListviewController controller = loader.getController();
@@ -144,7 +145,7 @@ public class SearchViewController {
 
 	// Event Listener on Button[#favouriterecipes].onAction
 	@FXML
-	public void showUserFavouriteRecipes(ActionEvent event) throws Exception {
+	public void showUserFavouriteRecipes(MouseEvent event) throws Exception {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../listview/listview.fxml"));
 		Parent root = loader.load();
 		ListviewController controller = loader.getController();
@@ -158,7 +159,7 @@ public class SearchViewController {
 
 	// Event Listener on Button[#rankedrecipes].onAction
 	@FXML
-	public void showRankedRecipes(ActionEvent event) throws Exception {
+	public void showRankedRecipes(MouseEvent event) throws Exception {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../listview/listview.fxml"));
 		Parent root = loader.load();
 		ListviewController controller = loader.getController();
@@ -172,18 +173,18 @@ public class SearchViewController {
 
 	// Event Listener on Button[#createrecipes].onAction
 	@FXML
-	public void createNewRecipes(ActionEvent event) throws Exception{
+	public void createNewRecipes(MouseEvent event) throws Exception{
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../createview/createpane.fxml"));
 		AnchorPane anchorPane = (AnchorPane)loader.load();
-		anchorPane.setPrefHeight(800);
-		anchorPane.setPrefWidth(600);
+		anchorPane.setPrefHeight(430);
+		anchorPane.setPrefWidth(690);
 		createpaneController controller = loader.getController(); 
 		
 		controller.setCookBook(this.cookbook);
 		controller.setScene(this.scene);
 		controller.setStage(this.stage);
 	
-		Scene scene = new Scene(anchorPane,600,800);
+		Scene scene = new Scene(anchorPane,430,690);
 		this.scene=scene;
 		this.stage.setScene(this.scene);
 		this.stage.show();

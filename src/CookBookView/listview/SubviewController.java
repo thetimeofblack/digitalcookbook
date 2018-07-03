@@ -55,7 +55,7 @@ public class SubviewController {
 	}
 
 	public void setStar() throws Exception {
-		Image image = new Image(getClass().getResourceAsStream("star.png"));
+		Image image = new Image(getClass().getResourceAsStream("../pic/star.png"));
 		ImageView iv = new ImageView(image);
 		iv.setFitHeight(20);
 		iv.setFitWidth(20);
@@ -88,7 +88,7 @@ public class SubviewController {
 
 	public void setFavourite() throws Exception {
 		if (this.cookBook.isFavourite(recipe)) {
-			Image image = new Image(getClass().getResourceAsStream("fullheart.png"));
+			Image image = new Image(getClass().getResourceAsStream("../pic/fullheart.png"));
 			ImageView iv = new ImageView(image);
 			iv.setFitHeight(20);
 			iv.setFitWidth(20);
@@ -99,17 +99,17 @@ public class SubviewController {
 		
 		}else {
 			this.isfavourite =false; 
-			Image image = new Image(getClass().getResourceAsStream("emptyheart.png"));
+			Image image = new Image(getClass().getResourceAsStream("../pic/emptyheart.png"));
 			favourite.setImage(image);
 		}
 	}
 	private void setFullHeart() {
-		Image image = new Image(getClass().getResourceAsStream("fullheart.png"));
+		Image image = new Image(getClass().getResourceAsStream("../pic/fullheart.png"));
 		favourite.setImage(image);
 	}
 	
 	private void setEmptyHeart() {
-		Image image = new Image(getClass().getResourceAsStream("emptyheart.png"));
+		Image image = new Image(getClass().getResourceAsStream("../pic/emptyheart.png"));
 		favourite.setImage(image);
 	}
 	public void MouseClickedFavourite() throws Exception{
@@ -128,20 +128,20 @@ public class SubviewController {
 	
 	public void MouseEnterFavourite() {
 		if(isfavourite) {
-			Image image = new Image(getClass().getResourceAsStream("emptyheart.png"));
+			Image image = new Image(getClass().getResourceAsStream("../pic/emptyheart.png"));
 			favourite.setImage(image);
 		}else {
-			Image image = new Image(getClass().getResourceAsStream("fullheart.png"));
+			Image image = new Image(getClass().getResourceAsStream("../pic/fullheart.png"));
 			favourite.setImage(image);
 		}
 	}
 	
 	public void MouseExistFavourite() {
 		if(!isfavourite) {
-			Image image = new Image(getClass().getResourceAsStream("emptyheart.png"));
+			Image image = new Image(getClass().getResourceAsStream("../pic/emptyheart.png"));
 			favourite.setImage(image);
 		}else {
-			Image image = new Image(getClass().getResourceAsStream("fullheart.png"));
+			Image image = new Image(getClass().getResourceAsStream("../pic/fullheart.png"));
 			favourite.setImage(image);
 		}
 	}

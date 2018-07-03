@@ -31,9 +31,9 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Text rotate="-8.0" strokeType="OUTSIDE" strokeWidth="0.0" text="  Delicious" wrappingWidth="118.00464701652527" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Text rotate="-8.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Delicious" wrappingWidth="184.41149532794952" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Chiller" size="48.0" />
                      </font></Text>
                </children>
             </GridPane>
@@ -55,7 +55,7 @@
                      </font></Text>
                   <Text rotate="13.0" strokeType="OUTSIDE" strokeWidth="0.0" text="لذيذ" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Onyx" size="24.0" />
                      </font></Text>
                </children>
             </GridPane>
@@ -72,11 +72,11 @@
                <children>
                   <Text rotate="-4.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lecker" GridPane.columnIndex="1">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Rage Italic" size="48.0" />
                      </font></Text>
-                  <Text rotate="-9.5" strokeType="OUTSIDE" strokeWidth="0.0" text="      美味    " GridPane.rowIndex="1">
+                  <Text rotate="-9.5" strokeType="OUTSIDE" strokeWidth="0.0" text="    美味    " GridPane.rowIndex="1">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Sitka Banner" size="36.0" />
                      </font></Text>
                </children>
             </GridPane>
@@ -95,11 +95,11 @@
                <children>
                   <Text rotate="-2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="очень вкусный" wrappingWidth="197.38417726755142" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="YouYuan" size="24.0" />
                      </font></Text>
                   <Text rotate="-5.0" strokeType="OUTSIDE" strokeWidth="0.0" text="  おいしい" wrappingWidth="125.61553955078125" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Javanese Text" size="24.0" />
                      </font></Text>
                </children>
             </GridPane>
@@ -114,13 +114,13 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Text rotate="8.0" strokeType="OUTSIDE" strokeWidth="0.0" text="    Delicioso" GridPane.columnIndex="1">
+                  <Text rotate="8.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Delicioso" GridPane.columnIndex="1">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Lucida Handwriting Italic" size="30.0" />
                      </font></Text>
-                  <Text rotate="-7.0" strokeType="OUTSIDE" strokeWidth="0.0" text="       Heerlijk" GridPane.rowIndex="1">
+                  <Text rotate="-7.0" strokeType="OUTSIDE" strokeWidth="0.0" text="    Heerlijk" GridPane.rowIndex="1">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Ravie" size="24.0" />
                      </font></Text>
                </children>
             </GridPane>
@@ -137,11 +137,11 @@
                <children>
                   <Text rotate="4.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Délicieux" GridPane.rowIndex="2">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Ink Free" size="36.0" />
                      </font></Text>
                   <Text rotate="-9.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lækker" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Stencil" size="24.0" />
                      </font></Text>
                </children>
             </GridPane>
@@ -179,7 +179,7 @@
                      <children>
                         <Button fx:id="loginbutton" mnemonicParsing="false" onAction="#loginView" prefHeight="35.0" prefWidth="81.0" text="Log in">
                            <font>
-                              <Font size="18.0" />
+                              <Font name="Baskerville Old Face" size="18.0" />
                            </font>
                         </Button>
                      </children>
@@ -202,7 +202,7 @@
                      <children>
                         <Button fx:id="signupbutton" mnemonicParsing="false" onAction="#signupView" prefHeight="35.0" prefWidth="97.0" text="Sign up">
                            <font>
-                              <Font size="18.0" />
+                              <Font name="Baskerville Old Face" size="18.0" />
                            </font></Button>
                      </children>
                   </VBox>
@@ -219,7 +219,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="  COOKBOOK Version 1.0           BY GALAXY" wrappingWidth="335.21875" GridPane.rowIndex="2" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" COOKBOOK Version 1.0     BY GALAXY" wrappingWidth="335.21875" GridPane.rowIndex="2" />
                </children>
             </GridPane>
             <ImageView fitHeight="63.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
