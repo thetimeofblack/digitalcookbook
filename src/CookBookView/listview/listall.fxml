@@ -47,7 +47,6 @@
 				</Label>
 			</children>
 		</VBox>
-		<Label layoutX="359.0" layoutY="26.0" prefHeight="20.0" prefWidth="47.0" text="  User" />
 		<Button fx:id="logout" layoutX="359.0" layoutY="3.0" mnemonicParsing="false" onAction="#logOut" style="-fx-background-color: #f29720;" text="Log out" textFill="#4a3305">
 			<font>
 				<Font name="System Bold" size="11.0" />

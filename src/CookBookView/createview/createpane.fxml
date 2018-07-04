@@ -34,8 +34,8 @@
             <TextField fx:id="Category" layoutX="100.0" layoutY="43.0" prefHeight="30.0" prefWidth="148.0" />
             <TextField fx:id="preparationTime" layoutX="135.0" layoutY="80.0" prefHeight="30.0" prefWidth="78.0" />
             <TextField fx:id="Cooktime" layoutX="135.0" layoutY="120.0" prefHeight="30.0" prefWidth="78.0" />
-            <Label layoutX="260.0" layoutY="96.0" prefHeight="15.0" prefWidth="104.0" text="serve people" />
-            <TextField fx:id="servingperson" layoutX="366.0" layoutY="91.0" prefHeight="30.0" prefWidth="50.0" />
+            <Label layoutX="260.0" layoutY="49.0" prefHeight="15.0" prefWidth="104.0" text="serve people" />
+            <TextField fx:id="servingperson" layoutX="366.0" layoutY="44.0" prefHeight="30.0" prefWidth="50.0" />
             <Label layoutX="11.0" layoutY="157.0" onMouseClicked="#createIngredient" prefHeight="39.0" prefWidth="41.0">
                <tooltip>
                   <Tooltip text="Click here to provide ingredients of the recipe." />

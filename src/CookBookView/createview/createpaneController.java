@@ -21,6 +21,8 @@ import DigitalCookbook.CookBook;
 import javafx.event.ActionEvent;
 
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 
@@ -59,6 +61,17 @@ public class createpaneController {
 	@FXML 
 	private ScrollPane scrollpane;
 	
+	@FXML
+	private MenuItem egg;
+	
+	@FXML
+	private MenuItem vegetable; 
+	
+	@FXML
+	private MenuItem meat;
+	
+	@FXML
+	private MenuButton description ; 
 	
 	private Pane subinpane ;
 	
@@ -78,6 +91,10 @@ public class createpaneController {
 	private LinkedList<Ingredient> ingredients; 
 	private LinkedList<PreparationStep> steps ; 
 	private Comment comment ; 
+	
+	private CommentController cmcontroller; 
+	private inpaneController incontroller; 
+	private steppaneController stcontroller; 
 	
 	private Stage stage; 
 	private Scene scene; 
@@ -130,18 +147,28 @@ public class createpaneController {
 		this.recipe.setDescription("");
 		this.recipe.setName(this.recipename.getText());
 		this.recipe.setPreparationTime(Integer.parseInt(preparationtime));
+		this.recipe.setServeNumber(Integer.parseInt(this.servingperson.getText()));
 		//please notice the problem that the character is input into the number textfield;
+		this.stcontroller.saveSteps();
+		this.steps = this.stcontroller.getPreparationStepList(); 
+		this.incontroller.saveIngredient();
+		this.ingredients = this.incontroller.getIngredientList();
 		this.recipe.setIngredientlist(this.ingredients);
 		this.recipe.setPreparationSteps(this.steps);
 		if(!recipe.getName().equals("")) {
-		cookbook.saveRecipe(recipe);
+		this.cookbook.saveRecipe(recipe);
 		}else {
 			System.out.println("Please enter a recipe name");
 		}
 		if(this.comment!=null) cookbook.saveComment(comment, this.recipe.getRecipeID());
-		
-		
-		
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../searchview/searchView.fxml"));
+		GridPane gridpane = loader.load(); 
+		SearchViewController controller = loader.getController(); 
+		controller.setCookBook(this.cookbook);
+		controller.setScene(this.scene);
+		controller.setStage(this.stage);
+		this.scene.setRoot(gridpane);
+		this.stage.setScene(this.scene);
 		
 		
 	}
@@ -153,11 +180,11 @@ public class createpaneController {
 		{
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("inpane.fxml"));
 		this.subinpane = (Pane)loader.load();
-		inpaneController controller = loader.getController(); 
+		this.incontroller= loader.getController(); 
 		this.ingredients = new LinkedList<Ingredient>();
-		controller.setIngredientList(this.ingredients);
+		this.incontroller.setIngredientList(this.ingredients);
 		this.subin = true; 
-		controller.saveIngredient();
+		this.incontroller.saveIngredient();
 		System.out.println("create ingredient");
 		}
 		System.out.println("create ingredient");
@@ -173,12 +200,12 @@ public class createpaneController {
 		{
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("steppane2.fxml"));
 		this.substpane = (Pane)loader.load();
-		steppaneController controller = loader.getController();
+		this.stcontroller = loader.getController();
 		this.steps = new LinkedList<PreparationStep>();
-		controller.setPreparationStepList(this.steps);
+		this.stcontroller.setPreparationStepList(this.steps);
 		this.subst = true; 
 		System.out.println("create steps");
-		controller.saveSteps();
+		this.stcontroller.saveSteps();
 		}
 		System.out.println("create steps");
 		
@@ -190,10 +217,10 @@ public class createpaneController {
 		if(this.subsm==false) {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("commentpane.fxml"));
 		this.subcmpane =(AnchorPane) loader.load() ; 
-		CommentController controller = loader.getController(); 
+		this.cmcontroller = loader.getController(); 
 		this.comment = new Comment();
-		controller.setComment(comment);
-		controller.saveComments();
+		this.cmcontroller.setComment(comment);
+		this.cmcontroller.saveComments();
 		this.subsm=true; 
 		
 		}
@@ -217,5 +244,8 @@ public class createpaneController {
 			
 	}
 	
+	public void setDescription() {
+		
+	}
 	
 }

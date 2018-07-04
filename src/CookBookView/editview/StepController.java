@@ -59,13 +59,15 @@ public class StepController  {
 	public void savesteps() {
 		int num = addnumber; 
 		this.steps = new LinkedList<PreparationStep>();
+		int istep = 0;
 		while(num>0) {
 			PreparationStep step = new PreparationStep(); 
 			
-			HBox hbox =  (HBox)this.vbox.getChildren().get(num-1);
+			HBox hbox =  (HBox)this.vbox.getChildren().get(istep);
 			TextArea stepdetail =(TextArea)hbox.getChildren().get(1); 
 			step.setDescription(stepdetail.getText());
 			this.steps.add(step);
+			istep=istep+1;
 			num=num-1; 
  		}
 		

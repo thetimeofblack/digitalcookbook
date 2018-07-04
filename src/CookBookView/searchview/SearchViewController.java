@@ -64,6 +64,9 @@ public class SearchViewController {
 	private Scene scene;
 	private DatabaselayerObject databaselayerObject;
 	private CookBook cookbook;
+	
+	@FXML
+	private Label userinfo;
 
 	// Event Listener on Button[#logout].onAction
 	@FXML
@@ -211,5 +214,9 @@ public class SearchViewController {
 	
 	public void setCookBook(CookBook cookBook) {
 		this.cookbook = cookBook;
+	}
+	
+	public void setusername() {
+		this.userinfo.setText(this.cookbook.getUser());
 	}
 }

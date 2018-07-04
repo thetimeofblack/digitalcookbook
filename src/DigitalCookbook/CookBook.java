@@ -27,6 +27,7 @@ public class CookBook {
 	public CookBook() {
 		this.databaselayerObject = new DatabaselayerObject();
 	}
+	
 	public void add(Recipe recipe) {
 		recipelist.add(recipe);
 	}
@@ -73,10 +74,6 @@ public class CookBook {
 		return this.recipelist;
 	}
 	
-	public void commentRecipe(String recipeid , Comment comment) throws  Exception {
-		this.databaselayerObject.saveCommentandRate(comment, Integer.parseInt(recipeid));
-		
-	}
 	
 	public int userLogin(User user ) throws Exception {
 		this.user = user ;
@@ -88,8 +85,8 @@ public class CookBook {
 	
 	public LinkedList<Comment> getRecipeComment (String recipeid) throws Exception {
 		LinkedList<Comment> comments= new LinkedList<Comment>();
-		boolean result = databaselayerObject.getRecipeComment(comments, recipeid);
-		return comments;
+		 return  databaselayerObject.getRecipeComment(comments, recipeid);
+		
 	}
 	
 	public LinkedList<Recipe> getallrecipelist(){
@@ -172,7 +169,7 @@ public class CookBook {
 	
 	public boolean saveComment(Comment comment,String recipeid ) throws Exception {
 		System.out.println(recipeid);
-		boolean result =this.databaselayerObject.saveCommentandRate(comment, Integer.parseInt(recipeid));
+		boolean result =this.databaselayerObject.setComment(comment.getComment(), recipeid,this.user.getUserID());
 		return result; 
 	}
 	
@@ -216,7 +213,9 @@ public class CookBook {
 	
 	public Comment getComment(String recipeid) throws Exception {
 		Comment comment = new Comment() ; 
+		System.out.println(this.user.getUserID()+"heihei");
 		comment = this.databaselayerObject.getComment(recipeid,this.user.getUserID());
+		System.out.println(comment.getGrade()+"hahaha");
 		return comment; 
 	}	
 	
@@ -246,6 +245,15 @@ public class CookBook {
 		String userid = this.user.getUserID(); 
 		this.databaselayerObject.deleteFavourite(recipeid, userid);
 		
+	}
+	
+	public boolean judgeUserRecipe(Recipe recipe) throws Exception {
+		
+		return this.databaselayerObject.judgerecipeuser(recipe);
+		
+	}
+	public String getUser() {
+		return user.getUserName();
 	}
 
 }

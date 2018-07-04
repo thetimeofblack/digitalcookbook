@@ -51,6 +51,7 @@ public class loginController {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../searchview/searchView.fxml"));
 		GridPane root = (GridPane) loader.load();
 		SearchViewController svc = loader.getController();
+		
 		String resultstring = null ; 
 		if(nameText.getText()!="") {
 			
@@ -83,7 +84,9 @@ public class loginController {
 		scene.setRoot(root);
 		stage.setScene(scene);
 		stage.show();
+		
 		}
+		svc.setusername();
 		//System.out.println(resultstring);
 		}
 	}

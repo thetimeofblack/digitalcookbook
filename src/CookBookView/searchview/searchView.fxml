@@ -84,15 +84,15 @@
 								<Font name="System Bold" size="11.0" />
 							</font>
 						</Button>
-						<Label text="  User" />
+						<Label fx:id="userinfo" onScroll="#setusername" text="  User" />
 					</children>
 				</VBox>
-            <Button fx:id="blacksearch" mnemonicParsing="false" onMouseClicked="#searchRecipes" onMouseEntered="#showblack" onMouseExited="#showblue" style="-fx-background-color: #cfe6ff;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Button fx:id="blacksearch" mnemonicParsing="false" onMouseClicked="#searchRecipes" onMouseEntered="#showblue" onMouseExited="#showblack" style="-fx-background-color: #cfe6ff;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <graphic>
             						<ImageView fitHeight="33.0" fitWidth="33.0">
             							<image>
             
-            								<Image url="@../pic/search.png" />
+            								<Image url="@../pic/searchblue.png" />
             
             							</image>
             						</ImageView>

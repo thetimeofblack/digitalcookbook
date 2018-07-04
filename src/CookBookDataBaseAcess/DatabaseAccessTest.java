@@ -30,7 +30,7 @@ public class DatabaseAccessTest {
 		//recipeget = dao.getUserRecipe(0, "Gong Bao Jiding");
 		//recipeget.show();
 		Comment comment = new Comment(1,"hello");
-		dao.saveCommentandRate(comment, 1);
+		
 		
 		//assertEquals(dao.insertRecipe(0, recipe),true);
 		

@@ -2,6 +2,7 @@ package CookBookView.searchview;
 
 import static org.junit.Assert.assertEquals;
 
+
 import CookBookDataBaseAcess.DatabaselayerObject;
 import CookBookEntity.Comment;
 import CookBookEntity.Recipe;
@@ -28,7 +29,7 @@ public class SearchView extends javafx.application.Application {
 			User user = new User("heyining","heyining");
 			Scene scene = new Scene(root, 290, 470);
 			cookBook.setUser(user);
-			
+			svc.setusername();
 			svc.setCookBook(cookBook);
 			svc.setScene(scene);
 			svc.setStage(primaryStage);

@@ -27,12 +27,16 @@ public class CommentController {
 		int number = 1;
 		while(iterator.hasNext()) {
 			Comment comment = (Comment) iterator.next(); 
+			System.out.println(comment.getComment());
+			if(comment.getComment()!=null) {
 			FXMLLoader loader  = new FXMLLoader(getClass().getResource("commenthbox.fxml"));
 			HBox hbox = loader.load();
 			CommentHBoxController controller = loader.getController(); 
 			controller.setComment(comment, number);
 			this.vbox.getChildren().add(hbox);
 			number = number+1;
+			}
+			
 			
 		}
 	}

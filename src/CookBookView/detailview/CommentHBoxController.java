@@ -1,6 +1,6 @@
 package CookBookView.detailview;
 
-import java.awt.TextArea;
+import javafx.scene.control.TextArea;
 
 import CookBookEntity.Comment;
 import javafx.fxml.FXML;
@@ -18,4 +18,6 @@ public class CommentHBoxController {
 		this.UserID.setText(comment.getUserid());
 		this.Comment.setText(comment.getComment());
 	}
+	
+	
 }

@@ -35,7 +35,7 @@ import DigitalCookbook.CookBook;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
-
+import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -124,6 +124,8 @@ public class MaindetailController {
 	private boolean subst = false;
 	
 	int previousrate ; 
+	@FXML
+	private Label editLabel ; 
 	
 	private void setOneStar() {
 		setStar(star1);
@@ -232,12 +234,12 @@ public class MaindetailController {
 
 	// Event Listener on Button[#logout].onAction
 	@FXML
-	public void logOut(ActionEvent event) throws IOException {
+	public void logOut() throws Exception {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../firstview/fv.fxml"));
-		BorderPane pane = loader.load();
+		Parent root = loader.load();
 		fvController controller = loader.getController();
 		controller.setStageAndScene(stage, scene);
-		scene.setRoot(pane);
+		scene.setRoot(root);
 		stage.setScene(scene);
 		stage.show();
 	}
@@ -313,6 +315,7 @@ public class MaindetailController {
 	}
 
 	public void editRecipe() throws Exception {
+		if(this.cookbook.judgeUserRecipe(this.recipe)) {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../editview/editpane.fxml"));
 		AnchorPane anchorPane = loader.load();
 		editpaneController controller = loader.getController();
@@ -321,9 +324,13 @@ public class MaindetailController {
 		controller.setCookBook(cookbook);
 		controller.setScene(scene);
 		controller.setStage(stage);
+		
 		scene.setRoot(anchorPane);
 		stage.setScene(scene);
 		stage.show();
+		}else {
+			
+		}
 	}
 
 	public void setStage(Stage stage) {
@@ -340,6 +347,10 @@ public class MaindetailController {
 		this.category.setText(recipe.getCategory());
 		this.cookTime.setText(String.valueOf(recipe.getCookTime()));
 		this.servingperson.setText(String.valueOf(recipe.getServeNumber()));
+		if(this.cookbook.judgeUserRecipe(this.recipe) != true) {
+			this.delete.setVisible(false);
+			this.editLabel.setVisible(false);
+		}
 		/*
 		    ChangeListener<String> listener = new ChangeListener<String>() {
 		 
@@ -474,9 +485,9 @@ public class MaindetailController {
 	}
 
 	public void showComment() throws Exception {
-		LinkedList<Comment> comments = this.cookbook.getComments(recipe.getRecipeID());
+		LinkedList<Comment> comments = this.cookbook.getRecipeComment(recipe.getRecipeID());
 		if (subsm == false ) {
-
+			
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("Comment.fxml"));
 			this.subcmpane = loader.load();
 			CommentController controller = loader.getController();
@@ -486,5 +497,44 @@ public class MaindetailController {
 		}
 		System.out.println("show all comments for this recipe");
 		this.scrollpane.setContent(this.subcmpane);
+	}
+	
+	public void addComment() throws Exception{
+		VBox vbox = new VBox();
+		
+		TextField commentfield = new TextField();
+		HBox hbox = new HBox();
+		Button okbutton = new Button();
+		CookBook cookbook  = this.cookbook ;
+		String recipeid = this.recipe.getRecipeID();
+		Button cancelbutton = new Button();
+		okbutton.setText("OK");
+		cancelbutton.setText("Cancel");
+		okbutton.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event)  {
+				Comment comment = new Comment();
+				comment.setComment(commentfield.getText());
+				try {
+				cookbook.saveComment(comment, recipeid);
+				}catch(Exception e) {
+					
+				}
+			}
+		});
+		
+		cancelbutton.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				commentfield.setText("");
+			}
+		});
+		
+		
+		hbox.getChildren().add(okbutton);
+		hbox.getChildren().add(cancelbutton);
+		vbox.getChildren().add(commentfield);
+		vbox.getChildren().add(hbox);
+		
+		this.scrollpane.setContent(vbox);
+		
 	}
 }

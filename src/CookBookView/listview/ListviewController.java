@@ -57,6 +57,7 @@ public class ListviewController {
 		controller.setStageAndScene(stage, scene);
 		
 		controller.setCookBook(this.cookBook);
+		controller.setusername();
 		scene.setRoot(root);
 		stage.setScene(scene);
 		stage.show();
@@ -132,12 +133,13 @@ public class ListviewController {
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("subview.fxml"));
 				Pane subView = loader.load();
 				SubviewController controller = loader.getController();
+				controller.setCookBook(this.cookBook);
 				controller.setRecipe(recipe);
 				controller.setName();
 				controller.setStar();
 				controller.setFavourite();
 				controller.setStageAndScene(stage, scene);
-				controller.setCookBook(this.cookBook);
+				
 				recipeVBox.getChildren().add(subView);
 			}
 		}
@@ -170,6 +172,7 @@ public class ListviewController {
 		svc.setCookBook(this.cookBook);
 		svc.setStage(stage);
 		svc.setScene(scene);
+		svc.setusername();
 		scene.setRoot(root);
 		stage.setScene(scene);
 		stage.show();

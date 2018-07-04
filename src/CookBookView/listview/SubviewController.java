@@ -58,7 +58,8 @@ public class SubviewController {
 	public void setStar() throws Exception {
 		Comment comment = null;
 		String recipeId = recipe.getRecipeID();
-		comment = cookbook.getComment(recipeId);
+		System.out.println(recipeId+"lalala");
+		comment = this.cookbook.getComment(recipeId);
 
 		int grade = comment.getGrade();
 		if (grade == 1) {
