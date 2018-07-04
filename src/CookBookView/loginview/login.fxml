@@ -7,11 +7,12 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="438.0" prefWidth="256.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.loginview.loginController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.loginview.loginController">
   <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="74.98177337646484" minWidth="10.0" prefWidth="35.80406951904297" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="160.0" minWidth="10.0" prefWidth="142.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="10.0" prefWidth="73.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="74.98177337646484" minWidth="10.0" prefWidth="51.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="328.0" minWidth="10.0" prefWidth="238.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="268.0" minWidth="10.0" prefWidth="30.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="117.0" minWidth="0.0" prefWidth="117.0" />
   </columnConstraints>
   <rowConstraints>
       <RowConstraints maxHeight="130.0" minHeight="10.0" prefHeight="79.0" vgrow="SOMETIMES" />
@@ -26,28 +27,28 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Button fx:id="confirm" mnemonicParsing="false" onAction="#checkNameAndPassword" prefHeight="23.0" prefWidth="68.0" text="confirm" GridPane.columnIndex="2" GridPane.rowIndex="5">
+      <Button fx:id="confirm" mnemonicParsing="false" onAction="#checkNameAndPassword" prefHeight="32.0" prefWidth="90.0" style="-fx-background-color: #4192e3;" text="confirm" GridPane.columnIndex="3" GridPane.rowIndex="5">
          <font>
-            <Font name="Verdana Bold" size="12.0" />
+            <Font name="Verdana Bold" size="14.0" />
          </font></Button>
       <TextField fx:id="nameText" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <Button fx:id="clearpw" mnemonicParsing="false" onAction="#clearPassword" prefHeight="15.0" prefWidth="18.0" text="X" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-      <Button fx:id="clearun" mnemonicParsing="false" onAction="#clearUserName" prefHeight="12.0" prefWidth="12.0" text="X" textFill="#111111" GridPane.columnIndex="2" GridPane.rowIndex="2">
+      <Button fx:id="clearpw" mnemonicParsing="false" onAction="#clearPassword" prefHeight="15.0" prefWidth="18.0" style="-fx-background-color: #00abd8;" text="X" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+      <Button fx:id="clearun" mnemonicParsing="false" onAction="#clearUserName" prefHeight="12.0" prefWidth="12.0" style="-fx-background-color: #00abd8;" text="X" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets />
          </GridPane.margin></Button>
-      <Label prefHeight="37.0" prefWidth="77.0" text=" User name" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <Label prefHeight="37.0" prefWidth="108.0" text=" User name" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <font>
-            <Font name="Didot" size="14.0" />
+            <Font name="System Bold" size="14.0" />
          </font></Label>
       <Label GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <Label prefHeight="17.0" prefWidth="87.0" text=" Password" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <Label prefHeight="24.0" prefWidth="126.0" text=" Password" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <font>
-            <Font name="Didot" size="14.0" />
+            <Font name="System Bold" size="14.0" />
          </font></Label>
-      <Label prefHeight="61.0" prefWidth="162.0" text="  Log in" GridPane.columnIndex="1">
+      <Label prefHeight="93.0" prefWidth="260.0" text="  Log in" GridPane.columnIndex="1">
          <font>
-            <Font name="Courier New Bold" size="18.0" />
+            <Font name="Courier New Bold" size="36.0" />
          </font></Label>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Have no account yet?" GridPane.columnIndex="1" GridPane.rowIndex="6">
          <font>
@@ -56,19 +57,19 @@
       <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Press here to" />
-            <Button fx:id="register" mnemonicParsing="false" onAction="#backtoRegisterView" prefHeight="29.0" prefWidth="75.0" text="register" textFill="#000000ed">
+            <Button fx:id="register" mnemonicParsing="false" onAction="#backtoRegisterView" prefHeight="28.0" prefWidth="79.0" style="-fx-background-color: #4192e3;" text="register" textFill="#000000ed">
                <font>
                   <Font name="Optima Regular" size="13.0" />
                </font></Button>
          </children>
       </HBox>
       <PasswordField fx:id="passwordText" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-      <ImageView fitHeight="63.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+      <ImageView fitHeight="63.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
          <image>
             <Image url="@../LoginView/pic/个人.png" />
          </image>
          <GridPane.margin>
-            <Insets left="120.0" />
+            <Insets />
          </GridPane.margin>
       </ImageView>
       <GridPane GridPane.columnIndex="1" GridPane.rowIndex="8">
@@ -82,9 +83,9 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Du bist was du isst." wrappingWidth="195.310546875" GridPane.rowIndex="2">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Du bist was du isst." wrappingWidth="394.310546875" GridPane.rowIndex="2">
                <font>
-                  <Font name="Savoye LET Plain:1.0" size="36.0" />
+                  <Font name="Pristina" size="48.0" />
                </font>
             </Text>
          </children>

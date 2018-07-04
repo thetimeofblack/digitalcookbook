@@ -2,8 +2,8 @@ package CookBookView.detailview;
 
 import java.util.Iterator;
 import java.util.LinkedList;
-
-import com.mysql.cj.xdevapi.DatabaseObjectDescription;
+/*
+import com.mysql.cj.xdevapi.DatabaseObjectDescription;*/
 import com.sun.javafx.print.Units;
 import com.sun.prism.Texture.Usage;
 
@@ -38,6 +38,9 @@ public class IngredientController {
 	@FXML
 	private Text Description;
 	
+	private int servingNumber;
+	private int den;
+	
 	
 	// Event Listener on Pane[#ingredientPane].onDragDetected
 	@FXML
@@ -47,26 +50,41 @@ public class IngredientController {
 	
 	public void addingredients(LinkedList<Ingredient> ingredients) throws Exception{
 		Iterator<Ingredient> iterator= ingredients.iterator();
+		int number = 0; 
 		while(iterator.hasNext()) {
+			number = number +1; 
 			Ingredient ingredient = iterator.next();
 			FXMLLoader hboxloader = new FXMLLoader(getClass().getResource("inpanehbox.fxml"));
 			HBox hBox = hboxloader.load();
+			Text No = (Text) hBox.getChildren().get(0);
 			Text Name = (Text) hBox.getChildren().get(1);
 			Text Usage= (Text) hBox.getChildren().get(2);
 			Text Unit =(Text)hBox.getChildren().get(3);
 			Text Description = (Text)hBox.getChildren().get(4);
+			No.setText(String.valueOf(number));
 			Name.setText(ingredient.getName());
-			Usage.setText(String.valueOf(ingredient.getAmount()));
+			Usage.setText(String.valueOf(ingredient.getAmount() * servingNumber/den));
 			Unit.setText(ingredient.getUnit());
-			Description.setText(ingredient.getDescription());
+			if(ingredient.getDescription().equals("null")) {
+				Description.setText("");
+			}else {
+				Description.setText(ingredient.getDescription());
+			}
 			vbox.getChildren().add(hBox);
 			System.out.println("add Ingredients");
 		}
 	}
+
 	public VBox getVBox() {
 		return this.vbox;
 	}
 	public void setVBox(VBox vBox) {
 		this.vbox =vBox;
+	}
+	public void setServingNumber(int servingNumber) {
+		this.servingNumber = servingNumber;
+	}
+	public void setden(int den) {
+		this.den=den;
 	}
 }

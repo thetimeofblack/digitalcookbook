@@ -27,7 +27,7 @@ public class EditView extends Application{
 		cookBook.setUser(user);
 		edcontroller.showRecipe();
 		
-		Scene scene = new Scene(root,600,800);
+		Scene scene = new Scene(root,430,690);
 		primaryStage.setScene(scene);
 		edcontroller.setCookBook(cookBook);
 		edcontroller.setScene(scene);

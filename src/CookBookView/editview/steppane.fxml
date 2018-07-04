@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -11,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.editview.StepController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.editview.StepController">
    <children>
       <GridPane layoutX="7.0" layoutY="62.0" prefHeight="42.0" prefWidth="392.0">
         <columnConstraints>
@@ -40,12 +44,12 @@
             <Font size="16.0" />
          </font>
       </Text>
-      <HBox layoutX="226.0" layoutY="14.0" prefHeight="30.0" prefWidth="174.0">
+      <HBox layoutX="75.0" layoutY="14.0" prefHeight="30.0" prefWidth="325.0">
          <children>
             <Button mnemonicParsing="false" onAction="#AddLine" text="Add" />
             <Button mnemonicParsing="false" onAction="#SubLine" text="Sub" />
             <Button mnemonicParsing="false" onAction="#savesteps" text="OK" />
-            <Button mnemonicParsing="false" onAction="#cancelSteps" prefHeight="23.0" prefWidth="60.0" text="Cancel" />
+            <Button mnemonicParsing="false" onAction="#cancelSteps" prefHeight="30.0" prefWidth="81.0" text="Cancel" />
          </children>
       </HBox>
    </children>

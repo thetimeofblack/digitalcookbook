@@ -5,8 +5,8 @@ import java.awt.event.ActionEvent;
 import java.security.KeyStore.PrivateKeyEntry;
 import java.util.Iterator;
 import java.util.LinkedList;
-
-import com.mysql.cj.exceptions.ExceptionInterceptorChain;
+/*
+import com.mysql.cj.exceptions.ExceptionInterceptorChain;*/
 
 import CookBookEntity.PreparationStep;
 import javafx.fxml.FXML;

@@ -12,10 +12,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Iterator;
 import java.util.LinkedList;
-
+/*
 import com.mysql.cj.exceptions.RSAException;
 import com.mysql.cj.jdbc.ha.SequentialBalanceStrategy;
-import com.mysql.cj.xdevapi.Result;
+import com.mysql.cj.xdevapi.Result;*/
 import com.sun.glass.ui.TouchInputSupport;
 
 import CookBookEntity.Comment;
@@ -30,14 +30,14 @@ public class DatabaselayerObject {
 	private Connection con;
 	private Statement sql;
 	static ResultSet res, res2;
-	//final private String driver = "com.mysql.jdbc.Driver";
+	final private String driver = "com.mysql.jdbc.Driver";
 	final private String Databaseuser = "root";
-	final private String driver = "com.mysql.cj.jdbc.Driver";
+	//final private String driver = "com.mysql.cj.jdbc.Driver";
 
-	final private String Databasepassword = "heyining";//¿ÉÐÞ¸ÄÏîÄ¿
-	//final private String Databasepassword = "258000";//¿ÉÐÞ¸ÄÏîÄ¿
-	final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306/?characterEncoding=utf8&useSSL=true&serverTimezone=GMT&autoReconnect=true&failOverReadOnly=false";//¿ÉÐÞ¸ÄÏîÄ¿
-	//final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306";//¿ÉÐÞ¸ÄÏîÄ¿
+	//final private String Databasepassword = "heyining";//¿ÉÐÞ¸ÄÏîÄ¿
+	final private String Databasepassword = "1989";//¿ÉÐÞ¸ÄÏîÄ¿
+	//final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306/?characterEncoding=utf8&useSSL=true&serverTimezone=GMT&autoReconnect=true&failOverReadOnly=false";//¿ÉÐÞ¸ÄÏîÄ¿
+	final private String Databaseurl = "jdbc:mysql://127.0.0.1:3306/cookbook?&useSSL=false";//¿ÉÐÞ¸ÄÏîÄ¿
 	
 
 	private User user; 
@@ -100,10 +100,12 @@ public class DatabaselayerObject {
 		String s1 = "select * from cookbook.user where UserName = '"+ username +"'";
 		res = this.sql.executeQuery(s1);
 		if(res.first()){
-			String s2 = "select * from cookbook.user where UserName = '" + username + "' and UserPassword = '" + userpassword+"'";
+			String s2 = "select * from cookbook.user where UserName = '" + username +"'" ;
 			
 			res = this.sql.executeQuery(s2);
+			
 			res.next();
+			
 			String databasepassword = res.getString("UserPassword");
 			System.out.println(databasepassword);
 			if (userpassword.equals(databasepassword)) {
@@ -136,8 +138,10 @@ public class DatabaselayerObject {
 	 * @return
 	 * @throws SQLException
 	 */
-	public boolean userRegister(User user) throws SQLException {
+	public boolean userRegister(User user) throws Exception {
 		String sqlstr1 = "select * from `cookbook`.`user` where username = '"+user.getUserName()+"'";
+		this.con = this.getConnection(); 
+		this.sql = this.con.createStatement() ; 
 		res = this.sql.executeQuery(sqlstr1);
 		if(res.first()) {
 			return false; 
@@ -148,14 +152,13 @@ public class DatabaselayerObject {
 		System.out.println(sqlstr2);
 		//int res1 = this.sql.executeUpdate(sqlstr2);
 		PreparedStatement pstmt = this.con.prepareStatement(sqlstr2,Statement.RETURN_GENERATED_KEYS);
-		int res1 = pstmt.executeUpdate();
-		System.out.println(res1);
-        ResultSet rs = pstmt.getGeneratedKeys();
-
-				
-		//锟斤拷取锟皆讹拷锟斤拷拥锟絠d锟斤�?		        
-
-        String id = rs.getString(1);
+		pstmt.executeUpdate();
+		//int res1 = pstmt.executeUpdate();
+		//System.out.println(res1);
+        ResultSet rs1 = pstmt.getGeneratedKeys();
+		//锟斤拷取锟皆讹拷锟斤拷拥锟絠d锟斤�?		  
+        rs1.next();
+        String id = rs1.getString(1);
         user.setUserID(id);            
         this.user = user;
 		return true; 	
@@ -420,7 +423,7 @@ public class DatabaselayerObject {
 	private void insertrecipeuser(Recipe recipe) throws SQLException{
 		int res1 = 0;
 		System.out.println("This is recipe id "+recipe.getRecipeID());
-		String ss4 = "INSERT INTO `cookbook`.`UserRecipe` (`userid`,`recipeid`) values(" 
+		String ss4 = "INSERT INTO `cookbook`.`User-Recipe` (`userid`,`recipeid`) values(" 
 				+ Integer.parseInt(this.user.getUserID())+ "," 
 				+ Integer.parseInt(recipe.getRecipeID())+ ")";
 				
@@ -558,7 +561,7 @@ public class DatabaselayerObject {
 
 	public boolean judgefavourite(String recipeid) throws Exception {
 		
-		String ss = "select * from `cookbook`.`favourite` where recipeid = '"+recipeid+"' and userid = "+this.user.getUserID();
+		String ss = "select * from `cookbook`.`favourite` where recipeid = '"+recipeid+"' and userid = '"+this.user.getUserID()+"'";
 		this.con = this.getConnection();
 		this.sql = this.con.createStatement();
 		this.res = this.sql.executeQuery(ss);
@@ -726,17 +729,19 @@ public class DatabaselayerObject {
     }
     
     public LinkedList<Recipe> getUserallRecipe(String userid) throws Exception{
-    	String sqlstr ="select * from cookbook.userrecipe , cookbook.recipe "+
-    	" where cookbook.userrecipe.userid = "+userid+ 
-    	" and cookbook.userrecipe.recipeid=cookbook.recipe.id ";
+    	String sqlstr ="select * from `cookbook`.`user-recipe` , `cookbook`.`recipe` "+
+    	" where `cookbook`.`user-recipe`.`userid` = '"+userid+ 
+    	"' and `cookbook`.`user-recipe`.`recipeid`=`cookbook`.`recipe`.`id` ";
+    	System.out.println(sqlstr);
     	Connection connection = this.getConnection(); 
     	Statement statement = connection.createStatement();
     	ResultSet resultSet  = statement.executeQuery(sqlstr);
     	LinkedList<Recipe> recipelist = new LinkedList<Recipe>();
     	while(resultSet.next()) {
     		
-    		Recipe recipe = this.getRecipe(resultSet.getString("ID"),resultSet);
+    		Recipe recipe = this.getRecipe(resultSet.getString("recipeid"),resultSet);
     		recipelist.add(recipe);
+    		System.out.println(recipe.getRecipeID());
     	}
     	connection.close();    	
     	return recipelist ; 
@@ -792,6 +797,7 @@ public class DatabaselayerObject {
 			ingredient.setName(res.getString("Name"));
 			ingredient.setAmount(res.getDouble("Amount"));
 			ingredient.setUnit(res.getString("Unit"));
+			ingredient.setDescription(res.getString("Description"));
 			ingredientlist.add(ingredient);
 		}
 		connection.close();
@@ -910,7 +916,7 @@ public class DatabaselayerObject {
 	  Comment comment = new Comment() ; 
 	  Connection connection = this.getConnection(); 
 	  Statement statement = connection.createStatement(); 
-	  String sql = "select * from cookbook.rateandcomments where userid="+userid+" and recipeid="+recipeid;
+	  String sql = "select * from cookbook.rateandcomments where userid='"+userid+"' and recipeid='"+recipeid+"'";
 	  ResultSet resultSet = statement.executeQuery(sql);
 	  while(resultSet.next()) {
 		  comment.setComment(resultSet.getString("comments"));
@@ -937,10 +943,12 @@ public class DatabaselayerObject {
 	  this.con = this.getConnection(); 
 	  this.sql = this.con.createStatement(); 
 	  String sql1 = "select * from cookbook.rateandcomments where userid=" + userid + " and recipeid= "+recipeid;
-	  ResultSet resultSet = this.sql.executeQuery(sql1);
+
+	  res = this.sql.executeQuery(sql1);
 	  int finalresult ; 
-	  if(resultSet.isFirst()) {
-		  String sql2 = "update cookbook.rateandcomments set rate =" +grade +"where userid = " +userid +" and recipeid = "+recipeid; 
+	  if(res.first() == true) {
+		  String sql2 = "update cookbook.rateandcomments set rate =" +grade +" where userid = " +userid +" and recipeid = "+recipeid; 
+
 		  finalresult = this.sql.executeUpdate(sql2);
 		 
 	  }else {

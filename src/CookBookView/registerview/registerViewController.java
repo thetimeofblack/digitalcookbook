@@ -4,33 +4,42 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
 import javafx.event.ActionEvent;
 
 
 import CookBookDataBaseAcess.DatabaselayerObject;
 import CookBookEntity.User;
+import CookBookView.firstview.fvController;
+import CookBookView.loginview.loginController;
 import DigitalCookbook.CookBook;
 public class registerViewController {
 	@FXML
 	private TextField username;
 	@FXML
-	private TextField userpassword1;
+	private PasswordField userpassword1;
 	@FXML
-	private TextField userpassword2;
+	private PasswordField userpassword2;
 	@FXML
 	private Button ok;
 
 	private Stage stage;
 	
 	private Scene scene;
+	
+	@FXML
+	private ImageView back; 
 	
 	
 	
@@ -59,10 +68,14 @@ public class registerViewController {
 				this.cookbook = new CookBook(); 
 				cookbook.userRegister(user);
 				resultText.setText("Register successfully");
-				FXMLLoader fxmlforlogin  = new FXMLLoader(getClass().getResource("../login.fxml"));
+				FXMLLoader fxmlforlogin  = new FXMLLoader(getClass().getResource("../loginview/login.fxml"));
 				GridPane rootforlogin = (GridPane)fxmlforlogin.load();
-				this.scene = new Scene(rootforlogin,290,470);
+				loginController lgcontroller = fxmlforlogin.getController(); 
+				lgcontroller.setScene(this.scene);
+				lgcontroller.setStage(this.stage);
+				this.scene = new Scene(rootforlogin,430,690);
 				this.stage.setScene(this.scene);
+				
 				this.stage.show();
 				
 			}
@@ -72,6 +85,7 @@ public class registerViewController {
 		
 		stage.setScene(scene);
 		stage.show();
+		
 		controller.setStage(stage);
 		/**
 		 * if()
@@ -99,6 +113,17 @@ public class registerViewController {
 	
 	public void setCookBook(CookBook cookbook) {
 		this.cookbook = cookbook;
+	}
+	
+	public void back() throws Exception{
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../firstview/fv.fxml"));
+		BorderPane root = (BorderPane) loader.load();
+		fvController controller = loader.getController(); 
+		controller.setScene(this.scene);
+		controller.setStage(this.stage);
+		this.scene.setRoot(root);
+		this.stage.setScene(this.scene);
+		this.stage.show();
 	}
 	
 	

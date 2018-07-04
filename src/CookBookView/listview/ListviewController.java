@@ -72,14 +72,14 @@ public class ListviewController {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("subview.fxml"));
 			Pane subView = loader.load();
 			SubviewController controller = loader.getController();
-			
+
+			controller.setCookBook(this.cookBook);
 			controller.setRecipe(recipe);
 			controller.setName();
 			controller.setStar();
 			controller.setFavourite();
 			controller.setStageAndScene(stage, scene);
 			//controller.setDatabaselayerObject(databaselayerObject);
-			controller.setCookBook(this.cookBook);
 			this.recipeVBox.getChildren().add(subView);
 		}
 	}
