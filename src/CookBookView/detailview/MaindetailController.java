@@ -155,6 +155,7 @@ public class MaindetailController {
 		setStar(star4);
 		setStar(star5);
 	}
+	
 	public void mouseClickStar1(MouseEvent event) throws Exception{
 		this.previousrate =1;
 		this.cookbook.setRate(this.previousrate, recipe.getRecipeID());
@@ -474,12 +475,14 @@ public class MaindetailController {
 	}
 
 	public void showComment() throws Exception {
+		
 		LinkedList<Comment> comments = this.cookbook.getComments(recipe.getRecipeID());
 		if (subsm == false ) {
 
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("Comment.fxml"));
 			this.subcmpane = loader.load();
 			CommentController controller = loader.getController();
+			//controller.setCookBook(cookbook);
 			controller.showComments(comments);
 			subsm = true;
 			System.out.println("show all comments for this recipe");
