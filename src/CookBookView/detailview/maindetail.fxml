@@ -67,7 +67,7 @@
 											<graphic>
 												<ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
 													<image>
-														<Image url="@../searchview/emptystar.png" />
+														<Image url="@../pic/emptystar.png" />
 													</image>
 												</ImageView>
 											</graphic>
@@ -76,7 +76,7 @@
 											<graphic>
 												<ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
 													<image>
-														<Image url="@../searchview/emptystar.png" />
+														<Image url="@../pic/emptystar.png" />
 													</image>
 												</ImageView>
 											</graphic>
@@ -85,7 +85,7 @@
 											<graphic>
 												<ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
 													<image>
-														<Image url="@../searchview/emptystar.png" />
+														<Image url="@../pic/emptystar.png" />
 													</image>
 												</ImageView>
 											</graphic>
@@ -94,7 +94,7 @@
 											<graphic>
 												<ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
 													<image>
-														<Image url="@../searchview/emptystar.png" />
+														<Image url="@../pic/emptystar.png" />
 													</image>
 												</ImageView>
 											</graphic>
@@ -103,7 +103,7 @@
 											<graphic>
 												<ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
 													<image>
-														<Image url="@../searchview/emptystar.png" />
+														<Image url="@../pic/emptystar.png" />
 													</image>
 												</ImageView>
 											</graphic>

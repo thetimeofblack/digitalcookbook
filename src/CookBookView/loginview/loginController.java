@@ -42,7 +42,7 @@ public class loginController {
 	
 	private DatabaselayerObject dao; 
 	
-	private CookBook cookkbook; 
+	private CookBook cookbook; 
 	
 
 	// Event Listener on Button[#confirm].onAction
@@ -51,31 +51,40 @@ public class loginController {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../searchview/searchView.fxml"));
 		GridPane root = (GridPane) loader.load();
 		SearchViewController svc = loader.getController();
-		
+		String resultstring = null ; 
 		if(nameText.getText()!="") {
 			
 		User user = new User(nameText.getText(),passwordText.getText());
 		
 		
-		this.cookkbook =  new CookBook(); 
-		int result = cookkbook.userLogin(user);
-		String resultstring ; 
-		if(result==-1) resultstring = "username does not exist";
+		this.cookbook =  new CookBook(); 
+		int result = cookbook.userLogin(user);
 		
-		if(result==0) resultstring = "user password is not right";
+		
+		if(result==-1) {
+			resultstring = "username does not exist";
+		}
+		
+		if(result==0) {
+			resultstring = "user password is not right";
+		}
 		if(result==1) {
 		resultstring = "user login successfully";
+		//System.out.println("this is"+this.user.getUserID());
+		
+
 		
 		//scene.getStylesheets().clear();
 		//svc.setDatabaselayerObject(this.dao);
 		svc.setStage(stage);
 		svc.setScene(scene);
-		svc.setCookBook(this.cookkbook);
+		//cookbook.setUser(new User(user.getUserName(),user.getUserID()));
+		svc.setCookBook(this.cookbook);
 		scene.setRoot(root);
 		stage.setScene(scene);
 		stage.show();
 		}
-		
+		//System.out.println(resultstring);
 		}
 	}
 

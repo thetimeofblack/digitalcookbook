@@ -19,6 +19,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 public class steppaneController {
 	@FXML
@@ -38,8 +39,11 @@ public class steppaneController {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("stpanehbox.fxml"));
 		HBox stHBox = (HBox) loader.load(); 
 		addnumber = addnumber + 1;
+		Text no = (Text)stHBox.getChildren().get(0);
+		no.setText(String.valueOf(addnumber));
 		System.out.println("add step hbox");
 		this.vbox.getChildren().add(stHBox);
+		
 	}
 	// Event Listener on Button[#confirm].onAction
 	@FXML

@@ -6,10 +6,10 @@
 
 <HBox prefHeight="20.0" prefWidth="363.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="19.21875" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="103.21875" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="37.21875" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="141.21875" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="126.21875" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="30.0" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="150.0" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="60.0" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="50.0" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="150.0" />
    </children>
 </HBox>

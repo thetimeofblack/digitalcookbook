@@ -11,7 +11,7 @@ public class LoginView extends javafx.application.Application{
 	public void start(Stage primaryStage) throws Exception {
         try {
             GridPane root = (GridPane) FXMLLoader.load(getClass().getResource("fv.fxml"));
-            Scene scene = new Scene(root, 290, 470);
+            Scene scene = new Scene(root, 430, 690);
      
             
 

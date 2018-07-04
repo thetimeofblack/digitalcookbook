@@ -102,7 +102,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
             </GridPane>
-            <Label fx:id="ingredient" layoutX="6.0" layoutY="183.0" onMouseClicked="#editIngredients" prefHeight="80.0" prefWidth="64.0">
+            <Label fx:id="ingredient" layoutX="10.0" layoutY="212.0" onMouseClicked="#editIngredients" prefHeight="42.0" prefWidth="39.0">
                <graphic>
                   <ImageView fitHeight="39.0" fitWidth="41.0" onMouseClicked="#editIngredients">
                      <image>
@@ -113,7 +113,7 @@
                <tooltip>
                   <Tooltip text="Click here to edit ingredients." />
                </tooltip></Label>
-            <Label layoutX="11.0" layoutY="255.0" onMouseClicked="#editsteps" prefHeight="73.0" prefWidth="55.0">
+            <Label layoutX="11.0" layoutY="267.0" onMouseClicked="#editsteps" prefHeight="54.0" prefWidth="39.0">
                <graphic>
                   <ImageView fitHeight="35.0" fitWidth="37.0">
                      <image>
@@ -124,7 +124,7 @@
                <tooltip>
                   <Tooltip text="Click herer to edit steps." />
                </tooltip></Label>
-            <Label layoutX="11.0" layoutY="315.0" onMouseClicked="#editcomments" prefHeight="91.0" prefWidth="78.0">
+            <Label layoutX="11.0" layoutY="336.0" onMouseClicked="#editcomments" prefHeight="42.0" prefWidth="39.0">
                <graphic>
                   <ImageView fitHeight="34.0" fitWidth="35.0">
                      <image>

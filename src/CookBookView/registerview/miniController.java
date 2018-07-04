@@ -18,9 +18,14 @@ public class miniController implements Initializable {
 	@FXML
 	private Text mainText; 
 	
-
+	private Scene scene ;
+	
+	private Stage stage ;
+	
+	
 	public void afterOk(ActionEvent e) {
 		privatestage.hide();
+		
 	}
 	public void setStage(Stage stage) {
 		this.privatestage = stage; 
@@ -39,4 +44,8 @@ public class miniController implements Initializable {
 		
 		
 	}
+	
+	public void setPreviousStage(Stage stage) {
+		this.stage = stage; 
+	} 
 }
