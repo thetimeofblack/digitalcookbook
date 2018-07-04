@@ -94,8 +94,9 @@ public class DatabaselayerObject {
 	 * @return
 	 * @throws SQLException
 	 */
-	public int userLogin(String username, String userpassword) throws SQLException {
-			
+	public int userLogin(String username, String userpassword) throws Exception {
+		this.con = this.getConnection(); 
+		this.sql = this.con.createStatement();
 		String s1 = "select * from cookbook.user where UserName = '"+ username +"'";
 		res = this.sql.executeQuery(s1);
 		if(res.first()){
@@ -120,6 +121,7 @@ public class DatabaselayerObject {
 		//String s = "select * from cookbook.user where UserName = ? and UserPassword = ?";
 		//PreparedStatement ps = (PreparedStatement) con.prepareStatement(s);
 		//ps.setString(arg0, arg1);	
+		
 	}
 	
 
@@ -634,11 +636,11 @@ public class DatabaselayerObject {
     }
     
 	
-    public boolean saveCommentandRate(Comment comment , int recipeid)throws Exception{
-        int userid = Integer.parseInt(this.user.getUserID());
+    public boolean saveCommentandRate(Comment comment , int recipeid ,String userid)throws Exception{
+       
         String sqlstr = "insert into cookbook.rateandcomments (recipeid,userid,rate,comments) values('"+
         		recipeid+"','"+
-        		this.user.getUserID()+"','"+
+        		userid+"','"+
         		comment.getGrade()+"','"+ 
         		comment.getComment()+"')";
         
@@ -709,13 +711,13 @@ public class DatabaselayerObject {
     	return this.user;
     }
     
-    public boolean getRecipeComment(LinkedList<Comment> comments ,String recipeid) throws Exception{
+    public LinkedList<Comment>  getRecipeComment(String recipeid) throws Exception{
     	String sqlstr = "select * from cookbook.rateandcomments"
     			+ " where recipeid= "+recipeid;
     	Connection connection = this.getConnection();
     	this.sql = connection.createStatement();
     	ResultSet res = this.sql.executeQuery(sqlstr);
-        comments = new LinkedList<Comment>();
+        LinkedList<Comment> comments = new LinkedList<Comment>();
     	while(res.next()) {
     	Comment comment = new Comment(res.getInt("rate"), res.getString("comments"));
         comment.setUserid(res.getString("userid"));
@@ -723,8 +725,7 @@ public class DatabaselayerObject {
         comments.add(comment);
     	}
     	connection.close();
-    	if(comments.isEmpty()) return false; 
-    	return true;
+    	return comments; 
     }
     
     public LinkedList<Recipe> getUserallRecipe(String userid) throws Exception{
@@ -833,10 +834,11 @@ public class DatabaselayerObject {
     	int result = this.sql.executeUpdate(sqlstr);
     	return true;
     	}
-    	this.sql.close();
+    	
     	connection.close();
     	if(res.first()) return true; 
     	return false; 
+    	
     	
     }
     
@@ -941,10 +943,12 @@ public class DatabaselayerObject {
 	  this.con = this.getConnection(); 
 	  this.sql = this.con.createStatement(); 
 	  String sql1 = "select * from cookbook.rateandcomments where userid=" + userid + " and recipeid= "+recipeid;
+
 	  res = this.sql.executeQuery(sql1);
 	  int finalresult ; 
 	  if(res.first() == true) {
 		  String sql2 = "update cookbook.rateandcomments set rate =" +grade +" where userid = " +userid +" and recipeid = "+recipeid; 
+
 		  finalresult = this.sql.executeUpdate(sql2);
 		 
 	  }else {
@@ -966,5 +970,25 @@ public class DatabaselayerObject {
 	  if(res>0) return true;
 	  return false; 
   }
+  
+  public void editComment(String userid, String recipeid,String comment) throws Exception {
+	  this.con = this.getConnection(); 
+	  this.sql = this.con.createStatement() ; 
+	  String first = "set SQL_SAFE_UPDATES=0";
+	  this.sql.executeUpdate(first);
+	  String sql1  = "select * from cookbook.rateandcomments where userid="+ userid+" and recipeid="+recipeid;
+	  ResultSet resultSet = this.sql.executeQuery(sql1);
+	  if(resultSet.first()) {
+		  String sql2 = "update cookbook.rateandcomments set comments = '"+comment+"'" + " where userid ="+userid + " and recipeid= "+recipeid;
+		  this.sql.executeUpdate(sql2);
+		  System.out.println("update comment successfully");
+		  
+	  }else {
+		  String sql3 = "insert into cookbook.rateandcomments(recipeid, userid,comments) values("+recipeid+","+userid+",'"+comment+"')";
+		  this.sql.executeUpdate(sql3);
+		  System.out.println("insert into comment successfully");
+	  }
+  }
+  
  }
 

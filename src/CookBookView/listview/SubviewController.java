@@ -56,6 +56,7 @@ public class SubviewController {
 	}
 
 	public void setStar() throws Exception {
+
 		Comment comment = null;
 		String recipeId = recipe.getRecipeID();
 		comment = cookbook.getComment(recipeId);
@@ -92,6 +93,7 @@ public class SubviewController {
 		iv.setFitHeight(20);
 		iv.setFitWidth(20);
 		star.setGraphic(iv);
+
 	}
 
 	public void setFavourite() throws Exception {

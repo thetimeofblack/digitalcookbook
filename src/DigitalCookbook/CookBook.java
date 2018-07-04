@@ -74,7 +74,7 @@ public class CookBook {
 	}
 	
 	public void commentRecipe(String recipeid , Comment comment) throws  Exception {
-		this.databaselayerObject.saveCommentandRate(comment, Integer.parseInt(recipeid));
+		this.databaselayerObject.saveCommentandRate(comment, Integer.parseInt(recipeid),this.user.getUserID());
 		
 	}
 	
@@ -87,9 +87,7 @@ public class CookBook {
 	}
 	
 	public LinkedList<Comment> getRecipeComment (String recipeid) throws Exception {
-		LinkedList<Comment> comments= new LinkedList<Comment>();
-		boolean result = databaselayerObject.getRecipeComment(comments, recipeid);
-		return comments;
+		return this.databaselayerObject.getRecipeComment(recipeid);
 	}
 	
 	public LinkedList<Recipe> getallrecipelist(){
@@ -172,7 +170,7 @@ public class CookBook {
 	
 	public boolean saveComment(Comment comment,String recipeid ) throws Exception {
 		System.out.println(recipeid);
-		boolean result =this.databaselayerObject.saveCommentandRate(comment, Integer.parseInt(recipeid));
+		boolean result =this.databaselayerObject.saveCommentandRate(comment, Integer.parseInt(recipeid),this.user.getUserID());
 		return result; 
 	}
 	
@@ -209,9 +207,7 @@ public class CookBook {
 	}
 	
 	public LinkedList<Comment> getComments(String recipeid) throws Exception{
-		LinkedList<Comment> comments= new LinkedList<Comment>(); 
-		this.databaselayerObject.getRecipeComment(comments, recipeid);
-		return comments; 
+		return this.databaselayerObject.getRecipeComment(recipeid);
 	}
 	
 	public Comment getComment(String recipeid) throws Exception {
@@ -246,6 +242,10 @@ public class CookBook {
 		String userid = this.user.getUserID(); 
 		this.databaselayerObject.deleteFavourite(recipeid, userid);
 		
+	}
+	
+	public void editComment(String recipeid,String comment) throws Exception{
+		this.databaselayerObject.editComment(this.user.getUserID(), recipeid,comment);
 	}
 
 }
