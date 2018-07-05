@@ -395,16 +395,56 @@ public class MaindetailController {
 			setFiveStar();
 		}
 	}
+	public void MouseEnterFavourite() throws Exception {
+		if(cookbook.isFavourite(recipe)){
+			setEmptyHeart();
+		}else {
+			setFullHeart();
+		}
+	}
+	public void MouseExistFavourite() throws Exception{
+		
+		if(cookbook.isFavourite(recipe)){
+			setFullHeart();
+		}else {
+			
+			setEmptyHeart();
+		}
+	}
+	
+	public void MouseClickFavourite() throws Exception{
+		if(!cookbook.isFavourite(recipe)) {
+			cookbook.setFavourite(recipe.getRecipeID());
+			setFullHeart();
+		}else {
+			cookbook.deleteFavourite(recipe);
+			setEmptyHeart();
+		}
+	}
 
 	// initialize favourite
 	public void initializeFavourite() throws Exception {
 		if (cookbook.isFavourite(recipe)) {
-			Image image = new Image(getClass().getResourceAsStream("../pic/fullheart.png"));
-			ImageView iv = new ImageView(image);
-			iv.setFitHeight(34);
-			iv.setFitWidth(34);
-			favourite.setGraphic(iv);
+			setFullHeart();
+		}else {
+			setEmptyHeart();
 		}
+	}
+	
+	private void setFullHeart() {
+		Image image = new Image(getClass().getResourceAsStream("../pic/fullheart.png"));
+		ImageView iv = new ImageView(image);
+		iv.setFitHeight(34);
+		iv.setFitWidth(34);
+		favourite.setGraphic(iv);
+	}
+	
+	private void setEmptyHeart() {
+		Image image = new Image(getClass().getResourceAsStream("../pic/emptyheart.png"));
+		ImageView iv = new ImageView(image);
+		iv.setFitHeight(34);
+		iv.setFitWidth(34);
+		favourite.setGraphic(iv);
 	}
 
 	// star operations

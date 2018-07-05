@@ -183,7 +183,7 @@
       												</ImageView>
       											</graphic>
       										</Label>
-                        <Label fx:id="favourite" onMouseClicked="#initializeFavourite">
+                        <Label fx:id="favourite" onMouseClicked="#MouseClickFavourite" onMouseEntered="#MouseEnterFavourite" onMouseExited="#MouseExistFavourite" prefHeight="20.0" prefWidth="20.0" >
                            <graphic>
                               <ImageView fitHeight="34.0" fitWidth="33.0">
                                  <image>
