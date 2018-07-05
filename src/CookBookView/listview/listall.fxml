@@ -29,7 +29,7 @@
 				</Label>
 				<Label fx:id="egg_milk" onMouseClicked="#createeggrecipelist" prefHeight="44.0" prefWidth="44.0">
                <graphic>
-                  <ImageView fitHeight="58.0" fitWidth="50.0">
+                  <ImageView fitHeight="53.0" fitWidth="48.0">
                      <image>
                         <Image url="@../pic/milk.png" />
                      </image>

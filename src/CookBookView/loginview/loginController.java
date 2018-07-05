@@ -64,6 +64,7 @@ public class loginController {
 		
 		if(result==-1) {
 			resultstring = "username does not exist";
+			System.out.println(1);
 		}
 		
 		if(result==0) {
