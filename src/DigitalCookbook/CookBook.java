@@ -317,6 +317,11 @@ public class CookBook {
 		
 	}
 	
+	/**
+	 * @Description get the list of recipes which the user have made rank for.
+	 * @return
+	 * @throws Exception
+	 */
 	public LinkedList<Recipe> getRankedRecipeList() throws Exception{
 		LinkedList<Recipe> recipelist = new LinkedList<Recipe>();
 		recipelist = this.databaselayerObject.getRankedlist(this.user.getUserID());
@@ -325,6 +330,12 @@ public class CookBook {
 		return recipelist;
 	}
 	
+	/**
+	 * @Description get the list of comments the users have made for the recipe.
+	 * @param recipeid
+	 * @return
+	 * @throws Exception
+	 */
 	public LinkedList<Comment> getComments(String recipeid) throws Exception{
 		return this.databaselayerObject.getRecipeComment(recipeid);
 	}
@@ -341,6 +352,11 @@ public class CookBook {
 		return comment; 
 	}	
 	
+	/**
+	 * @Description delete the user's comment of the recipe
+	 * @param recipeid
+	 * @throws Exception
+	 */
 	public void deleteUserComment(String recipeid)throws Exception {
 		this.databaselayerObject.setUser(this.user);
 		boolean result = this.databaselayerObject.deleteComment(recipeid);
@@ -348,20 +364,46 @@ public class CookBook {
 		else System.out.println("Comment for recipe is deleted");
 	} 
 	
+	
+	/**
+	 * @Description edite the recipe
+	 * @param recipe
+	 * @return
+	 * @throws Exception
+	 */
 	public boolean editRecipe(Recipe recipe) throws Exception{
 		return this.databaselayerObject.editRecipe(recipe);
 	}
+	
+	/**
+	 * @Description whether the recipe has been selected as favourite.
+	 * @param recipe
+	 * @return
+	 * @throws Exception
+	 */
 	public boolean isFavourite(Recipe recipe) throws Exception{
 		boolean result = this.databaselayerObject.judgefavourite(recipe.getRecipeID());
 		return result;
 	}
 	
+	/**
+	 * @Description set rate for a specific recipe
+	 * @param rate
+	 * @param recipeid
+	 * @throws Exception
+	 */
 	public void setRate(int rate , String recipeid)throws Exception{
 		boolean result = this.databaselayerObject.setRate(this.user.getUserID(), recipeid, rate);
 		if(result) System.out.println("set rate for recipe successfully");
 		else System.out.println("We can not set rate for the recipe");
 	}
 	
+	
+	/**
+	 * @Description cancel the mark of favorite of a specific recipe.
+	 * @param recipe
+	 * @throws Exception
+	 */
 	public void deleteFavourite(Recipe recipe) throws Exception{
 		String recipeid = recipe.getRecipeID(); 
 		String userid = this.user.getUserID(); 
@@ -369,6 +411,13 @@ public class CookBook {
 		
 	}
 	
+	
+	/**
+	 * @Description edit the comment of a specific recipe.
+	 * @param recipeid
+	 * @param comment
+	 * @throws Exception
+	 */
 	public void editComment(String recipeid,String comment) throws Exception{
 		this.databaselayerObject.editComment(this.user.getUserID(), recipeid,comment);
 	}

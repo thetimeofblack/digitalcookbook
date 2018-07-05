@@ -32,7 +32,8 @@ public class fvController {
 	public void initialize() {
 
 	}
-
+	
+	
 	public void loginView(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../loginview/login.fxml"));
 		GridPane root = (GridPane) loader.load();

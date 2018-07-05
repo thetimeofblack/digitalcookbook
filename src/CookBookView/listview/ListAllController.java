@@ -148,7 +148,16 @@ public class ListAllController {
 			this.recipeVBox.getChildren().add(pane);
 			this.mainpane.setContent(this.recipeVBox);
 		}
+		
+			
 		}
+		else {
+			this.recipeVBox = new VBox();	
+			
+
+			this.mainpane.setContent(this.recipeVBox);
+		}
+	
 			
 		
 	}
