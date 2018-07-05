@@ -270,8 +270,8 @@ public class MaindetailController {
 		this.mainanchor = new AnchorPane();
 		if (this.subin == false && ingredientlist!=null) {
 			this.subinpane = new AnchorPane();
-			this.subinpane.setPrefHeight(400);
-			this.subinpane.setPrefWidth(600);
+			this.subinpane.setPrefHeight(800);
+			this.subinpane.setPrefWidth(400);
 		
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("ingredientpane.fxml"));
 			Pane pane = (Pane) loader.load();
@@ -484,11 +484,13 @@ public class MaindetailController {
 		LinkedList<PreparationStep> preparelist = recipe.getPreparationSteps();
 
 		if (this.subst == false ) {
-			this.substpane = new AnchorPane();
+			this.substpane = new Pane();
 			this.substpane.setPrefHeight(800);
+			this.substpane.setPrefWidth(400);
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("steppane.fxml"));
-			this.substpane = loader.load();
-			steppaneController controller = loader.getController();
+			
+			Pane pane = (Pane) loader.load();
+			steppaneController controller = loader.getController();			
 			VBox stepvbox = controller.getVbox();
 			Iterator<PreparationStep> iterator = preparelist.iterator();
 			int number = 0;
@@ -506,6 +508,7 @@ public class MaindetailController {
 						
 			this.subst = true;
 			System.out.println("show steps");
+			this.substpane.getChildren().add(pane);
 
 		}
 		System.out.println("show steps");

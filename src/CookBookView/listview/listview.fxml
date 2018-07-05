@@ -37,7 +37,7 @@
 		</Button>
 		<ScrollPane layoutX="47.0" layoutY="71.0" prefHeight="570.0" prefWidth="364.0">
 			<content>
-				<VBox fx:id="recipeVBox" prefHeight="591.0" prefWidth="372.0" />
+				<VBox fx:id="recipeVBox" prefHeight="566.0" prefWidth="358.0" />
 			</content>
 		</ScrollPane>
       <Label layoutX="100.0" layoutY="25.0" text="Guten Appetit " textFill="#bf7e34">

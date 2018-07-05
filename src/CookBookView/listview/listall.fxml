@@ -54,7 +54,7 @@
 		</Button>
 		<ScrollPane fx:id="mainpane" layoutX="47.0" layoutY="71.0" prefHeight="570.0" prefWidth="364.0">
 			<content>
-      				<VBox fx:id="recipeVBox" prefHeight="588.0" prefWidth="362.0" />
+      				<VBox fx:id="recipeVBox" prefHeight="564.0" prefWidth="357.0" />
 			</content>
 		</ScrollPane>
 		<Label fx:id="toSearchView" layoutX="2.0" layoutY="412.0" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#backToSearchView" prefHeight="44.0" prefWidth="44.0" />
