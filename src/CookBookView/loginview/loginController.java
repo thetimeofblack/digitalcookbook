@@ -1,7 +1,7 @@
 package CookBookView.loginview;
 
 import java.io.IOException;
-
+import java.util.ResourceBundle.Control;
 
 import CookBookDataBaseAcess.DatabaselayerObject;
 import CookBookEntity.User;
@@ -50,7 +50,7 @@ public class loginController {
 	public void checkNameAndPassword(ActionEvent event) throws Exception {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../searchview/searchView.fxml"));
 		GridPane root = (GridPane) loader.load();
-		SearchViewController svc = loader.getController();
+		
 		
 		String resultstring = null ; 
 		if(nameText.getText()!="") {
@@ -64,17 +64,22 @@ public class loginController {
 		
 		if(result==-1) {
 			resultstring = "username does not exist";
-			System.out.println(1);
+			settiny(result);
+					
+			System.out.println("kasjkdjakj");
 		}
 		
 		if(result==0) {
 			resultstring = "user password is not right";
+			settiny(result);
+			System.out.println("kasjkdjakj");
+
 		}
 		if(result==1) {
 		resultstring = "user login successfully";
 		//System.out.println("this is"+this.user.getUserID());
 		
-
+		SearchViewController svc = loader.getController();
 		
 		//scene.getStylesheets().clear();
 		//svc.setDatabaselayerObject(this.dao);
@@ -82,16 +87,30 @@ public class loginController {
 		svc.setScene(scene);
 		//cookbook.setUser(new User(user.getUserName(),user.getUserID()));
 		svc.setCookBook(this.cookbook);
+		svc.setusername();
 		scene.setRoot(root);
 		stage.setScene(scene);
 		stage.show();
 		
 		}
-		svc.setusername();
+		
 		//System.out.println(resultstring);
 		}
 	}
 
+	public void settiny(int result) throws IOException {
+		
+		FXMLLoader fxml = new FXMLLoader(getClass().getResource("../loginview/tinywin/mini.fxml"));
+		GridPane root = (GridPane) fxml.load();		
+		miniController controller = fxml.getController();
+		controller.changeText(result);
+		Scene scene = new Scene(root, 270, 160);
+		Stage stage = new Stage();		
+		stage.setScene(scene);
+		stage.show();		
+		controller.setStage(stage);
+			
+	}
 	// Event Listener on Button[#clearpw].onAction
 	@FXML
 	public void clearPassword(ActionEvent event) {

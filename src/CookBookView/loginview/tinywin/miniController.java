@@ -37,10 +37,10 @@ public class miniController {
 
 	public void changeText(int result) {
 		System.out.println("hello");
-		if (result == 1) {
-			this.warningText.setText("hello");
+		if (result == -1) {
+			this.warningText.setText("User name does not exist");
 		} else {
-			this.warningText.setText("not hello");
+			this.warningText.setText("User password is not right");
 		}
 	}
 
