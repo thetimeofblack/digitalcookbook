@@ -56,8 +56,10 @@ public class registerViewController {
 		miniController controller = fxml.getController();
 		//Text resultText = (Text)root.lookup("mainText");
 		Text resultText = controller.getText();
-		if(this.username.getText().isEmpty()) {
-			resultText.setText("please enter the username");
+		this.cookbook = new CookBook();
+		
+		if(this.username.getText().isEmpty()||this.cookbook.existUser(this.username.getText())) {
+			resultText.setText("please enter the username or username is duplicate");
 		}else {
 			if(this.userpassword1.getText().isEmpty()  | this.userpassword2.getText().isEmpty() | !this.userpassword1.getText().equals(this.userpassword2.getText())) {
 				resultText.setText("please rewrite the password");

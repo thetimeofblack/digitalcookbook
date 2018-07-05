@@ -160,7 +160,7 @@ public class CookBook {
 		Recipe recipe = new Recipe(); 
 		recipe.setRecipeID(recipeid);
 		this.databaselayerObject.setUser(this.user);
-		this.databaselayerObject.deleterecipeuser(recipe);
+		this.databaselayerObject.deleteRecipe(recipe);
 	}
 	
 	public boolean userRegister(User user) throws Exception{
@@ -254,6 +254,10 @@ public class CookBook {
 	}
 	public String getUser() {
 		return user.getUserName();
+	}
+	
+	public boolean existUser(String username) throws Exception  {
+		return this.databaselayerObject.existUser(username);
 	}
 
 }

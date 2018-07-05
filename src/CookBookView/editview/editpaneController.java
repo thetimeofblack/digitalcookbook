@@ -62,15 +62,15 @@ public class editpaneController implements Initializable {
 	private Stage stage ;
 	private Scene scene; 
 	@FXML
-	private TextArea recipename; 
+	private TextField recipename; 
 	@FXML
-	private TextArea preparationTime; 
+	private TextField preparationTime; 
 	@FXML
-	private TextArea Category;
+	private TextField Category;
 	@FXML
 	private Pane mainPane; 
 	@FXML
-	private TextArea Cooktime ;
+	private TextField Cooktime ;
 	private Pane subinPane;
 	
 	private Pane substPane;
@@ -141,6 +141,7 @@ public class editpaneController implements Initializable {
 			TextField Usage= (TextField) hBox.getChildren().get(1);
 			TextField Unit =(TextField)hBox.getChildren().get(2);
 			TextField Description = (TextField)hBox.getChildren().get(3);
+			
 			Name.setText(ingredient.getName());
 			Usage.setText(String.valueOf(ingredient.getAmount()));
 			Unit.setText(ingredient.getUnit());

@@ -182,8 +182,12 @@ public class SearchViewController {
 		anchorPane.setPrefHeight(430);
 		anchorPane.setPrefWidth(690);
 		createpaneController controller = loader.getController(); 
+		controller.initializeDescription();
 		
 		controller.setCookBook(this.cookbook);
+		controller.createIngredient();
+		
+		controller.createSteps();
 		controller.setScene(this.scene);
 		controller.setStage(this.stage);
 	

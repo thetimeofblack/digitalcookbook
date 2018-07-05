@@ -18,6 +18,11 @@
 
 
 	<children>
+		<ImageView fx:id="toSearchView" fitHeight="33.0" fitWidth="32.0" layoutX="384.0" layoutY="646.0" onMouseClicked="#backToSearchView">
+			<image>
+				<Image url="@../pic/back.png" />
+			</image>
+		</ImageView>
 		<VBox layoutY="62.0" prefHeight="132.0" prefWidth="44.0">
 			<children>
 				<Label maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="44.0" prefWidth="44.0" />
@@ -25,21 +30,21 @@
 				<Label prefHeight="44.0" prefWidth="44.0" />
 			</children>
 		</VBox>
-		<Button fx:id="logout" layoutX="359.0" layoutY="3.0" mnemonicParsing="false" onAction="#logOut" style="-fx-background-color: #f29720;" text="Log out" textFill="#4a3305">
+		<Button fx:id="logout" layoutX="338.0" layoutY="14.0" mnemonicParsing="false" onAction="#logOut" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #f29720;" text="Log out" textFill="#4a3305">
 			<font>
 				<Font name="System Bold" size="11.0" />
 			</font>
 		</Button>
-		<ScrollPane layoutX="10.0" layoutY="45.0" prefHeight="601.0" prefWidth="381.0">
+		<ScrollPane layoutX="47.0" layoutY="71.0" prefHeight="570.0" prefWidth="364.0">
 			<content>
 				<VBox fx:id="recipeVBox" prefHeight="591.0" prefWidth="372.0" />
 			</content>
 		</ScrollPane>
-		<ImageView fx:id="toSearchView" fitHeight="33.0" fitWidth="32.0" layoutX="391.0" layoutY="643.0" onMouseClicked="#backToSearchView">
-			<image>
-				<Image url="@../pic/back.png" />
-			</image>
-		</ImageView>
+      <Label layoutX="100.0" layoutY="25.0" text="Guten Appetit " textFill="#bf7e34">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
 
 
 	</children>

@@ -88,11 +88,18 @@ public class inpaneController {
 		TextField Unit = (TextField)hBox.getChildren().get(2);
 		TextField Description = (TextField)hBox.getChildren().get(3);
 		String usage = Usage.getText(); 
-		if(usage.equals("")) usage = "0";
+		if(Usage.getText()==null) {
+			Usage.setText("0");
+			System.out.println("hello1");
+		}
+		if(usage.equals("")||usage==null) { 
+			usage = "0.0";
+			System.out.println("hello2");
+		}
 		ingredient.setName(Name.getText());
 		ingredient.setUnit(Unit.getText());
 		ingredient.setDescription(Description.getText());
-		ingredient.setAmount(Double.parseDouble(Usage.getText()));
+		ingredient.setAmount(Double.parseDouble(usage));
 		
 		
 		num=num+1;

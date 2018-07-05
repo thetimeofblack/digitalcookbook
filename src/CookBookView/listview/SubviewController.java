@@ -180,7 +180,10 @@ public class SubviewController {
 		detailcontroller.setCookBook(this.cookbook);
 		detailcontroller.setRecipe(this.recipe);
 		detailcontroller.showbasicRecipe();
-
+		detailcontroller.showPreparationStep();
+		
+		detailcontroller.showIngredients();
+		
 		this.scene.setRoot(detailpane);
 		this.stage.setScene(this.scene);
 		this.stage.show();

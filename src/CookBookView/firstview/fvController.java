@@ -53,6 +53,7 @@ public class fvController {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../registerview/registerView.fxml"));
 		GridPane root = (GridPane) loader.load();
 		registerViewController rvc = loader.getController();
+		
 		rvc.setStageAndScene(stage, scene);
 		scene.setRoot(root);
 		stage.setScene(scene);

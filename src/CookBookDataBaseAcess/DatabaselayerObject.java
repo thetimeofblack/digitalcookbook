@@ -432,13 +432,16 @@ public class DatabaselayerObject {
 	
 
 
-	private  void deleterecipe(Recipe recipe) throws SQLException {
+	private  void deleterecipe(Recipe recipe) throws Exception {
 		String recipeid = recipe.getRecipeID();
+		this.con = this.getConnection(); 
+		this.sql = this.con.createStatement(); 
 		
 		String ss = "delete from `cookbook`.`recipe` "
-				+ "where id = '" + recipeid + "' and privacy = 1";
+				+ "where id = " + recipeid ;
 		int res1 = 0;
 		res1 = this.sql.executeUpdate(ss);
+		this.con.close();
 		
 	}		
 
@@ -707,8 +710,8 @@ public class DatabaselayerObject {
     }
     
     public LinkedList<Comment> getRecipeComment(LinkedList<Comment> comments ,String recipeid) throws Exception{
-    	String sqlstr = "select * from cookbook.rateandcomments"
-    			+ " where recipeid= "+recipeid;
+    	String sqlstr = "select * from cookbook.rateandcomments,cookbook.user "
+    			+ " where cookbook.rateandcomments.recipeid= "+recipeid+" and cookbook.user.userid = cookbook.rateandcomments.userid ";
     	Connection connection = this.getConnection();
     	this.sql = connection.createStatement();
     	ResultSet res = this.sql.executeQuery(sqlstr);
@@ -717,6 +720,7 @@ public class DatabaselayerObject {
     	Comment comment = new Comment(res.getInt("rate"), res.getString("comments"));
         comment.setUserid(res.getString("userid"));
         comment.setCommentid(res.getString("ID"));
+        comment.setUsername(res.getString("username"));
         comments.add(comment);
     	}
     	connection.close();
@@ -973,6 +977,19 @@ public class DatabaselayerObject {
 	  String sqlstr = "delete from rateandcomments where recipeid = " +recipeid ;
 	  this.sql.executeUpdate(sqlstr);
 	  
+	  
+	  
+  }
+  
+  
+  public boolean existUser(String username) throws Exception{
+	  this.con = this.getConnection();
+	  this.sql = this.con.createStatement(); 
+	  String sqlstr = "select * from cookbook.user where username = '"+username+"'";
+	  ResultSet res = this.sql.executeQuery(sqlstr);
+	  
+	  if(res.first()) return true; 
+	  return false ;
 	  
 	  
   }

@@ -22,7 +22,7 @@
             <Button fx:id="cancel" layoutX="332.0" layoutY="651.0" mnemonicParsing="false" onAction="#back" prefHeight="35.0" prefWidth="69.0" text="back" textFill="#0917d7" />
             <Button layoutX="260.0" layoutY="652.0" mnemonicParsing="false" onAction="#createRecipe" prefHeight="32.0" prefWidth="69.0" text="save" />
             <ScrollPane fx:id="scrollpane" layoutX="71.0" layoutY="157.0" prefHeight="485.0" prefWidth="346.0" />
-            <Button fx:id="logout" layoutX="362.0" layoutY="3.0" mnemonicParsing="false" onAction="#logOut" style="-fx-background-color: #f29720;" text="Log out">
+            <Button fx:id="logout" layoutX="338.0" layoutY="14.0" mnemonicParsing="false" onAction="#logOut" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #f29720;" text="Log out">
                <font>
                   <Font name="System Bold" size="11.0" />
                </font></Button>
@@ -60,20 +60,11 @@
                   </ImageView>
                </graphic>
             </Label>
-            <Label layoutX="16.0" layoutY="286.0" onMouseClicked="#createComment">
-               <graphic>
-                  <ImageView fitHeight="43.0" fitWidth="41.0" onMouseClicked="#createComment">
-                     <image>
-                        <Image url="@../pic/Event%20Comments.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <tooltip>
-                  <Tooltip text="Click here to write your own comments." />
-               </tooltip>
-            </Label>
             <Text layoutX="215.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mins" />
             <Text layoutX="215.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mins" />
+            <RadioButton fx:id="vegetarian" layoutX="271.0" layoutY="86.0" mnemonicParsing="false" text="vegetarian" />
+            <RadioButton fx:id="vegan" layoutX="271.0" layoutY="110.0" mnemonicParsing="false" text="vegan" />
+            <RadioButton fx:id="meat" layoutX="271.0" layoutY="135.0" mnemonicParsing="false" text="meat" />
          </children>
       </Pane>
    </children>
