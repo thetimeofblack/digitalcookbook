@@ -6,6 +6,8 @@ public class Comment {
 	private String recipeid ; 
 	private String userid; 
 	private String Commentid;
+	
+	private String username; 
 	public Comment(int grade , String Comment){
 		this.grade = grade ; 
 		this.Comment = Comment ; 
@@ -47,5 +49,10 @@ public class Comment {
 	public void setCommentid(String commentid) {
 		Commentid = commentid;
 	}
-	
+	public void setUsername(String username) {
+	this.username = username; 
+	}
+	public String getUsername() {
+		return this.username; 
+	}
 }

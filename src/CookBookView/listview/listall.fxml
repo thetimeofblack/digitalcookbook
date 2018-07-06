@@ -20,7 +20,7 @@
 			<children>
 				<Label fx:id="vegan" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#createVegrecipelist" prefHeight="44.0" prefWidth="44.0">
 					<graphic>
-						<ImageView fitHeight="44.0" fitWidth="40.0" onDragDetected="#createVegrecipelist">
+						<ImageView fitHeight="44.0" fitWidth="44.0" onDragDetected="#createVegrecipelist">
 							<image>
 								<Image url="@../pic/vegan.png" />
 							</image>
@@ -28,13 +28,13 @@
 					</graphic>
 				</Label>
 				<Label fx:id="egg_milk" onMouseClicked="#createeggrecipelist" prefHeight="44.0" prefWidth="44.0">
-					<graphic>
-						<ImageView fitHeight="36.0" fitWidth="44.0" onDragDetected="#createeggrecipelist">
-							<image>
-								<Image url="@../pic/egg.png" />
-							</image>
-						</ImageView>
-					</graphic>
+               <graphic>
+                  <ImageView fitHeight="53.0" fitWidth="48.0">
+                     <image>
+                        <Image url="@../pic/milk.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
 				</Label>
 				<Label fx:id="meat" onMouseClicked="#createmeatrecipelist" prefHeight="44.0" prefWidth="44.0">
 					<graphic>
@@ -47,15 +47,14 @@
 				</Label>
 			</children>
 		</VBox>
-		<Label layoutX="359.0" layoutY="26.0" prefHeight="20.0" prefWidth="47.0" text="  User" />
-		<Button fx:id="logout" layoutX="359.0" layoutY="3.0" mnemonicParsing="false" onAction="#logOut" style="-fx-background-color: #f29720;" text="Log out" textFill="#4a3305">
+		<Button fx:id="logout" layoutX="338.0" layoutY="14.0" mnemonicParsing="false" onAction="#logOut" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #f29720;" text="Log out" textFill="#4a3305">
 			<font>
 				<Font name="System Bold" size="11.0" />
 			</font>
 		</Button>
-		<ScrollPane fx:id="mainpane" layoutX="47.0" layoutY="48.0" prefHeight="593.0" prefWidth="364.0">
+		<ScrollPane fx:id="mainpane" layoutX="47.0" layoutY="71.0" prefHeight="570.0" prefWidth="364.0">
 			<content>
-      				<VBox fx:id="recipeVBox" prefHeight="588.0" prefWidth="362.0" />
+      				<VBox fx:id="recipeVBox" prefHeight="564.0" prefWidth="357.0" />
 			</content>
 		</ScrollPane>
 		<Label fx:id="toSearchView" layoutX="2.0" layoutY="412.0" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#backToSearchView" prefHeight="44.0" prefWidth="44.0" />
@@ -64,5 +63,10 @@
 						<Image url="@../pic/back.png" />
 					</image>
 				</ImageView>
+      <Label layoutX="100.0" layoutY="25.0" text="Guten Appetit " textFill="#bf7e34">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
 	</children>
 </AnchorPane>

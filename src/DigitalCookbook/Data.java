@@ -9,15 +9,18 @@ public class Data {
 	public static void main(String[] args) throws Exception {
 		Recipe recipe1 = CookBookApp.createGongBaoJiding();
 		Recipe recipe2 = CookBookApp.createHongShaoRou(); 
-		Recipe Recipe3 = CookBookApp.createSuanLaFen(); 
-		User user = new User("heyining","heyining");
+		Recipe recipe3 = CookBookApp.createSuanLaFen(); 
+		//User user = new User("heyining","heyining");
 		
 		CookBook cookBook = new CookBook() ; 
 		
 		cookBook.saveRecipe(recipe1);
-		int userloginrs = cookBook.userLogin(user);
-		cookBook.saveUserRecipe(user, recipe2);
-		System.out.println(userloginrs);
+		cookBook.saveRecipe(recipe2);
+		cookBook.saveRecipe(recipe3);
+
+		//int userloginrs = cookBook.userLogin(user);
+		//cookBook.saveUserRecipe(user, recipe2);
+		//System.out.println(userloginrs);
 		
 	}
 }

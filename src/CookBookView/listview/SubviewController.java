@@ -59,7 +59,8 @@ public class SubviewController {
 
 		Comment comment = null;
 		String recipeId = recipe.getRecipeID();
-		comment = cookbook.getComment(recipeId);
+		System.out.println(recipeId+"lalala");
+		comment = this.cookbook.getComment(recipeId);
 
 		int grade = comment.getGrade();
 		if (grade == 1) {
@@ -181,7 +182,10 @@ public class SubviewController {
 		detailcontroller.setCookBook(this.cookbook);
 		detailcontroller.setRecipe(this.recipe);
 		detailcontroller.showbasicRecipe();
-
+		detailcontroller.showPreparationStep();
+		
+		detailcontroller.showIngredients();
+		
 		this.scene.setRoot(detailpane);
 		this.stage.setScene(this.scene);
 		this.stage.show();

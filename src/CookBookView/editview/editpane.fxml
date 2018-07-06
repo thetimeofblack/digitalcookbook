@@ -26,82 +26,8 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.editview.editpaneController">
    <children>
-      <Pane prefHeight="610.0" prefWidth="574.0">
+      <Pane prefHeight="610.0" prefWidth="430.0">
          <children>
-            <GridPane layoutX="6.0" prefHeight="141.0" prefWidth="567.0">
-               <children>
-                  <GridPane>
-                     <children>
-                        <HBox prefHeight="55.0" prefWidth="207.0" GridPane.rowIndex="1">
-                           <children>
-                              <Label prefHeight="35.0" prefWidth="91.0" text="Recipename" textFill="#1e0202" />
-                              <TextArea fx:id="recipename" prefHeight="32.0" prefWidth="133.0" />
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="42.0" prefWidth="269.0" GridPane.rowIndex="2">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Preparation-time" wrappingWidth="90.888671875" />
-                              <TextArea fx:id="preparationTime" prefHeight="40.0" prefWidth="133.0" />
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="54.0" prefWidth="269.0" GridPane.rowIndex="3">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Category   " wrappingWidth="90.830078125" />
-                              <TextArea fx:id="Category" prefHeight="33.0" prefWidth="133.0" />
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="47.0" prefWidth="269.0" GridPane.rowIndex="4">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cooktime" wrappingWidth="90.205078125" />
-                              <TextArea fx:id="Cooktime" prefHeight="31.0" prefWidth="134.0" />
-                           </children>
-                        </HBox>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="person number" wrappingWidth="113.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <TextField fx:id="servingperson" onAction="#servingPerson" prefHeight="30.0" prefWidth="72.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                     </children>
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="314.0" minWidth="10.0" prefWidth="246.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="111.0" minWidth="0.0" prefWidth="85.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints maxHeight="59.0" minHeight="5.0" prefHeight="10.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="95.0" minHeight="0.0" prefHeight="39.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="95.0" minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="95.0" minHeight="4.0" prefHeight="31.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="95.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="95.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                  </GridPane>
-                  <GridPane prefHeight="141.0" prefWidth="92.0" GridPane.columnIndex="1">
-                     <children>
-                        <VBox prefHeight="73.0" prefWidth="123.0" GridPane.rowIndex="1">
-                           <children>
-                              <Button fx:id="logout" mnemonicParsing="false" onAction="#logOut" prefHeight="30.0" prefWidth="86.0" style="-fx-background-color: #ffffff;" text="Log out" />
-                              <Label fx:id="user" prefHeight="17.0" prefWidth="55.0" />
-                           </children>
-                        </VBox>
-                        <HBox prefHeight="39.0" prefWidth="91.0" GridPane.rowIndex="2" />
-                     </children>
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="170.0" minWidth="0.0" prefWidth="101.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="221.0" minWidth="10.0" prefWidth="135.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints maxHeight="117.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="99.0" minHeight="10.0" prefHeight="62.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="99.0" minHeight="4.0" prefHeight="79.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                  </GridPane>
-               </children>
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="418.0" minWidth="10.0" prefWidth="328.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="236.0" minWidth="10.0" prefWidth="236.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-            </GridPane>
             <Label fx:id="ingredient" layoutX="10.0" layoutY="212.0" onMouseClicked="#editIngredients" prefHeight="42.0" prefWidth="39.0">
                <graphic>
                   <ImageView fitHeight="39.0" fitWidth="41.0" onMouseClicked="#editIngredients">
@@ -124,34 +50,61 @@
                <tooltip>
                   <Tooltip text="Click herer to edit steps." />
                </tooltip></Label>
-            <Label layoutX="11.0" layoutY="336.0" onMouseClicked="#editcomments" prefHeight="42.0" prefWidth="39.0">
-               <graphic>
-                  <ImageView fitHeight="34.0" fitWidth="35.0">
-                     <image>
-                        <Image url="@../pic/Event%20Comments.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <tooltip>
-                  <Tooltip text="Click here to edit your comments." />
-               </tooltip></Label>
             <ScrollPane fx:id="scrollpane" layoutX="56.0" layoutY="212.0" prefHeight="381.0" prefWidth="347.0" />
-            <HBox layoutX="153.0" layoutY="162.0" prefHeight="42.0" prefWidth="252.0">
+            <HBox layoutX="151.0" layoutY="177.0" prefHeight="35.0" prefWidth="252.0">
                <children>
                   <RadioButton mnemonicParsing="false" prefHeight="20.0" prefWidth="66.0" text="Egg" />
                   <RadioButton mnemonicParsing="false" prefHeight="20.0" prefWidth="108.0" text="Vegatable" />
                   <RadioButton mnemonicParsing="false" prefHeight="20.0" prefWidth="68.0" text="Meat" />
                </children>
             </HBox>
-            <Label fx:id="favourite" layoutX="11.0" layoutY="145.0" onDragDetected="#choosetobeFavourite" prefHeight="34.0" prefWidth="34.0">
-               <graphic>
-                  <ImageView fitHeight="41.0" fitWidth="39.0">
-                     <image>
-                        <Image url="@../pic/emptyfavourite.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Label>
+            <GridPane layoutY="12.0" prefHeight="156.0" prefWidth="227.0">
+               <children>
+                  <HBox prefHeight="55.0" prefWidth="210.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Recipename" wrappingWidth="90.0078125" x="30.0" />
+                        <TextField fx:id="recipename" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="54.0" prefWidth="269.0" GridPane.rowIndex="1">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Category   " wrappingWidth="90.830078125" x="30.0" />
+                        <TextField fx:id="Category" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="47.0" prefWidth="269.0" GridPane.rowIndex="3">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cooktime" wrappingWidth="90.205078125" />
+                        <TextField fx:id="Cooktime" prefHeight="30.0" prefWidth="90.0" />
+                        <Label text="Mins" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="42.0" prefWidth="210.0" GridPane.rowIndex="2">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Preparation-time" wrappingWidth="90.888671875" x="30.0" />
+                        <TextField fx:id="preparationTime" prefHeight="30.0" prefWidth="90.0" />
+                        <Label text="Mins" />
+                     </children>
+                  </HBox>
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="314.0" minWidth="10.0" prefWidth="222.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="95.0" minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="95.0" minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="95.0" minHeight="4.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <Text layoutX="263.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="person number" wrappingWidth="113.0" />
+            <VBox layoutX="327.0" layoutY="9.0" prefHeight="20.0" prefWidth="101.0" />
+            <TextField fx:id="servingperson" layoutX="292.0" layoutY="121.0" prefHeight="30.0" prefWidth="55.0" />
+            <Button fx:id="logout" layoutX="338.0" layoutY="14.0" mnemonicParsing="false" onAction="#logOut" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #f29720;" text="Log out" textFill="#4a3305">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
       <Button layoutX="264.0" layoutY="615.0" mnemonicParsing="false" onAction="#editRecipe" prefHeight="23.0" prefWidth="46.0" text="OK" />

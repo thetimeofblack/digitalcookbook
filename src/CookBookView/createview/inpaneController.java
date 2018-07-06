@@ -71,7 +71,7 @@ public class inpaneController {
 	@FXML
 	public void deleteIngredient() throws Exception{
 		if(this.addnumber>0) {
-			this.inpaneVBox.getChildren().remove(1+addnumber);
+			this.inpaneVBox.getChildren().remove(addnumber);
 			addnumber=addnumber-1;
 		}
 		
@@ -79,24 +79,30 @@ public class inpaneController {
 	@FXML
 	public void saveIngredient() {
 		//this.Ingredientlist = new LinkedList<Ingredient>();
-		int num = this.addnumber;
-		while(num>0) {
+		int num = 0; 
+		while(num<this.addnumber) {
 		Ingredient ingredient = new Ingredient();
-		HBox hBox = (HBox) this.inpaneVBox.getChildren().get(this.addnumber+1);
-		TextField Name = (TextField)hBox.getChildren().get(0);
-		
+		HBox hBox = (HBox) this.inpaneVBox.getChildren().get(num+1);
+		TextField Name = (TextField)hBox.getChildren().get(0);	
 		TextField Usage = (TextField)hBox.getChildren().get(1);
 		TextField Unit = (TextField)hBox.getChildren().get(2);
 		TextField Description = (TextField)hBox.getChildren().get(3);
 		String usage = Usage.getText(); 
-		if(usage.equals("")) usage = "0";
+		if(Usage.getText()==null) {
+			Usage.setText("0");
+			System.out.println("hello1");
+		}
+		if(usage.equals("")||usage==null) { 
+			usage = "0.0";
+			System.out.println("hello2");
+		}
 		ingredient.setName(Name.getText());
 		ingredient.setUnit(Unit.getText());
 		ingredient.setDescription(Description.getText());
-		ingredient.setAmount(Double.parseDouble(Usage.getText()));
+		ingredient.setAmount(Double.parseDouble(usage));
 		
 		
-		num=num-1;
+		num=num+1;
 		this.Ingredientlist.add(ingredient);
 		}
 		if(!Ingredientlist.isEmpty()) {

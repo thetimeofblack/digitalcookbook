@@ -33,4 +33,8 @@ public class CommentController {
 	public TextField getCommentTextField() {
 		return this.comment; 
 	}
+	
+	public Comment getComment(Comment comment) {
+		return this.recipecomment; 
+	}
 }

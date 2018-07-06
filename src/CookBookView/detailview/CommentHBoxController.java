@@ -16,7 +16,9 @@ public class CommentHBoxController {
 	
 	public void showComment(Comment comment , int number) {
 		this.No.setText(String.valueOf(number));
-		this.UserID.setText(comment.getUserid());
+		this.UserID.setText(comment.getUsername());
 		this.Comment.setText(comment.getComment());
 	}
+	
+	
 }

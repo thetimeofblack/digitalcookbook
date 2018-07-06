@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="77.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.listview.SubviewController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="362.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.listview.SubviewController">
 	<children>
-		<HBox layoutY="32.0" prefHeight="44.0" prefWidth="250.0">
+		<HBox layoutX="210.0" layoutY="4.0" prefHeight="44.0" prefWidth="250.0">
 			<children>
 				<Label fx:id="star1" prefHeight="20.0" prefWidth="20.0">
 					<graphic>

@@ -37,8 +37,10 @@ public class CommentController {
 		int number = 1;
 		while(iterator.hasNext()) {
 			Comment comment = (Comment) iterator.next(); 
-			//commentInput = new TextArea(cookbook.getComment(recipe.recipeid));
-			//commentInput.setSize(200, 300);
+
+			System.out.println(comment.getComment());
+			if(comment.getComment()!=null) {
+
 			FXMLLoader loader  = new FXMLLoader(getClass().getResource("commenthbox.fxml"));
 			HBox hbox = loader.load();
 			CommentHBoxController controller = loader.getController(); 
@@ -46,13 +48,9 @@ public class CommentController {
 			this.vbox.getChildren().add(hbox);
 			//this.vbox.getChildren().add(commentInput);
 			number = number+1;
-//			commentInput.textProperty().addListener(new ChangeListener<>(){
-//				
-//				public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-//
-//				cookbook.editComment(this.user.getUserID(),this.recipe.getRecipeID(),newValue);
 
-//			}
+			}
+
 			
 			
 		}

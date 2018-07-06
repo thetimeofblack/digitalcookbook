@@ -27,8 +27,7 @@ public class DataBaseTest2 {
 		//recipeget = dao.getUserRecipe(0, "Gong Bao Jiding");
 		//recipeget.show();
 		Comment comment = new Comment(1,"hello");
-		
-		
+
 		//assertEquals(dao.insertRecipe(0, recipe),true);
 		
 		dao.close();

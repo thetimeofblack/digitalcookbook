@@ -52,6 +52,7 @@ public class FirstView extends javafx.application.Application {
 	private Scene scene; 
 	private Stage stage; 
 	
+	
 	public void setScene(Scene scene) {
 		this.scene = scene ;
 	}

@@ -29,36 +29,111 @@
 	<children>
 		<Pane prefHeight="690.0" prefWidth="430.0">
 			<children>
-				<GridPane layoutX="7.0" prefHeight="141.0" prefWidth="422.0">
-					<columnConstraints>
+				<Label fx:id="ingredient" layoutX="43.0" layoutY="162.0" onDragDetected="#showIngredients" onMouseClicked="#showIngredients" prefHeight="35.0" prefWidth="34.0">
+               <tooltip>
+                  <Tooltip text="Click here to show ingredients of the recipe." />
+               </tooltip>
+               <graphic>
+      						<ImageView fitHeight="51.0" fitWidth="50.0">
+      							<image>
+      								<Image url="@../pic/material-information-outline.png" />
+      							</image>
+      						</ImageView>
+               </graphic>
+				</Label>
+				<Label layoutX="137.0" layoutY="165.0" onMouseClicked="#showPreparationStep" prefHeight="35.0" prefWidth="34.0">
+               <tooltip>
+                  <Tooltip text="Click here to view the steps." />
+               </tooltip>
+               <graphic>
+      						<ImageView fitHeight="45.0" fitWidth="50.0">
+      							<image>
+      								<Image url="@../pic/s.png" />
+      							</image>
+      						</ImageView>
+               </graphic>
+				</Label>
 
-						<ColumnConstraints hgrow="SOMETIMES" maxWidth="210.0" minWidth="10.0" prefWidth="190.0" />
-						<ColumnConstraints hgrow="SOMETIMES" maxWidth="142.0" minWidth="7.0" prefWidth="27.0" />
-						<ColumnConstraints maxWidth="243.0" minWidth="186.0" prefWidth="209.0" />
+				<Label layoutX="232.0" layoutY="170.0" onMouseClicked="#showComment" prefHeight="35.0" prefWidth="34.0">
+               <tooltip>
+                  <Tooltip text="Click here to view comments." />
+               </tooltip>
+               <graphic>
+      						<ImageView fitHeight="43.0" fitWidth="41.0" onMouseClicked="#showComment">
+      
+                  							<image>
+      								<Image url="@../pic/Event%20Comments.png" />
+      							</image>
+      						</ImageView>
+               </graphic>
+				</Label>
+				<Label layoutX="387.0" layoutY="652.0" onMouseClicked="#back" prefHeight="19.0" prefWidth="24.0">
+               <graphic>
+      				<ImageView fitHeight="28.0" fitWidth="29.0" onMouseClicked="#back">
+      					<image>
+      						<Image url="@../pic/back.png" />
+      					</image>
+      				</ImageView>
+               </graphic></Label>
+				<ScrollPane fx:id="scrollpane" layoutX="11.0" layoutY="264.0" prefHeight="378.0" prefWidth="406.0">
+					<content>
 
-					</columnConstraints>
-					<rowConstraints>
-						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-					</rowConstraints>
-					<children>
-						<GridPane prefHeight="132.0" prefWidth="188.0">
+
+					</content>
+				</ScrollPane>
+            <Label fx:id="editLabel" layoutX="288.0" layoutY="648.0" onMouseClicked="#editRecipe">
+               <graphic>
+      				<ImageView fitHeight="31.0" fitWidth="34.0" onMouseClicked="#editRecipe">
+      					<image>
+      						<Image url="@../pic/edite.png" />
+      					</image>
+      				</ImageView>
+               </graphic>
+            </Label>
+            <Label layoutX="322.0" layoutY="169.0" onMouseClicked="#addComment" prefHeight="35.0" prefWidth="34.0" wrapText="true">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="50.0">
+                     <image>
+                        <Image url="@../pic/add.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Label>
+            <Label layoutX="333.0" layoutY="647.0" onMouseClicked="#deleteRecipe">
+               <graphic>
+      				<ImageView fx:id="delete" fitHeight="34.0" fitWidth="38.0" onMouseClicked="#deleteRecipe">
+      					<image>
+      						<Image url="@../pic/delete.png" />
+      					</image>
+      				</ImageView>
+               </graphic>
+            </Label>
+            <Label layoutX="27.0" layoutY="226.0" text="Ingredients" />
+            <Label layoutX="142.0" layoutY="226.0" text="Steps" />
+            <Label layoutX="214.0" layoutY="226.0" text="Comments" />
+            <Label layoutX="313.0" layoutY="207.0" prefHeight="59.0" prefWidth="78.0" text="add your comment" wrapText="true" />
+      								<Text layoutX="189.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Person number:" wrappingWidth="128.271484375" />
+      										<TextField fx:id="servingperson" layoutX="322.0" layoutY="118.0" prefHeight="30.0" prefWidth="45.0" />
+      										<Button fx:id="logout" layoutX="338.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#logOut" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #f29720;" text="Log out" textFill="#4a3305">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+						<GridPane prefHeight="132.0" prefWidth="191.0">
 							<columnConstraints>
 								<ColumnConstraints hgrow="SOMETIMES" maxWidth="177.0" minWidth="10.0" prefWidth="177.0" />
-								<ColumnConstraints hgrow="SOMETIMES" maxWidth="67.0" minWidth="0.0" prefWidth="8.0" />
 							</columnConstraints>
 							<rowConstraints>
 								<RowConstraints maxHeight="59.0" minHeight="10.0" prefHeight="21.0" vgrow="SOMETIMES" />
-								<RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
-								<RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="19.0" vgrow="SOMETIMES" />
-								<RowConstraints maxHeight="95.0" minHeight="4.0" prefHeight="21.0" vgrow="SOMETIMES" />
-								<RowConstraints maxHeight="95.0" minHeight="4.0" prefHeight="19.0" vgrow="SOMETIMES" />
-								<RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="18.0" vgrow="SOMETIMES" />
+								<RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
+								<RowConstraints maxHeight="95.0" minHeight="10.0" prefHeight="23.0" vgrow="SOMETIMES" />
+								<RowConstraints maxHeight="95.0" minHeight="4.0" prefHeight="22.0" vgrow="SOMETIMES" />
+								<RowConstraints maxHeight="95.0" minHeight="4.0" prefHeight="22.0" vgrow="SOMETIMES" />
 							</rowConstraints>
 							<children>
-								<HBox prefHeight="20.0" prefWidth="212.0" spacing="20.0">
+								<HBox prefHeight="20.0" prefWidth="195.0" spacing="20.0">
 									<children>
-										<Label prefHeight="20.0" prefWidth="70.0" text="Name" />
-										<Label fx:id="recipeName" prefHeight="20.0" prefWidth="138.0" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="48.0517578125" />
+										<Label fx:id="recipeName" prefHeight="20.0" prefWidth="132.0" />
 									</children>
 								</HBox>
 								<HBox prefHeight="21.0" prefWidth="177.0" GridPane.rowIndex="1">
@@ -99,153 +174,51 @@
 												</ImageView>
 											</graphic>
 										</Label>
-										<Label fx:id="star5" onMouseClicked="#mouseClickStar5" onMouseEntered="#mouseEnterStar5" onMouseExited="#mouseExitStar" prefHeight="25.0" prefWidth="25.0">
-											<graphic>
-												<ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-													<image>
-														<Image url="@../pic/emptystar.png" />
-													</image>
-												</ImageView>
-											</graphic>
-										</Label>
-									</children>
-								</HBox>
-								<HBox prefHeight="16.0" prefWidth="191.0" GridPane.rowIndex="3">
-									<children>
-										<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Preparationtime" wrappingWidth="118.888671875" />
-										<Label fx:id="preparationTime" prefHeight="20.0" prefWidth="58.0" />
-									</children>
-								</HBox>
-								<HBox prefHeight="16.0" prefWidth="142.0" GridPane.rowIndex="4">
-									<children>
-										<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Category" />
-										<Label fx:id="category" prefHeight="16.0" prefWidth="124.0" />
-									</children>
-								</HBox>
-								<HBox prefHeight="33.0" prefWidth="136.0" GridPane.rowIndex="2">
-									<children>
-										<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cooktime" wrappingWidth="71.205078125" />
-										<Label fx:id="cookTime" prefHeight="17.0" prefWidth="126.0" />
-									</children>
-								</HBox>
-								<Label fx:id="favourite" onMouseClicked="#choosetobeFavourite" prefHeight="34.0" prefWidth="34.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      										<Label fx:id="star5" onMouseClicked="#mouseClickStar5" onMouseEntered="#mouseEnterStar5" onMouseExited="#mouseExitStar" prefHeight="25.0" prefWidth="25.0">
+      											<graphic>
+      												<ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+      													<image>
+      														<Image url="@../pic/emptystar.png" />
+      													</image>
+      												</ImageView>
+      											</graphic>
+      										</Label>
+                        <Label fx:id="favourite" onMouseClicked="#MouseClickFavourite" onMouseEntered="#MouseEnterFavourite" onMouseExited="#MouseExistFavourite" prefHeight="20.0" prefWidth="20.0" >
                            <graphic>
                               <ImageView fitHeight="34.0" fitWidth="33.0">
                                  <image>
                                     <Image url="@../pic/emptyfavourite.png" />
                                  </image>
                               </ImageView>
-                           </graphic></Label>
-                        <AnchorPane prefHeight="1.0" prefWidth="185.0" GridPane.rowIndex="5">
-                           <children>
-                              <Label layoutX="-1.0" layoutY="7.0" text="Description" />
-                              <Label fx:id="description" layoutX="80.0" layoutY="8.0" prefHeight="20.0" prefWidth="105.0" />
-                           </children>
-                        </AnchorPane>
-							</children>
-						</GridPane>
-
-						<GridPane prefHeight="141.0" prefWidth="250.0" GridPane.columnIndex="2">
-
-							<columnConstraints>
-								<ColumnConstraints hgrow="SOMETIMES" maxWidth="144.0" minWidth="10.0" prefWidth="134.0" />
-								<ColumnConstraints hgrow="SOMETIMES" maxWidth="116.0" minWidth="10.0" prefWidth="74.0" />
-							</columnConstraints>
-							<rowConstraints>
-                        <RowConstraints maxHeight="52.0" minHeight="10.0" prefHeight="17.0" vgrow="SOMETIMES" />
-								<RowConstraints maxHeight="52.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-								<RowConstraints maxHeight="117.0" minHeight="10.0" prefHeight="84.0" vgrow="SOMETIMES" />
-								<RowConstraints maxHeight="34.0" minHeight="4.0" prefHeight="24.0" vgrow="SOMETIMES" />
-							</rowConstraints>
-							<children>
-								<VBox prefHeight="43.0" prefWidth="99.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-									<children>
-										<Button fx:id="logout" mnemonicParsing="false" onMouseClicked="#logOut" prefHeight="23.0" prefWidth="59.0" style="-fx-background-color: #f29720;" text="Log out" textFill="#4a3305">
-                                 <font>
-                                    <Font name="System Bold" size="11.0" />
-                                 </font></Button>
-										<Label fx:id="user" prefHeight="17.0" prefWidth="54.0" />
+                           </graphic>
+                        </Label>
 									</children>
-								</VBox>
-								<ImageView fitHeight="73.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
-								<Text strokeType="OUTSIDE" strokeWidth="0.0" text="person number" wrappingWidth="128.271484375" GridPane.rowIndex="3" />
-								<HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+								</HBox>
+								<HBox prefHeight="16.0" prefWidth="191.0" GridPane.rowIndex="3">
 									<children>
-										<TextField fx:id="servingperson" prefHeight="30.0" prefWidth="35.0" />
+										<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Preparationtime:" wrappingWidth="124.888671875" />
+										<Label fx:id="preparationTime" prefHeight="20.0" prefWidth="58.0" />
+									</children>
+								</HBox>
+								<HBox prefHeight="16.0" prefWidth="142.0" GridPane.rowIndex="4">
+									<children>
+										<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Category:" />
+										<Label fx:id="category" prefHeight="16.0" prefWidth="124.0" />
+									</children>
+								</HBox>
+								<HBox prefHeight="33.0" prefWidth="136.0" GridPane.rowIndex="2">
+									<children>
+										<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cooktime:" wrappingWidth="77.205078125" />
+										<Label fx:id="cookTime" prefHeight="17.0" prefWidth="126.0" />
 									</children>
 								</HBox>
 							</children>
 						</GridPane>
-					</children>
-				</GridPane>
-				<Label fx:id="ingredient" layoutX="9.0" layoutY="157.0" onDragDetected="#showIngredients" onMouseClicked="#showIngredients" prefHeight="35.0" prefWidth="34.0">
-               <tooltip>
-                  <Tooltip text="Click here to show ingredients of the recipe." />
-               </tooltip>
-               <graphic>
-      						<ImageView fitHeight="51.0" fitWidth="50.0">
-      							<image>
-      								<Image url="@../pic/material-information-outline.png" />
-      							</image>
-      						</ImageView>
-               </graphic>
-				</Label>
-				<Label layoutX="9.0" layoutY="218.0" onMouseClicked="#showPreparationStep" prefHeight="35.0" prefWidth="34.0">
-               <tooltip>
-                  <Tooltip text="Click here to view the steps." />
-               </tooltip>
-               <graphic>
-      						<ImageView fitHeight="45.0" fitWidth="50.0">
-      							<image>
-      								<Image url="@../pic/s.png" />
-      							</image>
-      						</ImageView>
-               </graphic>
-				</Label>
-
-				<Label layoutX="13.0" layoutY="282.0" onMouseClicked="#showComment" prefHeight="35.0" prefWidth="34.0">
-               <tooltip>
-                  <Tooltip text="Click here to view comments." />
-               </tooltip>
-               <graphic>
-      						<ImageView fitHeight="43.0" fitWidth="41.0" onMouseClicked="#showComment">
-      
-            							<image>
-      								<Image url="@../pic/Event%20Comments.png" />
-      							</image>
-      						</ImageView>
-               </graphic>
-				</Label>
-				<Label layoutX="387.0" layoutY="652.0" onMouseClicked="#back" prefHeight="19.0" prefWidth="24.0">
-               <graphic>
-      				<ImageView fitHeight="28.0" fitWidth="29.0" onMouseClicked="#back">
-      					<image>
-      						<Image url="@../pic/back.png" />
-      					</image>
-      				</ImageView>
-               </graphic></Label>
-				<ImageView fx:id="delete" fitHeight="34.0" fitWidth="38.0" layoutX="336.0" layoutY="646.0" onMouseClicked="#deleteRecipe">
-					<image>
-						<Image url="@../pic/delete.png" />
-					</image>
-				</ImageView>
-				<ScrollPane fx:id="scrollpane" layoutX="71.0" layoutY="157.0" prefHeight="485.0" prefWidth="346.0">
-					<content>
-
-
-					</content>
-				</ScrollPane>
-            <Label layoutX="288.0" layoutY="648.0" onMouseClicked="#editRecipe">
-               <graphic>
-      				<ImageView fitHeight="31.0" fitWidth="34.0" onMouseClicked="#editRecipe">
-      					<image>
-      						<Image url="@../pic/edite.png" />
-      					</image>
-      				</ImageView>
-               </graphic>
-            </Label>
+            <Label fx:id="description" alignment="TOP_LEFT" layoutX="208.0" layoutY="56.0" prefHeight="51.0" prefWidth="211.0" />
+            <Text layoutX="210.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description:" />
 
 			</children>
 		</Pane>
+										<Label fx:id="user" layoutX="-295.0" layoutY="602.0" prefHeight="17.0" prefWidth="54.0" />
 	</children>
 </AnchorPane>

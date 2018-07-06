@@ -24,14 +24,6 @@
                   <Label prefHeight="42.0" prefWidth="196.0" text="Description" />
                </children>
             </HBox>
-            <HBox prefHeight="60.0" prefWidth="450.0">
-               <children>
-                  <TextField prefHeight="23.0" prefWidth="90.0" />
-                  <TextField prefHeight="30.0" prefWidth="87.0" />
-                  <TextField prefHeight="30.0" prefWidth="77.0" />
-                  <TextField prefHeight="30.0" prefWidth="191.0" />
-               </children>
-            </HBox>
          </children>
       </VBox>
       <Button layoutX="14.0" layoutY="80.0" mnemonicParsing="false" onAction="#addIngredient" text="ADD" />

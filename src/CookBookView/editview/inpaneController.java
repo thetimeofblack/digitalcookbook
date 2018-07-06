@@ -80,25 +80,33 @@ public class inpaneController {
 	@FXML
 	public void saveIngredient() {
 		//this.Ingredientlist = new LinkedList<Ingredient>();
-		int num = this.addnumber;
+		int num = 0;
 		this.Ingredientlist = new LinkedList<Ingredient>();
-		while(num>0) {
+		while(num<this.addnumber) {
 		Ingredient ingredient = new Ingredient();
-		HBox hBox = (HBox) this.vbox.getChildren().get(this.addnumber-1);
+		HBox hBox = (HBox) this.vbox.getChildren().get(num);
 		TextField Name = (TextField)hBox.getChildren().get(0);
 		
 		TextField Usage = (TextField)hBox.getChildren().get(1);
 		TextField Unit = (TextField)hBox.getChildren().get(2);
 		TextField Description = (TextField)hBox.getChildren().get(3);
 		String usage = Usage.getText(); 
-		if(usage.equals("")) usage = "0";
+		if(usage.equals("")||usage==null) usage = "0.0";
+		if(Usage.getText()==null) {
+			Usage.setText("0");
+			System.out.println("hello1");
+		}
+		if(usage.equals("")||usage==null) { 
+			usage = "0.0";
+			System.out.println("hello2");
+		}
 		ingredient.setName(Name.getText());
 		ingredient.setUnit(Unit.getText());
 		ingredient.setDescription(Description.getText());
-		ingredient.setAmount(Double.parseDouble(Usage.getText()));
+		ingredient.setAmount(Double.parseDouble(usage));
 		
 		
-		num=num-1;
+		num=num+1;
 		this.Ingredientlist.add(ingredient);
 		}
 		

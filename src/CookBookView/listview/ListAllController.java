@@ -66,9 +66,10 @@ public class ListAllController {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../searchview/searchView.fxml"));
 		GridPane root = loader.load();
 		SearchViewController controller = loader.getController();
-		controller.setStageAndScene(stage, scene);
+		controller.setStageAndScene(stage, scene);		
 		//controller.setDatabaselayerObject(databaselayerObject);
 		controller.setCookBook(this.cookbook);
+		controller.setusername();
 		scene.setRoot(root);
 		stage.setScene(scene);
 		stage.show();
@@ -148,6 +149,9 @@ public class ListAllController {
 			this.recipeVBox.getChildren().add(pane);
 			this.mainpane.setContent(this.recipeVBox);
 		}
+		}else {
+			VBox vbox = new VBox();
+			this.mainpane.setContent(vbox);
 		}
 			
 		

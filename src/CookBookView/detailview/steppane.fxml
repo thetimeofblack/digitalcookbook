@@ -5,9 +5,10 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="263.0" prefWidth="204.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CookBookView.detailview.steppaneController">
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="324.0" prefWidth="271.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="CookBookView.detailview.steppaneController">
    <children>
-      <VBox fx:id="stvbox" layoutX="2.0" prefHeight="263.0" prefWidth="204.0">
+      <VBox fx:id="stvbox" prefHeight="324.0" prefWidth="271.0">
          <children>
             <HBox prefHeight="24.0" prefWidth="204.0">
                <children>

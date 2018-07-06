@@ -28,10 +28,12 @@ public class CookBook {
 		this.databaselayerObject = new DatabaselayerObject();
 	}
 	
+
 	/**
 	 * @Description add one recipe to the recipelist
 	 * @param recipe
 	 */
+
 	public void add(Recipe recipe) {
 		recipelist.add(recipe);
 	}
@@ -98,6 +100,7 @@ public class CookBook {
 		return this.recipelist;
 	}
 	
+
 	
 	
 	/**
@@ -134,7 +137,11 @@ public class CookBook {
 	 * @throws Exception
 	 */
 	public LinkedList<Comment> getRecipeComment (String recipeid) throws Exception {
-		return this.databaselayerObject.getRecipeComment(recipeid);
+
+		LinkedList<Comment> comments= new LinkedList<Comment>();
+		 return  databaselayerObject.getRecipeComment(comments, recipeid);
+		
+
 	}
 	
 	
@@ -245,7 +252,7 @@ public class CookBook {
 		Recipe recipe = new Recipe(); 
 		recipe.setRecipeID(recipeid);
 		this.databaselayerObject.setUser(this.user);
-		this.databaselayerObject.deleterecipeuser(recipe);
+		this.databaselayerObject.deleteRecipe(recipe);
 	}
 	
 	/**
@@ -268,7 +275,9 @@ public class CookBook {
 	 */
 	public boolean saveComment(Comment comment,String recipeid ) throws Exception {
 		System.out.println(recipeid);
-		boolean result =this.databaselayerObject.saveCommentandRate(comment, Integer.parseInt(recipeid),this.user.getUserID());
+
+		boolean result =this.databaselayerObject.setComment(comment.getComment(), recipeid,this.user.getUserID());
+
 		return result; 
 	}
 	
@@ -337,7 +346,9 @@ public class CookBook {
 	 */
 	public Comment getComment(String recipeid) throws Exception {
 		Comment comment = new Comment() ; 
+		System.out.println(this.user.getUserID()+"heihei");
 		comment = this.databaselayerObject.getComment(recipeid,this.user.getUserID());
+		System.out.println(comment.getGrade()+"hahaha");
 		return comment; 
 	}	
 	
@@ -369,8 +380,19 @@ public class CookBook {
 		
 	}
 	
-	public void editComment(String recipeid,String comment) throws Exception{
-		this.databaselayerObject.editComment(this.user.getUserID(), recipeid,comment);
+
+	public boolean judgeUserRecipe(Recipe recipe) throws Exception {
+		
+		return this.databaselayerObject.judgerecipeuser(recipe);
+		
+	}
+	public String getUser() {
+		return user.getUserName();
+	}
+	
+	public boolean existUser(String username) throws Exception  {
+		return this.databaselayerObject.existUser(username);
+
 	}
 
 }
