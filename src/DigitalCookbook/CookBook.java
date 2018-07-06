@@ -28,10 +28,19 @@ public class CookBook {
 		this.databaselayerObject = new DatabaselayerObject();
 	}
 	
+
+	/**
+	 * @Description add one recipe to the recipelist
+	 * @param recipe
+	 */
+
 	public void add(Recipe recipe) {
 		recipelist.add(recipe);
 	}
 	
+	/**
+	 * @Description show all the recipes in the recipelist
+	 */
 	public void showallrecipe() {
 		Iterator<Recipe> it = recipelist.iterator();
 		System.out.println("Show all recipes"); 
@@ -54,10 +63,21 @@ public class CookBook {
 		this.databaselayerObject = databaselayerObject ;
 	}
 	
+	/**
+	 * @Description get all the recipes from database and put them into a list
+	 * @return 
+	 */
 	public LinkedList<Recipe> getRecipelist(){
 		return this.recipelist ; 
 	}
 	
+	
+	/**
+	 * @Description save recipe to the database
+	 * @param recipe
+	 * @return boolean
+	 * @throws Exception
+	 */
 	public boolean saveRecipe(Recipe recipe ) throws Exception {
 		boolean result = this.databaselayerObject.insertrecipe(recipe);
 		if(result) return true; 
@@ -66,6 +86,12 @@ public class CookBook {
 	
 
 	
+	/**
+	 * @Description search a specific recipe through name
+	 * @param recipename
+	 * @return
+	 * @throws Exception
+	 */
 	public LinkedList<Recipe> searchRecipe(String recipename)throws Exception{
 		//LinkedList<String> recipeidlist = new LinkedList<String>();
 		this.recipelist = new LinkedList<Recipe>();
@@ -74,7 +100,27 @@ public class CookBook {
 		return this.recipelist;
 	}
 	
+
 	
+	
+	/**
+	 * @Description 
+	 * @param recipeid
+	 * @param comment
+	 * @throws Exception
+	 */
+	public void commentRecipe(String recipeid , Comment comment) throws  Exception {
+		this.databaselayerObject.saveCommentandRate(comment, Integer.parseInt(recipeid),this.user.getUserID());
+		
+	}
+	
+	
+	/**
+	 * @Description user login through using name and password
+	 * @param user
+	 * @return
+	 * @throws Exception
+	 */
 	public int userLogin(User user ) throws Exception {
 		this.user = user ;
 		int result = this.databaselayerObject.userLogin(user.getUserName(), user.getUserPassword());
@@ -83,17 +129,35 @@ public class CookBook {
 		
 	}
 	
+	
+	/**
+	 * @Description get comments for a specific recipe
+	 * @param recipeid
+	 * @return
+	 * @throws Exception
+	 */
 	public LinkedList<Comment> getRecipeComment (String recipeid) throws Exception {
+
 		LinkedList<Comment> comments= new LinkedList<Comment>();
 		 return  databaselayerObject.getRecipeComment(comments, recipeid);
 		
+
 	}
 	
+	
+	/**
+	 * @Description get all the recipes from database and put them into a list
+	 * @return
+	 */
 	public LinkedList<Recipe> getallrecipelist(){
 		this.recipelist = this.databaselayerObject.getallrecipelist();
 		return this.recipelist;
 	}
 	
+	/**
+	 * @Description get all the vegan recipes from database and put them into a list
+	 * @return
+	 */
 	public LinkedList<Recipe> getVegrecipelist(){
 		LinkedList<Recipe> vegrecipelist = new LinkedList<Recipe>();
 		Iterator<Recipe> iterator = this.recipelist.iterator(); 
@@ -108,6 +172,11 @@ public class CookBook {
 		return vegrecipelist;
 	}
 	
+	
+	/**
+	 * @Description get all the vegetarian recipes from database and put them into a list
+	 * @return
+	 */
 	public LinkedList<Recipe> getEggrecipelist(){
 		LinkedList<Recipe> vegrecipelist = new LinkedList<Recipe>();
 		Iterator<Recipe> iterator = this.recipelist.iterator(); 
@@ -122,6 +191,11 @@ public class CookBook {
 		return vegrecipelist;
 	}
 	
+	
+	/**
+	 * @Description get all the meat recipes from database and put them into a list
+	 * @return
+	 */
 	public LinkedList<Recipe> getMeatrecipelist(){
 		LinkedList<Recipe> vegrecipelist = new LinkedList<Recipe>();
 		Iterator<Recipe> iterator = this.recipelist.iterator(); 
@@ -135,11 +209,18 @@ public class CookBook {
 		return vegrecipelist;
 	}
 	
+	
+	/**
+	 * @Description get all the recipes created by a specific user
+	 * @return
+	 * @throws Exception
+	 */
 	public LinkedList<Recipe> getUserRecipe()throws Exception{
 		String userid = this.user.getUserID(); 
 		LinkedList<Recipe> recipelist = this.databaselayerObject.getUserallRecipe(userid);
 		return recipelist;
 	}
+	
 	
 	public void saveRecipelist(LinkedList<Recipe> recipelist) throws Exception{
 		Iterator<Recipe> iterator= recipelist.iterator(); 
@@ -150,11 +231,22 @@ public class CookBook {
 	}
 	
 	
+	/**
+	 * @Description save the recipe which is created by a specific user
+	 * @param user
+	 * @param recipe
+	 * @throws Exception
+	 */
 	public void saveUserRecipe(User user, Recipe recipe) throws Exception{
 		this.databaselayerObject.setUser(user);
 		this.databaselayerObject.insertrecipe(recipe);
 	}
 	
+	/**
+	 * @Description delete the recipe which is created by a specific user
+	 * @param recipeid
+	 * @throws Exception
+	 */
 	public void deleteUserRecipe(String recipeid)  throws Exception{
 		
 		Recipe recipe = new Recipe(); 
@@ -163,32 +255,69 @@ public class CookBook {
 		this.databaselayerObject.deleteRecipe(recipe);
 	}
 	
+	/**
+	 * @Description create a new account 
+	 * @param user
+	 * @return
+	 * @throws Exception
+	 */
 	public boolean userRegister(User user) throws Exception{
 		return this.databaselayerObject.userRegister(user);
 	}
 	
+	
+	/**
+	 * @Description 
+	 * @param comment
+	 * @param recipeid
+	 * @return
+	 * @throws Exception
+	 */
 	public boolean saveComment(Comment comment,String recipeid ) throws Exception {
 		System.out.println(recipeid);
+
 		boolean result =this.databaselayerObject.setComment(comment.getComment(), recipeid,this.user.getUserID());
+
 		return result; 
 	}
 	
+	/**
+	 * @Description get all the recipes have been set as favorite by a specific user
+	 * @return
+	 * @throws Exception
+	 */
 	public LinkedList<Recipe> getfavouriterecipe() throws Exception{
 		return this.databaselayerObject.getfavouriterecipelist(this.user.getUserID());
 	}
 	
+	
+	
+	/**
+	 * @Description user set a specific recipe as favorite
+	 * @param recipeid
+	 * @return
+	 * @throws Exception
+	 */
 	public boolean setFavourite(String recipeid) throws Exception{
 	
 		return this.databaselayerObject.setfavourite(this.user.getUserID(), recipeid);
 	
 				
 	}
+	
+	
+	/**
+	 * @Description set rate and comment for a specific recipe by user
+	 * @param recipe
+	 * @throws Exception
+	 */
 	public void setRateComment(Recipe recipe) throws Exception{
 		LinkedList<Comment> comments = new LinkedList<Comment>();
 		this.databaselayerObject.setUser(this.user);
 		this.databaselayerObject.setRecipecr(recipe, user.getUserID());
 		
 	}
+	
 	
 	public void setUser(User user) throws Exception{
 		this.databaselayerObject.UserLogin(user);
@@ -206,11 +335,15 @@ public class CookBook {
 	}
 	
 	public LinkedList<Comment> getComments(String recipeid) throws Exception{
-		LinkedList<Comment> comments= new LinkedList<Comment>(); 
-		this.databaselayerObject.getRecipeComment(comments, recipeid);
-		return comments; 
+		return this.databaselayerObject.getRecipeComment(recipeid);
 	}
 	
+	/**
+	 * @Description get the comment of user for a specific recipe
+	 * @param recipeid
+	 * @return
+	 * @throws Exception
+	 */
 	public Comment getComment(String recipeid) throws Exception {
 		Comment comment = new Comment() ; 
 		System.out.println(this.user.getUserID()+"heihei");
@@ -247,6 +380,7 @@ public class CookBook {
 		
 	}
 	
+
 	public boolean judgeUserRecipe(Recipe recipe) throws Exception {
 		
 		return this.databaselayerObject.judgerecipeuser(recipe);
@@ -258,6 +392,7 @@ public class CookBook {
 	
 	public boolean existUser(String username) throws Exception  {
 		return this.databaselayerObject.existUser(username);
+
 	}
 
 }

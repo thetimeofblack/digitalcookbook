@@ -94,8 +94,9 @@ public class DatabaselayerObject {
 	 * @return
 	 * @throws SQLException
 	 */
-	public int userLogin(String username, String userpassword) throws SQLException {
-			
+	public int userLogin(String username, String userpassword) throws Exception {
+		this.con = this.getConnection(); 
+		this.sql = this.con.createStatement();
 		String s1 = "select * from cookbook.user where UserName = '"+ username +"'";
 		res = this.sql.executeQuery(s1);
 		if(res.first()){
@@ -120,6 +121,7 @@ public class DatabaselayerObject {
 		//String s = "select * from cookbook.user where UserName = ? and UserPassword = ?";
 		//PreparedStatement ps = (PreparedStatement) con.prepareStatement(s);
 		//ps.setString(arg0, arg1);	
+		
 	}
 	
 
@@ -643,6 +645,7 @@ public class DatabaselayerObject {
     }
     
 	
+
     public boolean setComment(String comment , String recipeid ,String userid)throws Exception{
     	this.con = this.getConnection(); 
   	  this.sql = this.con.createStatement(); 
@@ -659,6 +662,7 @@ public class DatabaselayerObject {
   	  }
   	  if(finalresult>0) return true; 
   	  else return false;
+
          
     }
     
@@ -708,14 +712,15 @@ public class DatabaselayerObject {
     public User getUser() {
     	return this.user;
     }
-    
+
     public LinkedList<Comment> getRecipeComment(LinkedList<Comment> comments ,String recipeid) throws Exception{
     	String sqlstr = "select * from cookbook.rateandcomments,cookbook.user "
     			+ " where cookbook.rateandcomments.recipeid= "+recipeid+" and cookbook.user.userid = cookbook.rateandcomments.userid ";
+
     	Connection connection = this.getConnection();
     	this.sql = connection.createStatement();
     	ResultSet res = this.sql.executeQuery(sqlstr);
-        comments = new LinkedList<Comment>();
+        LinkedList<Comment> comments = new LinkedList<Comment>();
     	while(res.next()) {
     	Comment comment = new Comment(res.getInt("rate"), res.getString("comments"));
         comment.setUserid(res.getString("userid"));
@@ -724,7 +729,9 @@ public class DatabaselayerObject {
         comments.add(comment);
     	}
     	connection.close();
+
     	return comments;
+
     }
     
     public LinkedList<Recipe> getUserallRecipe(String userid) throws Exception{
@@ -833,10 +840,11 @@ public class DatabaselayerObject {
     	int result = this.sql.executeUpdate(sqlstr);
     	return true;
     	}
-    	this.sql.close();
+    	
     	connection.close();
     	if(res.first()) return true; 
     	return false; 
+    	
     	
     }
     
@@ -945,10 +953,12 @@ public class DatabaselayerObject {
 	  this.con = this.getConnection(); 
 	  this.sql = this.con.createStatement(); 
 	  String sql1 = "select * from cookbook.rateandcomments where userid=" + userid + " and recipeid= "+recipeid;
+
 	  res = this.sql.executeQuery(sql1);
 	  int finalresult ; 
 	  if(res.first() == true) {
 		  String sql2 = "update cookbook.rateandcomments set rate =" +grade +" where userid = " +userid +" and recipeid = "+recipeid; 
+
 		  finalresult = this.sql.executeUpdate(sql2);
 		 
 	  }else {
@@ -971,6 +981,7 @@ public class DatabaselayerObject {
 	  return false; 
   }
   
+
   private void deleteComments(String recipeid) throws Exception{
 	  this.con = this.getConnection(); 
 	  this.sql = this.con.createStatement(); 
@@ -993,5 +1004,6 @@ public class DatabaselayerObject {
 	  
 	  
   }
+
  }
 

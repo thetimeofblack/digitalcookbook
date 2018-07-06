@@ -6,6 +6,7 @@ import CookBookEntity.Comment;
 import javafx.fxml.FXML;
 
 public class CommentHBoxController {
+	
 	@FXML
 	TextArea No ; 
 	@FXML 
@@ -13,7 +14,7 @@ public class CommentHBoxController {
 	@FXML 
 	TextArea Comment;
 	
-	public void setComment(Comment comment , int number) {
+	public void showComment(Comment comment , int number) {
 		this.No.setText(String.valueOf(number));
 		this.UserID.setText(comment.getUsername());
 		this.Comment.setText(comment.getComment());
