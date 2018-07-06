@@ -8,6 +8,8 @@ import org.junit.*;
 import org.junit.Assert.*;
 import CookBookEntity.Recipe;
 public class DatabaseAccessTest {
+	
+	
 	public static void main(String[] args) throws Exception {
 		DatabaselayerObject dao = new DatabaselayerObject();
 		Recipe recipe = CookBookApp.createGongBaoJiding();
