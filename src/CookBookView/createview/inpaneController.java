@@ -71,7 +71,7 @@ public class inpaneController {
 	@FXML
 	public void deleteIngredient() throws Exception{
 		if(this.addnumber>0) {
-			this.inpaneVBox.getChildren().remove(1+addnumber);
+			this.inpaneVBox.getChildren().remove(addnumber);
 			addnumber=addnumber-1;
 		}
 		
