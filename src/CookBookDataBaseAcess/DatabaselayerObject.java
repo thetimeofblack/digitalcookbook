@@ -974,7 +974,7 @@ public class DatabaselayerObject {
   private void deleteComments(String recipeid) throws Exception{
 	  this.con = this.getConnection(); 
 	  this.sql = this.con.createStatement(); 
-	  String sqlstr = "delete from rateandcomments where recipeid = " +recipeid ;
+	  String sqlstr = "delete from cookbook.rateandcomments where recipeid = " +recipeid ;
 	  this.sql.executeUpdate(sqlstr);
 	  
 	  
