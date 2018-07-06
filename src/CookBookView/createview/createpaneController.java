@@ -16,6 +16,7 @@ import CookBookEntity.Comment;
 import CookBookEntity.Ingredient;
 import CookBookEntity.PreparationStep;
 import CookBookEntity.Recipe;
+import CookBookView.registerview.miniController;
 import CookBookView.firstview.fvController;
 import CookBookView.searchview.SearchViewController;
 import DigitalCookbook.CookBook;
@@ -141,6 +142,20 @@ public class createpaneController {
 		
 		
 		this.recipe = new Recipe();
+		if(recipename.getText()==null||recipename.getText().equals("")) {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../registerview/mini2.fxml"));
+			
+			GridPane pane = loader.load(); 
+			miniController controller = loader.getController(); 
+			controller.setText("Please enter Recipe Name");
+			Scene scene = new Scene(pane);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.show();
+			controller.setStage(stage);
+			
+			return ;
+		}
 		String cooktime = this.Cooktime.getText(); 
 		String preparationtime = this.preparationTime.getText(); 
 		if(cooktime.equals("")) cooktime = "0";
@@ -150,7 +165,21 @@ public class createpaneController {
 		this.recipe.setDescription("");
 		this.recipe.setName(this.recipename.getText());
 		this.recipe.setPreparationTime(Integer.parseInt(preparationtime));
-		if(this.servingperson==null||this.servingperson.getText().equals("")) this.servingperson.setText("999999");
+		if(this.servingperson==null||this.servingperson.getText().equals("")) this.servingperson.setText("0");
+		if(this.servingperson.getText().matches("[1-9][0-9]*")==false) {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../registerview/mini2.fxml"));
+			
+			GridPane pane = loader.load(); 
+			miniController controller = loader.getController(); 
+			controller.setText("Please enter integer for serving person");
+			Scene scene = new Scene(pane);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.show();
+			controller.setStage(stage);
+			
+			return ;
+		}
 		this.recipe.setServeNumber(Integer.parseInt(this.servingperson.getText()));
 		if(vegetarian.isSelected()) {
 			this.recipe.setDescription("Egg");

@@ -243,6 +243,9 @@ public class MaindetailController {
 		stage.show();
 	}
 	
+	/*
+	 * @Description if servingperson input is integer return true else return false
+	 */
 	public boolean formatCorrect() {
 		return servingperson.getText().matches("[1-9][0-9]*");
 	}
